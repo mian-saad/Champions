@@ -1,0 +1,132 @@
+{  
+   "M0.0":{
+      "state_text":"Welcome to the Alert. This tool will guide you through the reporting process. The reporting process is fully anonymous. Any data requested will be used to help you generate a case that can be sent to the Arena Domain to give further suggestions. <br><br>For more information see <a href='https://ec.europa.eu/info/law/law-topic/data-protection_en'>Terms and Conditions</a>",
+      "short_text":"GDPR agreement",
+      "id":"gdpr_agreement",
+      "state_type":"gdpr",
+      "state_answers":[  
+         {  
+            "id":"gdpr_agree",
+            "text":"I understand that personal data from other individuals cannot be uploaded and shared through this alert module or any of the sections and tools of this website."
+         }
+      ]      
+   },
+   "M1.1":{
+      "state_text":"Reporter Information Survey",
+      "state_type":"composed",
+      "show_header": "false",
+      "id": "reporter_infos",
+      "state_answers":[
+         {
+            "id":"reporter_age",
+            "text":"Please provide your age.",
+            "short_text":"Age",
+            "type":"text"
+         },
+         {
+            "id":"reporter_residence",
+            "text":"What is your country of residence.",
+            "short_text":"Residence",
+            "type":"text"
+         },
+         {
+            "id":"reporter_gender",
+            "type":"radio",
+            "text":"Gender",
+            "short_text":"Gender",
+            "answers":[
+               {
+                  "text":"Male",
+                  "short_text":"Male",
+                  "id":"male"
+               },
+               {
+                  "text":"Female",
+                  "short_text":"Female",
+                  "id":"female"
+               },
+               {
+                  "text":"Other",
+                  "short_text":"Other",
+                  "id":"other"
+               }
+            ]
+         }
+      ]
+   },
+   "M1.2":{
+      "state_text":"Please specify the approximate time of the suspect event.",
+      "id":"event_time",
+      "short_text":"Incident time",
+      "state_type":"datetime"
+   },
+   "M1.3":{
+      "state_text":"How would you categorize the occurred suspect event?",
+      "short_text":"Event category",
+      "id":"event_category",
+      "state_type":"checkbox",
+      "state_answers":[
+         {
+            "id":"money_laundering",
+            "text":"Radicalization"
+         },
+         {
+            "id":"corruption",
+            "text":"Corruption"
+         },
+         {
+            "id":"online_radicalization",
+            "text":"Online Radicalization"
+         },
+         {
+            "id":"child_pornography",
+            "text":"Bully"
+         },
+         {
+            "id":"identity_theft",
+            "text":"Polarization"
+         },
+         {
+            "id":"change this",
+            "text":"antisemitism"
+         },
+         {
+            "id":"change this",
+            "text":"religious radicalisation"
+         },
+         {
+            "id":"change this",
+            "text":"sexism"
+         },
+         {
+            "id":"change this",
+            "text":"racism"
+         },
+         {
+            "id":"change this",
+            "text":"domestic violence "
+         },
+         {
+            "id":"change this",
+            "text":"homophobia"
+         },
+         {
+            "id":"other",
+            "text":"other"
+         }
+      ]
+   },
+   "M1.4":{
+      "short_text":"Incident description",
+      "state_text":"Please provide us a description of what has happened.",
+      "id":"event_description",
+      "state_type":"description"
+   },
+   "M1.5":{
+      "state_type":"result"
+   },
+   "ERROR":{
+      "state_text":"An error has occurred! Please restart the report process.",
+      "state_type":"error"
+   }
+}

@@ -1,0 +1,14 @@
+{
+    "name": "saadaziz/login",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Saad Aziz",
+            "email": "miansaad@outlook.de"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {"Incl\\":"./includes"}
+    }
+}

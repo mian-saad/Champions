@@ -19,20 +19,25 @@ jQuery(document).ready(function ($) {
         });
     });
 
-    $('body').on('click', '#submit_comment', function (e) {
-         e.preventDefault();
+    $('body').on('click', '.submit_comment', function (e) {
+        e.preventDefault();
 
-        const $comment = $('#display_comment');
-         const req_data = {
+        let $id = $(this).attr('id').match(/\d+$/).toString();
+        // let $d = 8;
+        // console.log($id+ " , " + $d);
+        const $comment = $('#display_comment'+$id);
+        const req_data = {
             action: 'addcomment',
-            comment_data: $('#get_comment').val()
-         };
+            comment_data: $('#get_comment'+$id).val(),
+            comment_idd: $id
+        };
 
         jQuery.get(myAjax.ajaxurl, req_data, function (response) {
             console.log("Comment Added");
             $comment.html(response);
         });
     });
+
 
     // $('body').on('click', '#submit_comment', function (e) {
     //     e.preventDefault();

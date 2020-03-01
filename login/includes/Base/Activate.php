@@ -18,7 +18,8 @@ class Activate {
 
         // creates states table
         $sql = "CREATE TABLE $commentsData (
-            comment_data TEXT
+            comment_data TEXT,
+            comment_idd TEXT
         ) $charset_collate;";
 
         require_once ABSPATH . 'wp-admin/includes/upgrade.php';

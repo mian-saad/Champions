@@ -55,13 +55,13 @@
       ]
    },
    "M1.2":{
-      "state_text":"Please specify the approximate time of the suspect event.",
+      "state_text":"Please specify the approximate time of the event.",
       "id":"event_time",
       "short_text":"Incident time",
       "state_type":"datetime"
    },
    "M1.3":{
-      "state_text":"How would you categorize the occurred suspect event?",
+      "state_text":"How would you categorize the occurred event?",
       "short_text":"Event category",
       "id":"event_category",
       "state_type":"checkbox",

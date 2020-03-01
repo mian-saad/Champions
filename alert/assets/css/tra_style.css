@@ -5,8 +5,28 @@ body{
   font-family: 'Raleway' !important;
 }
 
+button {
+  font-family: 'Raleway'!important;
+}
+
+input[type=email], input[type=password], input[type=text] {
+  font-family: 'Raleway'!important;
+}
+
 .cus_margin{
   margin: -2rem auto 5rem !important;
+}
+
+.button {
+  font-family: 'Raleway'!important;
+}
+
+p {
+  font-family: 'Raleway'!important;
+}
+
+option {
+  font-family: 'Raleway'!important;
 }
 
 .button {

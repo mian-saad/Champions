@@ -1,5 +1,6 @@
 
 <div class="card-body" id="contentBox">
+    <h3>Welcome to ARENA Module</h3>
     <h2 class="title">Login Form</h2>
     <form id="arena-login" method="POST" action="#" >
         <div class="row row-space">

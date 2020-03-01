@@ -30,12 +30,13 @@ class Fetch extends BaseController {
                     echo $i+1;
                     echo ": ";
                     echo $results[$i] -> event_description;
+
                     echo "</br>";
-                    echo "<div class='display_comment' id='display_comment'></div>";
+                    echo "<div class='display_comment' id='display_comment$i'></div>";
                     echo "</br>";
-                    echo "<input class='get_comment' type='text' id='get_comment' placeholder='Add Comment'>";
+                    echo "<input class='get_comment' type='text' id='get_comment$i' placeholder='Add Comment'>";
                     echo "</br>";
-                    echo "<button class='submit_comment' id='submit_comment' >Add Comment</button>";
+                    echo "<button class='submit_comment' id='submit_comment$i' >Add Comment</button>";
                     echo "</br></br>";
                 }
                 wp_die();

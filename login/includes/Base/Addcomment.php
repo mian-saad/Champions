@@ -17,12 +17,16 @@ class Addcomment extends BaseController {
 
         global $wpdb;
         $comment_data = sanitize_text_field( $_GET['comment_data'] );
-        $data = array( 'comment_data' => $comment_data );
+//        $comment_idd = sanitize_text_field( $_GET['comment_idd'] );
+        $alertID = $wpdb->get_results( "SELECT report_id FROM {$wpdb->prefix}tra_reports", OBJECT );
+
+        $data = array( 'comment_data' => $comment_data, 'comment_idd' => $alertID );
         $commentsData = $wpdb->prefix . 'commentsData';
         $wpdb->insert($commentsData, $data);
 
 
-        $results = $wpdb->get_results( "SELECT comment_data FROM {$wpdb->prefix}commentsData", OBJECT );
+        $results = $wpdb->get_results( "SELECT comment_data, comment_idd FROM {$wpdb->prefix}commentsData", OBJECT );
+        //Comment filtering logic will go here
         for ($i=0; $i<count($results); $i++) {
             echo "Comment ";
             echo $results[$i] -> comment_data;

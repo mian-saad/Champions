@@ -1,6 +1,8 @@
 jQuery(document).ready(function ($) {
 
     const $contentBox = $('#contentBox');
+
+    // On click at Login
     $('body').on('click', '#send', function (e) {
         e.preventDefault();
 
@@ -19,12 +21,12 @@ jQuery(document).ready(function ($) {
         });
     });
 
+    // On click at add comment
     $('body').on('click', '.submit_comment', function (e) {
         e.preventDefault();
 
         let $id = $(this).attr('id').match(/\d+$/).toString();
-        // let $d = 8;
-        // console.log($id+ " , " + $d);
+
         const $comment = $('#display_comment'+$id);
         const req_data = {
             action: 'addcomment',
@@ -37,33 +39,6 @@ jQuery(document).ready(function ($) {
             $comment.html(response);
         });
     });
-
-
-    // $('body').on('click', '#submit_comment', function (e) {
-    //     e.preventDefault();
-    //
-    //     const $comment = $('#display_comment');
-    //     const req_data = {
-    //         action: 'fetchcomment',
-    //     };
-    //
-    //     jQuery.get(myAjax.ajaxurl, req_data, function (response) {
-    //         console.log("Comment Fetched");
-    //         $comment.html(response);
-    //     });
-    // });
-
-
-    // Display comments every 5 seconds
-    // setInterval(function () {
-    //     const $comment = $('#display_comment');
-    //     const req_data = {
-    //         action: 'fetchcomment'
-    //     };
-    //     jQuery.get(myAjax.ajaxurl, req_data, function (response) {
-    //         $comment.html(response);
-    //     });
-    // }, 2000)
 });
 
 

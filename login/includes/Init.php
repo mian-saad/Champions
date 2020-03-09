@@ -13,13 +13,11 @@ final class Init {
   public static function get_services(){
 
     return [
-      Pages\Admin::class,
-      Pages\Settings::class,
+      AdminPages\Admin::class,
+      AdminPages\Settings::class,
       Base\Enqueue::class,
       Base\Shortcode::class,
-      Base\Fetch::class,
-      Base\Addcomment::class,
-      Base\Fetchcomment::class
+      Base\Fetch::class
     ];
 
   }

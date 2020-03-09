@@ -24,7 +24,7 @@ class Shortcode extends BaseController
 
 
         //include the specified file
-        require_once("$this->plugin_path/frontend/FirstPage.php");
+        require_once("$this->plugin_path/frontend/arena.php");
 
         //assign the file output to $content variable and clean buffer
         $content = ob_get_clean();

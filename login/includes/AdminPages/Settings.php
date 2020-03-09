@@ -2,7 +2,7 @@
 /**
  * @package register
  */
-namespace Incl\Pages;
+namespace Incl\AdminPages;
 
 use \Incl\Base\BaseController;
 

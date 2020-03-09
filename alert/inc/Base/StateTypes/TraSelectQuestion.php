@@ -4,8 +4,8 @@
 namespace Inc\Base\StateTypes;
 
 
-class TraCheckboxQuestion extends TraState
-{
+class TraSelectQuestion extends TraState {
+
     public $continue_string;
 
     public function __construct($report_id, $state_code, $state, $continue_string, $back_string, $field_warning, $warning)
@@ -76,11 +76,6 @@ class TraCheckboxQuestion extends TraState
         return "<div id='tra_button_pane'><a class='button' id='tra_back' href='#' onclick='return false;'>$this->back_string</a> <a class='button' id='tra_continue' href='#' onclick='return false;'>$this->continue_string</a></div>";
     }
 
-    public function generate_other_text_input($value)
-    {
-        return "<input type='text' style='display:block' name='other_text_input' value='" . $value . "'>";
-    }
-
     public function generate_readable_response_array()
     {
         $response_string = "";
@@ -111,4 +106,5 @@ class TraCheckboxQuestion extends TraState
         $result[$this->state['short_text']] = $response_string;
         return $result;
     }
+
 }

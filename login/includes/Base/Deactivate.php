@@ -16,6 +16,10 @@ class Deactivate {
     $sql = "DROP TABLE IF EXISTS $commentsData;";
     $wpdb->query($sql);
 
+    $arena = $wpdb->prefix . 'arena';
+    $sql = "DROP TABLE IF EXISTS $arena;";
+    $wpdb->query($sql);
+
     flush_rewrite_rules();
   }
 

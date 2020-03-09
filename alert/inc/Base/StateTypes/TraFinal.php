@@ -44,28 +44,28 @@ class TraFinal extends TraState
             $html .= "<p>" . $short_text . " : " . $value . "</p>";
         }
 
-//        $this->proposal_html .= "<hr><p>".$this->crime_location_string."</p>";
-//        if(count($this->contact_proposals["crime_location"])==0){
-//            $this->proposal_html .= "<p>".$this->no_results_string."</p>";
-//        }
-//        foreach ($this->contact_proposals["crime_location"] as $item) {
-//            if($item["agency_name"]!=""){
-//                $this->proposal_html .= "<p>" . $item["agency_name"] . "<br>";
-//            } else {
-//                continue;
-//            }
-//            if($item["email"]!=""){
-//                $this->proposal_html .= $item["email"] . "<br>";
-//            }
-//            if($item["phone"]!=""){
-//                $this->proposal_html .= $item["phone"] . "<br>";
-//            }
-//            if($item["url"]!=""){
-//                $this->proposal_html .= "URL : <a href='". $item["url"] . "'>". $item["url"] . "</a></p>";
-//            }
-//            else $this->proposal_html .= "</p>";
-//        }
-//
+        $this->proposal_html .= "<hr><p>".$this->crime_location_string."</p>";
+        if(count($this->contact_proposals["crime_location"])==0){
+            $this->proposal_html .= "<p>".$this->no_results_string."</p>";
+        }
+        foreach ($this->contact_proposals["crime_location"] as $item) {
+            if($item["agency_name"]!=""){
+                $this->proposal_html .= "<p>" . $item["agency_name"] . "<br>";
+            } else {
+                continue;
+            }
+            if($item["email"]!=""){
+                $this->proposal_html .= $item["email"] . "<br>";
+            }
+            if($item["phone"]!=""){
+                $this->proposal_html .= $item["phone"] . "<br>";
+            }
+            if($item["url"]!=""){
+                $this->proposal_html .= "URL : <a href='". $item["url"] . "'>". $item["url"] . "</a></p>";
+            }
+            else $this->proposal_html .= "</p>";
+        }
+
 //        $this->proposal_html .= "<hr><p>".$this->language_pref_string."</p>";
 //        if(count($this->contact_proposals["language_pref"])==0){
 //            $this->proposal_html .= "<p>".$this->no_results_string."</p>";

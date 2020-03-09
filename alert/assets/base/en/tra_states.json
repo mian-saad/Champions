@@ -18,39 +18,28 @@
       "id": "reporter_infos",
       "state_answers":[
          {
-            "id":"reporter_age",
-            "text":"Please provide your age.",
+            "id":"reporter_name",
+            "text":"Please provide your Full Name.",
             "short_text":"Age",
             "type":"text"
          },
          {
-            "id":"reporter_residence",
-            "text":"What is your country of residence.",
+            "id":"reporter_email",
+            "text":"Please provide your Email Address.",
             "short_text":"Residence",
             "type":"text"
          },
          {
-            "id":"reporter_gender",
-            "type":"radio",
-            "text":"Gender",
-            "short_text":"Gender",
-            "answers":[
-               {
-                  "text":"Male",
-                  "short_text":"Male",
-                  "id":"male"
-               },
-               {
-                  "text":"Female",
-                  "short_text":"Female",
-                  "id":"female"
-               },
-               {
-                  "text":"Other",
-                  "short_text":"Other",
-                  "id":"other"
-               }
-            ]
+            "id":"reporter_password",
+            "text":"Please provide your Password",
+            "short_text":"Residence",
+            "type":"text"
+         },
+         {
+            "id":"reporter_country",
+            "text":"What is your country of residence.",
+            "short_text":"Residence",
+            "type":"text"
          }
       ]
    },
@@ -67,7 +56,7 @@
       "state_type":"checkbox",
       "state_answers":[
          {
-            "id":"money_laundering",
+            "id":"radicalization",
             "text":"Radicalization"
          },
          {
@@ -79,40 +68,40 @@
             "text":"Online Radicalization"
          },
          {
-            "id":"child_pornography",
+            "id":"bully",
             "text":"Bully"
          },
          {
-            "id":"identity_theft",
+            "id":"polarization",
             "text":"Polarization"
          },
          {
-            "id":"change this",
-            "text":"antisemitism"
+            "id":"antisemitism",
+            "text":"Antisemitism"
          },
          {
-            "id":"change this",
-            "text":"religious radicalisation"
+            "id":"religious_radicalisation",
+            "text":"Religious Radicalisation"
          },
          {
-            "id":"change this",
-            "text":"sexism"
+            "id":"sexism",
+            "text":"Sexism"
          },
          {
-            "id":"change this",
-            "text":"racism"
+            "id":"racism",
+            "text":"Racism"
          },
          {
-            "id":"change this",
-            "text":"domestic violence "
+            "id":"domestic_violence",
+            "text":"Domestic Violence"
          },
          {
-            "id":"change this",
-            "text":"homophobia"
+            "id":"homophobia",
+            "text":"Homophobia"
          },
          {
             "id":"other",
-            "text":"other"
+            "text":"Other"
          }
       ]
    },

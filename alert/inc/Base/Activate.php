@@ -69,9 +69,12 @@ class Activate
                 report_locale TEXT,
                 report_time TEXT,
                 report_ip TEXT,
+                reporter_title TEXT,
                 immediate_danger TEXT,
-                reporter_age TEXT,
-                reporter_residence TEXT,
+                reporter_name TEXT,
+                reporter_email TEXT,
+                reporter_password TEXT,
+                reporter_country TEXT,
                 reporter_gender TEXT,
                 reporter_involvement TEXT,
                 event_time TEXT,
@@ -98,6 +101,7 @@ class Activate
                 phishing_url TEXT,
                 phishing_data TEXT,
                 custom_website_url TEXT,
+                alert_status TEXT,
                 PRIMARY KEY  (report_id)
             ) $charset_collate;";
 

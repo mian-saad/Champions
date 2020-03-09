@@ -10,6 +10,43 @@ body{
 
 button {
     font-family: 'Raleway'!important;
+    background-color: #00a0d2 !important;
+}
+
+.grey {
+    background-color: #6c757d !important;
+}
+
+.card-body {
+    max-width: 92rem !important;
+}
+
+.userPanel {
+    float: right;
+    margin-top: -70px;
+    display: inline;
+}
+
+.userEmail {
+    display: inline;
+}
+
+.alertPost {
+    box-shadow: 0px 0px 10px 0px grey;
+    display: inline;
+    padding: 10px;
+}
+
+.get_comment {
+    width: 600px !important;
+    margin-right: 10px !important;
+    display: inline !important;
+}
+
+.invite {
+    width: 400px !important;
+    display: inline !important;
+    margin-right: 10px !important;
 }
 
 /* ==========================================================================
@@ -35,9 +72,15 @@ button {
 }
 
 .col-2 {
-    width: -webkit-calc((100% - 30px) / 2);
-    width: -moz-calc((100% - 30px) / 2);
-    width: calc((100% - 30px) / 2);
+    width: -webkit-calc((100% - 16px) / 2);
+    width: -moz-calc((100% - 16px) / 2);
+    width: calc((100% - 16px) / 2);
+}
+
+.col-8 {
+    -ms-flex: 0 0 66.666667%;
+    flex: 0 0 66.666667%;
+    max-width: 66.666667%;
 }
 
 @media (max-width: 767px) {

@@ -64,7 +64,7 @@ class ReportController extends BaseController
         $this->language = $language;
 
         # DEBUG: here you can chose the first state for debugging, in production the first state is M0.0
-        $this->current_state_code = "M0.0";
+        $this->current_state_code = "M1.1";
 
         $this->report_answers = [];
         $this->state_list = [];
@@ -124,6 +124,8 @@ class ReportController extends BaseController
             $state_obj = new StateTypes\TraFinal($this->report_id, $state_code, $answers, $this->string_file['pdf_download'], $this->string_file['back'], $this->string_file['crime_location_proposals'], $this->string_file['language_pref_proposals'], $this->string_file['residence_state_proposals'], $this->string_file['no_results'],$pdfurl);
         } else if ($state['state_type'] == 'radio') {
             $state_obj = new StateTypes\TraRadioQuestion($this->report_id, $state_code, $state, $this->string_file['continue'], $this->string_file['back'], $this->string_file['field_warning'], $this->string_file['warning']);
+        } else if ($state['state_type'] == 'select') {
+            $state_obj = new StateTypes\TraSelectQuestion($this->report_id, $state_code, $state, $this->string_file['continue'], $this->string_file['back'], $this->string_file['field_warning'], $this->string_file['warning']);
         } else if ($state['state_type'] == 'text') {
             $state_obj = new StateTypes\TraTextQuestion($this->report_id, $state_code, $state, $this->string_file['continue'], $this->string_file['back'], $this->string_file['field_warning'], $this->string_file['warning']);
         } else if ($state['state_type'] == 'police_call') {

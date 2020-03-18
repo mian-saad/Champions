@@ -7,11 +7,12 @@ jQuery(document).ready(function ($) {
     $('body').on('click', '#tra_new_report', function (e) {
         e.preventDefault();
 
+        const x = $('#flp').val();
         // need to find all inputs and see get the value
         var req_data = {
             action: 'fetch_question',
             dataType: 'json',
-            lang: $('#lang_select').val()
+            flp: $('#flp').val()
         };
 
         // try to animate
@@ -199,7 +200,7 @@ jQuery(document).ready(function ($) {
                 if (Array.isArray(result[fieldname])) {    // if field already contains an array, lets push new element there
                     result[fieldname].push(fieldvalue);
                 } else {
-                    var newvalue = [result[fieldname], fieldvalue]    // else lets create new array with two elements in it
+                    var newvalue = [result[fieldname], fieldvalue];    // else lets create new array with two elements in it
                     result[fieldname] = newvalue;
                 }
             }

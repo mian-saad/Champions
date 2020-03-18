@@ -4,13 +4,14 @@
  */
 namespace Inc\Base;
 
+use Inc\DB;
 use TCPDF;
 use \Inc\Base\BaseController;
 use \Inc\Base\StateTypes;
 
 class ReportController extends BaseController
 {
-    public $language;
+    public $flp;
     public $report_id; // id of report, which is being taken
     public $current_state_code; // id of the current state (which is currently presented to the viewer)
 
@@ -58,10 +59,10 @@ class ReportController extends BaseController
     ];
 
     // initializes the controller object
-    public function init($report_id, $language)
+    public function init($report_id, $flp)
     {
         $this->report_id = $report_id;
-        $this->language = $language;
+        $this->flp = $flp;
 
         # DEBUG: here you can chose the first state for debugging, in production the first state is M0.0
         $this->current_state_code = "M1.1";
@@ -71,8 +72,8 @@ class ReportController extends BaseController
         $this->current_step_counter = 0;
 
         // read json
-        $this->state_file = json_decode(file_get_contents($this->plugin_path . "assets/base/" . $language . "/tra_states.json"), true);
-        $this->string_file = json_decode(file_get_contents($this->plugin_path . "assets/base/" . $language . "/tra_strings.json"), true);
+        $this->state_file = json_decode(file_get_contents($this->plugin_path . "assets/base/tra_states.json"), true);
+        $this->string_file = json_decode(file_get_contents($this->plugin_path . "assets/base/tra_strings.json"), true);
     }
 
     // generates the content for the current state
@@ -92,7 +93,7 @@ class ReportController extends BaseController
     }
 
     public function generate_post_js(){
-        return "<script>jQuery.datetimepicker.setLocale('".$this->timepicker_map[$this->language]."');</script>";
+        return "<script>jQuery.datetimepicker.setLocale('".$this->timepicker_map['eng']."');</script>";
     }
 
     // taking the new state code string, it takes it from the states and initiates a new object
@@ -120,8 +121,10 @@ class ReportController extends BaseController
             }
             // lets generate contact propasls array here
             //$this->contact_proposals = $this->generate_contact_proposals();
+
+//            $flp = $_GET['flp'];
             $pdfurl = $this->generate_pdf($answers);
-            $state_obj = new StateTypes\TraFinal($this->report_id, $state_code, $answers, $this->string_file['pdf_download'], $this->string_file['back'], $this->string_file['crime_location_proposals'], $this->string_file['language_pref_proposals'], $this->string_file['residence_state_proposals'], $this->string_file['no_results'],$pdfurl);
+            $state_obj = new StateTypes\TraFinal($this->report_id, $this->flp, $state_code, $answers, $this->string_file['pdf_download'], $this->string_file['back'], $this->string_file['crime_location_proposals'], $this->string_file['language_pref_proposals'], $this->string_file['residence_state_proposals'], $this->string_file['no_results'],$pdfurl);
         } else if ($state['state_type'] == 'radio') {
             $state_obj = new StateTypes\TraRadioQuestion($this->report_id, $state_code, $state, $this->string_file['continue'], $this->string_file['back'], $this->string_file['field_warning'], $this->string_file['warning']);
         } else if ($state['state_type'] == 'select') {
@@ -217,7 +220,7 @@ class ReportController extends BaseController
 
         // first lets do state of origin
         $reporter_residence = $this->state_list["M1.2"]->response['reporter_residence'];
-        $lang_pref = $this->lang_country_map[$this->language];
+        $lang_pref = $this->lang_country_map['ge'];
 
         if(isset($this->state_list["M1.9"])){
             $crime_loc_country = $this->state_list["M1.9"]->response['crime_loc_country'];
@@ -243,7 +246,7 @@ class ReportController extends BaseController
 
         */
 
-        $db = \Inc\DB::getInstance();
+        $db = DB::getInstance();
 
         $pdo = $db->getConnection();
 
@@ -301,9 +304,8 @@ class ReportController extends BaseController
 
         $answers = [
             'report_id' => $this->report_id,
-            'report_locale' => $this->language,
             'report_time' => date("Y/m/d H:i"),
-            'report_ip' => $_SERVER['REMOTE_ADDR'],
+            'reporter_title' => $this->flp,
         ];
 
 

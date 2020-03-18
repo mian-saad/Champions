@@ -19,6 +19,9 @@ class Enqueue extends BaseController {
 
         //Enqueuing Styles
         wp_enqueue_style( 'my-style', $this->plugin_url . ( 'assets/pStyle.css' ));
+        wp_enqueue_style( 'bootstrap-grid-style', $this->plugin_url . ( 'assets/bootstrap-grid.css' ));
+        wp_enqueue_style( 'bootstrap-reboot-style', $this->plugin_url . ( 'assets/bootstrap-reboot.css' ));
+        wp_enqueue_style( 'bootstrap-style', $this->plugin_url . ( 'assets/bootstrap.css' ));
 
         //Enqueuing Scripts
         wp_enqueue_script('my-script', $this->plugin_url . 'assets/pScript.js');

@@ -14,7 +14,7 @@ input[type=email], input[type=password], input[type=text] {
 }
 
 .cus_margin{
-  margin: -2rem auto 5rem !important;
+  margin: -4rem auto 2rem !important;
 }
 
 .button {
@@ -23,6 +23,7 @@ input[type=email], input[type=password], input[type=text] {
 
 p {
   font-family: 'Raleway'!important;
+  margin: 0 0 0.75em!important;
 }
 
 option {

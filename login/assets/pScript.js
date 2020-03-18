@@ -15,7 +15,7 @@ jQuery(document).ready(function ($) {
         $contentBox.animate({ opacity: 0.5 }, 100);
 
         jQuery.get(myAjax.ajaxurl, req_data, function (response) {
-            $contentBox.html(response).animate({ opacity: 1 }, 100);;
+            $contentBox.html(response).animate({ opacity: 1 }, 100);
         });
 
     });
@@ -42,8 +42,8 @@ jQuery(document).ready(function ($) {
         // need to find all inputs and see get the value
         const req_data = {
             action: 'fetch',
-            naam: $('#naam').val(),
-            paas: $('#paas').val(),
+            email: $('#naam').val(),
+            pass: $('#paas').val(),
             id: 'login'
         };
 
@@ -98,10 +98,16 @@ jQuery(document).ready(function ($) {
 
 
         var skill = [];
+        var othr = $('#othr').val();
+
 
         $.each($("input[name='skills']:checked"), function(){
             skill.push($(this).val());
         });
+        if (othr != ""){
+            skill.push(othr);
+        }
+
         var jsonString = JSON.stringify(skill);
         console.log(skill);
 
@@ -139,7 +145,6 @@ jQuery(document).ready(function ($) {
     $('body').on('click', '#toAlert', function (e) {
         e.preventDefault();
 
-        // var alertID =  $('#toAlert').val();
         var  alertID = $(this).attr('value');
         const $alertBox = $('#alertPanel');
 
@@ -161,12 +166,12 @@ jQuery(document).ready(function ($) {
         e.preventDefault();
 
         const $alertBox = $('#alertPanel');
-        const $user = $('.userEmail').text();
+        const $j = $('#toAlert').val();
 
         const req_data = {
             action: 'fetch',
             id: 'alertBack',
-            em: $user
+            iterator: $j
         };
 
         jQuery.get(myAjax.ajaxurl, req_data, function (response) {
@@ -183,6 +188,8 @@ jQuery(document).ready(function ($) {
         // let $id = $(this).attr('id').match(/\d+$/).toString();
 
         const $user = $('.userEmail').text();
+
+        const $txtfield = $('#get_comment');
         const $comment = $('#display_comment');
         const req_data = {
             action: 'fetch',
@@ -196,26 +203,51 @@ jQuery(document).ready(function ($) {
         jQuery.get(myAjax.ajaxurl, req_data, function (response) {
             console.log("Comment Added");
             $comment.html(response);
+            $txtfield.val('');
         });
     });
 
     // On click at JOIN
-    $('body').on('click', '.tojoin', function (e) {
+    $('body').on('click', '.join', function (e) {
         //e.preventDefault();
 
-        const $user = $('.userEmail').text();
+        const $alertBox = $('#alertPanel');
+        var alert = $(this).attr('value');
         const $alertPost = $('.alertPost').text();
         $('.tojoin').prop('disabled', true);
         $('.tojoin').addClass('grey');
-        // const req_data = {
-        //     action: 'fetch',
-        //     id: 'join',
-        //     post: $alertPost,
-        //     mail: $user
-        // };
-        // jQuery.get(myAjax.ajaxurl, req_data, function (response) {
-        //     console.log("disble");
-        // });
+        const req_data = {
+            action: 'fetch',
+            id: 'join',
+            post: $alertPost,
+            alertV: alert
+        };
+        jQuery.get(myAjax.ajaxurl, req_data, function (response) {
+            // console.log("disble");
+            $alertBox.html(response);
+        });
+        console.log("logged");
+    });
+
+    // On click at In progress
+    $('body').on('click', '.inprogress', function (e) {
+        //e.preventDefault();
+
+        // var inprogress = $(this).attr('id');
+        var  inprogress = $(this).attr('value');
+        // const $alertPost = $('.alertPost').text();
+        // $('.tojoin').prop('disabled', true);
+        // $('.tojoin').addClass('grey');
+        const $alertBox = $('#alertPanel');
+        const req_data = {
+            action: 'fetch',
+            id: 'inpro',
+            alertID: inprogress
+        };
+        jQuery.get(myAjax.ajaxurl, req_data, function (response) {
+            // console.log("disble");
+            $alertBox.html(response);
+        });
         console.log("logged");
     });
 
@@ -232,8 +264,3 @@ jQuery(document).ready(function ($) {
         });
     }, 3000);
 });
-
-
-// setInterval(function () {
-//
-// }, 2000);

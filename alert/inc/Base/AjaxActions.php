@@ -40,14 +40,15 @@ class AjaxActions
         }
         else { // we are starting new report here
             # if language is not set properly, we will throw errors
-            if (empty($_GET['lang']) or !in_array($_GET['lang'], ['en', 'it', 'ge', 'spa', 'ro', 'no', 'pol', 'cz', 'sl', 'ne', 'is', 'fr', 'gr', 'bu', 'por' ])) {
+            if (empty($_GET['flp']) ) {
                 echo "Don't make me laugh!";
                 wp_die();
             }
+
             $report_id = $this->getPseudoRandomString(19) . uniqid(); // 19+13 = 32
             $report_controller = new ReportController();
             // lets read the language input value and pass to the shit
-            $report_controller->init($report_id, $_GET['lang']);
+            $report_controller->init($report_id, $_GET['flp']);
             $html .= $report_controller->generate_content();
             // serialize the object and store the controller in the wp-cache or transient for further use (for 12 hours)
             $base64_serial = base64_encode(serialize($report_controller));

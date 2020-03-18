@@ -12,46 +12,46 @@
       ]      
    },
    "M1.1":{
-      "state_text":"Reporter Information Survey",
+      "state_text":"FLP Reporter Personal Information",
       "state_type":"composed",
-      "show_header": "false",
+      "show_header": "true",
       "id": "reporter_infos",
       "state_answers":[
          {
-            "id":"reporter_name",
-            "text":"Please provide your Full Name.",
-            "short_text":"Age",
+            "id":"reporter_first_name",
+            "text":"Please provide your First Name.",
+            "short_text":"First Name",
+            "type":"text"
+         },
+         {
+            "id":"reporter_last_name",
+            "text":"Please provide your Last Name.",
+            "short_text":"Last Name",
             "type":"text"
          },
          {
             "id":"reporter_email",
             "text":"Please provide your Email Address.",
-            "short_text":"Residence",
-            "type":"text"
-         },
-         {
-            "id":"reporter_password",
-            "text":"Please provide your Password",
-            "short_text":"Residence",
+            "short_text":"Email",
             "type":"text"
          },
          {
             "id":"reporter_country",
-            "text":"What is your country of residence.",
-            "short_text":"Residence",
+            "text":"What is your Country of residence.",
+            "short_text":"Country",
             "type":"text"
          }
       ]
    },
    "M1.2":{
-      "state_text":"Please specify the approximate time of the event.",
+      "state_text":"Please specify the approximate time of the Event.",
       "id":"event_time",
-      "short_text":"Incident time",
+      "short_text":"Incident Time",
       "state_type":"datetime"
    },
    "M1.3":{
-      "state_text":"How would you categorize the occurred event?",
-      "short_text":"Event category",
+      "state_text":"How would you categorize the occurred Event?",
+      "short_text":"Incident Category",
       "id":"event_category",
       "state_type":"checkbox",
       "state_answers":[
@@ -106,10 +106,24 @@
       ]
    },
    "M1.4":{
-      "short_text":"Incident description",
-      "state_text":"Please provide us a description of what has happened.",
-      "id":"event_description",
-      "state_type":"description"
+      "state_text":"Incident Information",
+      "state_type":"description",
+      "show_header": "true",
+      "id": "report_infos",
+      "state_answers":[
+         {
+            "id":"description_subject",
+            "text":"Please provide a Subject for your Alert Description",
+            "short_text":"Description Subject",
+            "type":"text"
+         },
+         {
+            "short_text":"Event Description",
+            "text":"Please provide us a description of what has happened.",
+            "id":"event_description",
+            "type":"description"
+         }
+      ]
    },
    "M1.5":{
       "state_type":"result"

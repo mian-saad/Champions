@@ -23,7 +23,8 @@ class Activate {
         // creates states table
         $sql = "CREATE TABLE $commentsData (
             comment_data TEXT,
-            comment_name TEXT
+            comment_name TEXT,
+            alert_ID TEXT
         ) $charset_collate;";
           require_once ABSPATH . 'wp-admin/includes/upgrade.php';
           dbDelta($sql);
@@ -36,11 +37,12 @@ class Activate {
             last_name TEXT,
             country TEXT,
             title TEXT,
-            email TEXT,
+            email VARCHAR(32),
             password TEXT,
             description TEXT,
             skill TEXT,
-            associatedAlert TEXT
+            associatedAlert TEXT,
+            PRIMARY KEY  (email)
         ) $charset_collate;";
           require_once ABSPATH . 'wp-admin/includes/upgrade.php';
           dbDelta($sql);

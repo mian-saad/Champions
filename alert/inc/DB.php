@@ -2,6 +2,9 @@
 
 namespace Inc;
 
+use PDO;
+use PDOException;
+
 class DB {
 
 
@@ -19,8 +22,8 @@ class DB {
 		$dsn = "mysql:host=$this->DBhost;dbname=$this->DBName";
 
 		try {
-			$this->connection = new \PDO( $dsn, $this->DBUser, $this->DBPassword );
-		} catch ( \PDOException $e ) {
+			$this->connection = new PDO( $dsn, $this->DBUser, $this->DBPassword );
+		} catch ( PDOException $e ) {
 			die( 'Connection failed: ' . $e->getMessage() );
 		}
 
@@ -40,7 +43,7 @@ class DB {
 	}
 
 	/**
-	 * @return \PDO
+	 * @return PDO
 	 */
 	public function getConnection() {
 		return $this->connection;

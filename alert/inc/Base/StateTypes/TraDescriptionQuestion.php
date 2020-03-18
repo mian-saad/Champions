@@ -21,11 +21,24 @@ class TraDescriptionQuestion extends TraState
 
     public function generate_html()
     {
-        $html = $this->generate_hidden_fields($this->report_id);
+        $html = "";
+        if($this->state['show_header']=="true"){
+            $html .= "<h4 class='tra_question'>" . $this->state['state_text'] . "</h4>";
+        }
+        $html .= $this->generate_hidden_fields($this->report_id);
         $html .= "<form id='tra_question_form'>";
-        $html .= $this->generate_question_text($this->state['state_text']);
-        $html .= "<textarea id='tra_text_big' name='" . $this->state['id'] . "' rows='10'>" . $this->response[$this->state['id']] . "</textarea>";
+        foreach ($this->state['state_answers'] as $answer) {
+            $html .= $this->generate_question_text($answer['text']);
+            $html .= $this->generate_field_warning($answer['id']);
+
+            if ($answer['type'] == 'text') {
+                $html .= "<input type='text' name='" . $answer['id'] . "' value='" . $this->response[$answer['id']] . "' required><br>";
+            } else if ($answer['type'] == 'description') {
+                $html .= "<textarea id='tra_text_big' name='" . $answer['id'] . "' rows='10'>" . $this->response[$answer['id']] . "</textarea>";
+            }
+        }
         $html .= "</form>";
+
         $html .= $this->generate_buttons();
         $html .= $this->generate_warning();
         return $html;
@@ -33,12 +46,23 @@ class TraDescriptionQuestion extends TraState
 
     // if at least one category is chosen, then we pass the validation
     public function validate($response)
-    { // how do we wanna store the items to the db
-        if (array_key_exists($this->state['id'], $response) and $response[$this->state['id']] != "") {
-            $this->response = $response;
-            return true;
+    {
+        // how do we wanna store the items to the db
+//        if (array_key_exists($this->state['id'], $response) and $response[$this->state['id']] != "") {
+//            $this->response = $response;
+//            return true;
+//        }
+//        return false;
+
+
+        $this->response = $response;
+
+        foreach ($this->state['state_answers'] as $state_answer) {
+            if (!(array_key_exists($state_answer['id'], $response) and $response[$state_answer['id']] != "")) {
+                return false;
+            }
         }
-        return false;
+        return true;
     }
 
     public function generate_buttons()
@@ -48,7 +72,17 @@ class TraDescriptionQuestion extends TraState
 
     public function generate_readable_response_array()
     {
-        $result[$this->state['short_text']] = $this->response[$this->state['id']];
+        $result = [];
+
+        foreach ($this->state['state_answers'] as $answer) {
+            $key = $answer['short_text'];
+            if ($answer['type'] == 'text') { // for text answers , just store the received input
+                $value = $this->response[$answer['id']];
+            } else if ($answer['type'] == 'description') {
+                $value = $this->response[$answer['id']];
+            }
+            $result[$key] = $value;
+        }
         return $result;
     }
 }

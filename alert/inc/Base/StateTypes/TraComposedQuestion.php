@@ -23,7 +23,7 @@ class TraComposedQuestion extends TraState
     {
         $html="";
         if($this->state['show_header']=="true"){
-            $html .= "<h3 class='tra_question'>" . $this->state['state_text'] . "</h3>";
+            $html .= "<h4 class='tra_question'>" . $this->state['state_text'] . "</h4>";
         }
         $html .= $this->generate_hidden_fields($this->report_id);
         $html .= "<form id='tra_question_form'>";
@@ -33,7 +33,9 @@ class TraComposedQuestion extends TraState
 
             if ($answer['type'] == 'text') {
                 $html .= "<input type='text' name='" . $answer['id'] . "' value='" . $this->response[$answer['id']] . "' required><br>";
-            } else if ($answer['type'] == 'radio') {
+            } else if ($answer['type'] == 'password') {
+                $html .= "<input type='password' name='" . $answer['id'] . "' value='" . $this->response[$answer['id']] . "' required><br>";
+            }else if ($answer['type'] == 'radio') {
                 $html .= $this->generate_radio_question($answer);
             }
         }

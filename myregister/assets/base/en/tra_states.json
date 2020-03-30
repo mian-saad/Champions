@@ -1,0 +1,296 @@
+{  
+   "M0.0":{
+      "state_text":"Welcome to the ARENA Registration Module. This tool will guide you through the Registration process. Any data stored will be used to match the Alert cases in order to provide you with the more relevant cases. To provide you with accurate and relevant information this tool will locate your IP. This data will be erased immediately afterwards and will not be kept in the system.<br><br>For more information see <a href='https://ec.europa.eu/info/law/law-topic/data-protection_en'>Terms and Conditions</a>",
+      "short_text":"GDPR agreement",
+      "id":"gdpr_agreement",
+      "state_type":"gdpr",
+      "state_answers":[  
+         {  
+            "id":"gdpr_agree",
+            "text":"I understand that personal data from other individuals cannot be uploaded and shared through this Module or any of the sections and tools of this website."
+         }
+      ]      
+   },
+   "M1.1":{
+      "state_text":"Expert Registration",
+      "state_type":"composed",
+      "show_header": "false",
+      "id": "expert_infos",
+      "state_answers":[
+         {
+            "id":"title",
+            "type":"select",
+            "text":"Please Select your title",
+            "short_text":"Title",
+            "answers":[
+               {
+                  "text":"Social Worker",
+                  "short_text":"Social Worker",
+                  "id":"Social_Worker"
+               },
+               {
+                  "text":"Youth Social Worker",
+                  "short_text":"Youth Social Worker",
+                  "id":"Youth Social Worker"
+               },
+               {
+                  "text":"Teacher",
+                  "short_text":"Teacher",
+                  "id":"Teacher"
+               },
+               {
+                  "text":"Researcher",
+                  "short_text":"Researcher",
+                  "id":"Researcher"
+               },
+               {
+                  "text":"Prosecutor",
+                  "short_text":"Prosecutor",
+                  "id":"Prosecutor"
+               },
+               {
+                  "text":"Expert on Youth Gangs and Organised Crime",
+                  "short_text":"Expert on Youth Gangs and Organised Crime",
+                  "id":"Expert on Youth Gangs and Organised Crime"
+               },
+               {
+                  "text":"Former Member of Radicalised Group",
+                  "short_text":"Former Member of Radicalised Group",
+                  "id":"Former Member of Radicalised Group"
+               },
+               {
+                  "text":"Psychologist",
+                  "short_text":"Psychologist",
+                  "id":"Psychologist"
+               },
+               {
+                  "text":"Hate Speech Specialist",
+                  "short_text":"Hate Speech Specialist",
+                  "id":"Hate Speech Specialist"
+               },
+               {
+                  "text":"Social Media Specialist",
+                  "short_text":"Social Media Specialist",
+                  "id":"Social Media Specialist"
+               },
+               {
+                  "text":"Radicalisation Expert",
+                  "short_text":"Radicalisation Expert",
+                  "id":"Radicalisation Expert"
+               },
+               {
+                  "text":"Educator",
+                  "short_text":"Educator",
+                  "id":"Educator"
+               },
+               {
+                  "text":"Trainer",
+                  "short_text":"Trainer",
+                  "id":"Trainer"
+               }
+            ]
+         },
+         {
+            "id":"country",
+            "type":"select",
+            "text":"Please Select your Country",
+            "short_text":"Country",
+            "answers":[
+               {
+                  "text":"Germany",
+                  "short_text":"Germany",
+                  "id":"Germany"
+               },
+               {
+                  "text":"Italy",
+                  "short_text":"Italy",
+                  "id":"Italy"
+               },
+               {
+                  "text":"Austria",
+                  "short_text":"Austria",
+                  "id":"Austria"
+               },
+               {
+                  "text":"Hungary",
+                  "short_text":"Hungary",
+                  "id":"Hungary"
+               },
+               {
+                  "text":"Czech Republic",
+                  "short_text":"Czech Republic",
+                  "id":"Czech Republic"
+               },
+               {
+                  "text":"Switzerland",
+                  "short_text":"Switzerland",
+                  "id":"Switzerland"
+               },
+               {
+                  "text":"Spain",
+                  "short_text":"Spain",
+                  "id":"Spain"
+               },
+               {
+                  "text":"Portugal",
+                  "short_text":"Portugal",
+                  "id":"Portugal"
+               },
+               {
+                  "text":"Netherlands",
+                  "short_text":"Netherlands",
+                  "id":"Netherlands"
+               },
+               {
+                  "text":"Norway",
+                  "short_text":"Norway",
+                  "id":"Norway"
+               },
+               {
+                  "text":"Sweden",
+                  "short_text":"Sweden",
+                  "id":"Sweden"
+               },
+               {
+                  "text":"France",
+                  "short_text":"France",
+                  "id":"France"
+               },
+               {
+                  "text":"Poland",
+                  "short_text":"Poland",
+                  "id":"Poland"
+               },
+               {
+                  "text":"Belgium",
+                  "short_text":"Belgium",
+                  "id":"Belgium"
+               },
+               {
+                  "text":"Romania",
+                  "short_text":"Romania",
+                  "id":"Romania"
+               },
+               {
+                  "text":"Bulgaria",
+                  "short_text":"Bulgaria",
+                  "id":"Bulgaria"
+               },
+               {
+                  "text":"Slovakia",
+                  "short_text":"Slovakia",
+                  "id":"Slovakia"
+               },
+               {
+                  "text":"Finland",
+                  "short_text":"Finland",
+                  "id":"Finland"
+               },
+               {
+                  "text":"Iceland",
+                  "short_text":"Iceland",
+                  "id":"Iceland"
+               },
+               {
+                  "text":"Croatia",
+                  "short_text":"Croatia",
+                  "id":"Croatia"
+               }
+            ]
+         },
+         {
+            "id":"first_name",
+            "text":"Please provide your First Name",
+            "short_text":"First Name",
+            "type":"text"
+         },
+         {
+            "id":"last_name",
+            "text":"Please provide your Last Name",
+            "short_text":"Last Name",
+            "type":"text"
+         },
+         {
+            "id":"email",
+            "text":"Please provide your Email",
+            "short_text":"Email",
+            "type":"text"
+         },
+         {
+            "id":"password",
+            "text":"Please provide your Password",
+            "short_text":"Password",
+            "type":"text"
+         }
+      ]
+   },
+   "M1.2":{
+      "state_text":"Please Select your Skills",
+      "short_text":"Skills category",
+      "id":"skill",
+      "state_type":"checkbox",
+      "state_answers":[
+         {
+            "id":"Juvenile Lawyer",
+            "text":"Juvenile Lawyer"
+         },
+         {
+            "id":"Prosecutor",
+            "text":"Prosecutor"
+         },
+         {
+            "id":"Psychologist",
+            "text":"Psychologist"
+         },
+         {
+            "id":"Social Media",
+            "text":"Social Media"
+         },
+         {
+            "id":"Radicalisation",
+            "text":"Radicalisation"
+         },
+         {
+            "id":"Young People",
+            "text":"Young People"
+         },
+         {
+            "id":"School",
+            "text":"School"
+         },
+         {
+            "id":"Hate Speech",
+            "text":"Hate Speech"
+         },
+         {
+            "id":"Deradicalisation",
+            "text":"Deradicalisation"
+         },
+         {
+            "id":"Organised Crime",
+            "text":"Organised Crime"
+         },
+         {
+            "id":"Youth Gang",
+            "text":"Youth Gang"
+         },
+         {
+            "id":"Other",
+            "text":"Other"
+         }
+      ]
+   },
+   "M1.3":{
+      "short_text":"Incident description",
+      "state_text":"Please provide us a description of what has happened.",
+      "id":"description",
+      "state_type":"description"
+   },
+   "M1.4":{
+      "state_type":"result"
+   },
+   "ERROR":{
+      "state_text":"An error has occured! Please restart the report process.",
+      "state_type":"error"
+   }
+}

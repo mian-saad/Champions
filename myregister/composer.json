@@ -1,0 +1,12 @@
+{
+    "name": "keks/takedown-questions-plugin",
+    "description": "Takedown Questionnaire Plugin",
+    "type": "project",
+    "minimum-stability": "dev",
+    "require": {
+        "tecnickcom/tcpdf": "6.2.26"
+    },
+    "autoload": {
+        "psr-4": {"Inc\\":"./inc"}
+    }
+}

@@ -1,0 +1,20 @@
+{
+    "new_report":"New report",
+    "continue":"Continue",
+    "back":"Back",
+    "yes":"Yes",
+    "no":"No",
+    "pdf_download":"Download PDF",
+    "finish":"Done",
+    "submit":"Submit",
+    "warning":"Please fill out all asked fields.",
+    "field_warning":"Please fill out this field.",
+    "wrong_time_warning":"Please enter the incident date.",
+    "gdpr_accept":"I accept",
+    "gdpr_warning":"Please agree with GDPR agreement.",
+    "crime_location_proposals": "Helpline proposals based on provided crime location.",
+    "language_pref_proposals": "Helpline proposals based on your language preference.",
+    "residence_state_proposals": "Helpline proposals based on your state of residence.",
+    "no_results": "No results.",
+    "phone_number": "Phone number"
+}

@@ -87,7 +87,23 @@ jQuery(document).ready(function ($) {
             report_id: $('input#report_id').val(),
         };
 
-        jQuery.get(tra_object.ajaxurl, req_data, function (response) {});
+        jQuery.get(tra_object.ajaxurl, req_data, function (response) {
+            $contentBox.html("<p>Your Case has been sent to Arena</p>")
+        });
+    });
+
+    // submit button action
+    $('body').on('click', '#done', function (e) {
+        // need to find all inputs and see get the value
+        var req_data = {
+            action: 'submit_report',
+            dataType: 'json',
+            report_id: $('input#report_id').val(),
+        };
+
+        jQuery.get(tra_object.ajaxurl, req_data, function (response) {
+            $contentBox.html("<p>Your Case has Not been sent to Arena</p>")
+        });
     });
 
     // yes button action

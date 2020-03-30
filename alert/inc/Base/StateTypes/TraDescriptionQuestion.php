@@ -21,11 +21,10 @@ class TraDescriptionQuestion extends TraState
 
     public function generate_html()
     {
-        $html = "";
+        $html = $this->generate_hidden_fields($this->report_id);
         if($this->state['show_header']=="true"){
             $html .= "<h4 class='tra_question'>" . $this->state['state_text'] . "</h4>";
         }
-        $html .= $this->generate_hidden_fields($this->report_id);
         $html .= "<form id='tra_question_form'>";
         foreach ($this->state['state_answers'] as $answer) {
             $html .= $this->generate_question_text($answer['text']);
@@ -38,7 +37,6 @@ class TraDescriptionQuestion extends TraState
             }
         }
         $html .= "</form>";
-
         $html .= $this->generate_buttons();
         $html .= $this->generate_warning();
         return $html;

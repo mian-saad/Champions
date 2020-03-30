@@ -106,7 +106,7 @@
       ]
    },
    "M1.4":{
-      "state_text":"Incident Information",
+      "state_text":"Event Detailed Information",
       "state_type":"description",
       "show_header": "true",
       "id": "report_infos",

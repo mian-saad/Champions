@@ -135,7 +135,10 @@ class ReportController extends BaseController
             $state_obj = new StateTypes\TraPoliceCall($this->report_id, $state_code, $state['state_text'], $this->string_file['continue'], $this->string_file['phone_number']);
         } else if ($state['state_type'] == 'gdpr') {
             $state_obj = new StateTypes\TraGDPR($this->report_id, $state_code, $state, $this->string_file['gdpr_accept'], $this->string_file['gdpr_warning']);
-        } else { // else we are expiriencing an error
+        } else if ($state['state_type'] == 'redirection') {
+            $state_obj = new StateTypes\TraGDPR($this->report_id, $state_code, $state, $this->string_file['gdpr_accept'], $this->string_file['gdpr_warning']);
+        }
+        else { // else we are expiriencing an error
             $state_obj = new StateTypes\TraError($this->report_id, $state_code, $state['state_text'], $this->string_file['continue']);
         }
 

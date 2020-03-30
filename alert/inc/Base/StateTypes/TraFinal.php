@@ -128,11 +128,11 @@ class TraFinal extends TraState
 
     public function generate_buttons()
     {
-        echo '<script>';
-        echo 'function myFunction() {';
-        echo 'alert(\'Your alert has been sent via email!\')}';
-        //echo 'window.location.href = "http://localhost:8888/alert";';
-        echo '</script>';
-        return "<div id='tra_button_pane'><a class='button' href='#' onclick='location.reload();'>DONE</a> <a class='button' id='tra_submit' href='$this->pdfurl' onclick='myFunction()' download>$this->submit_string</a></div>";
+//        echo '<script>';
+//        echo 'function myFunction() {';
+//        echo 'alert(\'Your alert has been sent via email!\')}';
+//        //echo 'window.location.href = "http://localhost:8888/alert";';
+//        echo '</script>';
+        return "<div id='tra_button_pane'><a class='button' href='#' id='done' >DONE</a> <a class='button' id='tra_submit' href='$this->pdfurl' onclick='myFunction()' download>$this->submit_string</a></div>";
     }
 }

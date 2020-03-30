@@ -97,14 +97,14 @@ class Fetch extends BaseController {
                                 <option>Lawyer</option>
                                 <option>Social Worker</option>
                                 <option>Youth Social Worker</option>
-                                <option>Researcher </option>
+                                <option>Researcher</option>
                                 <option>Prosecutor</option>
                                 <option>Expert on Youth Gangs and Organised Crime</option>
                                 <option>Former Member of Radicalised Group</option>
                                 <option>Psychologist</option>
-                                <option>Hate Speech Specialist </option>
-                                <option>Social Media Specialist </option>
-                                <option>Radicalisation Expert </option>
+                                <option>Hate Speech Specialist</option>
+                                <option>Social Media Specialist</option>
+                                <option>Radicalisation Expert</option>
                                 <option>Teacher</option>
                                 <option>Educator</option>
                                 <option>Trainer</option>

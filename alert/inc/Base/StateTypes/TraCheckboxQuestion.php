@@ -22,6 +22,7 @@ class TraCheckboxQuestion extends TraState
     public function generate_html()
     {
         $html = $this->generate_hidden_fields($this->report_id);
+        $html .= "<h4>Event Category</h4>";
         $html .= "<form id='tra_question_form'>";
         $html .= $this->generate_question_text($this->state['state_text']);
         $html .= $this->generate_checkbox_question($this->state['state_answers'], $this->state['id']);

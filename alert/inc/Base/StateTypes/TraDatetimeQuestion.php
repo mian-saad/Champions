@@ -24,6 +24,7 @@ class TraDatetimeQuestion extends TraState
     public function generate_html()
     {
         $html = $this->generate_hidden_fields($this->report_id);
+        $html .= "<h4>Event Time</h4>";
 
         $html .= "<form id='tra_question_form'>";
         $html .= "<script>jQuery.datetimepicker.setLocale('$this->locale')</script>";

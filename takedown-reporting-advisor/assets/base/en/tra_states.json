@@ -1,0 +1,259 @@
+{  
+   "M0.0":{
+      "state_text":"Welcome to the ALERT Module. This tool will guide you through the Alert process. This process is fully anonymous. Any data requested will be used to help you generate an Alert that can be sent to the Arena to be further Analysed. To provide you with accurate and relevant information for your case this tool will locate your IP. This data will be erased immediately afterwards and will not be kept in the system.<br><br>For more information see <a href='https://ec.europa.eu/info/law/law-topic/data-protection_en'>Terms and Conditions</a>",
+      "short_text":"GDPR agreement",
+      "id":"gdpr_agreement",
+      "state_type":"gdpr",
+      "state_answers":[  
+         {  
+            "id":"gdpr_agree",
+            "text":"I understand that personal data from other individuals cannot be uploaded and shared through this Alert Module or any of the sections and tools of this website."
+         }
+      ]      
+   },
+   "M1.1":{
+      "state_text":"FLP Personal Information",
+      "state_type":"composed",
+      "show_header": "true",
+      "id": "reporter_infos",
+      "state_answers":[
+         {
+            "id":"title",
+            "type":"select",
+            "text":"Please Select your title",
+            "short_text":"Title",
+            "answers":[
+               {
+                  "text":"Social Worker",
+                  "short_text":"Social Worker",
+                  "id":"Social_Worker"
+               },
+               {
+                  "text":"Volunteer",
+                  "short_text":"Volunteer",
+                  "id":"Volunteer"
+               },
+               {
+                  "text":"Teacher",
+                  "short_text":"Teacher",
+                  "id":"Teacher"
+               },
+               {
+                  "text":"Youth Worker",
+                  "short_text":"Youth Worker",
+                  "id":"Youth_Worker"
+               },
+               {
+                  "text":"Football Coach",
+                  "short_text":"Football Coach",
+                  "id":"Football_Coach"
+               },
+               {
+                  "text":"Football Fan",
+                  "short_text":"Football Fan",
+                  "id":"Football_Fan"
+               },
+               {
+                  "text":"Employee of Women Shelter",
+                  "short_text":"Employee of Women Shelter",
+                  "id":"Employee_of_Women_Shelter"
+               },
+               {
+                  "text":"Youth Prison Ward",
+                  "short_text":"Youth Prison Ward",
+                  "id":"Youth_Prison_Ward"
+               },
+               {
+                  "text":"Forest Worker",
+                  "short_text":"Forest Worker",
+                  "id":"Forest_Worker"
+               },
+               {
+                  "text":"Student Volunteer",
+                  "short_text":"Student Volunteer",
+                  "id":"Student_Volunteer"
+               },
+               {
+                  "text":"International Volunteer",
+                  "short_text":"International Volunteer",
+                  "id":"International_Volunteer"
+               },
+               {
+                  "text":"Primary School Teacher",
+                  "short_text":"Primary School Teacher",
+                  "id":"Primary_School_Teacher"
+               },
+               {
+                  "text":"Secondary School Teacher",
+                  "short_text":"Secondary School Teacher",
+                  "id":"Secondary_School_Teacher"
+               },
+               {
+                  "text":"International School Teacher",
+                  "short_text":"International School Teacher",
+                  "id":"International_School_Teacher"
+               },
+               {
+                  "text":"Madrasah Teacher",
+                  "short_text":"Madrasah Teacher",
+                  "id":"Madrasah_Teacher"
+               },
+               {
+                  "text":"University Lecturer",
+                  "short_text":"University Lecturer",
+                  "id":"University_Lecturer"
+               },
+               {
+                  "text":"Police Officer",
+                  "short_text":"Police Officer",
+                  "id":"Police_Officer"
+               },
+               {
+                  "text":"Municipal Employee",
+                  "short_text":"Municipal Employee",
+                  "id":"Municipal_Employee"
+               },
+               {
+                  "text":"Football Referee",
+                  "short_text":"Football Referee",
+                  "id":"Football_Referee"
+               },
+               {
+                  "text":"Bus/Tram Driver",
+                  "short_text":"Bus/Tram Driver",
+                  "id":"Bus/Tram_Driver"
+               },
+               {
+                  "text":"Diversity Officer",
+                  "short_text":"Diversity Officer",
+                  "id":"Diversity_Officer"
+               },
+               {
+                  "text":"Employee of a Culture Centre",
+                  "short_text":"Employee of a Culture Centre",
+                  "id":"Employee_of_a_Culture_Centre"
+               }
+            ]
+         },
+         {
+            "id":"reporter_fName",
+            "text":"Please provide your First Name",
+            "short_text":"First Name",
+            "type":"text"
+         },
+         {
+            "id":"reporter_lName",
+            "text":"Please provide your Last Name",
+            "short_text":"Last Name",
+            "type":"text"
+         },
+         {
+            "id":"reporter_email",
+            "text":"Please provide your Email Address",
+            "short_text":"Email",
+            "type":"text"
+         },
+         {
+            "id":"reporter_residence",
+            "text":"What is your country of residence.",
+            "short_text":"Residence",
+            "type":"text"
+         }
+      ]
+   },
+   "M1.2":{
+      "state_text":"Please specify the approximate time of the suspect event.",
+      "id":"event_time",
+      "short_text":"Event time",
+      "show_header": "true",
+      "state_type":"datetime"
+   },
+   "M1.3":{
+      "state_text":"How would you categorize the occurred suspect event?",
+      "short_text":"Event Category",
+      "id":"event_category",
+      "state_type":"checkbox",
+      "show_header": "true",
+      "state_answers":[
+         {
+            "id":"organized_crime",
+            "text":"Organized crime"
+         },
+         {
+            "id":"terrorism",
+            "text":"Terrorism"
+         },
+         {
+            "id":"money_laundering",
+            "text":"Money Laundering"
+         },
+         {
+            "id":"corruption",
+            "text":"Corruption"
+         },
+         {
+            "id":"document_fraud",
+            "text":"Document Fraud"
+         },
+         {
+            "id":"human_trafficking",
+            "text":"Human trafficking"
+         },
+         {
+            "id":"online_radicalization",
+            "text":"Online Radicalization"
+         },
+         {
+            "id":"child_pornography",
+            "text":"Child Pornography"
+         },
+         {
+            "id":"identity_theft",
+            "text":"Identity Theft \/ Phishing"
+         },
+         {
+            "id":"infection_of_systems",
+            "text":"Infection of Systems with Malware"
+         },
+         {
+            "id":"cyber_abuse",
+            "text":"Cyber Bullying \/ Abuse"
+         },
+         {
+            "id":"cyber_fraud",
+            "text":"Cyber Fraud"
+         },
+         {
+            "id":"other",
+            "text":"Other"
+         }
+      ]
+   },
+   "M1.4":{
+      "state_text":"Event Detailed Information",
+      "state_type":"description",
+      "show_header": "true",
+      "id": "report_infos",
+      "state_answers":[
+         {
+            "id":"description_subject",
+            "text":"Please provide a Subject for your Alert Description",
+            "short_text":"Description Subject",
+            "type":"text"
+         },
+         {
+            "short_text":"Event Description",
+            "text":"Please provide us a description of what has happened.",
+            "id":"event_description",
+            "type":"description"
+         }
+      ]
+   },
+   "M1.5":{
+      "state_type":"result"
+   },
+   "ERROR":{
+      "state_text":"An error has occured! Please restart the report process.",
+      "state_type":"error"
+   }
+}

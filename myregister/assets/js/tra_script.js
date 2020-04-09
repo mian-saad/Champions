@@ -11,7 +11,7 @@ jQuery(document).ready(function ($) {
         var req_data = {
             action: 'fetch_question',
             dataType: 'json',
-            lang: $('#lang_select').val()
+            lang: "en"
         };
 
         // try to animate
@@ -48,7 +48,8 @@ jQuery(document).ready(function ($) {
         var req_data = {
             action: 'fetch_question',
             dataType: 'json',
-            lang: $('#lang_select').val()
+            lang: "en",
+            type: 'login'
         };
 
         // try to animate

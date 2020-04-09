@@ -90,6 +90,7 @@ class AjaxActions
             $report_controller = unserialize(base64_decode(get_transient($report_id)));
 
             $report_controller->db_store();
+            $report_controller->send_mail($report_id);
         }
 
         wp_die();

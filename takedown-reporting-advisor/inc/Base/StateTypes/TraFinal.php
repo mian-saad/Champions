@@ -44,74 +44,23 @@ class TraFinal extends TraState
             $html .= "<p class='summary_tags'>" . $short_text . " : " . $value . "</p>";
         }
 
-        $this->proposal_html .= "<hr><p>".$this->crime_location_string."</p>";
-//        if(count($this->contact_proposals["crime_location"])==0){
-//            $this->proposal_html .= "<p>".$this->no_results_string."</p>";
-//        }
-//        foreach ($this->contact_proposals["crime_location"] as $item) {
-//            if($item["agency_name"]!=""){
-//                $this->proposal_html .= "<p>" . $item["agency_name"] . "<br>";
-//            } else {
-//                continue;
-//            }
-//            if($item["email"]!=""){
-//                $this->proposal_html .= $item["email"] . "<br>";
-//            }
-//            if($item["phone"]!=""){
-//                $this->proposal_html .= $item["phone"] . "<br>";
-//            }
-//            if($item["url"]!=""){
-//                $this->proposal_html .= "URL : <a href='". $item["url"] . "'>". $item["url"] . "</a></p>";
-//            }
-//            else $this->proposal_html .= "</p>";
-//        }
-//
-//        $this->proposal_html .= "<hr><p>".$this->language_pref_string."</p>";
-//        if(count($this->contact_proposals["language_pref"])==0){
-//            $this->proposal_html .= "<p>".$this->no_results_string."</p>";
-//        }
-//        foreach ($this->contact_proposals["language_pref"] as $item) {
-//            if($item["agency_name"]!=""){
-//                $this->proposal_html .= "<p>" . $item["agency_name"] . "<br>";
-//            } else {
-//                continue;
-//            }
-//            if($item["email"]!=""){
-//                $this->proposal_html .= $item["email"] . "<br>";
-//            }
-//            if($item["phone"]!=""){
-//                $this->proposal_html .= $item["phone"] . "<br>";
-//            }
-//            if($item["url"]!=""){
-//                $this->proposal_html .= "URL : <a href='". $item["url"] . "'>". $item["url"] . "</a></p>";
-//            }
-//            else $this->proposal_html .= "</p>";
-//        }
-//
-//        $this->proposal_html .= "<hr><p>".$this->residence_string."</p>";
-//        if(count($this->contact_proposals["residence_state"])==0){
-//            $this->proposal_html .= "<p>".$this->no_results_string."</p>";
-//        }
-//        foreach ($this->contact_proposals["residence_state"] as $item) {
-//            if($item["agency_name"]!=""){
-//                $this->proposal_html .= "<p>" . $item["agency_name"] . "<br>";
-//            } else {
-//                continue;
-//            }
-//            if($item["email"]!=""){
-//                $this->proposal_html .= $item["email"] . "<br>";
-//            }
-//            if($item["phone"]!=""){
-//                $this->proposal_html .= $item["phone"] . "<br>";
-//            }
-//            if($item["url"]!=""){
-//                $this->proposal_html .= "URL : <a href='". $item["url"] . "'>". $item["url"] . "</a></p>";
-//            }
-//            else $this->proposal_html .= "</p>";
-//        }
-//
-//        $html .= $this->proposal_html;
         $html .= $this->generate_buttons();
+        $html .= "<hr> <h3>Recommendations</h3>";
+
+        global $wpdb;
+        $results = $wpdb->get_results( "SELECT recommendation_data, recommendation_name FROM wp_recommendationData", OBJECT );
+
+        if (!empty($results)){
+        for ($i=0; $i<count($results); $i++) {
+                $html .= "<b>".$results[$i] -> recommendation_name." recommended </b>";
+                $html .= "<b value='".$results[$i] -> recommendation_data."'>" . $results[$i] -> recommendation_data . "</b>";
+                $html .= "</br>";
+            }
+        }
+        else {
+            $html .= "<b>No Recommendations Specific to the Case</b>";
+        }
+
         return $html;
     }
 

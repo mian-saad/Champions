@@ -64,7 +64,12 @@ class ReportController extends BaseController
         $this->language = $language;
 
         # DEBUG: here you can chose the first state for debugging, in production the first state is M0.0
-        $this->current_state_code = "M0.0";
+        if ($_GET['type'] == "login"){
+            $this->current_state_code = "M2.0";
+        }
+        else {
+            $this->current_state_code = "M0.0";
+        }
 
         $this->report_answers = [];
         $this->state_list = [];
@@ -123,6 +128,8 @@ class ReportController extends BaseController
             $state_obj = new StateTypes\TraFinal($this->report_id, $state_code, $answers, $this->string_file['pdf_download'], $this->string_file['back'], $this->string_file['crime_location_proposals'], $this->string_file['language_pref_proposals'], $this->string_file['residence_state_proposals'], $this->string_file['no_results'],$pdfurl);
         } else if ($state['state_type'] == 'radio') {
             $state_obj = new StateTypes\TraRadioQuestion($this->report_id, $state_code, $state, $this->string_file['continue'], $this->string_file['back'], $this->string_file['field_warning'], $this->string_file['warning']);
+        }else if ($state['state_type'] == 'expert_login') {
+            $state_obj = new StateTypes\ExpertLogin($this->report_id, $state_code, $state, $this->string_file['login'], $this->string_file['back'], $this->string_file['field_warning'], $this->string_file['warning']);
         } else if ($state['state_type'] == 'text') {
             $state_obj = new StateTypes\TraTextQuestion($this->report_id, $state_code, $state, $this->string_file['continue'], $this->string_file['back'], $this->string_file['field_warning'], $this->string_file['warning']);
         } else if ($state['state_type'] == 'police_call') {
@@ -169,7 +176,7 @@ class ReportController extends BaseController
             $this->current_state_code = $this->get_next_state(); // <=== IMPORTANT PLACE, HERE WE ADVANCE THE STATE CODE
             $this->current_step_counter = $this->current_step_counter + 1;
 
-            // lets see if we are trying to change our questionaire tree, if so, lets unset old states
+            // lets see if we are trying to change our questionnaire tree, if so, lets unset old states
             if ($this->current_step_counter < count($this->state_list)) {
                 // we are in the statelist
                 if ($this->current_state_code != array_keys($this->state_list)[$this->current_step_counter]) {

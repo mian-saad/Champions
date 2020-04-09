@@ -340,10 +340,54 @@ class ReportController extends BaseController
                 }
             }
         }
-
         $wpdb->insert($tra_reports_db_name, $answers);
+        echo "";
+    }
 
+    public function send_mail($report_id) {
+        global $wpdb;
+        $tra_reports_db_name = $wpdb->prefix . 'tra_reports';
+        $entries = $wpdb->get_results("SELECT reporter_email, reporter_fName, reporter_lName, reporter_residence FROM $tra_reports_db_name WHERE report_id='$report_id'");
 
+        $password = $this->randomPassword();
+        echo $password;
+        $first_name = null;
+        $last_name = null;
+        $country = null;
+        $email = null;
+        $aAlert = $report_id;
+        $tempID = rand(0, 999);
+        if(!empty($entries)){
+            foreach($entries as $row){
+                wp_mail( "$row->reporter_email", "Champions", "Your password to log in to Arena: ". $password .". <br> You can log in at /login", array('Content-Type: text/html; charset=UTF-8'));
+                $first_name = $row->reporter_fName;
+                $last_name = $row->reporter_lName;
+                $country = $row->reporter_residence;
+                $email = $row->reporter_email;
+            }
+            echo "email sent";
+        }
+        $data = array(
+            'first_name' => $first_name,
+            'last_name' => $last_name,
+            'country' => $country,
+            'email' => $email,
+            'password' => $password,
+            'associatedAlert' => $aAlert,
+            'arenaTempID' => $tempID
+        );
+        $wpdb->insert("wp_arena", $data);
+        $wpdb->update("wp_tra_reports", array('tempID' => $tempID), array('report_id' => $report_id));
+    }
 
+    public function randomPassword() {
+        $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+        $pass = array(); //remember to declare $pass as an array
+        $alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
+        for ($i = 0; $i < 8; $i++) {
+            $n = rand(0, $alphaLength);
+            $pass[] = $alphabet[$n];
+        }
+        return implode($pass); //turn the array into a string
     }
 }

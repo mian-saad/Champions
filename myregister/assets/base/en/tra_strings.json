@@ -16,5 +16,6 @@
     "language_pref_proposals": "Helpline proposals based on your language preference.",
     "residence_state_proposals": "Helpline proposals based on your state of residence.",
     "no_results": "No results.",
-    "phone_number": "Phone number"
+    "phone_number": "Phone number",
+    "login": "Login"
 }

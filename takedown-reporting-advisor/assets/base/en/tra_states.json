@@ -176,55 +176,51 @@
       "show_header": "true",
       "state_answers":[
          {
-            "id":"organized_crime",
-            "text":"Organized crime"
+            "id":"Radicalization",
+            "text":"Radicalization"
          },
          {
-            "id":"terrorism",
-            "text":"Terrorism"
-         },
-         {
-            "id":"money_laundering",
-            "text":"Money Laundering"
-         },
-         {
-            "id":"corruption",
+            "id":"Corruption",
             "text":"Corruption"
          },
          {
-            "id":"document_fraud",
-            "text":"Document Fraud"
-         },
-         {
-            "id":"human_trafficking",
-            "text":"Human trafficking"
-         },
-         {
-            "id":"online_radicalization",
+            "id":"Online Radicalization",
             "text":"Online Radicalization"
          },
          {
-            "id":"child_pornography",
-            "text":"Child Pornography"
+            "id":"Bully",
+            "text":"Bully"
          },
          {
-            "id":"identity_theft",
-            "text":"Identity Theft \/ Phishing"
+            "id":"Polarization",
+            "text":"Polarization"
          },
          {
-            "id":"infection_of_systems",
-            "text":"Infection of Systems with Malware"
+            "id":"Antisemitism",
+            "text":"Antisemitism"
          },
          {
-            "id":"cyber_abuse",
-            "text":"Cyber Bullying \/ Abuse"
+            "id":"Religious Radicalisation",
+            "text":"Religious Radicalisation"
          },
          {
-            "id":"cyber_fraud",
-            "text":"Cyber Fraud"
+            "id":"Sexism",
+            "text":"Sexism"
          },
          {
-            "id":"other",
+            "id":"Racism",
+            "text":"Racism"
+         },
+         {
+            "id":"Domestic Violence",
+            "text":"Domestic Violence"
+         },
+         {
+            "id":"Homophobia",
+            "text":"Homophobia"
+         },
+         {
+            "id":"Other",
             "text":"Other"
          }
       ]

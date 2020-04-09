@@ -6,3 +6,5 @@ akismet
 smtp-mailer
 alert/reports/*
 social-polls-by-opinionstage/*
+takedown-reporting-advisor/reports/*
+login/composer.phar

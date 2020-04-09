@@ -10,48 +10,54 @@ session_start();
 
 class Fetch extends BaseController {
 
+    // Registers Fetch
     public function register() {
         add_action('wp_ajax_fetch', array($this, 'fetch'));
         add_action('wp_ajax_nopriv_fetch', array($this, 'fetch'));
     }
 
+    // Redirection Conditions
     public function fetch(){
 
         $clicked = sanitize_text_field( $_GET['id'] );
 
         if ($clicked === 'flogin')
-            $this->page1();
+            $this->arenaLogin();
         else if ($clicked === 'fregister')
-            $this->page2();
+            $this->registerPersonal();
         else if ($clicked === 'register')
-            $this->page2_1();
+            $this->registerSkills();
         else if ($clicked === 'register1')
-            $this->page2_2();
+            $this->registerDescription();
         else if ($clicked === 'registered')
-            $this->page3();
+            $this->registerVerify();
         else if ($clicked === 'login')
-            $this->page4();
+            $this->loggedMain();
         else if ($clicked === 'alerter')
-            $this->page5();
+            $this->loggedParticipants();
         else if ($clicked === 'cmnt')
-            $this->page6();
+            $this->loggedAddComments();
         else if ($clicked === 'alertBack')
-            $this->page4();
+            $this->loggedMain();
         else if ($clicked === 'showcmnt')
-            $this->display_comment();
+            $this->loggedDisplayComments();
         else if ($clicked === 'join')
-            $this->associateAlert();
+            $this->loggedAlert();
+        else if ($clicked === 'registerVerify')
+            $this->registerVerifyCode();
         else if ($clicked === 'inpro')
-            $this->pageDetail();
-
-
+            $this->loggedPageSection();
+        else if ($clicked === 'addRecommendation')
+            $this->loggedDisplayRecommendation();
+        else if ($clicked === 'updateRecommendation')
+            $this->loggedUpdateRecommendation();
 
         wp_die();
 
     }
 
-    // LOGIN PAGE
-    public function page1() {
+    // Log In Page
+    public function arenaLogin() {
 
         $clicked = sanitize_text_field( $_GET['id'] );
 
@@ -80,8 +86,8 @@ class Fetch extends BaseController {
         echo $html;
     }
 
-    // REGISTRATION PAGE 1
-    public function page2() {
+    // Registration Page - Personal Data
+    public function registerPersonal() {
 
         $html = "<div id=\"contain\">
                     <h4>Welcome to ARENA REGISTRATION</h4>
@@ -175,8 +181,8 @@ class Fetch extends BaseController {
         echo $html;
     }
 
-    // REGISTRATION PAGE 2
-    public function page2_1() {
+    // Registration Page Skills
+    public function registerSkills() {
 
         $first_name = sanitize_text_field( $_GET['first_name'] );
         $last_name = sanitize_text_field( $_GET['last_name'] );
@@ -192,6 +198,10 @@ class Fetch extends BaseController {
             'password' => $password,
             'title' => $title
         );
+        $verifyCode = rand(1111, 9999);
+        $_SESSION["verifyCode"] = $verifyCode;
+
+        wp_mail( $email, "Verification Code", "Yor Verification Code: ". $verifyCode ."");
 
         $this->registerData($data);
 
@@ -200,13 +210,13 @@ class Fetch extends BaseController {
                     <h5>Domain Expert - Skills Information</h5>
                     <form id=\"arena-registration\" method=\"GET\" action=\"#\" data-url=\"<?php echo admin_url('admin-ajax.php'); ?>\">
                         <p>Please Select your skills</p>
-                         <div class='cheqd'><input name='skills' id='juvenile_lawyer' value='juvenile_lawyer' type=\"checkbox\" class=\"checkbox\" > <label for='juvenile_lawyer'> Juvenile Lawyer </label></div> 
-                         <div class='cheqd'><input name='skills' id='prosecutor' value='prosecutor' type=\"checkbox\" class=\"checkbox\" > <label for='prosecutor'> Prosecutor </label></div>
-                         <div class='cheqd'><input name='skills' id='psychologist' value='psychologist' type=\"checkbox\" class=\"checkbox\" > <label for='psychologist'> Psychologist  </label></div>
-                         <div class='cheqd'><input name='skills' id='social_media' value='social_media' type=\"checkbox\" class=\"checkbox\" > <label for='social_media'> Social Media </label></div>
-                         <div class='cheqd'><input name='skills' id='radicalization' value='radicalization' type=\"checkbox\" class=\"checkbox\" > <label for='radicalization'> Radicalisation </label></div>
-                         <div class='cheqd'><input name='skills' id='youngpeople' value='youngpeople' type=\"checkbox\" class=\"checkbox\" > <label for='youngpeople'> Young People </label></div>
-                         <div class='cheqd'><input name='skills' id='school' value='school' type=\"checkbox\" class=\"checkbox\" > <label for='school'> School </label></div>
+                         <div class='cheqd'><input name='skills' id='juvenile_lawyer' value='Juvenile Lawyer' type=\"checkbox\" class=\"checkbox\" > <label for='juvenile_lawyer'> Juvenile Lawyer </label></div> 
+                         <div class='cheqd'><input name='skills' id='prosecutor' value='Prosecutor' type=\"checkbox\" class=\"checkbox\" > <label for='prosecutor'> Prosecutor </label></div>
+                         <div class='cheqd'><input name='skills' id='psychologist' value='Psychologist' type=\"checkbox\" class=\"checkbox\" > <label for='psychologist'> Psychologist  </label></div>
+                         <div class='cheqd'><input name='skills' id='social_media' value='Social Media' type=\"checkbox\" class=\"checkbox\" > <label for='social_media'> Social Media </label></div>
+                         <div class='cheqd'><input name='skills' id='radicalization' value='Radicalization' type=\"checkbox\" class=\"checkbox\" > <label for='radicalization'> Radicalisation </label></div>
+                         <div class='cheqd'><input name='skills' id='youngpeople' value='Young People' type=\"checkbox\" class=\"checkbox\" > <label for='youngpeople'> Young People </label></div>
+                         <div class='cheqd'><input name='skills' id='school' value='School' type=\"checkbox\" class=\"checkbox\" > <label for='school'> School </label></div>
                          <div class='cheqd'><input name='skills' id='hatespeech' value='hatespeech' type=\"checkbox\" class=\"checkbox\" > <label for='hatespeech'> Hate Speech  </label></div>
                          <div class='cheqd'><input name='skills' id='deradicalisation' value='deradicalisation' type=\"checkbox\" class=\"checkbox\" > <label for='deradicalisation'> Deradicalisation  </label></div>
                          <div class='cheqd'><input name='skills' id='organisedcrime' value='organisedcrime' type=\"checkbox\" class=\"checkbox\" > <label for='organisedcrime'> Organised Crime </label></div>
@@ -224,8 +234,8 @@ class Fetch extends BaseController {
 
     }
 
-    // REGISTRATION PAGE 3
-    public function page2_2() {
+    // Registration Page Description
+    public function registerDescription() {
 
         $skill = sanitize_text_field(stripslashes($_GET['skill']));
         $data = array('skill' => $skill);
@@ -239,35 +249,76 @@ class Fetch extends BaseController {
                         <div> <label> Please provide a description of your experience and expertise </label></div> 
                         <div><textarea name='description' id='description'  type=\"text\" ></textarea> </div>
                         
-                        
-                   
                         <div class=\"p-t-15\">
                             <button class='bt' id=\"registered\" type=\"submit\">REGISTER</button>
                         </div>
                         <input type=\"hidden\" name=\"action\" value=\"getData\">
-                    </form>
-                </div>";
+                    
+                        </form>
+                    </div>";
         echo $html;
 
     }
 
-    //SUMMARY PAGE, REGISTERS USER, STORES USER IN DATABASE
-    public function page3() {
+    // Email verification Form
+    public function registerVerify() {
 
         $description = sanitize_text_field( $_GET['description'] );
-
-        //array_push($data, $description);
         $data = array('description' => $description);
-
         $this->registerData($data);
 
-        $this->page1();
+        $html = "<form id=\"frm-mobile-verification\">
+                    <div class=\"form-row\">
+                        <label>A Verification Code has been sent to Your Email. Please Verify your Email.</label>		
+                    </div>
+                    <div class=\"form-row\">
+                        <input type=\"number\"  id=\"emailCode\" class=\"form-input\" placeholder=\"Enter the Verification Code\">		
+                    </div><br>
+                    <div class=\"form-row\">
+                        <input id=\"verify\" type=\"button\" class=\"btnVerify\" value=\"Verify\" >		
+                    </div>
+                 </form>";
+        echo $html;
+    }
 
+    // Email verification Form
+    public function registerVerifyCode(){
+        $eCode = sanitize_text_field( $_GET['eCode'] );
+
+        if (strval($_SESSION["verifyCode"]) === $eCode) {
+            echo "<h3>Success</h3>";
+            $this->registerData($eCode);
+        }
+        else {
+            echo "<h3>Failure</h3>";
+        }
+    }
+
+    // Stores Domain Expert to Database
+    public function registerData($data){
+
+        global $wpdb;
+        $clicked = sanitize_text_field( $_GET['id'] );
+        $arena = $wpdb->prefix . 'arena';
+
+        if ($clicked === 'register')
+            $_SESSION["champions"] = $data ;
+        else if ($clicked === 'register1')
+            $_SESSION["champions1"] = $data ;
+        else if ($clicked === 'registered') {
+            $_SESSION["champions2"] = $data ;
+        }
+        else if ($clicked === 'registerVerify'){
+            $fn = $_SESSION["champions"] + $_SESSION["champions1"] + $_SESSION["champions2"];
+            $wpdb->insert($arena, $fn);
+        }
+        else
+            echo "errrr";
 
     }
 
-    // LOGGED IN PAGE 1
-    public function page4() {
+    // Logged In Main Page
+    public function loggedMain() {
 
         $clicked = sanitize_text_field( $_GET['id'] );
         $id = 0;
@@ -288,16 +339,16 @@ class Fetch extends BaseController {
             $pass = $_SESSION['pass'];
             $r = 0;
         }
-        $alert = $wpdb->get_results( "SELECT report_id, event_category, event_description, description_subject FROM {$wpdb->prefix}tra_reports", OBJECT );
-        $arena = $wpdb->get_results( "SELECT first_name, last_name, email, password, associatedAlert, skill FROM {$wpdb->prefix}arena", OBJECT );
+        $alert = $wpdb->get_results( "SELECT report_id, tempID, event_category, event_description, description_subject FROM {$wpdb->prefix}tra_reports", OBJECT );
+        $arena = $wpdb->get_results( "SELECT first_name, arenaTempID, last_name, email, password, associatedAlert, skill FROM {$wpdb->prefix}arena", OBJECT );
         for ($r; $r<count($arena); $r++) {
             if (($email === $arena[$r]->email && $pass === $arena[$r]->password) OR ($clicked === 'alertBack')) {
                 $_SESSION['mail'] = $arena[$r] -> email;
                 $_SESSION["iterator"] = $r ;
-                if ($clicked != 'alertBack' && $clicked != 'join'){
+                if ($clicked != 'alertBack' && $clicked != 'join') {
                     echo "<div class='row'>";
-                        echo "<div class='col-8'></div>";
-                        echo "<div class=' col-4'>";
+                        echo "<div class='col-9'></div>";
+                        echo "<div class=' col-3'>";
                             echo "Logged in as <b class='userEmail'>".$arena[$r] -> first_name." ".$arena[$r] -> last_name."</b>";
 
                         echo "</div>";
@@ -306,12 +357,13 @@ class Fetch extends BaseController {
                     echo "<hr>";
                     echo "<div id='alertPanel' class='row'>";
                 }
+
                 $arenaSkills = explode(',', $arena[$r] -> skill);
                 for ($j=0; $j<count($alert); $j++) {
                     $alertSkills = explode(',', $alert[$j] -> event_category);
                     for ($k=0; $k<count($alertSkills); $k++) {
                         for ($i=0; $i<count($arenaSkills); $i++) {
-                            if ($arenaSkills[$i] === $alertSkills[$k]){
+                            if (($arenaSkills[$i] === $alertSkills[$k]) || ($arena[$r]->arenaTempID === $alert[$j]->tempID )) {
                                 echo "<div value='$j' id='toAlert' class='alertPost col-7'>";
                                     echo $alert[$j] -> description_subject;
                                 echo "</div>";
@@ -340,8 +392,8 @@ class Fetch extends BaseController {
         }
     }
 
-    // STORE ASSOCIATED ALERT TO ARENA
-    public function associateAlert(){
+    // Logged In Page Section
+    public function loggedAlert(){
         global $wpdb;
         $alertV = sanitize_text_field( $_GET['alertV'] );
         $mail = $_SESSION['mail'];
@@ -351,11 +403,11 @@ class Fetch extends BaseController {
 
 
         $wpdb -> update('wp_arena', array('associatedAlert' => $data), array('email' => $mail));
-        $this->page4();
+        $this->loggedMain();
     }
 
-    // LOGGED IN PAGE 2
-    public function page5() {
+    // Logged In Page Section
+    public function loggedParticipants() {
 
         global $wpdb;
         $alertID = sanitize_text_field( $_GET['alertID'] );
@@ -379,14 +431,15 @@ class Fetch extends BaseController {
         echo "<button id='alertBack'>Back</button>";
     }
 
-    public function pageDetail() {
+    // Logged In Page Section
+    public function loggedPageSection() {
 
         global $wpdb;
         $alertID = sanitize_text_field( $_GET['alertID'] );
         $_SESSION['alertd'] = $alertID;
         $alert = $wpdb->get_results( "SELECT report_id, event_category, description_subject, event_description FROM {$wpdb->prefix}tra_reports", OBJECT );
         $arena = $wpdb->get_results( "SELECT first_name, associatedAlert FROM {$wpdb->prefix}arena", OBJECT );
-        echo "</br>";
+        echo "<br>";
         echo "<div class='participants col-3' id='participants'><b>List of Participants<b><hr>";
         for ($i=0; $i<count($arena);$i++){
             $arenaID = explode(',', $arena[$i] -> associatedAlert);
@@ -399,40 +452,58 @@ class Fetch extends BaseController {
 
 
         echo "<div id='alertD' class='alertD col-9'>";
+
         echo "<h3>".$alert[$alertID] -> description_subject."</h3>";
-        echo "<p>".$alert[$alertID] -> event_description."</p><br><hr>";
+            echo "<p>".$alert[$alertID] -> event_description."</p><br><hr>";
 
-        echo "<div class='display_comment' id='display_comment'>";
-        echo $this->display_comment();
+            echo "<div class='display_comment' id='display_comment'>";
+                echo $this->loggedDisplayComments();
+            echo "</div>";
+
+            echo "<div class='row writeComment'>";
+                echo "<div class='col-8'>";
+                    echo "<input class='get_comment' type='text' id='get_comment' placeholder='Add Comment'>";
+                echo "</div>";
+                echo "<div class='col-4'>";
+                    echo "<button class='submit_comment' id='submit_comment' >Add Comment</button><br><br>";
+                echo "</div>";
+            echo "</div>";
+
+            echo "<hr>";
+
+            echo "<div class='row'><div class='col-12'>";
+                echo "<h3 class='recommendation_heading'>Recommendations</h3>";
+            echo "</div></div>";
+
+            echo "<div class='row'><div id='added_recommendation' class='col-12'>";
+                echo "<h5>". $this->loggedDisplayRecommendation() ."</h5>";
+            echo "</div></div>";
+
+            echo "<div class='row'>";
+                echo "<div class='col-8'>";
+                    echo "<textarea id='recommend'></textarea>";
+                echo "</div>";
+                echo "<div class='col-4'>";
+                    echo "<button id='addRecommendation'>Add</button>";
+                echo "</div>";
+            echo "</div>";
+
+
+            echo "<div class='row writeComment'>";
+                echo "<div class='col-8'>";
+                    echo "<input type='text' class='invite'>";
+                echo "</div>";
+                echo "<div class='col-4'>";
+                    echo "<button class='invite'>Invite Expert</button>";
+                echo "</div>";
+            echo "</div>";
+            echo "<button id='alertBack' class='alertBack'>Back</button>";
+
         echo "</div>";
-
-        echo "<div class='row writeComment'>";
-            echo "<div class='col-8'>";
-                echo "<input class='get_comment' type='text' id='get_comment' placeholder='Add Comment'>";
-            echo "</div>";
-
-            echo "<div class='col-4'>";
-                echo "<button class='submit_comment' id='submit_comment' >Add Comment</button><br><br>";
-            echo "</div>";
-        echo "</div>";
-
-
-        echo "<div class='row writeComment'>";
-            echo "<div class='col-8'>";
-                echo "<input type='text' class='invite'>";
-            echo "</div>";
-
-            echo "<div class='col-4'>";
-                echo "<button class='invite'>Invite Expert</button>";
-            echo "</div>";
-        echo "</div>";
-
-        echo "<button id='alertBack' class='alertBack'>Back</button>";
-
     }
 
-    // ADD COMMENTS
-    public function page6() {
+    // Logged In Page Section - Add Comments
+    public function loggedAddComments() {
 
         global $wpdb;
         $comment = sanitize_text_field( $_GET['comment_data'] );
@@ -441,11 +512,11 @@ class Fetch extends BaseController {
         $data = array( 'comment_data' => $comment, 'comment_name' => $name, 'alert_ID' => $alert_ID );
         $commentsData = $wpdb->prefix . 'commentsData';
         $wpdb->insert($commentsData, $data);
-        $this->display_comment();
+        $this->loggedDisplayComments();
     }
 
-    // DISPLAYS COMMENT
-    public function display_comment() {
+    // Logged In Page Section - Display Comments
+    public function loggedDisplayComments() {
 
         global $wpdb;
         $results = $wpdb->get_results( "SELECT alert_ID, comment_data, comment_name FROM {$wpdb->prefix}commentsData", OBJECT );
@@ -459,24 +530,57 @@ class Fetch extends BaseController {
         }
     }
 
-    // Stores Domain Expert to Database
-    public function registerData($data){
+    // Logged In Page Section - Display Recommendations
+    public function loggedDisplayRecommendation() {
 
-        global $wpdb;
         $clicked = sanitize_text_field( $_GET['id'] );
-        $arena = $wpdb->prefix . 'arena';
 
-        if ($clicked === 'register')
-            $_SESSION["champions"] = $data ;
-        else if ($clicked === 'register1')
-            $_SESSION["champions1"] = $data ;
-        else if ($clicked === 'registered') {
-            $_SESSION["champions2"] = $data ;
-            $fn = $_SESSION["champions"] + $_SESSION["champions1"] + $_SESSION["champions2"];
-            $wpdb->insert($arena, $fn);
+        if ($clicked === 'addRecommendation') {
+            global $wpdb;
+            $recommendation = sanitize_text_field( $_GET['recommendation'] );
+            $name = sanitize_text_field( $_GET['mail'] );
+            $rId = sanitize_text_field( $_GET['rId'] );
+            $alert_ID = $_SESSION['alertd'];
+            $data = array( 'recommendation_data' => $recommendation, 'recommendation_id' => $rId, 'recommendation_name' => $name, 'alert_ID' => $alert_ID );
+            $recommendationData = $wpdb->prefix . 'recommendationData';
+            $wpdb->insert($recommendationData, $data);
+
+            $results = $wpdb->get_results( "SELECT alert_ID, recommendation_data, recommendation_name FROM {$wpdb->prefix}recommendationData", OBJECT );
+            for ($i=0; $i<count($results); $i++) {
+
+                if ($_SESSION['alertd'] === $results[$i] -> alert_ID){
+                    echo "<b>".$results[$i] -> recommendation_name.": </b>";
+                    $localID = rand();
+                    echo "<b class='getRecomendID' id='editRecommend$localID' value='".$results[$i] -> recommendation_data."'>" . $results[$i] -> recommendation_data . "</b>";
+                    echo "</br>";
+                }
+            }
         }
-        else
-            echo "errrr";
+        else {
+            global $wpdb;
+            $results = $wpdb->get_results( "SELECT alert_ID, recommendation_data, recommendation_name FROM {$wpdb->prefix}recommendationData", OBJECT );
+            for ($i=0; $i<count($results); $i++) {
+
+                if ($_SESSION['alertd'] === $results[$i] -> alert_ID){
+                    echo "<b>".$results[$i] -> recommendation_name.": </b>";
+                    $localID = rand();
+                    echo "<b class='getRecomendID' id='editRecommend$localID' value='".$results[$i] -> recommendation_data."'>" . $results[$i] -> recommendation_data . "</b>";
+                    echo "</br>";
+                }
+            }
+        }
 
     }
+
+    public function loggedUpdateRecommendation() {
+        global $wpdb;
+        $recommendation = sanitize_text_field( $_GET['recommendation'] );
+//        $mail = sanitize_text_field( $_GET['mail'] );
+        $rId = sanitize_text_field( $_GET['rId'] );
+//        $results = $wpdb->get_results( "SELECT recommendation_data FROM {$wpdb->prefix}recommendationData", OBJECT );
+        $wpdb->update( "wp_recommendationData", array('recommendation_data' => $recommendation), array('recommendation_data' => $rId) );
+//        echo "a";
+    }
+
+
 }

@@ -13,12 +13,16 @@ class Deactivate {
     $charset_collate = $wpdb->get_charset_collate();
 
     $commentsData = $wpdb->prefix . 'commentsData';
-    $sql = "DROP TABLE IF EXISTS $commentsData;";
-    $wpdb->query($sql);
+    $sqlComment = "DROP TABLE IF EXISTS $commentsData;";
+    $wpdb->query($sqlComment);
 
     $arena = $wpdb->prefix . 'arena';
-    $sql = "DROP TABLE IF EXISTS $arena;";
-    $wpdb->query($sql);
+    $sqlArena = "DROP TABLE IF EXISTS $arena;";
+    $wpdb->query($sqlArena);
+
+    $recommendation = $wpdb->prefix . 'recommendationData';
+    $sqlRecommend = "DROP TABLE IF EXISTS $recommendation;";
+    $wpdb->query($sqlRecommend);
 
     flush_rewrite_rules();
   }

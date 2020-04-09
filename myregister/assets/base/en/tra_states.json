@@ -289,6 +289,26 @@
    "M1.4":{
       "state_type":"result"
    },
+   "M2.0":{
+      "state_text":"Expert Login",
+      "state_type":"expert_login",
+      "show_header": "false",
+      "id": "expert_infos",
+      "state_answers":[
+         {
+            "id":"email",
+            "text":"Please provide your Email",
+            "short_text":"Email",
+            "type":"text"
+         },
+         {
+            "id":"password",
+            "text":"Please provide your Password",
+            "short_text":"Password",
+            "type":"text"
+         }
+      ]
+   },
    "ERROR":{
       "state_text":"An error has occured! Please restart the report process.",
       "state_type":"error"

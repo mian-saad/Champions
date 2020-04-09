@@ -1,6 +1,7 @@
 jQuery(document).ready(function ($) {
 
     const $contentBox = $('#contentBox');
+    var recommendationID;
 
 
     // On click at Login
@@ -128,10 +129,20 @@ jQuery(document).ready(function ($) {
     $('body').on('click', '#registered', function (e) {
         e.preventDefault();
 
+        $(".error").html("").hide();
+        var number = $("#mobile").val();
+        // sendOTP();
+        var input = {
+            "mobile_number" : number,
+            "m_action" : "send_otp"
+        };
+
         const req_data = {
             action: 'fetch',
             description: $('#description').val(),
             id: 'registered'
+            // mobile_number : number,
+            // m_action : "send_otp"
         };
 
         jQuery.get(myAjax.ajaxurl, req_data, function (response) {
@@ -141,6 +152,78 @@ jQuery(document).ready(function ($) {
 
     });
 
+    // On click at Register within Registration3 Form
+    $('body').on('click', '#verify', function (e) {
+        e.preventDefault();
+        var eCode = $("#emailCode").val();
+        const req_data = {
+            action: 'fetch',
+            eCode: eCode,
+            id: 'registerVerify'
+        };
+        jQuery.get(myAjax.ajaxurl, req_data, function (response) {
+            $contentBox.html(response);
+        });
+    });
+
+    // On click at Add Recommendation
+    $('body').on('click', '#addRecommendation', function (e) {
+        e.preventDefault();
+
+        const $btnText = $('#addRecommendation');
+
+        if ($btnText.text() == "Update") {
+
+            const $added_recommendation = $('#added_recommendation');
+            const $user = $('.userEmail').text();
+            const $recommendation = $('#recommend');
+            const $rId = recommendationID;
+            const req_data = {
+                action: 'fetch',
+                recommendation: $recommendation.val(),
+                id: 'updateRecommendation',
+                mail: $user,
+                rId: $rId
+            };
+            jQuery.get(myAjax.ajaxurl, req_data, function (response) {
+                $added_recommendation.html(response);
+                // $recommendation.val('');
+            });
+        }
+        else {
+            $btnText.text("Add");
+
+            const $added_recommendation = $('#added_recommendation');
+            const $user = $('.userEmail').text();
+            const $recommendation = $('#recommend');
+            const $rId = recommendationID;
+            const req_data = {
+                action: 'fetch',
+                recommendation: $recommendation.val(),
+                id: 'addRecommendation',
+                rId: $rId,
+                mail: $user
+            };
+            jQuery.get(myAjax.ajaxurl, req_data, function (response) {
+                $('#added_recommendation').empty();
+                $added_recommendation.html(response);
+                $recommendation.val('');
+            });
+        }
+    });
+
+    // On click at Add Recommendation
+    $('body').on('click', '.getRecomendID', function (e) {
+        e.preventDefault();
+
+        const $btnText = $('#addRecommendation');
+        $btnText.text("Update");
+        const $user = $('.userEmail').text();
+        recommendationID = $(this).attr('value');
+        const $recommendation = $('#recommend');
+        $recommendation.val(recommendationID);
+
+    });
     // On click at ALERT
     $('body').on('click', '#toAlert', function (e) {
         e.preventDefault();
@@ -263,4 +346,100 @@ jQuery(document).ready(function ($) {
             $comment.html(response);
         });
     }, 3000);
+
+
+    function sendOTP() {
+        $(".error").html("").hide();
+        var number = $("#mobile").val();
+        if (number.length == 10 && number != null) {
+            var input = {
+                "mobile_number" : number,
+                "m_action" : "send_otp"
+            };
+            $.ajax({
+                url : 'controller.php',
+                type : 'POST',
+                data : input,
+                success : function(response) {
+                    $(".container").html(response);
+                }
+            });
+        } else {
+            $(".error").html('Please enter a valid number!')
+            $(".error").show();
+        }
+    }
+
+    function verifyOTP() {
+        $(".error").html("").hide();
+        $(".success").html("").hide();
+        var otp = $("#mobileOtp").val();
+        var input = {
+            "otp" : otp,
+            "action" : "verify_otp"
+        };
+        if (otp.length == 6 && otp != null) {
+            $.ajax({
+                url : 'controller.php',
+                type : 'POST',
+                dataType : "json",
+                data : input,
+                success : function(response) {
+                    $("." + response.type).html(response.message)
+                    $("." + response.type).show();
+                },
+                error : function() {
+                    alert("ss");
+                }
+            });
+        } else {
+            $(".error").html('You have entered wrong OTP.')
+            $(".error").show();
+        }
+    }
 });
+
+
+// $('body').on('click', '.inprogress', function (e) {
+//     //e.preventDefault();
+//
+//     // var inprogress = $(this).attr('id');
+//     var  inprogress = $(this).attr('value');
+//     // const $alertPost = $('.alertPost').text();
+//     // $('.tojoin').prop('disabled', true);
+//     // $('.tojoin').addClass('grey');
+//     const $alertBox = $('#alertPanel');
+//     const req_data = {
+//         action: 'fetch',
+//         id: 'inpro',
+//         alertID: inprogress
+//     };
+//     jQuery.get(myAjax.ajaxurl, req_data, function (response) {
+//         // console.log("disble");
+//         $alertBox.html(response);
+//     });
+//     console.log("logged");
+// });
+// function sendOTP() {
+//     $(".error").html("").hide();
+//     var number = $("#mobile").val();
+//     if (number.length == 10 && number != null) {
+//         var input = {
+//             "mobile_number" : number,
+//             "action" : "send_otp"
+//         };
+//         $.ajax({
+//             url : 'controller.php',
+//             type : 'POST',
+//             data : input,
+//             success : function(response) {
+//                 $(".container").html(response);
+//             }
+//         });
+//     } else {
+//         $(".error").html('Please enter a valid number!')
+//         $(".error").show();
+//     }
+// }
+
+

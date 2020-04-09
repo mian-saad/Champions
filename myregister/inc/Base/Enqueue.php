@@ -21,6 +21,9 @@ class Enqueue extends BaseController
     public function enqueue_frontend()
     {
         // enqueue our js and css
+        wp_enqueue_style('tra_css_bootstrap', $this->plugin_url . 'assets/css/bootstrap.css');
+        wp_enqueue_style('tra_css_bootstrap-grid', $this->plugin_url . 'assets/css/bootstrap-grid.css');
+        wp_enqueue_style('tra_css_bootstrap-reboot', $this->plugin_url . 'assets/css/bootstrap-reboot.css');
         wp_enqueue_style('tra_css_style', $this->plugin_url . 'assets/css/tra_style.css');
         wp_enqueue_script('tra_js_script', $this->plugin_url . 'assets/js/tra_script.js', array('jquery'));
         wp_localize_script('tra_js_script', 'tra_object', array(

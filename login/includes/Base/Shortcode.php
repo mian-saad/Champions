@@ -9,7 +9,7 @@ namespace Incl\Base;
 class Shortcode extends BaseController
 {
     public function register() {
-        add_shortcode('arena-login', array($this, 'add_shortcode_content'));
+        add_shortcode('login', array($this, 'add_shortcode_content'));
     }
 
     // adds a php file to the template

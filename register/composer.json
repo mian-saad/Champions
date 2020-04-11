@@ -1,0 +1,9 @@
+{
+    "name": "keks/register",
+    "description": "Arena Register Module",
+    "type": "project",
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {"Includes\\":"./includes"}
+    }
+}

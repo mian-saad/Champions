@@ -4,27 +4,25 @@
 
 namespace Composer\Autoload;
 
-use Closure;
-
 class ComposerStaticInit527134c12feaa5f83befe1f27ab2b8c8
 {
     public static $prefixLengthsPsr4 = array (
-        'I' => 
+        'C' => 
         array (
-            'Incl\\' => 5,
+            'Contain\\' => 8,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'Incl\\' => 
+        'Contain\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/includes',
+            0 => __DIR__ . '/../..' . '/cLogin',
         ),
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
-        return Closure::bind(function () use ($loader) {
+        return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit527134c12feaa5f83befe1f27ab2b8c8::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit527134c12feaa5f83befe1f27ab2b8c8::$prefixDirsPsr4;
 

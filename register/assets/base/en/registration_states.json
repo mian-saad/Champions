@@ -14,7 +14,7 @@
    "M1.1":{
       "state_text":"Expert Registration",
       "state_type":"composed",
-      "show_header": "false",
+      "show_header": "true",
       "id": "expert_infos",
       "state_answers":[
          {
@@ -220,13 +220,13 @@
             "id":"password",
             "text":"Please provide your Password",
             "short_text":"Password",
-            "type":"text"
+            "type":"password"
          }
       ]
    },
    "M1.2":{
       "state_text":"Please Select your Skills",
-      "short_text":"Skills category",
+      "short_text":"Skills Category",
       "id":"skill",
       "state_type":"checkbox",
       "state_answers":[
@@ -281,12 +281,18 @@
       ]
    },
    "M1.3":{
-      "short_text":"Incident description",
-      "state_text":"Please provide us a description of what has happened.",
+      "short_text":"Bio/Skills Description",
+      "state_text":"Please provide a description of your experience and expertise",
       "id":"description",
       "state_type":"description"
    },
    "M1.4":{
+      "short_text":"Email Verification",
+      "state_text":"Please provide the verification Code that has been sent to the email provided",
+      "id":"verification",
+      "state_type":"verification"
+   },
+   "M1.5":{
       "state_type":"result"
    },
    "M2.0":{

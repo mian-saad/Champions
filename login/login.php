@@ -18,8 +18,8 @@ if (file_exists(dirname(__FILE__) . '/vendor/autoload.php')) {
   require_once dirname(__FILE__) . '/vendor/autoload.php';
 }
 
-if (class_exists( 'Incl\\Init' )) {
-  Incl\Init::register_services();
+if (class_exists( 'Contain\\Init' )) {
+    Contain\Init::register_services();
 }
 
 /**
@@ -28,15 +28,14 @@ if (class_exists( 'Incl\\Init' )) {
  * Deactivates drops the created table
  */
 
-
 class registerSer{
 
   function activate() {
-    Incl\Base\Activate::activate();
+      Contain\Base\Activate::activate();
   }
 
   function deactivate() {
-    Incl\Base\Deactivate::deactivate();
+      Contain\Base\Deactivate::deactivate();
   }
 }
 

@@ -27,7 +27,7 @@ echo "<option value=\"bu\">Bulgarian</option>";
 echo "<option value=\"por\">Portuguese</option>";
 echo "</select>";
 echo "</form>";
-echo "<div id='tra_button_pane'><a class='button' id='tra_new_report' href='#' onclick='return false;'>New Alert</a></div>";
+echo "<div id='tra_button_pane'><a class='button' type='submit' id='tra_new_report' href='#' onclick='return false;'>New Alert</a></div>";
 echo "</div >";
 echo "</div >";
 

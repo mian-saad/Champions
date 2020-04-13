@@ -19,19 +19,19 @@ if (file_exists(dirname(__FILE__) . '/vendor/autoload.php')) {
     require_once dirname(__FILE__) . '/vendor/autoload.php';
 }
 
-function activate_tqc(){
-    Inc\Base\Activate::activate();
+function activate_alert(){
+    Cover\Base\Activate::activate();
 }
 
-function deactivate_tqc(){
-    Inc\Base\Deactivate::deactivate();
+function deactivate_alert(){
+    Cover\Base\Deactivate::deactivate();
 }
 
-register_activation_hook(__FILE__, 'activate_tqc');
-register_deactivation_hook(__FILE__, 'deactivate_tqc');
+register_activation_hook(__FILE__, 'activate_alert');
+register_deactivation_hook(__FILE__, 'deactivate_alert');
 
-if (class_exists('Inc\\Init')) {
-    Inc\Init::register_services();
+if (class_exists('Cover\\Init')) {
+    Cover\Init::register_services();
 }
 
 

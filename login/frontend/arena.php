@@ -1,11 +1,6 @@
 
 <div class="card-body" id="contentBox">
-    <h3>Welcome to ARENA</h3>
-
-    <div class="p-t-15">
-        <button id="login" type="submit" onclick="return false;">LOGIN</button>
-        <button id="register" type="submit" onclick="return false;">REGISTER</button>
-    </div>
-
+    <h1>Welcome to ARENA Login Module</h1>
+    <div id='tra_button_pane'><a id="login" type="submit" class='button' href='#' onclick='return false;'>Login</a></div>
     <input type="hidden" name="action" value="getData">
 </div>

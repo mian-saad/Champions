@@ -6,5 +6,5 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Includes\\' => array($baseDir . '/includes'),
+    'Comprise\\' => array($baseDir . '/cRegister'),
 );

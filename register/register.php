@@ -20,18 +20,18 @@ if (file_exists(dirname(__FILE__) . '/vendor/autoload.php')) {
 }
 
 function activate_reg(){
-    Includes\Base\Activate::activate();
+    Comprise\Base\Activate::activate();
 }
 
 function deactivate_reg(){
-    Includes\Base\Deactivate::deactivate();
+    Comprise\Base\Deactivate::deactivate();
 }
 
 register_activation_hook(__FILE__, 'activate_reg');
 register_deactivation_hook(__FILE__, 'deactivate_reg');
 
-if (class_exists('Includes\\Init')) {
-    Includes\Init::register_services();
+if (class_exists('Comprise\\Init')) {
+    Comprise\Init::register_services();
 }
 
 

@@ -2,8 +2,14 @@
     "name": "keks/register",
     "description": "Arena Register Module",
     "type": "project",
+    "authors": [
+        {
+            "name": "Saad Aziz",
+            "email": "miansaad@outlook.de"
+        }
+    ],
     "minimum-stability": "dev",
     "autoload": {
-        "psr-4": {"Includes\\":"./includes"}
+        "psr-4": {"Comprise\\":"./cRegister"}
     }
 }

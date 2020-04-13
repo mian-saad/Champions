@@ -1,6 +1,7 @@
 {
     "name": "saadaziz/login",
     "type": "project",
+    "description": "Arena Login Module",
     "authors": [
         {
             "name": "Saad Aziz",
@@ -9,6 +10,6 @@
     ],
     "require": {},
     "autoload": {
-        "psr-4": {"Incl\\":"./includes"}
+        "psr-4": {"Contain\\":"./cLogin"}
     }
 }

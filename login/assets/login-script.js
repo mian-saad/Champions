@@ -166,6 +166,18 @@ jQuery(document).ready(function ($) {
         });
     });
 
+    // On click at Invitation in Discussion Page
+    $('body').on('click', '#invite', function (e) {
+        e.preventDefault();
+        var inviteEmail = $("#invite_address").val();
+        const req_data = {
+            action: 'summon',
+            inviteEmail: inviteEmail,
+            id: 'invitation'
+        };
+        jQuery.get(login_ajax.ajaxurl, req_data, function (response) {});
+    });
+
     // On click at Add Recommendation
     $('body').on('click', '#addRecommendation', function (e) {
         e.preventDefault();

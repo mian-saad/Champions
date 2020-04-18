@@ -36,6 +36,7 @@ class TraFinal extends TraState
     public function generate_html()
     {
         $html = $this->generate_hidden_fields($this->report_id);
+        $html .= "<h3>Please Review your Data</h3>";
 
         foreach ($this->answers as $short_text => $value) {
             $html .= "<p>" . $short_text . " : " . $value . "</p>";
@@ -53,6 +54,6 @@ class TraFinal extends TraState
 
     public function generate_buttons()
     {
-        return "<div id='tra_button_pane'><a class='button' id='arena_back' href='#' onclick='return false;'>$this->back_string</a> <a class='button' id='tra_submit' href='$this->pdfurl' >$this->submit_string</a></div>";
+        return "<div id='tra_button_pane'><a class='button' id='arena_back' href='#' onclick='return false;'>$this->back_string</a> <a class='button' id='arena_submit' >$this->submit_string</a></div>";
     }
 }

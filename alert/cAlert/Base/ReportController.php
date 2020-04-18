@@ -265,7 +265,7 @@ class ReportController extends BaseController
 
         header('Content-Type: text/html; charset=utf-8');
 
-        $html = "<h1>TAKEDOWN REPORT</h1><br>";
+        $html = "<h1>ALERT REPORT</h1><br>";
 
         foreach ($answers as $short_text => $value) {
             $html .= "<p>" . $short_text . " : " . $value . "</p>";
@@ -359,7 +359,7 @@ class ReportController extends BaseController
         $tempID = rand(0, 999);
         if(!empty($entries)){
             foreach($entries as $row){
-                wp_mail( "$row->reporter_email", "Champions", "Your password to log in to Arena: ". $password .". <br> You can log in at /login", array('Content-Type: text/html; charset=UTF-8'));
+                wp_mail( "$row->reporter_email", "Champions", $this->string_file['your_email1'] . $password . "<br>" . $this->string_file['your_email1'], array('Content-Type: text/html; charset=UTF-8'));
                 $first_name = $row->reporter_fName;
                 $last_name = $row->reporter_lName;
                 $country = $row->reporter_residence;

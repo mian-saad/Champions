@@ -15,7 +15,7 @@ body {
 
 .button {
     border: none;
-    color: #fff;
+    color: #fff!important;
     border-radius: 0;
     margin: 2px;
     outline: 0;

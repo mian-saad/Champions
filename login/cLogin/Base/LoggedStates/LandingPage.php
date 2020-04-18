@@ -56,12 +56,12 @@ class LandingPage {
                                 $arenaID = explode(',', $arena[$r] -> associatedAlert);
                                 for ($o=0; $o<count($arenaID); $o++){
                                     if ($arenaID[$o] === $alert[$j] -> report_id){
-                                        echo "<button id='inprogress$id' value='$j' class='inprogress col-3' >IN PROGRESS</button><br>";
+                                        echo "<button id='inprogress$id' value='$j' class='button inprogress col-3' >IN PROGRESS</button><br>";
                                         $o = 999;
                                     }
                                     elseif($arenaID[$o] === ""){
                                         $event = $alert[$j] -> report_id;
-                                        echo "<button id='join$id' class='join' value='$event' class='col-3'>JOIN</button>";
+                                        echo "<button id='join$id' class='button join' value='$event' class='col-3'>JOIN</button>";
                                     }
 
                                     $id++;
@@ -76,5 +76,19 @@ class LandingPage {
                 wp_die();
             }
         }
+    }
+
+    // Logged In Page Section
+    public function loggedAlert(){
+        global $wpdb;
+        $alertV = sanitize_text_field( $_GET['alertV'] );
+        $mail = $_SESSION['mail'];
+        $_SESSION['assocAlert'] = $alertV;
+        $arena = $wpdb->get_results( "SELECT associatedAlert FROM {$wpdb->prefix}arena WHERE email='$mail'", OBJECT );
+        $data = $alertV.",".$arena[0]->associatedAlert;
+
+
+        $wpdb -> update('wp_arena', array('associatedAlert' => $data), array('email' => $mail));
+        $this->loggedMain();
     }
 }

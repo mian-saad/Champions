@@ -4,6 +4,9 @@ namespace Contain\Base\LoggedStates;
 
 class DiscussionPage {
 
+    public array $string_file;
+    public string $plugin_path;
+
     // Logged In Page Section - Add Comments
     public function loggedAddComments() {
 
@@ -183,6 +186,8 @@ class DiscussionPage {
     //Send Invitation
     public function send_invite($inviteEmail) {
 
-        wp_mail( $inviteEmail, "Champions", "You have been invited", array('Content-Type: text/html; charset=UTF-8'));
+        $this->plugin_path = plugin_dir_path( dirname(__FILE__, 3));
+        $this->string_file = json_decode(file_get_contents($this->plugin_path . "assets/login-strings.json"), true);
+        wp_mail( $inviteEmail, "Champions", $this->string_file['invitation_message'], array('Content-Type: text/html; charset=UTF-8'));
     }
 }

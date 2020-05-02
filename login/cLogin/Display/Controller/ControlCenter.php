@@ -6,6 +6,20 @@ use Contain\Display\View;
 
 class ControlCenter {
 
+    public function VerifyCredentials($Email, $Password) {
+        $LoadData = new LoadData();
+        $DataEmail = $LoadData->loadArenaData('email');
+        $DataPassword = $LoadData->loadArenaData('password');
+        $length = count($DataEmail);
+
+        for ($counter = 0; $counter<$length; $counter++) {
+            if ($Email === $DataEmail[$counter] && $Password === $DataPassword[$counter]) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     // Redirection Conditions
     public function controlLogic($clicked) {
 
@@ -17,10 +31,21 @@ class ControlCenter {
                 break;
 
             case 'alertBack':
-            case 'login':
-                $loggedState = new View\LandingPage();
-                $loggedState->loggedMain();
                 break;
+
+            case 'login':
+                $_SESSION['Email'] = sanitize_text_field( $_GET['email'] );
+                $_SESSION['Password'] = sanitize_text_field( $_GET['pass'] );
+                if ($this->VerifyCredentials($_SESSION['Email'],$_SESSION['Password']) === true) {
+                    $loggedState = new View\LandingPage();
+                    $loggedState->loggedMain();
+                    break;
+                }
+                else {
+                    $loggedState = new View\FailurePage();
+                    $loggedState->RenderErrorPage();
+                    break;
+                }
 
             case 'alerter':
                 $loggedState = new View\DiscussionPage();

@@ -2,9 +2,14 @@
 
 namespace Contain\Display\View;
 
+use Contain\Display\Controller\LoadData;
+use Contain\Display\Model\LoggedComponents;
+
 class LandingPage {
 
-    public function VerifyCredentials($Email, $Password) {
+
+
+    public function ShowHeader($FirsName) {
 
     }
 
@@ -39,14 +44,17 @@ class LandingPage {
                 $_SESSION['mail'] = $arena[$r] -> email;
                 $_SESSION["iterator"] = $r ;
                 if ($clicked != 'alertBack' && $clicked != 'join') {
-                    echo "<div class='row'>";
-                    echo "<div class='col-9'></div>";
-                    echo "<div class=' col-3'>";
-                    echo "Logged in as <b class='userEmail'>".$arena[$r] -> first_name." ".$arena[$r] -> last_name."</b>";
 
-                    echo "</div>";
-
-                    echo "</div>";
+                    $Header = new LoggedComponents();
+                    $Header->header($arena[$r] -> first_name, $arena[$r] -> last_name);
+//                    echo "<div class='row'>";
+//                    echo "<div class='col-9'></div>";
+//                    echo "<div class=' col-3'>";
+//                    echo "Logged in as <b class='userEmail'>".$arena[$r] -> first_name." ".$arena[$r] -> last_name."</b>";
+//
+//                    echo "</div>";
+//
+//                    echo "</div>";
                     echo "<hr>";
                     echo "<div id='alertPanel' class='row'>";
                 }

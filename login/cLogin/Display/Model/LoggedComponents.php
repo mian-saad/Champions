@@ -26,4 +26,15 @@ class LoggedComponents {
         echo $html;
     }
 
+    public function header($FirstName, $LastName) {
+        $html = "<div class='row'>";
+            $html .= "<div class='col-9'></div>";
+            $html .= "<div class=' col-3'>";
+                $html .= "Logged in as <b class='userEmail'>".$FirstName." ".$LastName."</b>";
+            $html .= "</div>";
+        $html .= "</div>";
+
+        echo $html;
+    }
+
 }

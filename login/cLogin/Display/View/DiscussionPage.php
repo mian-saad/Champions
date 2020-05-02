@@ -1,6 +1,6 @@
 <?php
 
-namespace Contain\Base\LoggedStates;
+namespace Contain\Display\View;
 
 class DiscussionPage {
 
@@ -188,6 +188,6 @@ class DiscussionPage {
 
         $this->plugin_path = plugin_dir_path( dirname(__FILE__, 3));
         $this->string_file = json_decode(file_get_contents($this->plugin_path . "assets/login-strings.json"), true);
-        wp_mail( $inviteEmail, "Champions", $this->string_file['invitation_message'], array('Content-Type: text/html; charset=UTF-8'));
+        wp_mail( $inviteEmail, "Arena Login Module", $this->string_file['invitation_message'], array('Content-Type: text/html; charset=UTF-8'));
     }
 }

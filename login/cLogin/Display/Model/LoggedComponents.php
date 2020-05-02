@@ -1,12 +1,10 @@
 <?php
 
-namespace Contain\Base\LoggedStates;
+namespace Contain\Display\Model;
 
-class LoginForm {
+class LoggedComponents {
 
-    // Log In Page
-    public function arenaLogin() {
-
+    public function login() {
         $html = "
                 <h2>Welcome to ARENA Module</h2><br>
                 <form id=\"arena-login\" method=\"POST\" action=\"#\" >
@@ -19,7 +17,7 @@ class LoginForm {
                             <label>Password</label>
                             <input id=\"paas\" type=\"password\" name=\"password\" minlength=\"4\">
                               
-                            <button class='button login-button' id=\"send\" type=\"submit\" onclick=\"return false;\">Login</button>
+                            <button class='button login-button' id=\"login\" type=\"submit\" onclick=\"return false;\">Login</button>
                             <input type=\"hidden\" name=\"action\" value=\"getData\">
                         </div>
                         <div class='col-3'></div>
@@ -27,4 +25,5 @@ class LoginForm {
                 </form>";
         echo $html;
     }
+
 }

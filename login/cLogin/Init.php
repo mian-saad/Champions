@@ -17,7 +17,7 @@ final class Init {
       AdminPages\Settings::class,
       Base\Enqueue::class,
       Base\Shortcode::class,
-      Base\Summon::class
+      Display\AjaxCalls\Summon::class
     ];
 
   }

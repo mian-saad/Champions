@@ -1,10 +1,17 @@
 <?php
 
-namespace Contain\Base\LoggedStates;
+namespace Contain\Display\View;
 
 class LandingPage {
 
+    public function VerifyCredentials($Email, $Password) {
+
+    }
+
     public function loggedMain() {
+
+        $_SESSION['Email'] = sanitize_text_field( $_GET['email'] );
+        $_SESSION['Password'] = sanitize_text_field( $_GET['pass'] );
 
         $clicked = sanitize_text_field( $_GET['id'] );
         $id = 0;
@@ -91,4 +98,5 @@ class LandingPage {
         $wpdb -> update('wp_arena', array('associatedAlert' => $data), array('email' => $mail));
         $this->loggedMain();
     }
+
 }

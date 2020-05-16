@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
+
+body {
+    font-family: 'Quicksand' !important;
+}
+
+.card-body {
+    padding: 0px!important;
+}
+
+.login-button {
+    margin-top: 10px!important;
+    margin-left: 0px!important;
+}
+
+.button {
+    border: none;
+    color: #fff!important;
+    border-radius: 0;
+    margin: 2px;
+    outline: 0;
+    height: auto;
+    line-height: 1.4;
+    padding: 8px 12px;
+    vertical-align: middle;
+    text-transform: uppercase !important;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
+    max-width: 100%;
+    white-space: normal;
+    background-color: #0eacdb !important;
+}
+
+button[disabled]:hover {
+    font-family: Quicksand !important;
+    line-height: 1.4 !important;
+    padding: 8px 12px !important;
+}
+
+.tra_horizontal_choice label{
+    display: inline;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+.tra_horizontal_choice {
+    margin-bottom: 20px;
+}
+
+p.tra_question{
+    font: bold;
+    font-size: 110%;
+    margin-bottom: 5px;
+}
+
+p.tra_warning{
+    color: red;
+}
+
+#tra_button_pane {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.table_entry {
+    padding: 0px;
+}

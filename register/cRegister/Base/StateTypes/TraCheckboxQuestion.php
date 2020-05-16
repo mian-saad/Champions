@@ -88,7 +88,7 @@ class TraCheckboxQuestion extends TraState
         $response_string = "";
         $i = 0; // needed for koma stripping
 
-        foreach ($this->response[$this->state['id']] as $item) { // for each item, lets find the shorttext in our $state
+        foreach ($this->response[$this->state['id']] as $item) { // for each item, lets find the short text in our $state
             foreach ($this->state['state_answers'] as $checkbox_answer) {
 
                 if ($item == $checkbox_answer['id']) {

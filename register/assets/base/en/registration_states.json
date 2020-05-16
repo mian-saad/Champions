@@ -20,13 +20,13 @@
          {
             "id":"title",
             "type":"select",
-            "text":"Please Select your title",
+            "text":"Please Select your Profession",
             "short_text":"Title",
             "answers":[
                {
                   "text":"Social Worker",
                   "short_text":"Social Worker",
-                  "id":"Social_Worker"
+                  "id":"Social Worker"
                },
                {
                   "text":"Youth Social Worker",
@@ -221,6 +221,24 @@
             "text":"Please provide your Password",
             "short_text":"Password",
             "type":"password"
+         },
+         {
+            "id":"organisation",
+            "text":"Please provide your organisation",
+            "short_text":"Organisation",
+            "type":"text"
+         },
+         {
+            "id":"years_of_experience",
+            "text":"How much years of experience do you have in this profession?",
+            "short_text":"experience",
+            "type":"text"
+         },
+         {
+            "id":"expert_residence_city",
+            "text":"What is your current City/Town",
+            "short_text":"Town",
+            "type":"text"
          }
       ]
    },

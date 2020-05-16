@@ -69,8 +69,9 @@ class ReportController extends BaseController
         $this->current_step_counter = 0;
 
         // read json
-        $this->state_file = json_decode(file_get_contents($this->plugin_path . "assets/base/" . $language . "/registration_states.json"), true);
-        $this->string_file = json_decode(file_get_contents($this->plugin_path . "assets/base/" . $language . "/registration_strings.json"), true);
+        //ADD for LANGUAGE . $language . in place of en
+        $this->state_file = json_decode(file_get_contents($this->plugin_path . "assets/base/en/registration_states.json"), true);
+        $this->string_file = json_decode(file_get_contents($this->plugin_path . "assets/base/en/registration_strings.json"), true);
     }
 
     // generates the content for the current state

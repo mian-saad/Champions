@@ -34,6 +34,9 @@ class TraDescriptionQuestion extends TraState
                 $html .= "<input type='text' name='" . $answer['id'] . "' value='" . $this->response[$answer['id']] . "' required><br>";
             } else if ($answer['type'] == 'description') {
                 $html .= "<textarea id='tra_text_big' name='" . $answer['id'] . "' rows='10'>" . $this->response[$answer['id']] . "</textarea>";
+            } else if ($answer['type'] == 'date') {
+                $html .= "<input rows='10' class='picker' type='text' name='" . $answer['id'] . "' value='" . $this->response[$this->state['id']] . "' />";
+//                $html .= "<textarea id='tra_text_big' name='" . $answer['id'] . "' rows='10'>" . $this->response[$answer['id']] . "</textarea>";
             }
         }
         $html .= "</form>";
@@ -68,6 +71,8 @@ class TraDescriptionQuestion extends TraState
             if ($answer['type'] == 'text') { // for text answers , just store the received input
                 $value = $this->response[$answer['id']];
             } else if ($answer['type'] == 'description') {
+                $value = $this->response[$answer['id']];
+            } else if ($answer['type'] == 'date') {
                 $value = $this->response[$answer['id']];
             }
             $result[$key] = $value;

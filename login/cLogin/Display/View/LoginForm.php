@@ -12,4 +12,10 @@ class LoginForm {
         $loggedState = new Model\LoggedComponents();
         $loggedState->login();
     }
+
+    public function BackdoorLogin() {
+
+        $loggedState = new Model\LoggedComponents();
+        $loggedState->backdoor_login();
+    }
 }

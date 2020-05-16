@@ -21,7 +21,7 @@
             "id":"title",
             "type":"select",
             "text":"Please Select your title",
-            "short_text":"Title",
+            "short_text":"Profession",
             "answers":[
                {
                   "text":"Social Worker",
@@ -37,6 +37,16 @@
                   "text":"Teacher",
                   "short_text":"Teacher",
                   "id":"Teacher"
+               },
+               {
+                  "text":"Counsellor",
+                  "short_text":"Counsellor",
+                  "id":"Counsellor"
+               },
+               {
+                  "text":"Psychotherapist",
+                  "short_text":"Psychotherapist",
+                  "id":"Psychotherapist"
                },
                {
                   "text":"Youth Worker",
@@ -94,15 +104,16 @@
                   "id":"International_School_Teacher"
                },
                {
-                  "text":"Madrasah Teacher",
-                  "short_text":"Madrasah Teacher",
-                  "id":"Madrasah_Teacher"
-               },
-               {
                   "text":"University Lecturer",
                   "short_text":"University Lecturer",
                   "id":"University_Lecturer"
                },
+               {
+                  "text":"NGO Worker",
+                  "short_text":"NGO Worker",
+                  "id":"NGO_Worker"
+               },
+
                {
                   "text":"Police Officer",
                   "short_text":"Police Officer",
@@ -132,6 +143,11 @@
                   "text":"Employee of a Culture Centre",
                   "short_text":"Employee of a Culture Centre",
                   "id":"Employee_of_a_Culture_Centre"
+               },
+               {
+                  "text":"Probation Officer",
+                  "short_text":"Probation Officer",
+                  "id":"Probation_Officer"
                }
             ]
          },
@@ -158,6 +174,12 @@
             "text":"What is your country of residence.",
             "short_text":"Residence",
             "type":"text"
+         },
+         {
+            "id":"reporter_residence_city",
+            "text":"What is your current City/Town",
+            "short_text":"Town",
+            "type":"text"
          }
       ]
    },
@@ -176,16 +198,16 @@
       "show_header": "true",
       "state_answers":[
          {
-            "id":"Radicalization",
-            "text":"Radicalization"
+            "id":"Radicalisation",
+            "text":"Radicalisation"
          },
          {
             "id":"Corruption",
             "text":"Corruption"
          },
          {
-            "id":"Online Radicalization",
-            "text":"Online Radicalization"
+            "id":"Online Radicalisation",
+            "text":"Online Radicalisation"
          },
          {
             "id":"Bully",
@@ -242,6 +264,12 @@
             "text":"Please provide us a description of what has happened.",
             "id":"event_description",
             "type":"description"
+         },
+         {
+            "short_text":"Deadline",
+            "text":"Please provide us an estimated date until when can a Solution be provided",
+            "id":"deadline",
+            "type":"date"
          }
       ]
    },

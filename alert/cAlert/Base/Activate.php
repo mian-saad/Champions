@@ -27,13 +27,18 @@ class Activate
                 reporter_lName TEXT,
                 reporter_email TEXT,
                 reporter_residence TEXT,
+                reporter_residence_city TEXT,
                 title TEXT,
                 event_time TEXT,
                 tempID TEXT,
                 event_category TEXT,
                 event_description TEXT,
                 description_subject TEXT,
-                alert_status TEXT,
+                deadline TEXT,
+                alert_case_status TEXT,
+                alert_status_moderator TEXT,
+                alert_status_flp TEXT,
+                alert_status_mutual TEXT,
                 PRIMARY KEY  (report_id)
             ) $charset_collate;";
 

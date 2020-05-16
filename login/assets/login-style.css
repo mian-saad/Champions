@@ -59,3 +59,12 @@ p.tra_warning{
     margin-top: 15px;
     margin-bottom: 15px;
 }
+
+.table_entry {
+    padding: 0px;
+}
+
+.no-sidebar .entry-content {
+    margin-right: 5%!important;
+    margin-left: 5%!important;
+}

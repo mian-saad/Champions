@@ -8,10 +8,9 @@ jQuery(document).ready(function ($) {
     $('body').on('click', '#toLoginForm', function (e) {
         e.preventDefault();
 
-        debugger;
         const req_data = {
             action: 'summon',
-            id: 'FormLogin'
+            id: 'FirstLogin'
         };
 
         $contentBox.animate({ opacity: 0.5 }, 100);
@@ -40,6 +39,218 @@ jQuery(document).ready(function ($) {
         jQuery.get(login_ajax.ajaxurl, req_data, function (response) {
             $contentBox.html(response);
         });
+    });
+
+    // On click Login as Moderator
+    $('body').on('click', '#toBackdoorLogin', function (e) {
+        e.preventDefault();
+
+        // need to find all inputs and see get the value
+        const req_data = {
+            action: 'summon',
+            id: 'BackdoorLogin'
+        };
+
+        // try to animate
+        $contentBox.animate(100);
+
+        jQuery.get(login_ajax.ajaxurl, req_data, function (response) {
+            $contentBox.html(response);
+        });
+    });
+
+    // On click at Login within Login Form
+    $('body').on('click', '#backdoor_login', function (e) {
+        e.preventDefault();
+
+        // need to find all inputs and see get the value
+        const req_data = {
+            action: 'summon',
+            email: $('#naam').val(),
+            pass: $('#paas').val(),
+            id: 'Backdoor'
+        };
+
+        // try to animate
+        $contentBox.animate(100);
+
+        jQuery.get(login_ajax.ajaxurl, req_data, function (response) {
+            $contentBox.html(response);
+        });
+    });
+
+    // On click at Expert
+    $('body').on('click', '#expert', function (e) {
+        e.preventDefault();
+
+        // need to find all inputs and see get the value
+        const req_data = {
+            action: 'summon',
+            id: 'decide_expert'
+        };
+
+        // try to animate
+        $contentBox.animate(100);
+
+        jQuery.get(login_ajax.ajaxurl, req_data, function (response) {
+            $contentBox.html(response);
+        });
+    });
+
+    // On click at Back
+    $('body').on('click', '#back', function (e) {
+        e.preventDefault();
+
+        // need to find all inputs and see get the value
+        const req_data = {
+            action: 'summon',
+            id: 'go_back'
+        };
+
+        // try to animate
+        $contentBox.animate(100);
+
+        jQuery.get(login_ajax.ajaxurl, req_data, function (response) {
+            $contentBox.html(response);
+        });
+    });
+
+    // On click at Login within Login Form
+    // $('body').on('click', '#case', function (e) {
+    //     e.preventDefault();
+    //
+    //     // need to find all inputs and see get the value
+    //     const req_data = {
+    //         action: 'summon',
+    //         id: 'decide_case'
+    //     };
+    //
+    //     // try to animate
+    //     $contentBox.animate(100);
+    //
+    //     jQuery.get(login_ajax.ajaxurl, req_data, function (response) {
+    //         $contentBox.html(response);
+    //     });
+    // });
+
+    // On click at Accept/Reject Alert Case on Direction Page
+    $('body').on('click', '#alert_case', function (e) {
+        e.preventDefault();
+
+        // need to find all inputs and see get the value
+        const req_data = {
+            action: 'summon',
+            id: 'alert_case'
+        };
+
+        // try to animate
+        $contentBox.animate(100);
+
+        jQuery.get(login_ajax.ajaxurl, req_data, function (response) {
+            $contentBox.html(response);
+        });
+    });
+
+    // On click at Close Case
+    $('body').on('click', '.close_case', function (e) {
+        //e.preventDefault();
+
+        let content = $('.table_entry');
+        let decision = $(this).attr('id');
+        let decision_class = $(this).attr('class');
+        decision_class = decision_class.split(" ").pop();
+        // decision_class = "." + decision_class;
+        // $(decision_class).prop('disabled', true);
+
+        // let Id = decision.split('-').pop();
+        // $(this).prop('disabled', true);
+
+        /*if (decision.includes("Accepted")) {
+            console.log("working ..")
+        }
+        else {
+            console.log("not working ..")
+        }*/
+
+        const req_data = {
+            action: 'summon',
+            id: 'decide_case_state',
+            close: decision
+        };
+        jQuery.get(login_ajax.ajaxurl, req_data, function (response) {
+            if (response.includes("alert")) {
+                console.log("good good");
+                alert("Other Modules Needs to be Closed First");
+            }
+            else {
+                $("#"+decision).html('Closed');
+                $("#"+decision).prop('disabled', true);
+            }
+
+        });
+
+    });
+
+    // On click at Accept/Reject Case
+    $('body').on('click', '.decide_case', function (e) {
+        //e.preventDefault();
+
+        let ID = $(this).attr('id');
+        // let decision_case = $(this).attr('class');
+        // decision_case = decision_case.split(" ").pop();
+        // decision_class = "." + decision_class;
+        // $(decision_class).prop('disabled', true);
+
+        let Id1 = ID.split('-').pop();
+        // $(this).prop('disabled', true);
+
+        // if (ID.includes("Accepted")) {
+        //     console.log("working ..");
+        //     $("#Accepted"+"-"+Id1).prop('disabled', true);
+        //     $("#Rejected"+"-"+Id1).prop('disabled', true);
+        // }
+        // else {
+        //     console.log("not working ..")
+        // }
+
+        const req_data = {
+            action: 'summon',
+            id: 'decide_alert_case',
+            DecideId: ID
+        };
+        jQuery.get(login_ajax.ajaxurl, req_data, function (response) {
+            $("#"+Id1).html(response);
+        });
+    });
+
+    // On click at Accept/Reject Expert
+    $('body').on('click', '.decide_expert', function (e) {
+        //e.preventDefault();
+
+        let ID = $(this).attr('id');
+        // let decision_case = $(this).attr('class');
+        // decision_case = decision_case.split(" ").pop();
+        // decision_class = "." + decision_class;
+        // $(decision_class).prop('disabled', true);
+
+        let Id1 = ID.split('-').pop();
+        // $(this).prop('disabled', true);
+
+        // if (ID.includes("Accepted")) {
+        //     console.log("working ..");
+        $("#Accepted"+"-"+Id1).prop('disabled', true);
+        $("#Rejected"+"-"+Id1).prop('disabled', true);
+        // }
+        // else {
+        //     console.log("not working ..")
+        // }
+
+        const req_data = {
+            action: 'summon',
+            id: 'decide_expert_case',
+            DecideId: ID
+        };
+        jQuery.get(login_ajax.ajaxurl, req_data, function (response) {});
     });
 
     // On click at JOIN
@@ -76,7 +287,7 @@ jQuery(document).ready(function ($) {
         const $alertBox = $('#alertPanel');
         const req_data = {
             action: 'summon',
-            id: 'inpro',
+            id: 'in_progress',
             alertID: inprogress
         };
         jQuery.get(login_ajax.ajaxurl, req_data, function (response) {

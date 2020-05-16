@@ -7,6 +7,7 @@ namespace Contain\Display\AjaxCalls;
 use \Contain\Base\BaseController;
 use Contain\Display\Controller;
 use Contain\Display\View\FailurePage;
+use Contain\Display\View\LandingPage;
 
 session_start();
 
@@ -23,8 +24,11 @@ class Summon extends BaseController {
 
         $clicked = sanitize_text_field( $_GET['id'] );
 
-//        $loggedState = new FailurePage();
-//        $loggedState->RenderErrorPage();
+//        $loggedState = new LandingPage();
+//        $loggedState->InstanceOfCase('saadaziz33@live.com');
+
+//        $loggedState = new Controller\LoadData();
+//        $loggedState->loadAlertData('event_category');
 
         $loggedState = new Controller\ControlCenter();
         $loggedState->controlLogic($clicked);

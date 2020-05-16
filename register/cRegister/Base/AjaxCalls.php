@@ -40,6 +40,7 @@ class AjaxCalls
         }
         else { // we are starting new report here
             # if language is not set properly, we will throw errors
+            $d = $_GET['lang'];
             if (empty($_GET['lang']) or !in_array($_GET['lang'], ['en', 'it', 'ge', 'spa', 'ro', 'no', 'pol', 'cz', 'sl', 'ne', 'is', 'fr', 'gr', 'bu', 'por' ])) {
                 echo "Don't make me laugh!";
                 wp_die();

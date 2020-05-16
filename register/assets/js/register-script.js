@@ -11,7 +11,7 @@ jQuery(document).ready(function ($) {
         var req_data = {
             action: 'retrieve_question',
             dataType: 'json',
-            lang: "en"
+            lang: $('#lang_select').val()
         };
 
         // try to animate

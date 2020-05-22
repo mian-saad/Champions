@@ -7,44 +7,46 @@ use Contain\Display\Model\LoggedComponents;
 
 class ExpertDecidePage {
 
-    public function loggedMain() {
+    public function loggedMain($Country) {
 
         $LoadData = new LoadData();
-        $DataEmail = $LoadData->loadArenaData();
-        $length = count($DataEmail);
+        $Data = $LoadData->loadArenaData();
+        $length = count($Data);
 
         $html = " <h2>Accept/Reject FLP</h2> ";
         $html .= " <table> ";
         for ($counter = 0; $counter<$length; $counter++) {
-            $html .= " <tr> ";
-                $html .= " <td> ";
-                    $html .= " <p>" . $DataEmail[$counter] -> title . "</p> ";
-                $html .= " </td> ";
-                $html .= " <td> ";
-                    $html .= " <p>" . $DataEmail[$counter] -> first_name . "</p> ";
-                $html .= " </td> ";
-                $html .= " <td> ";
-                    $html .= " <p>" . $DataEmail[$counter] -> last_name . "</p> ";
-                $html .= " </td> ";
-                $html .= " <td> ";
-                    $html .= " <p>" . $DataEmail[$counter] -> email . "</p> ";
-                $html .= " </td> ";
-                $html .= " <td> ";
-                    $html .= " <p>" . $DataEmail[$counter] -> country . "</p> ";
-                $html .= " </td> ";
-                $html .= " <td> ";
-                    $html .= " <p>" . $DataEmail[$counter] -> skill . "</p> ";
-                $html .= " </td> ";
-                $html .= " <td> ";
-                    $html .= " <p>" . $DataEmail[$counter] -> description . "</p> ";
-                $html .= " </td> ";
-                $html .= " <td> ";
-                    $html .= " <p>" . $DataEmail[$counter] -> expert_type . "</p> ";
-                $html .= " </td> ";
-                $html .= " <td class='table_entry'> ";
-                    $html .= " <p>" . $this->decide($DataEmail[$counter] -> expert_type, $counter, $DataEmail[$counter] -> report_id, $DataEmail[$counter] -> expert_status) . "</p> ";
-                $html .= " </td> ";
-            $html .= " </tr> ";
+            if ($Country[0] === $Data[$counter] -> country) {
+                    $html .= " <tr> ";
+                        $html .= " <td> ";
+                            $html .= " <p>" . $Data[$counter] -> title . "</p> ";
+                        $html .= " </td> ";
+                        $html .= " <td> ";
+                            $html .= " <p>" . $Data[$counter] -> first_name . "</p> ";
+                        $html .= " </td> ";
+                        $html .= " <td> ";
+                            $html .= " <p>" . $Data[$counter] -> last_name . "</p> ";
+                        $html .= " </td> ";
+                        $html .= " <td> ";
+                            $html .= " <p>" . $Data[$counter] -> email . "</p> ";
+                        $html .= " </td> ";
+                        $html .= " <td> ";
+                            $html .= " <p>" . $Data[$counter] -> country . "</p> ";
+                        $html .= " </td> ";
+                        $html .= " <td> ";
+                            $html .= " <p>" . $Data[$counter] -> skill . "</p> ";
+                        $html .= " </td> ";
+                        /*$html .= " <td> ";
+                            $html .= " <p>" . $Data[$counter] -> description . "</p> ";
+                        $html .= " </td> ";*/
+                        $html .= " <td> ";
+                            $html .= " <p>" . $Data[$counter] -> expert_type . "</p> ";
+                        $html .= " </td> ";
+                        $html .= " <td class='table_entry'> ";
+                            $html .= " <p>" . $this->decide($Data[$counter] -> expert_type, $counter, $Data[$counter] -> report_id, $Data[$counter] -> expert_status) . "</p> ";
+                        $html .= " </td> ";
+                    $html .= " </tr> ";
+                }
 
         }
         $html .= " </table> ";

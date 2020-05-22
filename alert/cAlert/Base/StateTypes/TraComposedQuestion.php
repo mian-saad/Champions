@@ -66,7 +66,16 @@ class TraComposedQuestion extends TraState {
                 return false;
             }
         }
-        return true;
+
+        global $wpdb;
+        $arenaData = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}arena", OBJECT );
+        for ($counter = 0; $counter<count($arenaData); $counter++) {
+            if ($arenaData[$counter] -> email === $response['reporter_email']) {
+                return true;
+            }
+        }
+        return "Unregistered";
+//        return true;
     }
 
     public function generate_buttons() {

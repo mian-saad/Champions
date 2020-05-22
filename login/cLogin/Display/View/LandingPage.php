@@ -6,113 +6,158 @@ use Contain\Display\Controller\LoadData;
 use Contain\Display\Model\LoggedComponents;
 
 class LandingPage {
+    public function RenderPage($Email) {
+        $html = $this->header($Email);
+        $html .= $this->InstanceOfCase($Email);
+        echo $html;
+    }
 
+    public function header($Email) {
+        $html = "<div class='row'>";
+        $html .= "<div class='col-6'>";
+        $html .= "<h4 class='champions'>Champions</h4>";
+        $html .= "</div>";
+        $LoadArenaData = new LoadData();
+        $ArenaExpertFirstName = $LoadArenaData->loadArenaData('first_name', $Email);
+        $ArenaExpertLastName = $LoadArenaData->loadArenaData('last_name', $Email);
+        $Name = ($ArenaExpertFirstName[0]  ." ".  $ArenaExpertLastName[0]);
+        $html .= "<div class='col-6'>";
+        $html .= "<h4 class='NameHeader' id='MyName' name='".$Email."'>".$Name."</h4>";
+        $html .= "</div>";
+        $html .= "</div>";
+        $html .= "<hr><br>";
+        return $html;
+    }
     //TODO: redirect to arena the flp who comes to generate alert
 
     // return multiple functions that forms the instance on landing page (Subject of Case, Deadline, Button Status)
     public function InstanceOfCase ($Email) {
+
         // idea: initaitae a var with 0 and add 1 when it runs first time, when back button is pressed it remains 1 and can go without validation
         $MatchedLanguageId = $this->MatchLanguage($Email);
         $MatchedSkillsId = $this->MatchSkills($Email);
+        $AlertDeclinedId = $this->Declined();
+        // $FinalIds consists of all the common ids from $MatchedLanguageId, $MatchedSkillsId
         $FinalIds = array_intersect($MatchedLanguageId, $MatchedSkillsId);
-        // finds common id from LingoMatch and MatchingWisdom - these would be the final ids which we want to render on the page
+        // $FinalIds consists of all the above $FinalIds which are not Rejected
+        $FinalIds = array_diff($FinalIds, $AlertDeclinedId);
 
-        // compute report_id against $FinalIds first
-        $LoadAlertData = new LoadData();
-        $AlertReportId = $LoadAlertData->loadAlertData('report_id');
-
-        // $AlertReportId[$FinalReportIds]
-
-         for($counter = 0; $counter<count($FinalIds); $counter++) {
-             $xx = $FinalIds[$counter];
-             $yy = $AlertReportId[$FinalIds[$counter]];
+        $html = "<table>";
+        foreach ($FinalIds as $id) {
             // call subject
-            $this->subject($AlertReportId[$FinalIds[$counter]]);
+            // if joined green else this
+            $html .= " <tr> ";
+                $html .= " <td class='subject' id='".$id."'> ";
+                    $html .= $this->subject($id);
+                $html .= " </td> ";
             // call deadline
-            $this->deadline($AlertReportId[$FinalIds[$counter]]);
-            // call button
-             $this->button($AlertReportId[$FinalIds[$counter]]);
-             $this->ButtonStatusArena($Email, $AlertReportId[$FinalIds[$counter]]); //if true then buttons to render inprogress and close, if false buttons to render join and not join
-             echo "aaaa";
+                $html .= " <td> ";
+                    $html .= $this->deadline($id);
+                $html .= " </td> ";
+            // call deadline
+                $html .= " <td> ";
+                    $html .= $this->Recommendations($id);
+                $html .= " </td> ";
+            // call button from Alert
+                $html .= " <td> ";
+                    $html .= $this->InProgressClosed($id);
+                $html .= " </td> ";
+            // call button from relative to expert
+                $html .= " <td> ";
+                    $html .= $this->JoinNotJoin($id, $Email);
+                $html .= " </td> ";
+            $html .= " </tr> ";
+            $html .= " <br> ";
+//             $this->button($FinalIds[$counter]);
+//             $this->ButtonStatusArena($Email, $FinalIds[$counter]); //if true then buttons to render inprogress and close, if false buttons to render join and not join
          }
+        $html .= "</table>";
+         return $html;
+    }
+
+    public function Recommendations ($FinalReportIds) {
+        $html = " <button id='Recommend-".$FinalReportIds."' class='Recommend button'>Recommendations</button> ";
+        return $html;
     }
 
     public function subject ($FinalReportIds) {
         $LoadAlertData = new LoadData();
         $AlertSubject = $LoadAlertData->loadAlertData('description_subject', $FinalReportIds);
         $c = $AlertSubject;
-        return $AlertSubject;
+        return $AlertSubject[0];
     }
 
     public function deadline ($FinalReportIds) {
         $LoadAlertData = new LoadData();
         $AlertDeadline = $LoadAlertData->loadAlertData('deadline', $FinalReportIds);
         $c = $AlertDeadline;
-        return $AlertDeadline;
+        return $AlertDeadline[0];
     }
 
-    public function button ($FinalReportIds/*final ids, button status, */) {
-        // final ids from instanceofCase
-            // check the status of button of the final ids in alert if its closed or not
-        $LoadAlertData = new LoadData();
-        $AlertStatusModerator = $LoadAlertData->loadAlertData('alert_status_moderator', $FinalReportIds);
-        $AlertStatusFlp = $LoadAlertData->loadAlertData('alert_status_flp', $FinalReportIds);
-        $AlertStatusMutual = $LoadAlertData->loadAlertData('alert_status_mutual', $FinalReportIds);
-        if ($AlertStatusModerator==='Closed' && $AlertStatusFlp==='Closed' && $AlertStatusMutual==='Closed') {
-            return false;
-        }
-        else {
-            return true;
-        }
-
-        // check button status from arena if its joined, not joined, in progress
-        // HEADS-UP: associateAlert stores the ids of those alert in arena expert which has been joined
-
-    }
-
-    public function ButtonStatusArena ($Email, $FinalReportIds) {
-        $LoadArenaData = new LoadData();
-        $ArenaAssociatedAlert = $LoadArenaData->loadArenaData('associated_alert', $Email);
-        if (strpos($ArenaAssociatedAlert[0], $FinalReportIds) !== false) {
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
-
-    public function Closed () {
-        // checks from alert_status_moderator, alert_status_flp and alert_status_mutual,
-        // if there then the only button should be closed
-        // if not there then check join, not join and in progress
-    }
-
-    public function JoinNotJoin () {
+    public function JoinNotJoin ($FinalReportIds, $Email) {
         // checks from associated alert in arena,
         // if the $FinalReportIds is not there then join button and not join button should render
-    }
+        $LoadAlertData = new LoadData();
+        $AlertCaseStatus = $LoadAlertData->loadAlertData('alert_case_status', $FinalReportIds);
 
-    public function InProgressClose () {
-        // checks from associated alert in arena,
-        // if the $FinalReportIds is there then in progress and close button should render
+        $LoadArenaData = new LoadData();
+        $ArenaClosedAssociatedReportId = $LoadArenaData->loadArenaData('closed_associated_alert', $Email);
+        $ArenaNotAssociatedReportId = $LoadArenaData->loadArenaData('not_associated_alert', $Email);
+        // check in associatedalert, if true render joined and close
+        $ArenaAssociatedReportId = $LoadArenaData->loadArenaData('associated_alert', $Email);
+        $html = "<div style='display: inline'>";
+        if (strpos($ArenaAssociatedReportId[0], $FinalReportIds) !== false) {
+            if (strpos($ArenaClosedAssociatedReportId[0], $FinalReportIds) !== false) {
+                $html .= " <button disabled class='ArenaClickableButtons button' id='Closed-".$FinalReportIds."'>Closed</button> ";
+                return $html;
+            }
+            else {
+                $html .= " <button class='ArenaClickableButtons button Joined' id='Joined-".$FinalReportIds."'>Joined</button> ";
+                $html .= " <button class='ArenaClickableButtons button Close' id='Close-".$FinalReportIds."'>Close</button> ";
+                return $html;
+            }
+        }
+        elseif (strpos($ArenaNotAssociatedReportId[0], $FinalReportIds) !== false) {
+            $html .= " <button class='ArenaClickableButtons button' disabled id='Declined-".$FinalReportIds."'>Declined</button> ";
+            return $html;
+        }
+        elseif ($AlertCaseStatus[0] !== 'Closed') {
+            $html .= " <button class='ArenaClickableButtons button' id='Join-".$FinalReportIds."'>Join</button> ";
+            $html .= " <button class='ArenaClickableButtons button' id='Decline-".$FinalReportIds."'>Decline</button> ";
+            return $html;
+        }
+        $html .= "</div>";
     }
 
     public function Declined () {
-        // checks from NotAssociatedAlert in arena,
-        // if the $FinalReportIds is there then Declined Button should render
+        $DeclinedId = [];
+        $LoadAlertData = new LoadData();
+        $AlertNotAssociated = $LoadAlertData->loadAlertData('alert_case_status');
+        $AlertReportId = $LoadAlertData->loadAlertData('report_id');
+
+        for ($AlertNotAssociatedCounter = 0; $AlertNotAssociatedCounter<count($AlertNotAssociated); $AlertNotAssociatedCounter++) {
+            if ($AlertNotAssociated[$AlertNotAssociatedCounter] === 'Rejected' || $AlertNotAssociated[$AlertNotAssociatedCounter] === null) {
+                array_push($DeclinedId, $AlertReportId[$AlertNotAssociatedCounter]);
+            }
+        }
+        return $DeclinedId;
     }
 
-    public function ClickButton () {
-        // on clicking join button update database and call InProgressClose
-        // on clicking not join button update database(add another column NotAssociatedAlert) and call Declined
-        // on clicking in progress button call discussion page
-        // on clicking close button
-        // this is going to be complex - if its been closed by flp or an expert
-        // if closed by flp update database
-        // if closed by expert add another column in arena, where all experts who closed the case appear - then update database
-        // after every update call Closed
+    // This just tells the status of the Alert, Can only be in progress OR Closed
+    public function InProgressClosed ($FinalReportIds) {
+        // checks from alert_case_status,
+        $LoadAlertData = new LoadData();
+        $AlertCaseStatus = $LoadAlertData->loadAlertData('alert_case_status', $FinalReportIds);
+        // if Accepted then in progress and close should render
+        if ($AlertCaseStatus[0] === 'Accepted') {
+            return "In Progress";
+        }
+        // if Closed then closed should render
+        if ($AlertCaseStatus[0] === 'Closed') {
+            return "Closed";
+        }
+        // if Rejected nothing should  render - check declined
     }
-
 
     // Matches Language of Alert and Arena
     public function MatchLanguage ($Email) {
@@ -120,11 +165,12 @@ class LandingPage {
         $LoadAlertData = new LoadData();
         $LoadArenaData = new LoadData();
         $AlertLanguage = $LoadAlertData->loadAlertData('report_locale');
+        $AlertReportId = $LoadAlertData->loadAlertData('report_id');
         $ArenaLanguage = $LoadArenaData->loadArenaData('report_locale', $Email);
 
         for ($AlertLanguageCounter = 0; $AlertLanguageCounter<count($AlertLanguage); $AlertLanguageCounter++) {
             if (strpos($AlertLanguage[$AlertLanguageCounter], $ArenaLanguage[0]) !== false) {
-                array_push($MatchedLanguageId, $AlertLanguageCounter);
+                array_push($MatchedLanguageId, $AlertReportId[$AlertLanguageCounter]);
             }
         }
         // returns an array with those matchedId which has matched language
@@ -138,13 +184,14 @@ class LandingPage {
         $LoadAlertData = new LoadData();
         $LoadArenaData = new LoadData();
         $AlertSkills = $LoadAlertData->loadAlertData('event_category');
+        $AlertReportId = $LoadAlertData->loadAlertData('report_id');
         $ArenaSkills = $LoadArenaData->loadArenaData('skill', $Email);
 
         $ArenaSkills = explode(',', $ArenaSkills[0]);
         for ($ArenaSkillsCounter = 0; $ArenaSkillsCounter<count($ArenaSkills); $ArenaSkillsCounter++) {
             for ($AlertSkillsCounter = 0; $AlertSkillsCounter<count($AlertSkills); $AlertSkillsCounter++) {
                 if (strpos($AlertSkills[$AlertSkillsCounter], $ArenaSkills[$ArenaSkillsCounter]) !== false) {
-                    array_push($MatchedSkillsId, $AlertSkillsCounter);
+                    array_push($MatchedSkillsId, $AlertReportId[$AlertSkillsCounter]);
                 }
             }
         }
@@ -152,6 +199,64 @@ class LandingPage {
         return $MatchedSkillsId;
         // NOTE: this array is from ALERT
     }
+
+    public function ClickButton ($Identifier, $Email) {
+        $LoadArenaData = new LoadData();
+//        $CurrentExpert = $LoadArenaData->loadArenaData('report_id', $Email);
+
+        // on clicking join button update database and call InProgressClose
+        global $wpdb;
+        $Result = explode('-', $Identifier);
+        $Status = $Result[0];
+        $Id = $Result[1];
+
+        // When clicked on Join
+        if ($Status === 'Join') {
+            $LoadArenaData = new LoadData();
+            $LoadArenaAssociatedAlertData = $LoadArenaData->loadArenaData('associated_alert', $Email);
+            $Id = $Id .",".$LoadArenaAssociatedAlertData[0];
+
+            $wpdb->update("wp_arena", array('associatedAlert' => $Id), array('email' => $Email));
+        }
+        // When clicked on Decline
+        if ($Status === 'Decline') {
+            // on clicking not join button update database(add another column NotAssociatedAlert) and call Declined
+            $wpdb->update("wp_arena", array('notAssociatedAlert' => $Id), array('email' => $Email));
+        }
+        // When clicked on Close
+        if ($Status === 'Close') {
+            // on clicking close button
+            // this is going to be complex - if its been closed by flp or an expert
+            // if closed by flp update database
+            // if closed by expert add another column in arena, where all experts who closed the case appear - then update database
+            // after every update call Closed
+            $wpdb->update("wp_arena", array('ClosedAssociatedAlert' => $Id), array('email' => $Email));
+        }
+
+
+        $this->RenderPage($Email);
+    }
+
+
+
+
+    // this function will go in register module
+    public function FLPChecker($Email) {
+        global $wpdb;
+        $LoadAlertData = new LoadData();
+        $AlertCaseEmail = $LoadAlertData->loadAlertData('email');
+        $AlertReportId = $LoadAlertData->loadAlertData('report_id');
+        for ($Counter = 0; $Counter<count($AlertCaseEmail); $Counter++) {
+            if ($AlertCaseEmail[$Counter] === $Email) {
+                // if matches then update entry in associatedalert i.e. add report_id of alert in associatedalert
+                $wpdb -> update('wp_arena', array('associatedAlert' => $AlertReportId[$Counter]), array('email' => $AlertCaseEmail[$Counter]));
+            }
+        }
+    }
+
+
+
+
 
 
 
@@ -231,7 +336,7 @@ class LandingPage {
     }
 
     // Logged In Page Section
-    public function loggedAlert(){
+    public function loggedAlert() {
         global $wpdb;
         $alertV = sanitize_text_field( $_GET['alertV'] );
         $mail = $_SESSION['mail'];

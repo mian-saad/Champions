@@ -5,7 +5,7 @@ jQuery(document).ready(function ($) {
 
 
     // On click at Login
-    $('body').on('click', '#toLoginForm', function (e) {
+    $('body').on('click', '#ToLoginForm', function (e) {
         e.preventDefault();
 
         const req_data = {

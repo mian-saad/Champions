@@ -13,6 +13,12 @@ body {
     margin-left: 0px!important;
 }
 
+button[disabled]:hover {
+    font-family: Quicksand !important;
+    line-height: 1.4 !important;
+    padding: 8px 12px !important;
+}
+
 .button {
     border: none;
     color: #fff!important;
@@ -31,6 +37,10 @@ body {
     max-width: 100%;
     white-space: normal;
     background-color: #0eacdb !important;
+}
+
+.button:hover {
+    background: #1691b5!important;
 }
 
 .tra_horizontal_choice label{
@@ -62,9 +72,75 @@ p.tra_warning{
 
 .table_entry {
     padding: 0px;
+    width: 110px;
 }
 
 .no-sidebar .entry-content {
     margin-right: 5%!important;
     margin-left: 5%!important;
+}
+
+/*p {*/
+/*    text-align: center!important;*/
+/*}*/
+
+td {
+    text-align: center!important;
+}
+
+@media screen and (min-width: 61.5625em){
+    .site-header {
+        padding: 2.25em 4.5455%!important;
+    }
+}
+
+td.subject:hover {
+    background: #00a0d2;
+    cursor: pointer;
+}
+
+.NameHeader {
+    text-align: right;
+    margin-bottom: 0px!important;
+}
+
+.champions {
+    margin-bottom: 0px!important;
+}
+
+.description {
+    text-align: justify!important;
+}
+
+textarea#commentText {
+    margin-bottom: 10px;
+}
+
+textarea#RecommendationText {
+    margin-bottom: 10px;
+}
+
+.Joined {
+    background: #6c757d!important;
+}
+
+.Close {
+    background: #a93a32!important;
+}
+
+#DisplayCommentSection {
+    text-align: left;
+}
+
+h4.NameHeader {
+    margin-bottom: 5px!important;
+}
+
+.Participants {
+    text-align: right!important;
+}
+
+.HoverRecommendation {
+    background: #82b4cb;
+    cursor: pointer;
 }

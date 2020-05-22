@@ -35,6 +35,7 @@ class Activate
                 skill TEXT,
                 arenaTempID TEXT,
                 description TEXT,
+                ClosedAssociatedAlert TEXT,
                 associatedAlert TEXT,
                 notAssociatedAlert TEXT,
                 PRIMARY KEY  (email)

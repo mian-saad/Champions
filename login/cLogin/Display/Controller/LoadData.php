@@ -30,6 +30,7 @@ class LoadData {
             $AlertStatusModerator[$counter] = $alertData[$counter] -> alert_status_moderator;
             $AlertStatusFLP[$counter] = $alertData[$counter] -> alert_status_flp;
             $AlertStatusMutual[$counter] = $alertData[$counter] -> alert_status_mutual;
+            $AlertCaseStatus[$counter] = $alertData[$counter] -> alert_case_status;
         }
 
         if ($Data === 'report_id') {
@@ -74,6 +75,9 @@ class LoadData {
         if ($Data === 'alert_status_flp') {
             return $AlertStatusFLP;
         }
+        if ($Data === 'alert_case_status') {
+            return $AlertCaseStatus;
+        }
         if ($Data === 'alert_status_mutual') {
             return $AlertStatusMutual;
         }
@@ -104,9 +108,15 @@ class LoadData {
             $ArenaTempId[$counter] = $arenaData[$counter] -> arenaTempID;
             $Description[$counter] = $arenaData[$counter] -> description;
             $AssociatedAlert[$counter] = $arenaData[$counter] -> associatedAlert;
+            $NotAssociatedAlert[$counter] = $arenaData[$counter] -> notAssociatedAlert;
+            $ClosedAssociatedAlert[$counter] = $arenaData[$counter] -> ClosedAssociatedAlert;
             $ExpertType[$counter] = $arenaData[$counter] -> expert_type;
+            $ExpertStatus[$counter] = $arenaData[$counter] -> expert_status;
         }
 
+        if ($Data === 'expert_status') {
+            return $ExpertStatus;
+        }
         if ($Data === 'report_locale') {
             return $Language;
         }
@@ -140,6 +150,12 @@ class LoadData {
         if ($Data === 'associated_alert') {
             return $AssociatedAlert;
         }
+        if ($Data === 'not_associated_alert') {
+            return $NotAssociatedAlert;
+        }
+        if ($Data === 'closed_associated_alert') {
+            return $ClosedAssociatedAlert;
+        }
         if ($Data === 'expert_type') {
             return $ExpertType;
         }
@@ -148,4 +164,55 @@ class LoadData {
         }
     }
 
+    public function loadCommentData($Data='All', $Node='All') {
+
+        global $wpdb;
+        $Comments = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}commentsData WHERE alert_ID='$Node'", OBJECT );
+
+        for ($counter = 0; $counter<count($Comments); $counter++) {
+            $Commenter[$counter] = $Comments[$counter] -> comment_name;
+            $AssociatedAlert[$counter] = $Comments[$counter] -> alert_ID;
+            $Comment[$counter] = $Comments[$counter] -> comment_data;
+        }
+
+        if ($Data === 'comment_name') {
+            return $Commenter;
+        }
+        if ($Data === 'alert_ID') {
+            return $AssociatedAlert;
+        }
+        if ($Data === 'comment_data') {
+            return $Comment;
+        }
+    }
+
+    public function loadRecommendationData($Data='All', $Node='All') {
+
+        global $wpdb;
+        $Recommendations = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}recommendationData WHERE alert_ID='$Node'", OBJECT );
+
+        for ($counter = 0; $counter<count($Recommendations); $counter++) {
+            $RecommendationData[$counter] = $Recommendations[$counter] -> recommendation_data;
+            $RecommendationName[$counter] = $Recommendations[$counter] -> recommendation_name;
+            $RecommendationEmail[$counter] = $Recommendations[$counter] -> recommendation_email;
+            $RecommendationId[$counter] = $Recommendations[$counter] -> recommendation_id;
+            $AlertID[$counter] = $Recommendations[$counter] -> alert_ID;
+        }
+
+        if ($Data === 'recommendation_data') {
+            return $RecommendationData;
+        }
+        if ($Data === 'recommendation_name') {
+            return $RecommendationName;
+        }
+        if ($Data === 'recommendation_email') {
+            return $RecommendationEmail;
+        }
+        if ($Data === 'recommendation_id') {
+            return $RecommendationId;
+        }
+        if ($Data === 'alert_ID') {
+            return $AlertID;
+        }
+    }
 }

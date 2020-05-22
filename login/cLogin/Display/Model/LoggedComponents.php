@@ -17,7 +17,7 @@ class LoggedComponents {
                             <label>Password</label>
                             <input id=\"paas\" type=\"password\" name=\"password\" minlength=\"4\">
                               
-                            <button class='button login-button' id=\"login\" type=\"submit\" onclick=\"return false;\">Login</button>
+                            <button class='button login-button' id=\"Login\" type=\"submit\" onclick=\"return false;\">Login</button>
                             <input type=\"hidden\" name=\"action\" value=\"getData\">
                         </div>
                         <div class='col-3'></div>
@@ -39,7 +39,7 @@ class LoggedComponents {
                             <label>Password</label>
                             <input id=\"paas\" type=\"password\" name=\"password\" minlength=\"4\">
                               
-                            <button class='button login-button' id=\"backdoor_login\" type=\"submit\" onclick=\"return false;\">Login</button>
+                            <button class='button login-button' id=\"BackdoorLogin\" type=\"submit\" onclick=\"return false;\">Login</button>
                             <input type=\"hidden\" name=\"action\" value=\"getData\">
                         </div>
                         <div class='col-3'></div>

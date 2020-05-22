@@ -5,6 +5,7 @@ hello.php
 akismet
 smtp-mailer
 alert/reports/*
+alert/.idea/*
+
 social-polls-by-opinionstage/*
-alert/reports/*
 login/composer.phar

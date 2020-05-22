@@ -41,12 +41,26 @@ class AlertDecidePage {
                 $html .= " <td> ";
                 $html .= " <p>" . $Data[$counter] -> description_subject . "</p> ";
                 $html .= " </td> ";
-                $html .= " <td> ";
-                $html .= " <p>" . $Data[$counter] -> alert_status_flp . "</p> ";
-                $html .= " </td> ";
-                $html .= " <td> ";
-                $html .= " <p>" . $Data[$counter] -> alert_status_mutual . "</p> ";
-                $html .= " </td> ";
+                if ($Data[$counter] -> alert_status_flp === null) {
+                    $html .= " <td> ";
+                    $html .= " <p>Open</p> ";
+                    $html .= " </td> ";
+                }
+                else {
+                    $html .= " <td> ";
+                    $html .= " <p>" . $Data[$counter] -> alert_status_flp . "</p> ";
+                    $html .= " </td> ";
+                }
+                if ($Data[$counter] -> alert_status_mutual === null) {
+                    $html .= " <td> ";
+                    $html .= " <p>Open</p> ";
+                    $html .= " </td> ";
+                }
+                else {
+                    $html .= " <td> ";
+                    $html .= " <p>" . $Data[$counter] -> alert_status_mutual . "</p> ";
+                    $html .= " </td> ";
+                }
                 $html .= " <td class='table_entry'> ";
                 $html .= " <p id='".$Data[$counter] -> report_id."'>" . $this->decide($counter, $Data[$counter] -> report_id, $Data[$counter] -> alert_case_status) . "</p> ";
                 $html .= " </td> ";
@@ -64,7 +78,7 @@ class AlertDecidePage {
             $html .= "<button id='Rejected-". $id ."' class='button decide decide_case decide-".$counter."'>Reject</button>";
         }
         else {
-            $html = $this->transition($id);
+            $html = $this->transition($status, $id);
         }
         return $html;
     }
@@ -73,13 +87,33 @@ class AlertDecidePage {
         $result = explode('-', $decision);
         $decision_result = $result[0];
         $decision_entry = $result[1];
-        $this->update_entry($decision_result, $decision_entry);
-        echo $this->transition($decision_entry);
+        if ($decision_result === 'Closed') {
+            if ($this->validate_entry($decision_entry) === true) {
+                $this->update_entry($decision_result, $decision_entry);
+                echo $this->transition($decision_result, $decision_entry);
+            }
+            else {
+                echo 'alert';
+            }
+        }
+        else {
+            $this->update_entry($decision_result, $decision_entry);
+            echo $this->transition($decision_result, $decision_entry);
+        }
+
     }
 
-    public function transition($id) {
+    public function transition($result, $id) {
         $html = "";
-        $html .= "<button id='Closed-". $id ."' class='button decide close_case'>Close Case</button>";
+        if ($result === 'Rejected') {
+            $html .= "<button id='Closed-". $id ."' class='button decide close_case' disabled>Rejected</button>";
+        }
+        else if ($result === 'Closed') {
+            $html .= "<button id='Closed-". $id ."' class='button decide close_case' disabled>Closed</button>";
+        }
+        else {
+            $html .= "<button id='Closed-". $id ."' class='button decide close_case'>Close Case</button>";
+        }
         return $html;
     }
 
@@ -88,7 +122,7 @@ class AlertDecidePage {
         $LoadData = new LoadData();
         $DataFLP = $LoadData->loadAlertData('alert_status_flp', $decision_entry);
         $DataMutual = $LoadData->loadAlertData('alert_status_mutual', $decision_entry);
-        if (empty($DataFLP) || empty($DataMutual)) {
+        if (empty($DataFLP[0]) || empty($DataMutual[0])) {
             return false;
         }
         return true;

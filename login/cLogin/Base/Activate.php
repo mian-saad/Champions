@@ -17,7 +17,8 @@ class Activate {
           $sql = "CREATE TABLE $recommendationData (
             recommendation_data TEXT,
             recommendation_name TEXT,
-            recommendation_id TEXT,
+            recommendation_email TEXT,
+            recommendation_id VARCHAR(32),
             alert_ID TEXT
         ) $charset_collate;";
           require_once ABSPATH . 'wp-admin/includes/upgrade.php';
@@ -26,7 +27,7 @@ class Activate {
 
     if ($wpdb->get_var("SHOW TABLES LIKE '$commentsData'") != $commentsData) {
         $sql = "CREATE TABLE $commentsData (
-            comment_data TEXT,
+            comment_data VARCHAR(32),
             comment_name TEXT,
             alert_ID TEXT
         ) $charset_collate;";

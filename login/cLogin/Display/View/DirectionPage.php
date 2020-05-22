@@ -9,7 +9,7 @@ class DirectionPage {
 
         // ----
         $html .= " <button class='button' id='alert_case'>Accept/Reject Alert Case</button> ";
-        $html .= " <button class='button' id='case'>Close Arena Case</button> ";
+//        $html .= " <button class='button' id='case'>Close Arena Case</button> ";
         // after accepting/rejecting close button appears
 
         echo $html;

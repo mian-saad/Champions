@@ -162,7 +162,11 @@ class ReportController extends BaseController
     {
         $state_obj = $this->state_list[$this->current_state_code];
 
-        if ($state_obj->validate($response)) { // if answer is valid, lets advance the state
+        if ($state_obj->validate($response) === 'Unregistered') {
+            echo "<h3 style='color: #BB2121'>You Need to register before you can generate Alert</h3>";
+        }
+
+        else if ($state_obj->validate($response)) { // if answer is valid, lets advance the state
             $state_obj->show_warning = false;
 
             $oldstate = $this->current_state_code;
@@ -184,6 +188,7 @@ class ReportController extends BaseController
                 }
             }
         } // else we should be printing some warning
+
         else {
             $state_obj->show_warning = true;
         }

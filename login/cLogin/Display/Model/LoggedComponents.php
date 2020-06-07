@@ -67,4 +67,8 @@ class LoggedComponents {
 
         echo $html;
     }
+
+    public function InviteExperts($InvitationEmail) {
+        wp_mail( "$InvitationEmail", "Champions - Arena Notification Module", "You have been Invited to the Arena.", array('Content-Type: text/html; charset=UTF-8'));
+    }
 }

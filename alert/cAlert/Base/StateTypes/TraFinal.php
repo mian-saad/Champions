@@ -37,29 +37,16 @@ class TraFinal extends TraState
 
     public function generate_html()
     {
+
         $html = $this->generate_hidden_fields($this->report_id);
-            $html .= "<h3 class='tra_question'>ALERT Summary</h3>";
+        $html .= "<h3 class='tra_question'>ALERT Summary</h3>";
 
         foreach ($this->answers as $short_text => $value) {
             $html .= "<p class='summary_tags'>" . $short_text . " : " . $value . "</p>";
         }
 
         $html .= $this->generate_buttons();
-        $html .= "<hr> <h3>Recommendations</h3>";
-
-        global $wpdb;
-        $results = $wpdb->get_results( "SELECT recommendation_data, recommendation_name FROM wp_recommendationData", OBJECT );
-
-        if (!empty($results)){
-        for ($i=0; $i<count($results); $i++) {
-                $html .= "<b>".$results[$i] -> recommendation_name." recommended </b>";
-                $html .= "<b value='".$results[$i] -> recommendation_data."'>" . $results[$i] -> recommendation_data . "</b>";
-                $html .= "</br>";
-            }
-        }
-        else {
-            $html .= "<b>No Recommendations Specific to the Case</b>";
-        }
+        $html .= $this->GetRecommendations($this->GetCategories($this->Recommendation()));
 
         return $html;
     }
@@ -73,5 +60,50 @@ class TraFinal extends TraState
     public function generate_buttons()
     {
         return "<div id='tra_button_pane'><a class='button' href='#' onClick=\"window.location.reload();\" onclick='return false;'>DONE</a> <a class='button' id='tra_submit' href='$this->pdfurl' download>$this->submit_string</a></div>";
+    }
+
+    public function Recommendation() {
+        // check event category of this alert
+        // fetch skills of all alert cases
+        // compare skills of this alert case with all alert cases
+        // if matches then retrieve id of that alert case
+        // chec in recommendation table if its there
+        foreach ($this->answers as $short_text => $value) {
+            if ($short_text === "Event Category") {
+                return $value;
+            }
+        }
+    }
+
+    public function GetCategories($CurrentCategory) {
+        global $wpdb;
+        $RecommendedAlerts = [];
+        // Fetch all categories
+        $Categories = $wpdb->get_results( "SELECT report_id, event_category FROM wp_alert", OBJECT );
+        for ($j=0; $j<count($Categories); $j++) {
+            similar_text($CurrentCategory, $Categories[$j]->event_category, $percentage);
+            if ($percentage>40) {
+                $RecommendedAlerts[$j] = $Categories[$j]->report_id;
+            }
+        }
+        return $RecommendedAlerts;
+    }
+
+    public function GetRecommendations($RecommendedAlertsIDs) {
+        $html = "<hr> <h3>Recommendations</h3>";
+        global $wpdb;
+        if (!empty($RecommendedAlertsIDs)){
+            for ($i=0; $i<count($RecommendedAlertsIDs); $i++) {
+                $Recommendations = $wpdb->get_results( "SELECT recommendation_data, recommendation_name FROM wp_recommendationData WHERE alert_ID='{$RecommendedAlertsIDs[$i]}'", OBJECT );
+                if (!empty($Recommendations[0])) {
+//                    $html .= "<b>".$Recommendations[0] -> recommendation_name." recommended </b>";
+                    $html .= "<b value='".$Recommendations[0] -> recommendation_data."'><li>" . $Recommendations[0] -> recommendation_data . "</li></b>";
+                    $html .= "</br>";
+                }
+            }
+            return $html;
+        }
+        $html .= "<p>No Recommendations for this Case</p>";
+        return $html;
     }
 }

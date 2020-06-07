@@ -163,7 +163,7 @@ class ReportController extends BaseController
         $state_obj = $this->state_list[$this->current_state_code];
 
         if ($state_obj->validate($response) === 'Unregistered') {
-            echo "<h3 style='color: #BB2121'>You Need to register before you can generate Alert</h3>";
+            echo "<h3 style='color: #FFFFFF; background: #b43e36; padding: 10px;text-align: center; '>You Need to register before you can generate Alert</h3>";
         }
 
         else if ($state_obj->validate($response)) { // if answer is valid, lets advance the state
@@ -213,55 +213,6 @@ class ReportController extends BaseController
         return "ERROR";
     }
 
-    public function generate_contact_proposals(){
-        global $wpdb;
-
-
-        // first lets do state of origin
-        $reporter_residence = $this->state_list["M1.2"]->response['reporter_residence'];
-        $lang_pref = $this->lang_country_map[$this->language];
-
-        if(isset($this->state_list["M1.9"])){
-            $crime_loc_country = $this->state_list["M1.9"]->response['crime_loc_country'];
-            $crime_loc_address = $this->state_list["M1.9"]->response['crime_loc_address'];
-            $crime_loc_city = $this->state_list["M1.9"]->response['crime_loc_city'];
-            $crime_loc_postal = $this->state_list["M1.9"]->response['crime_loc_postal'];
-        }else{  // else we have a cyber crime
-            $crime_loc_country = "cyber";
-            $crime_loc_address = "cyber";
-            $crime_loc_city = "cyber";
-            $crime_loc_postal = "cyber";
-        }
-
-
-        /*
-        $crime_loc_country = "Germany";
-        return [
-            "crime_location"=> json_decode(json_encode($wpdb->get_results("SELECT a.name AS agency_name, b.url, b.email AS email, b.phone, c.name FROM `helplines` a, `helpline_contacts` b, `countries` c WHERE a.contact_id = b.id AND b.country_id = c.id AND c.name LIKE '$crime_loc_country'")), True),
-            "language_pref"=> json_decode(json_encode($wpdb->get_results("SELECT a.name AS agency_name, b.url, b.email AS email, b.phone, c.name FROM `helplines` a, `helpline_contacts` b, `countries` c WHERE a.contact_id = b.id AND b.country_id = c.id AND c.name LIKE '$lang_pref'")), True),
-            "residence_state"=> json_decode(json_encode($wpdb->get_results("SELECT a.name AS agency_name, b.url, b.email AS email, b.phone, c.name FROM `helplines` a, `helpline_contacts` b, `countries` c WHERE a.contact_id = b.id AND b.country_id = c.id AND c.name LIKE '$reporter_residence'")), True),
-        ];
-
-
-        */
-
-//        $db = \Cover\DB::getInstance();
-//
-//        $pdo = $db->getConnection();
-//
-//        $helplines_crime_location = $pdo->query( "SELECT a.name AS agency_name, b.url, b.email AS email, b.phone, c.name FROM `helplines` a, `helpline_contacts` b, `countries` c WHERE a.contact_id = b.id AND b.country_id = c.id AND c.name LIKE '%$crime_loc_country%'" )->fetchAll();
-//        $helplines_lang_pref      = $pdo->query( "SELECT a.name AS agency_name, b.url, b.email AS email, b.phone, c.name FROM `helplines` a, `helpline_contacts` b, `countries` c WHERE a.contact_id = b.id AND b.country_id = c.id AND c.name LIKE '%$lang_pref%'" )->fetchAll();
-//        $helplines_resident_state = $pdo->query( "SELECT a.name AS agency_name, b.url, b.email AS email, b.phone, c.name FROM `helplines` a, `helpline_contacts` b, `countries` c WHERE a.contact_id = b.id AND b.country_id = c.id AND c.name LIKE '%$reporter_residence%'" )->fetchAll();
-
-
-//        return [
-//            "crime_location"  => $helplines_crime_location,
-//            "language_pref"   => $helplines_lang_pref,
-//            "residence_state" => $helplines_resident_state
-//        ];
-
-    }
-
     public function generate_pdf($answers)
     {
         $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false); // create TCPDF object with default constructor args
@@ -291,7 +242,7 @@ class ReportController extends BaseController
 
         $charset_collate = $wpdb->get_charset_collate();
 
-        $tra_reports_db_name = $wpdb->prefix . 'tra_reports';
+        $tra_reports_db_name = $wpdb->prefix . 'alert';
 
 
         // lets delete entry if it already exists in the db
@@ -351,7 +302,7 @@ class ReportController extends BaseController
 
     public function send_mail($report_id) {
         global $wpdb;
-        $tra_reports_db_name = $wpdb->prefix . 'tra_reports';
+        $tra_reports_db_name = $wpdb->prefix . 'alert';
         $entries = $wpdb->get_results("SELECT reporter_email, reporter_fName, reporter_lName, reporter_residence FROM $tra_reports_db_name WHERE report_id='$report_id'");
 
         $password = $this->randomPassword();
@@ -364,7 +315,8 @@ class ReportController extends BaseController
         $tempID = rand(0, 999);
         if(!empty($entries)){
             foreach($entries as $row){
-                wp_mail( "$row->reporter_email", "Arena Login Module", $this->string_file['your_email1'] . $password . "<br>" . $this->string_file['your_email1'], array('Content-Type: text/html; charset=UTF-8'));
+//                sending email with credentials to the the one who generates alert
+//                wp_mail( "$row->reporter_email", "Arena Login Module", $this->string_file['your_email1'] . $password . "<br>" . $this->string_file['your_email1'], array('Content-Type: text/html; charset=UTF-8'));
                 $first_name = $row->reporter_fName;
                 $last_name = $row->reporter_lName;
                 $country = $row->reporter_residence;
@@ -372,6 +324,7 @@ class ReportController extends BaseController
             }
             echo "email sent";
         }
+        $this->FLPChecker($email, $report_id);
         $data = array(
             'first_name' => $first_name,
             'last_name' => $last_name,
@@ -381,8 +334,31 @@ class ReportController extends BaseController
             'associatedAlert' => $aAlert,
             'arenaTempID' => $tempID
         );
-        $wpdb->insert("wp_arena", $data);
-        $wpdb->update("wp_tra_reports", array('tempID' => $tempID), array('report_id' => $report_id));
+//        for generating alert without registering
+//        $wpdb->insert("wp_arena", $data);
+//        $wpdb->update("wp_tra_reports", array('tempID' => $tempID), array('report_id' => $report_id));
+    }
+
+    // this function will go in register module
+    public function FLPChecker($Email, $report_id) {
+        global $wpdb;
+        $ArenaRegisteredEmail = $wpdb->get_results( "SELECT email FROM {$wpdb->prefix}arena", OBJECT );
+        $ArenaRegisteredReportId = $wpdb->get_results( "SELECT associatedAlert FROM {$wpdb->prefix}arena WHERE email='$Email'", OBJECT );
+        if ($ArenaRegisteredReportId[0]->associatedAlert === null) {
+            $ArenaRegisteredReportId = $report_id;
+        }
+        else {
+            $ArenaRegisteredReportId = $ArenaRegisteredReportId[0]->associatedAlert . "," . $report_id;
+        }
+        // append associated alert id when generating new alert
+        for ($Counter = 0; $Counter<count($ArenaRegisteredEmail); $Counter++) {
+            $ArenaEmail = $ArenaRegisteredEmail[$Counter]->email;
+            if ($ArenaEmail === $Email) {
+                // if matches then update entry in associatedalert i.e. add report_id of alert in associatedalert
+                $wpdb -> update('wp_arena', array('associatedAlert' => $ArenaRegisteredReportId), array('email' => $ArenaEmail));
+                $wpdb -> update('wp_arena', array('expert_type' => 'FLP'), array('email' => $ArenaEmail));
+            }
+        }
     }
 
     public function randomPassword() {
@@ -395,4 +371,5 @@ class ReportController extends BaseController
         }
         return implode($pass); //turn the array into a string
     }
+
 }

@@ -362,6 +362,21 @@ jQuery(document).ready(function ($) {
 
     });
 
+    // On click at Invitation button
+    $('body').on('click', '#invitation-button', function (e) {
+        //e.preventDefault();
+
+        const req_data = {
+            action: 'summon',
+            id: 'InvitationMechanism',
+            InvitationEmail: $('#invitation-email').val()
+        };
+        jQuery.get(login_ajax.ajaxurl, req_data, function (response) {
+            // $contentBox.html(response);
+            $('#invitation-email').val('');
+        });
+
+    });
 
 
     /* <-- OLD SECTION --> */

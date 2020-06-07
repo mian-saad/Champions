@@ -130,10 +130,19 @@ textarea#RecommendationText {
 
 #DisplayCommentSection {
     text-align: left;
+    padding-left: 0!important;
 }
 
-h4.NameHeader {
-    margin-bottom: 5px!important;
+#DisplayRecommendationsSection {
+    padding-left: 0!important;
+}
+
+#RecommendationsSection {
+    padding-left: 0!important;
+}
+
+#CommentSection {
+    padding-left: 0!important;
 }
 
 .Participants {
@@ -143,4 +152,34 @@ h4.NameHeader {
 .HoverRecommendation {
     background: #82b4cb;
     cursor: pointer;
+}
+
+.alert-status-in-progress {
+    color: #0b2e13;
+}
+
+.alert-status-closed {
+    color: #a93a32;
+}
+
+img.logo {
+    width: 100px;
+    height: 55px;
+    display: inline;
+}
+h4.NameHeader {
+    line-height: 70px;
+}
+
+hr {
+    margin-top: 0!important;
+}
+
+table {
+    table-layout: initial!important;
+}
+
+.row {
+    margin-left: 0!important;
+    margin-right: 0!important;
 }

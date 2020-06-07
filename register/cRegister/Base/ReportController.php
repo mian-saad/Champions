@@ -211,6 +211,7 @@ class ReportController extends BaseController
                 'report_locale' => $this->language,
                 'report_time' => date("Y/m/d H:i"),
                 'report_ip' => $_SERVER['REMOTE_ADDR'],
+                'expert_type' => 'Expert',
             ];
 
             foreach ($this->state_list as $code => $state) {
@@ -246,6 +247,7 @@ class ReportController extends BaseController
             }
             $wpdb->insert($tra_reports_db_name, $answers);
     }
+
 
     public function verification_code($email) {
         $verifyCode = rand(1111, 9999);

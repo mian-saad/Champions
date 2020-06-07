@@ -15,6 +15,32 @@ class ExpertDecidePage {
 
         $html = " <h2>Accept/Reject FLP</h2> ";
         $html .= " <table> ";
+        $html .= " <tr> ";
+        $html .= " <td> ";
+        $html .= " <b>Title</b> ";
+        $html .= " </td> ";
+        $html .= " <td> ";
+        $html .= " <b>First Name</b> ";
+        $html .= " </td> ";
+        $html .= " <td> ";
+        $html .= " <b>Last Name</b> ";
+        $html .= " </td> ";
+        $html .= " <td> ";
+        $html .= " <b>Email</b> ";
+        $html .= " </td> ";
+        $html .= " <td> ";
+        $html .= " <b>Country</b> ";
+        $html .= " </td> ";
+        $html .= " <td> ";
+        $html .= " <b>Skills</b> ";
+        $html .= " </td> ";
+        $html .= " <td> ";
+        $html .= " <b>Expert Type</b> ";
+        $html .= " </td> ";
+        $html .= " <td> ";
+        $html .= " <b>Expert Status</b> ";
+        $html .= " </td> ";
+        $html .= " </tr> ";
         for ($counter = 0; $counter<$length; $counter++) {
             if ($Country[0] === $Data[$counter] -> country) {
                     $html .= " <tr> ";
@@ -78,6 +104,7 @@ class ExpertDecidePage {
         $decision_result = $result[0];
         $decision_entry = $result[1];
         $this->update_entry($decision_result, $decision_entry);
+        $this->SendMail($decision_entry);
     }
 
     public function update_entry($result, $entry) {
@@ -85,5 +112,11 @@ class ExpertDecidePage {
         $wpdb->update("wp_arena", array('expert_status' => $result), array('report_id' => $entry));
     }
 
+    public function SendMail($UserID) {
+        global $wpdb;
+        $Email = $wpdb->get_results( "SELECT email FROM {$wpdb->prefix}arena WHERE report_id='$UserID'", OBJECT );
+        $Email = $Email[0]->email;
+        wp_mail( "$Email", "Arena Login Module", "Your Email Address has been approved.", array('Content-Type: text/html; charset=UTF-8'));
+    }
 
 }

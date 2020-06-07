@@ -8,10 +8,10 @@ class LoadData {
 
         global $wpdb;
         if ($Node=='All') {
-            $alertData = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}tra_reports", OBJECT );
+            $alertData = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}alert", OBJECT );
         }
         else {
-            $alertData = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}tra_reports WHERE report_id='$Node'", OBJECT );
+            $alertData = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}alert WHERE report_id='$Node'", OBJECT );
         }
 
         for ($counter = 0; $counter<count($alertData); $counter++) {

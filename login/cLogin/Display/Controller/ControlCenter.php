@@ -3,10 +3,9 @@
 namespace Contain\Display\Controller;
 
 use Contain\Display\View;
+use Contain\Display\Model;
 
 class ControlCenter {
-
-
 
     // Redirection Conditions
     public function controlLogic($clicked) {
@@ -130,56 +129,9 @@ class ControlCenter {
                 $loggedState->CommentsLogic(sanitize_text_field( $_GET['ID']), $_SESSION['Email'], sanitize_text_field( $_GET['Data']));
                 break;
 
-
-
-
-
-
-
-
-
-
-            /* <-- Old Section --> */
-
-            case 'alerter':
-                $loggedState = new View\DiscussionPage();
-                $loggedState->loggedParticipants();
-                break;
-
-            case 'cmnt':
-                $loggedState = new View\DiscussionPage();
-                $loggedState->loggedAddComments();
-                break;
-
-            case 'showcmnt':
-                $loggedState = new View\DiscussionPage();
-                $loggedState->loggedDisplayComments();
-                break;
-
-            case 'join':
-                $loggedState = new View\LandingPage();
-                $loggedState->loggedAlert();
-                break;
-
-            case 'in_progress':
-                $loggedState = new View\DiscussionPage();
-                $loggedState->loggedPageSection();
-                break;
-
-            case 'addRecommendation':
-                $loggedState = new View\DiscussionPage();
-                $loggedState->loggedDisplayRecommendation();
-                break;
-
-            case 'updateRecommendation':
-                $loggedState = new View\DiscussionPage();
-                $loggedState->loggedUpdateRecommendation();
-                break;
-
-            case 'invitation':
-                $loggedState = new View\DiscussionPage();
-                $inviteEmail = sanitize_text_field( $_GET['inviteEmail'] );
-                $loggedState->send_invite($inviteEmail);
+            case 'InvitationMechanism':
+                $loggedState = new Model\LoggedComponents();
+                $loggedState->InviteExperts(sanitize_text_field( $_GET['InvitationEmail']));
                 break;
         }
         wp_die();

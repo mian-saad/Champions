@@ -23,13 +23,6 @@ class Summon extends BaseController {
     public function summon(){
 
         $clicked = sanitize_text_field( $_GET['id'] );
-
-//        $loggedState = new LandingPage();
-//        $loggedState->InstanceOfCase('saadaziz33@live.com');
-
-//        $loggedState = new Controller\LoadData();
-//        $loggedState->loadAlertData('event_category');
-
         $loggedState = new Controller\ControlCenter();
         $loggedState->controlLogic($clicked);
 

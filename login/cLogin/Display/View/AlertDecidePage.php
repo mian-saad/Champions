@@ -14,6 +14,41 @@ class AlertDecidePage {
 
         $html = " <h2>Accept/Reject Alert Case</h2> ";
         $html .= " <table> ";
+        $html .= " <tr> ";
+        $html .= " <td> ";
+        $html .= " <b>Title</b> ";
+        $html .= " </td> ";
+        $html .= " <td> ";
+        $html .= " <b>First Name</b> ";
+        $html .= " </td> ";
+        $html .= " <td> ";
+        $html .= " <b>Last Name</b> ";
+        $html .= " </td> ";
+        $html .= " <td> ";
+        $html .= " <b>Email</b> ";
+        $html .= " </td> ";
+        $html .= " <td> ";
+        $html .= " <b>Country</b> ";
+        $html .= " </td> ";
+        $html .= " <td> ";
+        $html .= " <b>Event Time</b> ";
+        $html .= " </td> ";
+        $html .= " <td> ";
+        $html .= " <b>Category</b> ";
+        $html .= " </td> ";
+        $html .= " <td> ";
+        $html .= " <b>Subject</b> ";
+        $html .= " </td> ";
+        $html .= " <td> ";
+        $html .= " <b>FLP Status</b> ";
+        $html .= " </td> ";
+        $html .= " <td> ";
+        $html .= " <b>Arena Status</b> ";
+        $html .= " </td> ";
+        $html .= " <td> ";
+        $html .= " <b>Alert Status</b> ";
+        $html .= " </td> ";
+        $html .= " </tr> ";
         for ($counter = 0; $counter<$length; $counter++) {
             if ($Country[0] === $Data[$counter] -> reporter_residence) {
                 $html .= " <tr> ";
@@ -90,6 +125,7 @@ class AlertDecidePage {
         if ($decision_result === 'Closed') {
             if ($this->validate_entry($decision_entry) === true) {
                 $this->update_entry($decision_result, $decision_entry);
+                $this->SendMail($decision_entry, 'Closed');
                 echo $this->transition($decision_result, $decision_entry);
             }
             else {
@@ -98,6 +134,7 @@ class AlertDecidePage {
         }
         else {
             $this->update_entry($decision_result, $decision_entry);
+            $this->SendMail($decision_entry, 'Approved');
             echo $this->transition($decision_result, $decision_entry);
         }
 
@@ -130,7 +167,14 @@ class AlertDecidePage {
 
     public function update_entry($result, $entry) {
         global $wpdb;
-        $wpdb->update("wp_tra_reports", array('alert_case_status' => $result), array('report_id' => $entry));
+        $wpdb->update("wp_alert", array('alert_case_status' => $result), array('report_id' => $entry));
+    }
+
+    public function SendMail($UserID, $State) {
+        global $wpdb;
+        $Email = $wpdb->get_results( "SELECT reporter_email FROM {$wpdb->prefix}alert WHERE report_id='$UserID'", OBJECT );
+        $Email = $Email[0]->reporter_email;
+        wp_mail( "$Email", "Arena Case Module", "Your Case has been ".$State.".", array('Content-Type: text/html; charset=UTF-8'));
     }
 
 }

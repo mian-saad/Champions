@@ -152,6 +152,114 @@
             ]
          },
          {
+            "id":"reporter_residence",
+            "type":"select",
+            "text":"Please Select your Country",
+            "short_text":"Country",
+            "answers":[
+               {
+                  "text":"Germany",
+                  "short_text":"Germany",
+                  "id":"Germany"
+               },
+               {
+                  "text":"Italy",
+                  "short_text":"Italy",
+                  "id":"Italy"
+               },
+               {
+                  "text":"Austria",
+                  "short_text":"Austria",
+                  "id":"Austria"
+               },
+               {
+                  "text":"Hungary",
+                  "short_text":"Hungary",
+                  "id":"Hungary"
+               },
+               {
+                  "text":"Czech Republic",
+                  "short_text":"Czech Republic",
+                  "id":"Czech Republic"
+               },
+               {
+                  "text":"Switzerland",
+                  "short_text":"Switzerland",
+                  "id":"Switzerland"
+               },
+               {
+                  "text":"Spain",
+                  "short_text":"Spain",
+                  "id":"Spain"
+               },
+               {
+                  "text":"Portugal",
+                  "short_text":"Portugal",
+                  "id":"Portugal"
+               },
+               {
+                  "text":"Netherlands",
+                  "short_text":"Netherlands",
+                  "id":"Netherlands"
+               },
+               {
+                  "text":"Norway",
+                  "short_text":"Norway",
+                  "id":"Norway"
+               },
+               {
+                  "text":"Sweden",
+                  "short_text":"Sweden",
+                  "id":"Sweden"
+               },
+               {
+                  "text":"France",
+                  "short_text":"France",
+                  "id":"France"
+               },
+               {
+                  "text":"Poland",
+                  "short_text":"Poland",
+                  "id":"Poland"
+               },
+               {
+                  "text":"Belgium",
+                  "short_text":"Belgium",
+                  "id":"Belgium"
+               },
+               {
+                  "text":"Romania",
+                  "short_text":"Romania",
+                  "id":"Romania"
+               },
+               {
+                  "text":"Bulgaria",
+                  "short_text":"Bulgaria",
+                  "id":"Bulgaria"
+               },
+               {
+                  "text":"Slovakia",
+                  "short_text":"Slovakia",
+                  "id":"Slovakia"
+               },
+               {
+                  "text":"Finland",
+                  "short_text":"Finland",
+                  "id":"Finland"
+               },
+               {
+                  "text":"Iceland",
+                  "short_text":"Iceland",
+                  "id":"Iceland"
+               },
+               {
+                  "text":"Croatia",
+                  "short_text":"Croatia",
+                  "id":"Croatia"
+               }
+            ]
+         },
+         {
             "id":"reporter_fName",
             "text":"Please provide your First Name",
             "short_text":"First Name",
@@ -167,12 +275,6 @@
             "id":"reporter_email",
             "text":"Please provide your Email Address",
             "short_text":"Email",
-            "type":"text"
-         },
-         {
-            "id":"reporter_residence",
-            "text":"What is your country of residence.",
-            "short_text":"Residence",
             "type":"text"
          },
          {

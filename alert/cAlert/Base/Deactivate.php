@@ -12,7 +12,7 @@ class Deactivate
 
         $charset_collate = $wpdb->get_charset_collate();
 
-        $tra_reports_db_name = $wpdb->prefix . 'tra_reports';
+        $tra_reports_db_name = $wpdb->prefix . 'alert';
         $sql = "DROP TABLE IF EXISTS $tra_reports_db_name;";
         $wpdb->query($sql);
 

@@ -38,6 +38,8 @@ class Shortcode extends BaseController
 
         //Enqueuing JQuery
         wp_enqueue_script('jquery');
+        wp_enqueue_script('jquery');
+//        wp_enqueue_script('media', $this->plugin_url . 'assets/login.png');
 
         // Enqueue JS and CSS
         wp_enqueue_style('login_css_bootstrap', $this->plugin_url . 'assets/login-bootstrap.css');

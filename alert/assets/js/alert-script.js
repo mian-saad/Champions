@@ -63,17 +63,36 @@ jQuery(document).ready(function ($) {
                 .html(response)
                 .animate({ opacity: 1 }, 100);
 
-            // lets initiialize dateTimePicker here
-            $('.picker').datetimepicker({
-                allowBlank: true,
-                maxDate: 0,
-                onChangeDateTime: function (ct, $i) {
-                    date = new Date();
-                    if (ct.getDay() === date.getDay() && ct.getMonth() === date.getMonth() && ct.getHours() > date.getHours()) {
-                        $i.datetimepicker('reset');
-                    }
-                },
-            });
+            // let x = $('h3.tra_question').text();
+
+            if ($('h3.tra_question').text() === 'Event time') {
+                // lets initiialize dateTimePicker here
+                $('.picker').datetimepicker({
+                    allowBlank: true,
+                    maxDate: 0,
+                    onChangeDateTime: function (ct, $i) {
+                        date = new Date();
+                        if (ct.getDay() === date.getDay() && ct.getMonth() === date.getMonth() && ct.getHours() > date.getHours()) {
+                            $i.datetimepicker('reset');
+                        }
+                    },
+                });
+            }
+            else {
+                // lets initiialize dateTimePicker here
+                $('.picker').datetimepicker({
+                    allowBlank: true,
+                    minDate: -0,
+                    timepicker: false,
+                    onChangeDateTime: function (ct, $i) {
+                        date = new Date();
+                        if (ct.getDay() === date.getDay() && ct.getMonth() === date.getMonth() && ct.getHours() > date.getHours()) {
+                            $i.datetimepicker('reset');
+                        }
+                    },
+                });
+            }
+
         });
     });
 

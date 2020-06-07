@@ -85,7 +85,7 @@ class TraComposedQuestion extends TraState {
     public function generate_select_question($answer) {
         $counter = 0; // need it for labeling and stuff
         $html = '<div class="tra_select_answers ">';
-        $html .= "<select id='title' name='title'>";
+        $html .= "<select id='".$answer['id']."' name='".$answer['id']."'>";
 
         foreach ($answer['answers'] as $answer_option) {
             // if we got something in response

@@ -16,6 +16,8 @@ class Enqueue extends BaseController {
 
         //Enqueuing JQuery
         wp_enqueue_script('jquery');
+        wp_enqueue_script('media-upload');
+        wp_enqueue_media();
 
         // Enqueue JS and CSS
         wp_enqueue_style('login_css_bootstrap', $this->plugin_url . 'assets/login-bootstrap.css');

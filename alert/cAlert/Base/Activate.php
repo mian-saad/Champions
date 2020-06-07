@@ -13,7 +13,7 @@ class Activate
 
         $charset_collate = $wpdb->get_charset_collate();
 
-        $tra_reports_db_name = $wpdb->prefix . 'tra_reports';
+        $tra_reports_db_name = $wpdb->prefix . 'alert';
 
         if ($wpdb->get_var("SHOW TABLES LIKE '$tra_reports_db_name'") != $tra_reports_db_name) {
 

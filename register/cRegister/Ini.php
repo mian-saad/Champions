@@ -1,10 +1,10 @@
 <?php
 /**
- * @package TakedownQuestionsPlugin
+ * @package Register
  */
 namespace Comprise;
 
-final class Init
+final class Ini
 {
     /**
      * Store all the classes inside an array

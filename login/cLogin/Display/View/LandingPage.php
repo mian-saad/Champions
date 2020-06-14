@@ -273,7 +273,7 @@ class LandingPage {
             $Id = $Id1 .",".$LoadArenaClosedAssociatedAlertData[0];
             $wpdb->update("wp_arena", array('ClosedAssociatedAlert' => $Id), array('email' => $Email));
             // add if flp condition
-            // if $Email === all tra_reports email
+            // if $Email === all login_reports email
             $LoadArenaData = new LoadData();
             $LoadArenaExpertTypeData = $LoadArenaData->loadArenaData('expert_type', $Email);
 

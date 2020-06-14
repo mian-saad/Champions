@@ -45,7 +45,7 @@ class Shortcodes extends BaseController
         wp_enqueue_script('alert_js_script', $this->plugin_url . 'assets/js/alert-script.js', array('jquery'));
 
         wp_enqueue_script('alert_js_script', $this->plugin_url . 'assets/js/alert-script.js', array('jquery'));
-        wp_localize_script('alert_js_script', 'tra_object', array(
+        wp_localize_script('alert_js_script', 'alert_object', array(
             'ajaxurl' => admin_url('admin-ajax.php'),
             'nextNonce' => wp_create_nonce('myajax-next-nonce'),
         ));

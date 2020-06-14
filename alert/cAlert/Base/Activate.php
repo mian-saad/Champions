@@ -13,12 +13,12 @@ class Activate
 
         $charset_collate = $wpdb->get_charset_collate();
 
-        $tra_reports_db_name = $wpdb->prefix . 'alert';
+        $alert_reports_db_name = $wpdb->prefix . 'alert';
 
-        if ($wpdb->get_var("SHOW TABLES LIKE '$tra_reports_db_name'") != $tra_reports_db_name) {
+        if ($wpdb->get_var("SHOW TABLES LIKE '$alert_reports_db_name'") != $alert_reports_db_name) {
 
             // creates states table
-            $sql = "CREATE TABLE $tra_reports_db_name (
+            $sql = "CREATE TABLE $alert_reports_db_name (
                 report_id VARCHAR(32),
                 report_time TEXT,
                 report_locale TEXT,

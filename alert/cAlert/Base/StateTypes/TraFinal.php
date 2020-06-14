@@ -39,7 +39,7 @@ class TraFinal extends TraState
     {
 
         $html = $this->generate_hidden_fields($this->report_id);
-        $html .= "<h3 class='tra_question'>ALERT Summary</h3>";
+        $html .= "<h3 class='alert_question'>ALERT Summary</h3>";
 
         foreach ($this->answers as $short_text => $value) {
             $html .= "<p class='summary_tags'>" . $short_text . " : " . $value . "</p>";
@@ -59,7 +59,7 @@ class TraFinal extends TraState
 
     public function generate_buttons()
     {
-        return "<div id='tra_button_pane'><a class='button' href='#' onClick=\"window.location.reload();\" onclick='return false;'>DONE</a> <a class='button' id='tra_submit' href='$this->pdfurl' download>$this->submit_string</a></div>";
+        return "<div id='alert_button_pane'><a class='button' href='#' onClick=\"window.location.reload();\" onclick='return false;'>DONE</a> <a class='button' id='alert_submit' href='$this->pdfurl' download>$this->submit_string</a></div>";
     }
 
     public function Recommendation() {
@@ -99,6 +99,9 @@ class TraFinal extends TraState
 //                    $html .= "<b>".$Recommendations[0] -> recommendation_name." recommended </b>";
                     $html .= "<b value='".$Recommendations[0] -> recommendation_data."'><li>" . $Recommendations[0] -> recommendation_data . "</li></b>";
                     $html .= "</br>";
+                }
+                else {
+                    $html .= "<p>No Recommendations for this Case</p>";
                 }
             }
             return $html;

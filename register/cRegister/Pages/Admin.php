@@ -36,10 +36,10 @@ class Admin extends BaseController
     public function setPages(){
         $this->pages = array(
             array(
-                'page_title' => 'Takedown Questionnaire Plugin',
-                'menu_title' => 'TakedownRA',
+                'page_title' => 'Arena Register Plugin',
+                'menu_title' => 'Arena Plugin',
                 'capability' => 'manage_options',
-                'menu_slug' => 'tqc_plugin',
+                'menu_slug' => 'arena_plugin',
                 'callback' => array($this->callbacks, 'adminDashboard'),
                 'icon_url' => 'dashicons-universal-access-alt',
                 'position' => 110,
@@ -50,7 +50,7 @@ class Admin extends BaseController
     public function setSubPages(){
         $this->subpages = array(
             array(
-                'parent_slug' => 'tqc_plugin',
+                'parent_slug' => 'arena_plugin',
                 'page_title' => 'Custom Post Types',
                 'menu_title' => 'testitem1',
                 'capability' => 'manage_options',

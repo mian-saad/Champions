@@ -18,7 +18,7 @@ class TraGDPR extends TraState
     public function generate_html()
     {
         $html = $this->generate_hidden_fields($this->report_id);
-        $html .= "<form id='tra_question_form'>";
+        $html .= "<form id='alert_question_form'>";
         $html .= $this->generate_question_text($this->state['state_text']);
         $html .= $this->generate_checkbox_question($this->state['state_answers'], $this->state['id']);
         $html .= "</form>";
@@ -39,10 +39,10 @@ class TraGDPR extends TraState
 
     public function generate_checkbox_question($answer_array, $name_string)
     {
-        $html = '<div class="tra_checkbox_answers">';
+        $html = '<div class="alert_checkbox_answers">';
 
         foreach ($answer_array as $answer_option) {
-            $html .= '<div class="tra_horizontal_choice"><input type="checkbox" class="tra_checkbox" name="' . $this->state['id'] . '" id="' . $answer_option['id'] . '" value="' . $answer_option['id'] . '" required><label for="' . $answer_option['id'] . '">' . $answer_option['text'] . '</label></div>';
+            $html .= '<div class="alert_horizontal_choice"><input type="checkbox" class="alert_checkbox" name="' . $this->state['id'] . '" id="' . $answer_option['id'] . '" value="' . $answer_option['id'] . '" required><label for="' . $answer_option['id'] . '">' . $answer_option['text'] . '</label></div>';
         }
         $html .= '</div>';
         return $html;
@@ -50,6 +50,6 @@ class TraGDPR extends TraState
 
     public function generate_buttons()
     {
-        return "<div id='tra_button_pane'><a class='button' id='tra_continue' href='#' onclick='return false;'>$this->continue_string</a></div>";
+        return "<div id='alert_button_pane'><a class='button' id='alert_continue' href='#' onclick='return false;'>$this->continue_string</a></div>";
     }
 }

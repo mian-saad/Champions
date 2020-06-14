@@ -36,6 +36,6 @@ class TraPoliceCall extends TraState
 
     public function generate_buttons()
     {
-        return "<div id='tra_button_pane'><a class='button' id='tra_submit' href='#' onclick='return false;'>$this->button_string</a></div>";
+        return "<div id='alert_button_pane'><a class='button' id='alert_submit' href='#' onclick='return false;'>$this->button_string</a></div>";
     }
 }

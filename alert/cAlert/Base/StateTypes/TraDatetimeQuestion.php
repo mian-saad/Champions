@@ -25,10 +25,10 @@ class TraDatetimeQuestion extends TraState
     {
         $html = $this->generate_hidden_fields($this->report_id);
         if($this->state['show_header']=="true"){
-            $html .= "<h3 class='tra_question'>" . $this->state['short_text'] . "</h3>";
+            $html .= "<h3 class='alert_question'>" . $this->state['short_text'] . "</h3>";
         }
 
-        $html .= "<form id='tra_question_form'>";
+        $html .= "<form id='alert_question_form'>";
         $html .= "<script>jQuery.datetimepicker.setLocale('$this->locale')</script>";
         $html .= $this->generate_question_text($this->state['state_text']);
         $html .= '<input class="picker" type="text" name="' . $this->state['id'] . '" value="' . $this->response[$this->state['id']] . '" />';
@@ -51,7 +51,7 @@ class TraDatetimeQuestion extends TraState
 
     public function generate_buttons()
     {
-        return "<div id='tra_button_pane'><a class='button' id='tra_back' href='#' onclick='return false;'>$this->back_string</a> <a class='button' id='tra_continue' href='#' onclick='return false;'>$this->continue_string</a></div>";
+        return "<div id='alert_button_pane'><a class='button' id='alert_back' href='#' onclick='return false;'>$this->back_string</a> <a class='button' id='alert_continue' href='#' onclick='return false;'>$this->continue_string</a></div>";
     }
 
     public function generate_readable_response_array()

@@ -23,7 +23,7 @@ class TraTextQuestion extends TraState
     {
         $html = $this->generate_hidden_fields($this->report_id);
 
-        $html .= "<form id='tra_question_form'>";
+        $html .= "<form id='alert_question_form'>";
         $html .= $this->generate_question_text($this->state['state_text']);
         $html .= '<input type="text" name="' . $this->state['id'] . '" value="' . $this->response[$this->state['id']] . '" />';
         $html .= "</form>";
@@ -45,7 +45,7 @@ class TraTextQuestion extends TraState
 
     public function generate_buttons()
     {
-        return "<div id='tra_button_pane'><a class='button' id='tra_back' href='#' onclick='return false;'>$this->back_string</a> <a class='button' id='tra_continue' href='#' onclick='return false;'>$this->continue_string</a></div>";
+        return "<div id='alert_button_pane'><a class='button' id='alert_back' href='#' onclick='return false;'>$this->back_string</a> <a class='button' id='alert_continue' href='#' onclick='return false;'>$this->continue_string</a></div>";
     }
 
     public function generate_readable_response_array()

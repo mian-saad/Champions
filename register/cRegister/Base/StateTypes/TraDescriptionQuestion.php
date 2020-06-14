@@ -25,7 +25,7 @@ class TraDescriptionQuestion extends TraState
         $html .= $this->generate_question_title($this->state['short_text']);
         $html .= "<form id='arena_question_form'>";
         $html .= $this->generate_question_text($this->state['state_text']);
-        $html .= "<textarea id='tra_text_big' name='" . $this->state['id'] . "' rows='10'>" . $this->response[$this->state['id']] . "</textarea>";
+        $html .= "<textarea id='register_text_big' name='" . $this->state['id'] . "' rows='10'>" . $this->response[$this->state['id']] . "</textarea>";
         $html .= "</form>";
         $html .= $this->generate_buttons();
         $html .= $this->generate_warning();
@@ -44,7 +44,7 @@ class TraDescriptionQuestion extends TraState
 
     public function generate_buttons()
     {
-        return "<div id='tra_button_pane'><a class='button' id='arena_back' href='#' onclick='return false;'>$this->back_string</a> <a class='button' id='arena_continue' href='#' onclick='return false;'>$this->continue_string</a></div>";
+        return "<div id='register_button_pane'><a class='button' id='arena_back' href='#' onclick='return false;'>$this->back_string</a> <a class='button' id='arena_continue' href='#' onclick='return false;'>$this->continue_string</a></div>";
     }
 
     public function generate_readable_response_array()

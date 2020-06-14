@@ -71,8 +71,8 @@ class ReportController extends BaseController
         $this->current_step_counter = 0;
 
         // read json
-        $this->state_file = json_decode(file_get_contents($this->plugin_path . "assets/base/" . $language . "/tra_states.json"), true);
-        $this->string_file = json_decode(file_get_contents($this->plugin_path . "assets/base/" . $language . "/tra_strings.json"), true);
+        $this->state_file = json_decode(file_get_contents($this->plugin_path . "assets/base/" . $language . "/alert_states.json"), true);
+        $this->string_file = json_decode(file_get_contents($this->plugin_path . "assets/base/" . $language . "/alert_strings.json"), true);
     }
 
     // generates the content for the current state
@@ -242,13 +242,13 @@ class ReportController extends BaseController
 
         $charset_collate = $wpdb->get_charset_collate();
 
-        $tra_reports_db_name = $wpdb->prefix . 'alert';
+        $alert_reports_db_name = $wpdb->prefix . 'alert';
 
 
         // lets delete entry if it already exists in the db
-        $entries = $wpdb->get_results("SELECT report_id FROM ".$tra_reports_db_name." WHERE report_id=\"".$this->report_id."\"");
+        $entries = $wpdb->get_results("SELECT report_id FROM ".$alert_reports_db_name." WHERE report_id=\"".$this->report_id."\"");
         if(sizeof($entries)!= 0){
-            $wpdb->get_results("DELETE FROM ".$tra_reports_db_name." WHERE report_id=\"".$this->report_id."\"");
+            $wpdb->get_results("DELETE FROM ".$alert_reports_db_name." WHERE report_id=\"".$this->report_id."\"");
         }
 
 
@@ -296,14 +296,14 @@ class ReportController extends BaseController
                 }
             }
         }
-        $wpdb->insert($tra_reports_db_name, $answers);
+        $wpdb->insert($alert_reports_db_name, $answers);
         echo "";
     }
 
     public function send_mail($report_id) {
         global $wpdb;
-        $tra_reports_db_name = $wpdb->prefix . 'alert';
-        $entries = $wpdb->get_results("SELECT reporter_email, reporter_fName, reporter_lName, reporter_residence FROM $tra_reports_db_name WHERE report_id='$report_id'");
+        $alert_reports_db_name = $wpdb->prefix . 'alert';
+        $entries = $wpdb->get_results("SELECT reporter_email, reporter_fName, reporter_lName, reporter_residence FROM $alert_reports_db_name WHERE report_id='$report_id'");
 
         $password = $this->randomPassword();
         echo $password;
@@ -336,7 +336,7 @@ class ReportController extends BaseController
         );
 //        for generating alert without registering
 //        $wpdb->insert("wp_arena", $data);
-//        $wpdb->update("wp_tra_reports", array('tempID' => $tempID), array('report_id' => $report_id));
+//        $wpdb->update("wp_alert_reports", array('tempID' => $tempID), array('report_id' => $report_id));
     }
 
     // this function will go in register module

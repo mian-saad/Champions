@@ -12,10 +12,10 @@ class Activate
         global $wpdb;
         $charset_collate = $wpdb->get_charset_collate();
 
-        $tra_reports_db_name = $wpdb->prefix . 'arena';
+        $register_reports_db_name = $wpdb->prefix . 'arena';
 
-        if ($wpdb->get_var("SHOW TABLES LIKE '$tra_reports_db_name'") != $tra_reports_db_name) {
-            $sql = "CREATE TABLE $tra_reports_db_name (
+        if ($wpdb->get_var("SHOW TABLES LIKE '$register_reports_db_name'") != $register_reports_db_name) {
+            $sql = "CREATE TABLE $register_reports_db_name (
                 report_id VARCHAR(32),
                 report_locale TEXT,
                 report_time TEXT,

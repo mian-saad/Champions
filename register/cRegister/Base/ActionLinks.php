@@ -1,6 +1,6 @@
 <?php
 /**
- * @package  TakedownQuestionsPlugin
+ * @package  Register
  */
 namespace Comprise\Base;
 
@@ -18,7 +18,7 @@ class ActionLinks extends BaseController
     // enqueues documents
     public function settings_link($links)
     {
-        $settings_link = '<a href="admin.php?page=takedown_questionnaire_plugin">Settings</a>';
+        $settings_link = '<a href="admin.php?page=arena_register_questionnaire_plugin">Settings</a>';
         array_push($links, $settings_link);
         return $links;
     }

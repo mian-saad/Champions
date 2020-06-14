@@ -23,9 +23,9 @@ class TraDescriptionQuestion extends TraState
     {
         $html = $this->generate_hidden_fields($this->report_id);
         if($this->state['show_header']=="true"){
-            $html .= "<h4 class='tra_question'>" . $this->state['state_text'] . "</h4>";
+            $html .= "<h4 class='alert_question'>" . $this->state['state_text'] . "</h4>";
         }
-        $html .= "<form id='tra_question_form'>";
+        $html .= "<form id='alert_question_form'>";
         foreach ($this->state['state_answers'] as $answer) {
             $html .= $this->generate_question_text($answer['text']);
             $html .= $this->generate_field_warning($answer['id']);
@@ -33,10 +33,10 @@ class TraDescriptionQuestion extends TraState
             if ($answer['type'] == 'text') {
                 $html .= "<input type='text' name='" . $answer['id'] . "' value='" . $this->response[$answer['id']] . "' required><br>";
             } else if ($answer['type'] == 'description') {
-                $html .= "<textarea id='tra_text_big' name='" . $answer['id'] . "' rows='10'>" . $this->response[$answer['id']] . "</textarea>";
+                $html .= "<textarea id='alert_text_big' name='" . $answer['id'] . "' rows='10'>" . $this->response[$answer['id']] . "</textarea>";
             } else if ($answer['type'] == 'date') {
                 $html .= "<input rows='10' class='picker' type='text' name='" . $answer['id'] . "' value='" . $this->response[$this->state['id']] . "' />";
-//                $html .= "<textarea id='tra_text_big' name='" . $answer['id'] . "' rows='10'>" . $this->response[$answer['id']] . "</textarea>";
+//                $html .= "<textarea id='alert_text_big' name='" . $answer['id'] . "' rows='10'>" . $this->response[$answer['id']] . "</textarea>";
             }
         }
         $html .= "</form>";
@@ -59,7 +59,7 @@ class TraDescriptionQuestion extends TraState
 
     public function generate_buttons()
     {
-        return "<div id='tra_button_pane'><a class='button' id='tra_back' href='#' onclick='return false;'>$this->back_string</a> <a class='button' id='tra_continue' href='#' onclick='return false;'>$this->continue_string</a></div>";
+        return "<div id='alert_button_pane'><a class='button' id='alert_back' href='#' onclick='return false;'>$this->back_string</a> <a class='button' id='alert_continue' href='#' onclick='return false;'>$this->continue_string</a></div>";
     }
 
     public function generate_readable_response_array()

@@ -20,10 +20,10 @@ class TraComposedQuestion extends TraState {
     public function generate_html() {
         $html="";
         if($this->state['show_header']=="true"){
-            $html .= "<h3 class='tra_question'>" . $this->state['state_text'] . "</h3>";
+            $html .= "<h3 class='alert_question'>" . $this->state['state_text'] . "</h3>";
         }
         $html .= $this->generate_hidden_fields($this->report_id);
-        $html .= "<form id='tra_question_form'>";
+        $html .= "<form id='alert_question_form'>";
 
         $totalItemPerLine = 1;
         $totalItem = 1;
@@ -79,21 +79,21 @@ class TraComposedQuestion extends TraState {
     }
 
     public function generate_buttons() {
-        return "<div id='tra_button_pane'><a class='button' id='tra_back' href='#' onclick='return false;'>$this->back_string</a> <a class='button' id='tra_continue' href='#' onclick='return false;'>$this->continue_string</a></div>";
+        return "<div id='alert_button_pane'><a class='button' id='alert_back' href='#' onclick='return false;'>$this->back_string</a> <a class='button' id='alert_continue' href='#' onclick='return false;'>$this->continue_string</a></div>";
     }
 
     public function generate_select_question($answer) {
         $counter = 0; // need it for labeling and stuff
-        $html = '<div class="tra_select_answers ">';
+        $html = '<div class="alert_select_answers ">';
         $html .= "<select id='".$answer['id']."' name='".$answer['id']."'>";
 
         foreach ($answer['answers'] as $answer_option) {
             // if we got something in response
             if (!empty($this->response) and array_key_exists($answer['id'], $this->response) and $this->response[$answer['id']] == $answer_option['id']) {
                 // this checkbox was checked previously
-                $html .= '<div class="tra_horizontal_choice"><option class="tra_quiz_select" name="' . $answer['id'] . '" id="' . $answer_option['id'] . $counter . '" value="' . $answer_option['id'] . '" selected><label for="' . $answer_option['id'] . $counter . '">' . $answer_option['text'] . '</label></div>';
+                $html .= '<div class="alert_horizontal_choice"><option class="alert_quiz_select" name="' . $answer['id'] . '" id="' . $answer_option['id'] . $counter . '" value="' . $answer_option['id'] . '" selected><label for="' . $answer_option['id'] . $counter . '">' . $answer_option['text'] . '</label></div>';
             } else { // else
-                $html .= '<div class="tra_horizontal_choice"><option class="tra_quiz_select" name="' . $answer['id'] . '" id="' . $answer_option['id'] . $counter . '" value="' . $answer_option['id'] . '" ><label for="' . $answer_option['id'] . $counter . '">' . $answer_option['text'] . '</label></div>';
+                $html .= '<div class="alert_horizontal_choice"><option class="alert_quiz_select" name="' . $answer['id'] . '" id="' . $answer_option['id'] . $counter . '" value="' . $answer_option['id'] . '" ><label for="' . $answer_option['id'] . $counter . '">' . $answer_option['text'] . '</label></div>';
             }
             $counter += 1;
         }

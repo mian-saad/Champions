@@ -24,7 +24,7 @@ class TraYesNoQuestion extends TraState
     public function generate_html()
     {
         $html = $this->generate_hidden_fields($this->report_id);
-        $html .= "<form id='tra_question_form'>";
+        $html .= "<form id='alert_question_form'>";
         $html .= $this->generate_question_text($this->state['state_text']);
         $html .= "</form>";
         $html .= $this->generate_buttons();
@@ -44,7 +44,7 @@ class TraYesNoQuestion extends TraState
 
     public function generate_buttons()
     {
-        return "<div id='tra_button_pane'><a class='button' id='tra_back' href='#' onclick='return false;'>$this->back_string</a> <a class='button' id='tra_yes' href='#' onclick='return false;'>$this->yes_string</a> <a class='button' id='tra_no' href='#' onclick='return false;'>$this->no_string</a></div>";
+        return "<div id='alert_button_pane'><a class='button' id='alert_back' href='#' onclick='return false;'>$this->back_string</a> <a class='button' id='alert_yes' href='#' onclick='return false;'>$this->yes_string</a> <a class='button' id='alert_no' href='#' onclick='return false;'>$this->no_string</a></div>";
     }
 
     public function generate_readable_response_array()

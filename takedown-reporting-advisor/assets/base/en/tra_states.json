@@ -1,0 +1,384 @@
+{  
+   "M0.0":{
+      "state_text":"Welcome to the TAKEDOWN Reporting Advisor. This tool will guide you through the crime reporting process. The reporting process is fully anonymous. Any data requested will be used to help you report a crime and generate a report that can be sent to the competent Law Enforcement Agency. To provide you with accurate and relevant information on the Law Enforcement Agency competent for your case this tool will geolocate your IP. This data will be erased inmediately afterwards and will not be kept in the system.<br><br>For more information see <a href='https://ec.europa.eu/info/law/law-topic/data-protection_en'>Terms and Conditions</a>",
+      "short_text":"GDPR agreement",
+      "id":"gdpr_agreement",
+      "state_type":"gdpr",
+      "state_answers":[  
+         {  
+            "id":"gdpr_agree",
+            "text":"I understand that personal data from other individuals cannot be uploaded and shared through this Reporting Advisor or any of the sections and tools of this website."
+         }
+      ]      
+   },
+   "M1.1":{
+      "short_text":"Immediate danger",
+      "id":"immediate_danger",
+      "state_text":"Are you in immediate danger and you need to call the police?",
+      "state_type":"yesno"
+   },
+   "M1.2":{  
+      "state_text":"Reporter Information Survey",
+      "state_type":"composed",
+      "show_header": "false",
+      "id": "reporter_infos",
+      "state_answers":[
+         {
+            "id":"reporter_age",
+            "text":"Please provide your age.",
+            "short_text":"Age",
+            "type":"text"
+         },
+         {
+            "id":"reporter_residence",
+            "text":"What is your country of residence.",
+            "short_text":"Residence",
+            "type":"text"
+         },
+         {
+            "id":"reporter_gender",
+            "type":"radio",
+            "text":"Please provide your sex.",
+            "short_text":"Gender",
+            "answers":[
+               {
+                  "text":"Male",
+                  "short_text":"Male",
+                  "id":"male"
+               },
+               {
+                  "text":"Female",
+                  "short_text":"Female",
+                  "id":"female"
+               },
+               {
+                  "text":"Other",
+                  "short_text":"Other",
+                  "id":"other"
+               }
+            ]
+         },
+         {
+            "id":"reporter_involvement",
+            "type":"radio",
+            "text":"What is your role in the criminal incident?",
+            "short_text":"Reporter's role",
+            "answers":[
+               {
+                  "text":"I am a victim of a criminal event",
+                  "short_text":"Victim",
+                  "id":"victim"
+               },
+               {
+                  "text":"I am reporting on victim's behalf",
+                  "short_text":"Reporter on behalf of victim",
+                  "id":"behalfReporter"
+               },
+               {
+                  "text":"I am an observer of a criminal event",
+                  "short_text":"Observer",
+                  "id":"observer"
+               },
+               {
+                  "text":"Other",
+                  "short_text":"Other",
+                  "id":"other"
+               }
+            ]
+         }
+      ]
+   },
+   "M1.3":{
+      "state_type":"police_call",
+      "state_text":"Please contact the police directly."
+   },
+   "M1.4":{
+      "state_text":"Please specify the approximate time of the suspect event.",
+      "id":"event_time",
+      "short_text":"Incident time",
+      "state_type":"datetime"
+   },
+   "M1.5":{
+      "state_text":"How would you categorize the occurred suspect event?",
+      "short_text":"Event category",
+      "id":"event_category",
+      "state_type":"checkbox",
+      "state_answers":[
+         {
+            "id":"organized_crime",
+            "text":"Organized crime"
+         },
+         {
+            "id":"terrorism",
+            "text":"Terrorism"
+         },
+         {
+            "id":"money_laundering",
+            "text":"Money Laundering"
+         },
+         {
+            "id":"corruption",
+            "text":"Corruption"
+         },
+         {
+            "id":"document_fraud",
+            "text":"Document Fraud"
+         },
+         {
+            "id":"human_trafficking",
+            "text":"Human trafficking"
+         },
+         {
+            "id":"online_radicalization",
+            "text":"Online Radicalization"
+         },
+         {
+            "id":"child_pornography",
+            "text":"Child Pornography"
+         },
+         {
+            "id":"identity_theft",
+            "text":"Identity Theft \/ Phishing"
+         },
+         {
+            "id":"infection_of_systems",
+            "text":"Infection of Systems with Malware"
+         },
+         {
+            "id":"cyber_abuse",
+            "text":"Cyber Bullying \/ Abuse"
+         },
+         {
+            "id":"cyber_fraud",
+            "text":"Cyber Fraud"
+         },
+         {
+            "id":"other",
+            "text":"Other"
+         }
+      ]
+   },
+   "M1.6":{
+      "state_text":"Do you know the suspect personally?",
+      "short_text":"Knowledge about the suspect",
+      "id":"info_suspect",
+      "state_type":"yesno"
+   },
+   "M1.6a":{
+      "state_text":"Do you know the victim of the suspect event personally? Do you have any further information on the victim?",
+      "short_text":"Victim knowledge",
+      "id":"info_victim",
+      "state_type":"yesno"
+   },
+   "M1.7":{
+      "short_text":"Incident description",
+      "state_text":"Please provide us a description of what has happened.",
+      "id":"event_description",
+      "state_type":"description"
+   },
+   "M1.8":{
+      "state_type":"result"
+   },
+   "M1.9": {
+      "state_text": "Please specify the location of the criminal event. You can either specify an address or name a more general location of the incident.",
+      "state_type": "composed",
+      "id": "crime_loc",
+      "show_header": "true",
+      "state_answers": [
+         {
+            "id": "crime_loc_address",
+            "text": "Address",
+            "short_text": "Crime-location address",
+            "type": "text"
+         },
+         {
+            "id": "crime_loc_country",
+            "text": "Country",
+            "short_text": "Crime-location country",
+            "type": "text"
+         },
+         {
+            "id": "crime_loc_city",
+            "text": "City",
+            "short_text": "Crime-location city",
+            "type": "text"
+         },
+         {
+            "id": "crime_loc_postal",
+            "text": "Postal code",
+            "short_text": "Crime-location postal code",
+            "type": "text"
+         }
+      ]
+   },
+   "M2.1":{
+      "state_text":"How did the suspect contact you?",
+      "short_text":"Contact Type",
+      "state_type":"radio",
+      "id":"contact_type",
+      "state_answers":[  
+         {  
+            "id":"email",
+            "text":"E-mail"
+         },
+         {  
+            "id":"phone_sms",
+            "text":"Phone call or SMS"
+         },
+         {  
+            "id":"sn_app",
+            "text":"Social Network or App"
+         },
+         {  
+            "id":"website",
+            "text":"Other website"
+         },
+         {  
+            "id":"software",
+            "text":"Other software"
+         },
+         {  
+            "id":"other",
+            "text":"Other"
+         }
+      ]
+   },
+   "M2.2":{ 
+      "state_text":"Please specify time of email receival.",
+      "short_text":"Email receival time",
+      "id":"email_time",
+      "state_type":"datetime"
+   },
+   "M2.3":{ 
+      "state_text":"Please specify the Email address of the malicious sender.",
+      "short_text":"Email sender",
+      "id":"email_sender",
+      "state_type":"text"
+   },
+   "M2.4":{ 
+      "state_text":"Please specify time of phone contact.",
+      "short_text":"Phone contact time",
+      "id":"phone_time",
+      "state_type":"datetime"
+   },
+   "M2.5":{ 
+      "state_text":"Please specify the phone number from which you were contacted.",
+      "short_text":"Suspect phone number",
+      "id":"phone_number",
+      "state_type":"text"
+   },
+   "M2.6":{ 
+      "state_text":"What were you asked to do?",
+      "short_text":"Malicious request",
+      "state_type":"radio",
+      "id":"request_type",
+      "state_answers":[  
+         {  
+            "id":"download_open",
+            "text":"Download a file - open the attachment"
+         },
+         {  
+            "id":"link_sensible_data",
+            "text":"Follow a link - provide sensible data"
+         },
+         {  
+            "id":"other",
+            "text":"Other"
+         }
+      ]
+   },
+   "M2.7":{ 
+      "state_text":"Which references did the suspect use?",
+      "short_text":"Malicious reference",
+      "id":"request_reference",
+      "state_type":"text"
+   },
+   "M2.8":{
+      "state_text":"Please specify how you were contacted (communication channels software or services).",
+      "short_text":"Malicious communication channel",
+      "id":"communication_channel",
+      "state_type":"text"
+   },
+   "M2.9":{
+      "state_text":"Via which Social Network did the suspect contact you?",
+      "short_text":"Contact social network",
+      "state_type":"radio",
+      "id":"sn_type",
+      "state_answers":[  
+         {  
+            "id":"facebook",
+            "text":"Facebook"
+         },
+         {  
+            "id":"whatsapp",
+            "text":"WhatsApp"
+         },
+         {  
+            "id":"telegram",
+            "text":"Telegram"
+         },
+         {  
+            "id":"google_plus",
+            "text":"Google+"
+         },
+         {  
+            "id":"other",
+            "text":"Other"
+         }
+      ]
+   },
+   "M2.10":{
+      "state_text":"Have you been contacted by the suspect directly?",
+      "short_text":"Direct contact",
+      "id":"direct_contact",
+      "state_type":"yesno"
+   },
+   "M2.11":{ 
+      "state_text":"Can you provide an URL or a download link? Please leave this field empty if you do not have such information.",
+      "short_text":"Malicious URL",
+      "id":"download_url",
+      "state_type":"text"
+   },
+   "M2.12":{ 
+      "state_text":"Please provide a short description of the URL or the downloaded file.",
+      "short_text":"Payload description",
+      "id":"download_description",
+      "state_type":"text"
+   },
+   "M2.13":{ 
+      "state_text":"Please specify the URL provided by the suspect or leave this field empty if you do not have such information.",
+      "short_text":"Phishing URL",
+      "id":"phishing_url",
+      "state_type":"text"
+   },
+   "M2.14":{
+      "state_text":"What kind of sensible data were you asked to provide?",
+      "short_text":"Provided sensitive data",
+      "state_type":"radio",
+      "id":"phishing_data",
+      "state_answers":[  
+         {  
+            "id":"user",
+            "text":"User credentials"
+         },
+         {  
+            "id":"banking",
+            "text":"Banking credentials"
+         },
+         {  
+            "id":"other",
+            "text":"Other"
+         }
+      ]
+   },
+   "M2.15":{ 
+      "state_text":"Please specify the URL provided by the suspect or leave this field empty if you do not have such information.",
+      "short_text":"Please provide the URL of the website",
+      "id":"custom_website_url",
+      "state_type":"text"
+   },
+   "ERROR":{
+      "state_text":"An error has occured! Please restart the report process.",
+      "state_type":"error"
+   }
+}

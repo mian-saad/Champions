@@ -20,7 +20,7 @@ class TraError extends TraState
     public function generate_html()
     {
         $html = "";
-        $html .= "<p class='tra_warning'> ERROR STATE: " . $this->state_text . "</p>";
+        $html .= "<p class='alert_warning'> ERROR STATE: " . $this->state_text . "</p>";
         return $html;
     }
 
@@ -32,6 +32,6 @@ class TraError extends TraState
 
     public function generate_buttons()
     {
-        return "<div id='tra_button_pane'><a class='button' href='#'>$this->button_string</a></div>";
+        return "<div id='alert_button_pane'><a class='button' href='#'>$this->button_string</a></div>";
     }
 }

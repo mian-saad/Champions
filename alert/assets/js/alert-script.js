@@ -1,10 +1,10 @@
 
 jQuery(document).ready(function ($) {
 
-    var $contentBox = $('#tra_questionnaire_content_div');
+    var $contentBox = $('#alert_questionnaire_content_div');
 
     // new report button action
-    $('body').on('click', '#tra_new_report', function (e) {
+    $('body').on('click', '#alert_new_report', function (e) {
         e.preventDefault();
 
         // need to find all inputs and see get the value
@@ -17,7 +17,7 @@ jQuery(document).ready(function ($) {
         // try to animate
         $contentBox.animate({ opacity: 0.5 }, 100);
 
-        jQuery.get(tra_object.ajaxurl, req_data, function (response) {
+        jQuery.get(alert_object.ajaxurl, req_data, function (response) {
             $contentBox
                 .html(response)
                 .animate({ opacity: 1 }, 100);
@@ -41,11 +41,11 @@ jQuery(document).ready(function ($) {
     });
 
     // continue button action
-    $('body').on('click', '#tra_continue', function (e) {
+    $('body').on('click', '#alert_continue', function (e) {
         e.preventDefault();
 
 
-        var provided_answers = takedown_question_validation();
+        var provided_answers = alert_question_validation();
 
         // need to find all inputs and see get the value
         var req_data = {
@@ -58,14 +58,14 @@ jQuery(document).ready(function ($) {
         // try to animate
         $contentBox.animate({ opacity: 0.5 }, 100);
 
-        jQuery.get(tra_object.ajaxurl, req_data, function (response) {
+        jQuery.get(alert_object.ajaxurl, req_data, function (response) {
             $contentBox
                 .html(response)
                 .animate({ opacity: 1 }, 100);
 
-            // let x = $('h3.tra_question').text();
+            // let x = $('h3.alert_question').text();
 
-            if ($('h3.tra_question').text() === 'Event time') {
+            if ($('h3.alert_question').text() === 'Event time') {
                 // lets initiialize dateTimePicker here
                 $('.picker').datetimepicker({
                     allowBlank: true,
@@ -97,7 +97,7 @@ jQuery(document).ready(function ($) {
     });
 
     // submit button action
-    $('body').on('click', '#tra_submit', function (e) {
+    $('body').on('click', '#alert_submit', function (e) {
         // need to find all inputs and see get the value
         var req_data = {
             action: 'submit_report',
@@ -105,11 +105,11 @@ jQuery(document).ready(function ($) {
             report_id: $('input#report_id').val(),
         };
 
-        jQuery.get(tra_object.ajaxurl, req_data, function (response) {});
+        jQuery.get(alert_object.ajaxurl, req_data, function (response) {});
     });
 
     // yes button action
-    $('body').on('click', '#tra_yes', function (e) {
+    $('body').on('click', '#alert_yes', function (e) {
         e.preventDefault();
         // generate request data
         var req_data = {
@@ -121,7 +121,7 @@ jQuery(document).ready(function ($) {
         // try to animate
         $contentBox.animate({ opacity: 0.5 }, 100);
 
-        jQuery.get(tra_object.ajaxurl, req_data, function (response) {
+        jQuery.get(alert_object.ajaxurl, req_data, function (response) {
             $contentBox
                 .html(response)
                 .animate({ opacity: 1 }, 100);
@@ -140,7 +140,7 @@ jQuery(document).ready(function ($) {
     });
 
     // no button action
-    $('body').on('click', '#tra_no', function (e) {
+    $('body').on('click', '#alert_no', function (e) {
         e.preventDefault();
         // generate request data
         var req_data = {
@@ -152,7 +152,7 @@ jQuery(document).ready(function ($) {
         // try to animate
         $contentBox.animate({ opacity: 0.5 }, 100);
 
-        jQuery.get(tra_object.ajaxurl, req_data, function (response) {
+        jQuery.get(alert_object.ajaxurl, req_data, function (response) {
             $contentBox
                 .html(response)
                 .animate({ opacity: 1 }, 100);
@@ -171,7 +171,7 @@ jQuery(document).ready(function ($) {
     });
 
     // back button action
-    $('body').on('click', '#tra_back', function (e) {
+    $('body').on('click', '#alert_back', function (e) {
         e.preventDefault();
         // generate request data
         var req_data = {
@@ -183,7 +183,7 @@ jQuery(document).ready(function ($) {
         // try to animate
         $contentBox.animate({ opacity: 0.5 }, 100);
 
-        jQuery.get(tra_object.ajaxurl, req_data, function (response) {
+        jQuery.get(alert_object.ajaxurl, req_data, function (response) {
             $contentBox
                 .html(response)
                 .animate({ opacity: 1 }, 100);
@@ -201,9 +201,9 @@ jQuery(document).ready(function ($) {
         });
     });
 
-    function takedown_question_validation() {
+    function alert_question_validation() {
 
-        var formData = $('#tra_question_form').serializeArray();
+        var formData = $('#alert_question_form').serializeArray();
         var title = $('#title').val();
 
         result = {};

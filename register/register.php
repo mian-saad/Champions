@@ -1,6 +1,6 @@
 <?php
 /**
- * @package TakedownQuestionsPlugin
+ * @package Register
  */
 /*
 Plugin Name: Register
@@ -30,8 +30,8 @@ function deactivate_reg(){
 register_activation_hook(__FILE__, 'activate_reg');
 register_deactivation_hook(__FILE__, 'deactivate_reg');
 
-if (class_exists('Comprise\\Init')) {
-    Comprise\Init::register_services();
+if (class_exists('Comprise\\Ini')) {
+    Comprise\Ini::register_services();
 }
 
 

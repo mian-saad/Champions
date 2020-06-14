@@ -22,7 +22,7 @@ class TraRadioQuestion extends TraState
     public function generate_html()
     {
         $html = $this->generate_hidden_fields($this->report_id);
-        $html .= "<form id='tra_question_form'>";
+        $html .= "<form id='alert_question_form'>";
         $html .= $this->generate_question_text($this->state['state_text']);
         $html .= $this->generate_radio_question($this->state);
         $html .= "</form>";
@@ -43,29 +43,29 @@ class TraRadioQuestion extends TraState
 
     public function generate_radio_question($state)
     {
-        $html = '<div class="tra_radio_answers ">';
+        $html = '<div class="alert_radio_answers ">';
         $counter = 0; // need it for labeling and stuff
 
         foreach ($state['state_answers'] as $answer_option) {
             /*
             if($answer_option["id"]=="other"){
-            $html .= '<div class="tra_horizontal_choice"><input type="radio" class="tra_quiz_radio" name="tra_other" id="' . $answer_option['id'] . $counter . '" value="' . $answer_option['id'] . '" required><label for="' . $answer_option['id'] . $counter . '">' . $answer_option['text'] . '</label><input type="text" class="other_input" value:"default" style="display:none"></div>';
+            $html .= '<div class="alert_horizontal_choice"><input type="radio" class="alert_quiz_radio" name="alert_other" id="' . $answer_option['id'] . $counter . '" value="' . $answer_option['id'] . '" required><label for="' . $answer_option['id'] . $counter . '">' . $answer_option['text'] . '</label><input type="text" class="other_input" value:"default" style="display:none"></div>';
             }else{
-            $html .= '<div class="tra_horizontal_choice"><input type="radio" class="tra_quiz_radio" name="' . $state['id'] . '" id="' . $answer_option['id'] . $counter . '" value="' . $answer_option['id'] . '" required><label for="' . $answer_option['id'] . $counter . '">' . $answer_option['text'] . '</label></div>';
+            $html .= '<div class="alert_horizontal_choice"><input type="radio" class="alert_quiz_radio" name="' . $state['id'] . '" id="' . $answer_option['id'] . $counter . '" value="' . $answer_option['id'] . '" required><label for="' . $answer_option['id'] . $counter . '">' . $answer_option['text'] . '</label></div>';
             }
              */
             if ($this->response[$state['id']] == $answer_option['id']) {
                 // this radio was checked previously
                 if ($answer_option['id'] == 'other') {
-                    $html .= '<div class="tra_horizontal_choice"><input type="radio" class="tra_quiz_radio" name="' . $state['id'] . '" id="' . $answer_option['id'] . $counter . '" value="' . $answer_option['id'] . '" checked required><label for="' . $answer_option['id'] . $counter . '">' . $answer_option['text'] . '</label>' . $this->generate_other_text_input($this->response['other_text_input']) . '</div>';
+                    $html .= '<div class="alert_horizontal_choice"><input type="radio" class="alert_quiz_radio" name="' . $state['id'] . '" id="' . $answer_option['id'] . $counter . '" value="' . $answer_option['id'] . '" checked required><label for="' . $answer_option['id'] . $counter . '">' . $answer_option['text'] . '</label>' . $this->generate_other_text_input($this->response['other_text_input']) . '</div>';
                 } else {
-                    $html .= '<div class="tra_horizontal_choice"><input type="radio" class="tra_quiz_radio" name="' . $state['id'] . '" id="' . $answer_option['id'] . $counter . '" value="' . $answer_option['id'] . '" checked required><label for="' . $answer_option['id'] . $counter . '">' . $answer_option['text'] . '</label></div>';
+                    $html .= '<div class="alert_horizontal_choice"><input type="radio" class="alert_quiz_radio" name="' . $state['id'] . '" id="' . $answer_option['id'] . $counter . '" value="' . $answer_option['id'] . '" checked required><label for="' . $answer_option['id'] . $counter . '">' . $answer_option['text'] . '</label></div>';
                 }
             } else {
                 if ($answer_option['id'] == 'other') {
-                    $html .= '<div class="tra_horizontal_choice"><input type="radio" class="tra_quiz_radio" name="' . $state['id'] . '" id="' . $answer_option['id'] . $counter . '" value="' . $answer_option['id'] . '" required><label for="' . $answer_option['id'] . $counter . '">' . $answer_option['text'] . '</label> ' . $this->generate_other_text_input("") . '</div>';
+                    $html .= '<div class="alert_horizontal_choice"><input type="radio" class="alert_quiz_radio" name="' . $state['id'] . '" id="' . $answer_option['id'] . $counter . '" value="' . $answer_option['id'] . '" required><label for="' . $answer_option['id'] . $counter . '">' . $answer_option['text'] . '</label> ' . $this->generate_other_text_input("") . '</div>';
                 } else {
-                    $html .= '<div class="tra_horizontal_choice"><input type="radio" class="tra_quiz_radio" name="' . $state['id'] . '" id="' . $answer_option['id'] . $counter . '" value="' . $answer_option['id'] . '" required><label for="' . $answer_option['id'] . $counter . '">' . $answer_option['text'] . '</label></div>';
+                    $html .= '<div class="alert_horizontal_choice"><input type="radio" class="alert_quiz_radio" name="' . $state['id'] . '" id="' . $answer_option['id'] . $counter . '" value="' . $answer_option['id'] . '" required><label for="' . $answer_option['id'] . $counter . '">' . $answer_option['text'] . '</label></div>';
                 }
             }
 
@@ -83,7 +83,7 @@ class TraRadioQuestion extends TraState
 
     public function generate_buttons()
     {
-        return "<div id='tra_button_pane'><a class='button' id='tra_back' href='#' onclick='return false;'>$this->back_string</a> <a class='button' id='tra_continue' href='#' onclick='return false;'>$this->continue_string</a></div>";
+        return "<div id='alert_button_pane'><a class='button' id='alert_back' href='#' onclick='return false;'>$this->back_string</a> <a class='button' id='alert_continue' href='#' onclick='return false;'>$this->continue_string</a></div>";
     }
 
     public function generate_readable_response_array()

@@ -43,7 +43,7 @@ button[disabled]:hover {
     background: #1691b5!important;
 }
 
-.tra_horizontal_choice label{
+.login_horizontal_choice label{
     display: inline;
     margin-left: 10px;
     margin-right: 10px;
@@ -51,21 +51,21 @@ button[disabled]:hover {
     cursor: pointer;
 }
 
-.tra_horizontal_choice {
+.login_horizontal_choice {
     margin-bottom: 20px;
 }
 
-p.tra_question{
+p.login_question{
     font: bold;
     font-size: 110%;
     margin-bottom: 5px;
 }
 
-p.tra_warning{
+p.login_warning{
     color: red;
 }
 
-#tra_button_pane {
+#login_button_pane {
     margin-top: 15px;
     margin-bottom: 15px;
 }

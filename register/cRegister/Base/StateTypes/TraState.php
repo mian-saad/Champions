@@ -32,19 +32,19 @@ abstract class TraState
 
     public function generate_question_title($text)
     {
-        return "<h3 class='tra_question'>" . $text . "</h3>";
+        return "<h3 class='register_question'>" . $text . "</h3>";
     }
 
     public function generate_question_text($text)
     {
-        return "<p class='tra_question'>" . $text . "</p>";
+        return "<p class='register_question'>" . $text . "</p>";
     }
 
     // prints warning message only if show_warning is set
     public function generate_warning()
     {
         if ($this->show_warning) {
-            return "<p class='tra_warning'>" . $this->warning . "</p>";
+            return "<p class='register_warning'>" . $this->warning . "</p>";
         } else {
             return "";
         }
@@ -54,7 +54,7 @@ abstract class TraState
     public function generate_field_warning($fieldId)
     {
         if (!empty($this->response) and $this->show_warning and (!array_key_exists($fieldId, $this->response) or $this->response[$fieldId] == "")) {
-            return "<p class='tra_warning'>" . $this->field_warning . "</p>";
+            return "<p class='register_warning'>" . $this->field_warning . "</p>";
         } else {
             return "";
         }

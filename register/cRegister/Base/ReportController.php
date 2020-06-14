@@ -198,12 +198,12 @@ class ReportController extends BaseController
     {
             global $wpdb;
 
-            $tra_reports_db_name = $wpdb->prefix . 'arena';
+            $register_reports_db_name = $wpdb->prefix . 'arena';
 
             // lets delete entry if it already exists in the db
-            $entries = $wpdb->get_results("SELECT report_id FROM ".$tra_reports_db_name." WHERE report_id=\"".$this->report_id."\"");
+            $entries = $wpdb->get_results("SELECT report_id FROM ".$register_reports_db_name." WHERE report_id=\"".$this->report_id."\"");
             if(sizeof($entries)!= 0){
-                $wpdb->get_results("DELETE FROM ".$tra_reports_db_name." WHERE report_id=\"".$this->report_id."\"");
+                $wpdb->get_results("DELETE FROM ".$register_reports_db_name." WHERE report_id=\"".$this->report_id."\"");
             }
 
             $answers = [
@@ -245,7 +245,7 @@ class ReportController extends BaseController
                     break;
                 }
             }
-            $wpdb->insert($tra_reports_db_name, $answers);
+            $wpdb->insert($register_reports_db_name, $answers);
     }
 
 

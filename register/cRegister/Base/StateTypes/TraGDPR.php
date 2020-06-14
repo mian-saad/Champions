@@ -39,10 +39,10 @@ class TraGDPR extends TraState
 
     public function generate_checkbox_question($answer_array, $name_string)
     {
-        $html = '<div class="tra_checkbox_answers">';
+        $html = '<div class="register_checkbox_answers">';
 
         foreach ($answer_array as $answer_option) {
-            $html .= '<div class="tra_horizontal_choice"><input type="checkbox" class="tra_checkbox" name="' . $this->state['id'] . '" id="' . $answer_option['id'] . '" value="' . $answer_option['id'] . '" required><label for="' . $answer_option['id'] . '">' . $answer_option['text'] . '</label></div>';
+            $html .= '<div class="register_horizontal_choice"><input type="checkbox" class="register_checkbox" name="' . $this->state['id'] . '" id="' . $answer_option['id'] . '" value="' . $answer_option['id'] . '" required><label for="' . $answer_option['id'] . '">' . $answer_option['text'] . '</label></div>';
         }
         $html .= '</div>';
         return $html;
@@ -50,6 +50,6 @@ class TraGDPR extends TraState
 
     public function generate_buttons()
     {
-        return "<div id='tra_button_pane'><a class='button' id='arena_continue' href='#' onclick='return false;'>$this->continue_string</a></div>";
+        return "<div id='register_button_pane'><a class='button' id='arena_continue' href='#' onclick='return false;'>$this->continue_string</a></div>";
     }
 }

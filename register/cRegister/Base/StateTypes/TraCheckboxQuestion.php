@@ -50,21 +50,21 @@ class TraCheckboxQuestion extends TraState
 
     public function generate_checkbox_question($answer_array, $name_string)
     {
-        $html = '<div class="tra_checkbox_answers">';
+        $html = '<div class="register_checkbox_answers">';
 
         foreach ($answer_array as $answer_option) {
             if (!empty($this->response) and in_array($answer_option['id'], $this->response[$name_string])) {
                 // this is a checked answer
                 if ($answer_option['id'] == 'Other') {
-                    $html .= '<div class="tra_horizontal_choice"><input type="checkbox" class="tra_checkbox" name="' . $this->state['id'] . '" id="' . $answer_option['id'] . '" value="' . $answer_option['id'] . '" checked required><label for="' . $answer_option['id'] . '">' . $answer_option['text'] . '</label> ' . $this->generate_other_text_input($this->response['other_text_input']) . '</div>';
+                    $html .= '<div class="register_horizontal_choice"><input type="checkbox" class="register_checkbox" name="' . $this->state['id'] . '" id="' . $answer_option['id'] . '" value="' . $answer_option['id'] . '" checked required><label for="' . $answer_option['id'] . '">' . $answer_option['text'] . '</label> ' . $this->generate_other_text_input($this->response['other_text_input']) . '</div>';
                 } else {
-                    $html .= '<div class="tra_horizontal_choice"><input type="checkbox" class="tra_checkbox" name="' . $this->state['id'] . '" id="' . $answer_option['id'] . '" value="' . $answer_option['id'] . '" checked required><label for="' . $answer_option['id'] . '">' . $answer_option['text'] . '</label></div>';
+                    $html .= '<div class="register_horizontal_choice"><input type="checkbox" class="register_checkbox" name="' . $this->state['id'] . '" id="' . $answer_option['id'] . '" value="' . $answer_option['id'] . '" checked required><label for="' . $answer_option['id'] . '">' . $answer_option['text'] . '</label></div>';
                 }
             } else {
                 if ($answer_option['id'] == 'Other') {
-                    $html .= '<div class="tra_horizontal_choice"><input type="checkbox" class="tra_checkbox" name="' . $this->state['id'] . '" id="' . $answer_option['id'] . '" value="' . $answer_option['id'] . '" required><label for="' . $answer_option['id'] . '">' . $answer_option['text'] . '</label> ' . $this->generate_other_text_input("") . '</div>';
+                    $html .= '<div class="register_horizontal_choice"><input type="checkbox" class="register_checkbox" name="' . $this->state['id'] . '" id="' . $answer_option['id'] . '" value="' . $answer_option['id'] . '" required><label for="' . $answer_option['id'] . '">' . $answer_option['text'] . '</label> ' . $this->generate_other_text_input("") . '</div>';
                 } else {
-                    $html .= '<div class="tra_horizontal_choice"><input type="checkbox" class="tra_checkbox" name="' . $this->state['id'] . '" id="' . $answer_option['id'] . '" value="' . $answer_option['id'] . '" required><label for="' . $answer_option['id'] . '">' . $answer_option['text'] . '</label></div>';
+                    $html .= '<div class="register_horizontal_choice"><input type="checkbox" class="register_checkbox" name="' . $this->state['id'] . '" id="' . $answer_option['id'] . '" value="' . $answer_option['id'] . '" required><label for="' . $answer_option['id'] . '">' . $answer_option['text'] . '</label></div>';
                 }
             }
 
@@ -75,7 +75,7 @@ class TraCheckboxQuestion extends TraState
 
     public function generate_buttons()
     {
-        return "<div id='tra_button_pane'><a class='button' id='arena_back' href='#' onclick='return false;'>$this->back_string</a> <a class='button' id='arena_continue' href='#' onclick='return false;'>$this->continue_string</a></div>";
+        return "<div id='register_button_pane'><a class='button' id='arena_back' href='#' onclick='return false;'>$this->back_string</a> <a class='button' id='arena_continue' href='#' onclick='return false;'>$this->continue_string</a></div>";
     }
 
     public function generate_other_text_input($value)

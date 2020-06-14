@@ -33,7 +33,7 @@ body {
   background-color: #0eacdb !important;
   }
 
-.tra_horizontal_choice label{
+.register_horizontal_choice label{
   display: inline;
   margin-left: 10px;
   margin-right: 10px;
@@ -41,23 +41,23 @@ body {
   cursor: pointer;
 }
 
-.tra_horizontal_choice {
+.register_horizontal_choice {
   margin-bottom: 15px;
 }
 
-p.tra_question{
+p.register_question{
   font: bold;
   font-size: 110%;
   margin-bottom: 10px;
 }
 
-p.tra_warning{
+p.register_warning{
   color: red;
   margin-bottom: 0px!important;
   margin-top: 20px;
 }
 
-#tra_button_pane {
+#register_button_pane {
   margin-top: 15px;
   margin-bottom: 15px;
 }

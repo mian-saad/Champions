@@ -54,7 +54,7 @@ class ExpertLogin extends TraState {
 
     public function generate_buttons()
     {
-        return "<div id='tra_button_pane'><a class='button'  id='arena_back' href='#' onclick='window.location.reload();'>$this->back_string</a> <a class='button' id='arena_continue' href='#' onclick='return false;'>$this->login_string</a></div>";
+        return "<div id='register_button_pane'><a class='button'  id='arena_back' href='#' onclick='window.location.reload();'>$this->back_string</a> <a class='button' id='arena_continue' href='#' onclick='return false;'>$this->login_string</a></div>";
     }
 
     public function generate_readable_response_array()

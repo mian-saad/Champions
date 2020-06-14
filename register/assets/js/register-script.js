@@ -51,7 +51,7 @@ jQuery(document).ready(function ($) {
         e.preventDefault();
 
 
-        var provided_answers = takedown_question_validation();
+        var provided_answers = arena_question_validation();
 
         // need to find all inputs and see get the value
         var req_data = {
@@ -103,7 +103,7 @@ jQuery(document).ready(function ($) {
         });
     });
 
-    function takedown_question_validation() {
+    function arena_question_validation() {
 
         var formData = $('#arena_question_form').serializeArray();
 

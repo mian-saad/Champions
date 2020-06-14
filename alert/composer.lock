@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6293df90b82e1e8bd9871db3a6ba7253",
+    "content-hash": "84cadd1e6b1f0fa7ab827a0ab7ffa9fc",
     "packages": [
         {
             "name": "tecnickcom/tcpdf",

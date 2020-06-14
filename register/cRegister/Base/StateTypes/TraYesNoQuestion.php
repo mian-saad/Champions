@@ -44,7 +44,7 @@ class TraYesNoQuestion extends TraState
 
     public function generate_buttons()
     {
-        return "<div id='tra_button_pane'><a class='button' id='arena_back' href='#' onclick='return false;'>$this->back_string</a> <a class='button' id='tra_yes' href='#' onclick='return false;'>$this->yes_string</a> <a class='button' id='tra_no' href='#' onclick='return false;'>$this->no_string</a></div>";
+        return "<div id='register_button_pane'><a class='button' id='arena_back' href='#' onclick='return false;'>$this->back_string</a> <a class='button' id='register_yes' href='#' onclick='return false;'>$this->yes_string</a> <a class='button' id='register_no' href='#' onclick='return false;'>$this->no_string</a></div>";
     }
 
     public function generate_readable_response_array()

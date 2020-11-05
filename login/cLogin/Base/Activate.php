@@ -27,7 +27,7 @@ class Activate {
 
     if ($wpdb->get_var("SHOW TABLES LIKE '$commentsData'") != $commentsData) {
         $sql = "CREATE TABLE $commentsData (
-            comment_data VARCHAR(32),
+            comment_data TEXT,
             comment_name TEXT,
             alert_ID TEXT
         ) $charset_collate;";

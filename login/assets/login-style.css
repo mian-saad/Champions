@@ -23,7 +23,6 @@ button[disabled]:hover {
     border: none;
     color: #fff!important;
     border-radius: 0;
-    margin: 2px;
     outline: 0;
     height: auto;
     line-height: 1.4;
@@ -71,27 +70,31 @@ p.login_warning{
 }
 
 .table_entry {
-    padding: 0px;
+    /*padding: 0px;*/
     width: 110px;
 }
 
-.no-sidebar .entry-content {
-    margin-right: 5%!important;
-    margin-left: 5%!important;
+a#edit {
+    cursor: pointer;
 }
 
-/*p {*/
-/*    text-align: center!important;*/
-/*}*/
+.table_entry p {
+    margin: 0!important;
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+
+.table_entry p button {
+    margin-bottom: 5px;
+    width: 115px!important;
+}
+
+.table_expert_column {
+    width: 130px!important;
+}
 
 td {
     text-align: center!important;
-}
-
-@media screen and (min-width: 61.5625em){
-    .site-header {
-        padding: 2.25em 4.5455%!important;
-    }
 }
 
 td.subject:hover {
@@ -182,4 +185,38 @@ table {
 .row {
     margin-left: 0!important;
     margin-right: 0!important;
+}
+
+#invite .col-9 {
+    padding: 0!important;
+}
+
+#invite .col-3 {
+    padding: 0!important;
+}
+
+#invitation-email {
+    height: 38px!important;
+}
+
+::-webkit-input-placeholder {
+    text-align: center;
+}
+
+
+.invite-text {
+    padding-right: 14px;
+    margin-bottom: 5px!important;
+}
+
+.padd {
+    margin-left: 15px!important;
+}
+
+#notify {
+    display: inline!important;
+}
+
+.discussion-close {
+    margin-left: 5px;
 }

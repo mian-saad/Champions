@@ -1,28 +1,33 @@
 <?php
 
-
 namespace Cover\Base\StateTypes;
 
+use Cover\Base\ReportController;
+use function WPMailSMTP\Vendor\GuzzleHttp\Psr7\str;
 
 class TraComposedQuestion extends TraState {
     public $continue_string;
+    public $show_nouser;
+    public $string_file;
 
-    public function __construct($report_id, $state_code, $state, $continue_string, $back_string, $field_warning, $warning) {
+    public function __construct($string_file, $alert_id, $state_code, $state, $continue_string, $back_string, $field_warning, $warning) {
         $this->field_warning = $field_warning;
         $this->back_string = $back_string;
-        $this->report_id = $report_id;
+        $this->alert_id = $alert_id;
         $this->state_code = $state_code;
         $this->state = $state;
         $this->continue_string = $continue_string;
         $this->warning = $warning;
+        $this->string_file = $string_file;
     }
 
     public function generate_html() {
         $html="";
+        $html = $this->NoUser();
         if($this->state['show_header']=="true"){
             $html .= "<h3 class='alert_question'>" . $this->state['state_text'] . "</h3>";
         }
-        $html .= $this->generate_hidden_fields($this->report_id);
+        $html .= $this->generate_hidden_fields($this->alert_id);
         $html .= "<form id='alert_question_form'>";
 
         $totalItemPerLine = 1;
@@ -45,6 +50,13 @@ class TraComposedQuestion extends TraState {
                     $html .= $this->generate_select_question($answer);
                     $html .= "</div>";
                 }
+                else if ($answer['type'] == 'password') {
+                    $html .= "<div class='col-6'>";
+                    $html .= $this->generate_field_warning($answer['id']);
+                    $html .= $this->generate_question_text($answer['text']);
+                    $html .= "<input type='password' name='" . $answer['id'] . "' value='" . $this->response[$answer['id']] . "'><br>";
+                    $html .= "</div>";
+                }
             }
             if($i % $totalItemPerLine == ($totalItemPerLine-1)) {
                 $html .= '</div>'; // CLOSE ROW
@@ -58,28 +70,66 @@ class TraComposedQuestion extends TraState {
     }
 
     // if every answer id is in response, and is not empty, return true
-    public function validate($response) {
-        $this->response = $response;
+    public function validate($resp) {
+        $this->response = $resp;
 
         foreach ($this->state['state_answers'] as $state_answer) {
-            if (!(array_key_exists($state_answer['id'], $response) and $response[$state_answer['id']] != "")) {
+            if (!(array_key_exists($state_answer['id'], $resp) and $resp[$state_answer['id']] != "")) {
                 return false;
             }
         }
 
-        global $wpdb;
-        $arenaData = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}arena", OBJECT );
-        for ($counter = 0; $counter<count($arenaData); $counter++) {
-            if ($arenaData[$counter] -> email === $response['reporter_email']) {
-                return true;
+        if ($this->state['id'] == 'flp_login_infos') {
+            global $wpdb;
+            $arenaData = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}arena", OBJECT );
+            for ($counter = 0; $counter<count($arenaData); $counter++) {
+                if ($arenaData[$counter]->flp_email === $resp['flp_email']) {
+                    if ($arenaData[$counter]->flp_password === $resp['flp_password']) {
+//                        $report_controller = new ReportController();
+                        $this->response = null;
+//                        $report_controller->flp_id = $arenaData[$counter]->flp_id;
+                        $this->response['flp_id'] = $arenaData[$counter]->flp_id;
+                        $_SESSION['validate'] = true;
+                        $this->alert_id = $arenaData[$counter]->alert_id .",". $this->alert_id;
+                        $wpdb->update("wp_arena", array('alert_id' => $this->alert_id), array('flp_email' => $arenaData[$counter]->flp_email));
+                        $wpdb->update("wp_arena", array('flp_associatedAlert' => $this->alert_id), array('flp_email' => $arenaData[$counter]->flp_email));
+                        return true;
+                    }
+                }
             }
+            return "NoUser";
         }
-        return "Unregistered";
-//        return true;
+        elseif ($this->state['id'] == 'flp_register_infos') {
+            $verifyCode = rand(1111, 9999);
+            $_SESSION["verifyCode"] = $verifyCode;
+
+            wp_mail( $resp['flp_email'], "Verification Code", "Your Verification Code: ". $verifyCode ."");
+            return true;
+        }
+    }
+
+    public function NoUser() {
+        if ($this->show_nouser) {
+            return "<p class='NoUser'>".$this->string_file['no_user']."</p>";
+        }
+        else {
+            return "";
+        }
+
     }
 
     public function generate_buttons() {
-        return "<div id='alert_button_pane'><a class='button' id='alert_back' href='#' onclick='return false;'>$this->back_string</a> <a class='button' id='alert_continue' href='#' onclick='return false;'>$this->continue_string</a></div>";
+        $html = "";
+        if ($this->state['id'] == 'flp_login_infos') {
+            $html .= "<div id='alert_button_pane'><a class='button' id='alert_back' href='#' onclick='return false;'>$this->back_string</a> <a class='button' id='authenticate' href='#' onclick='return false;'>$this->continue_string</a></div>";
+            $html .= "<br>";
+            $html .= "<p>".$this->string_file['register_now']."</p>";
+            $html .= "<button id='alert_register' class='button'>".$this->string_file['register_btn']."</button>";
+        }
+        else {
+            $html .=  "<div id='alert_button_pane'><a class='button' id='alert_back' href='#' onclick='return false;'>$this->back_string</a> <a class='button' id='alert_continue' href='#' onclick='return false;'>$this->continue_string</a></div>";
+        }
+        return $html;
     }
 
     public function generate_select_question($answer) {
@@ -105,6 +155,7 @@ class TraComposedQuestion extends TraState {
     }
 
     public function generate_readable_response_array() {
+
         $result = [];
 
         foreach ($this->state['state_answers'] as $answer) {

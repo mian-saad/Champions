@@ -1,6 +1,6 @@
 {  
    "M0.0":{
-      "state_text":"Welcome to the ALERT Module. This tool will guide you through the Alert process. This process is fully anonymous. Any data requested will be used to help you generate an Alert that can be sent to the Arena to be further Analysed. To provide you with accurate and relevant information for your case this tool will locate your IP. This data will be erased immediately afterwards and will not be kept in the system.<br><br>For more information see <a href='https://ec.europa.eu/info/law/law-topic/data-protection_en'>Terms and Conditions</a>",
+      "state_text":"Welcome to the ALERT Module. This tool will guide you through the Alert process. <br><br>For more information see <a target='_blank' href='https://ec.europa.eu/info/law/law-topic/data-protection_en'>Terms and Conditions</a>",
       "short_text":"GDPR agreement",
       "id":"gdpr_agreement",
       "state_type":"gdpr",
@@ -12,127 +12,173 @@
       ]      
    },
    "M1.1":{
+      "state_text":"Event Details",
+      "state_type":"EventComposed",
+      "show_header": "true",
+      "id": "event_details",
+      "state_answers":[
+         {
+            "id":"alert_country",
+            "type":"select",
+            "text":"Please Select the Country where incident took place",
+            "short_text":"Country",
+            "answers":[
+               {
+                  "text":"\uD83C\uDDE6\uD83C\uDDF9 Austria",
+                  "short_text":"Austria",
+                  "id":"Austria"
+               },
+               {
+                  "text":"\uD83C\uDDE9\uD83C\uDDEA Germany",
+                  "short_text":"Germany",
+                  "id":"Germany"
+               },
+               {
+                  "text":"\uD83C\uDDED\uD83C\uDDFA Hungary",
+                  "short_text":"Hungary",
+                  "id":"Hungary"
+               },
+
+               {
+                  "text":"\uD83C\uDDEE\uD83C\uDDF9 Italy",
+                  "short_text":"Italy",
+                  "id":"Italy"
+               },
+               {
+                  "text":"\uD83C\uDDF5\uD83C\uDDF1 Poland",
+                  "short_text":"Poland",
+                  "id":"Poland"
+               },
+               {
+                  "text":"\uD83C\uDDF7\uD83C\uDDF4 Romania",
+                  "short_text":"Romania",
+                  "id":"Romania"
+               }
+            ]
+         },
+         {
+            "id":"alert_city",
+            "text":"Please provide the City where incident tool place",
+            "short_text":"City",
+            "type":"text"
+         },
+         {
+            "text":"Please specify the approximate time of the suspect event. (Optional)",
+            "optional":"Yes",
+            "id":"alert_time",
+            "short_text":"Time",
+            "show_header": "true",
+            "type":"datetime"
+         }
+      ]
+   },
+   "M1.2":{
+      "state_text":"How would you categorize the occurred suspect event? (You can select several categories.)",
+      "short_text":"Category",
+      "id":"alert_category",
+      "state_type":"checkbox",
+      "show_header": "true",
+      "state_answers":[
+         {
+            "id":"Internet, Social Media and Hate Speech",
+            "text":"Internet, Social Media and Hate Speech"
+         },
+         {
+            "id":"Gatherings, Concerts, Sports Events, Other Events",
+            "text":"Gatherings, Concerts, Sports Events, Other Events"
+         },
+         {
+            "id":"Physical Violence, Assaults, Threats, Insults",
+            "text":"Physical Violence, Assaults, Threats, Insults"
+         },
+         {
+            "id":"Propaganda in Public Space: Writings on the wall, Posters, Stickers, Flyers",
+            "text":"Propaganda in Public Space: Writings on the wall, Posters, Stickers, Flyers"
+         },
+         {
+            "id":"School and Young People",
+            "text":"School and Young People"
+         },
+         {
+            "id":"I don't know",
+            "text":"I don't know"
+         },
+         {
+            "id":"Other",
+            "text":"Other(e.g. Alpha,Bravo,Charlie)"
+         }
+      ]
+   },
+   "M1.3":{
+      "state_text":"Event Detailed Information",
+      "state_type":"description",
+      "show_header": "true",
+      "id": "alert_infos",
+      "state_answers":[
+         {
+            "id":"alert_subject",
+            "text":"Subject of the Alert Description",
+            "short_text":"Subject",
+            "type":"text"
+         },
+         {
+            "short_text":"Description",
+            "text":"Please provide us a description of what has happened. (As best you can please answer the following questions:\nWho did it? What exactly happened. When did it happen? Where did it happen? Why did it happen? What is your interpretation of what happened? )",
+            "id":"alert_description",
+            "type":"description"
+         },
+         {
+            "short_text":"Deadline",
+            "text":"Please provide us an estimated date until when can a Solution be provided",
+            "id":"alert_deadline",
+            "type":"date"
+         }
+      ]
+   },
+   "M1.4":{
+      "state_type":"result"
+   },
+   "M1.5":{
+      "state_text":"Login in/Register to submit your Alert to the Arena",
+      "state_type":"composed",
+      "show_header": "true",
+      "id": "flp_login_infos",
+      "state_answers":[
+         {
+            "id":"flp_email",
+            "text":"Please provide your Email",
+            "short_text":"Email",
+            "type":"text"
+         },
+         {
+            "id":"flp_password",
+            "text":"Please provide your Password",
+            "short_text":"Password",
+            "type":"password"
+         }
+      ]
+   },
+   "M1.6":{
       "state_text":"FLP Personal Information",
       "state_type":"composed",
       "show_header": "true",
-      "id": "reporter_infos",
+      "id": "flp_register_infos",
       "state_answers":[
          {
-            "id":"title",
+            "id":"flp_title",
             "type":"select",
-            "text":"Please Select your title",
+            "text":"Please Select your Profession",
             "short_text":"Profession",
             "answers":[
                {
-                  "text":"Social Worker",
-                  "short_text":"Social Worker",
-                  "id":"Social_Worker"
-               },
-               {
-                  "text":"Volunteer",
-                  "short_text":"Volunteer",
-                  "id":"Volunteer"
-               },
-               {
-                  "text":"Teacher",
-                  "short_text":"Teacher",
-                  "id":"Teacher"
+                  "text":"Bus/Tram Driver",
+                  "short_text":"Bus/Tram Driver",
+                  "id":"Bus/Tram_Driver"
                },
                {
                   "text":"Counsellor",
                   "short_text":"Counsellor",
                   "id":"Counsellor"
-               },
-               {
-                  "text":"Psychotherapist",
-                  "short_text":"Psychotherapist",
-                  "id":"Psychotherapist"
-               },
-               {
-                  "text":"Youth Worker",
-                  "short_text":"Youth Worker",
-                  "id":"Youth_Worker"
-               },
-               {
-                  "text":"Football Coach",
-                  "short_text":"Football Coach",
-                  "id":"Football_Coach"
-               },
-               {
-                  "text":"Football Fan",
-                  "short_text":"Football Fan",
-                  "id":"Football_Fan"
-               },
-               {
-                  "text":"Employee of Women Shelter",
-                  "short_text":"Employee of Women Shelter",
-                  "id":"Employee_of_Women_Shelter"
-               },
-               {
-                  "text":"Youth Prison Ward",
-                  "short_text":"Youth Prison Ward",
-                  "id":"Youth_Prison_Ward"
-               },
-               {
-                  "text":"Forest Worker",
-                  "short_text":"Forest Worker",
-                  "id":"Forest_Worker"
-               },
-               {
-                  "text":"Student Volunteer",
-                  "short_text":"Student Volunteer",
-                  "id":"Student_Volunteer"
-               },
-               {
-                  "text":"International Volunteer",
-                  "short_text":"International Volunteer",
-                  "id":"International_Volunteer"
-               },
-               {
-                  "text":"Primary School Teacher",
-                  "short_text":"Primary School Teacher",
-                  "id":"Primary_School_Teacher"
-               },
-               {
-                  "text":"Secondary School Teacher",
-                  "short_text":"Secondary School Teacher",
-                  "id":"Secondary_School_Teacher"
-               },
-               {
-                  "text":"International School Teacher",
-                  "short_text":"International School Teacher",
-                  "id":"International_School_Teacher"
-               },
-               {
-                  "text":"University Lecturer",
-                  "short_text":"University Lecturer",
-                  "id":"University_Lecturer"
-               },
-               {
-                  "text":"NGO Worker",
-                  "short_text":"NGO Worker",
-                  "id":"NGO_Worker"
-               },
-
-               {
-                  "text":"Police Officer",
-                  "short_text":"Police Officer",
-                  "id":"Police_Officer"
-               },
-               {
-                  "text":"Municipal Employee",
-                  "short_text":"Municipal Employee",
-                  "id":"Municipal_Employee"
-               },
-               {
-                  "text":"Football Referee",
-                  "short_text":"Football Referee",
-                  "id":"Football_Referee"
-               },
-               {
-                  "text":"Bus/Tram Driver",
-                  "short_text":"Bus/Tram Driver",
-                  "id":"Bus/Tram_Driver"
                },
                {
                   "text":"Diversity Officer",
@@ -145,203 +191,245 @@
                   "id":"Employee_of_a_Culture_Centre"
                },
                {
+                  "text":"Employee of Women Shelter",
+                  "short_text":"Employee of Women Shelter",
+                  "id":"Employee_of_Women_Shelter"
+               },
+               {
+                  "text":"Football Coach",
+                  "short_text":"Football Coach",
+                  "id":"Football_Coach"
+               },
+               {
+                  "text":"Football Fan",
+                  "short_text":"Football Fan",
+                  "id":"Football_Fan"
+               },
+               {
+                  "text":"Football Referee",
+                  "short_text":"Football Referee",
+                  "id":"Football_Referee"
+               },
+               {
+                  "text":"Forest Worker",
+                  "short_text":"Forest Worker",
+                  "id":"Forest_Worker"
+               },
+               {
+                  "text":"International School Teacher",
+                  "short_text":"International School Teacher",
+                  "id":"International_School_Teacher"
+               },
+               {
+                  "text":"International Volunteer",
+                  "short_text":"International Volunteer",
+                  "id":"International_Volunteer"
+               },
+               {
+                  "text":"Municipal Employee",
+                  "short_text":"Municipal Employee",
+                  "id":"Municipal_Employee"
+               },
+               {
+                  "text":"NGO Worker",
+                  "short_text":"NGO Worker",
+                  "id":"NGO_Worker"
+               },
+               {
+                  "text":"Police Officer",
+                  "short_text":"Police Officer",
+                  "id":"Police_Officer"
+               },
+               {
+                  "text":"Primary School Teacher",
+                  "short_text":"Primary School Teacher",
+                  "id":"Primary_School_Teacher"
+               },
+               {
                   "text":"Probation Officer",
                   "short_text":"Probation Officer",
                   "id":"Probation_Officer"
+               },
+               {
+                  "text":"Psychotherapist",
+                  "short_text":"Psychotherapist",
+                  "id":"Psychotherapist"
+               },
+               {
+                  "text":"Secondary School Teacher",
+                  "short_text":"Secondary School Teacher",
+                  "id":"Secondary_School_Teacher"
+               },
+               {
+                  "text":"Social Worker",
+                  "short_text":"Social Worker",
+                  "id":"Social_Worker"
+               },
+               {
+                  "text":"Student Volunteer",
+                  "short_text":"Student Volunteer",
+                  "id":"Student_Volunteer"
+               },
+
+               {
+                  "text":"Teacher",
+                  "short_text":"Teacher",
+                  "id":"Teacher"
+               },
+               {
+                  "text":"University Lecturer",
+                  "short_text":"University Lecturer",
+                  "id":"University_Lecturer"
+               },
+               {
+                  "text":"Volunteer",
+                  "short_text":"Volunteer",
+                  "id":"Volunteer"
+               },
+               {
+                  "text":"Youth Prison Ward",
+                  "short_text":"Youth Prison Ward",
+                  "id":"Youth_Prison_Ward"
+               },
+               {
+                  "text":"Youth Worker",
+                  "short_text":"Youth Worker",
+                  "id":"Youth_Worker"
                }
             ]
          },
          {
-            "id":"reporter_residence",
+            "id":"flp_country",
             "type":"select",
             "text":"Please Select your Country",
             "short_text":"Country",
             "answers":[
                {
-                  "text":"Germany",
-                  "short_text":"Germany",
-                  "id":"Germany"
-               },
-               {
-                  "text":"Italy",
-                  "short_text":"Italy",
-                  "id":"Italy"
-               },
-               {
-                  "text":"Austria",
+                  "text":"\uD83C\uDDE6\uD83C\uDDF9 Austria",
                   "short_text":"Austria",
                   "id":"Austria"
                },
                {
-                  "text":"Hungary",
+                  "text":"\uD83C\uDDE9\uD83C\uDDEA Germany",
+                  "short_text":"Germany",
+                  "id":"Germany"
+               },
+               {
+                  "text":"\uD83C\uDDED\uD83C\uDDFA Hungary",
                   "short_text":"Hungary",
                   "id":"Hungary"
                },
                {
-                  "text":"Czech Republic",
-                  "short_text":"Czech Republic",
-                  "id":"Czech Republic"
+                  "text":"\uD83C\uDDEE\uD83C\uDDF9 Italy",
+                  "short_text":"Italy",
+                  "id":"Italy"
                },
                {
-                  "text":"Switzerland",
-                  "short_text":"Switzerland",
-                  "id":"Switzerland"
-               },
-               {
-                  "text":"Spain",
-                  "short_text":"Spain",
-                  "id":"Spain"
-               },
-               {
-                  "text":"Portugal",
-                  "short_text":"Portugal",
-                  "id":"Portugal"
-               },
-               {
-                  "text":"Netherlands",
-                  "short_text":"Netherlands",
-                  "id":"Netherlands"
-               },
-               {
-                  "text":"Norway",
-                  "short_text":"Norway",
-                  "id":"Norway"
-               },
-               {
-                  "text":"Sweden",
-                  "short_text":"Sweden",
-                  "id":"Sweden"
-               },
-               {
-                  "text":"France",
-                  "short_text":"France",
-                  "id":"France"
-               },
-               {
-                  "text":"Poland",
+                  "text":"\uD83C\uDDF5\uD83C\uDDF1 Poland",
                   "short_text":"Poland",
                   "id":"Poland"
                },
                {
-                  "text":"Belgium",
-                  "short_text":"Belgium",
-                  "id":"Belgium"
-               },
-               {
-                  "text":"Romania",
+                  "text":"\uD83C\uDDF7\uD83C\uDDF4 Romania",
                   "short_text":"Romania",
                   "id":"Romania"
-               },
-               {
-                  "text":"Bulgaria",
-                  "short_text":"Bulgaria",
-                  "id":"Bulgaria"
-               },
-               {
-                  "text":"Slovakia",
-                  "short_text":"Slovakia",
-                  "id":"Slovakia"
-               },
-               {
-                  "text":"Finland",
-                  "short_text":"Finland",
-                  "id":"Finland"
-               },
-               {
-                  "text":"Iceland",
-                  "short_text":"Iceland",
-                  "id":"Iceland"
-               },
-               {
-                  "text":"Croatia",
-                  "short_text":"Croatia",
-                  "id":"Croatia"
                }
             ]
          },
          {
-            "id":"reporter_fName",
+            "id":"flp_first_name",
             "text":"Please provide your First Name",
             "short_text":"First Name",
             "type":"text"
          },
          {
-            "id":"reporter_lName",
+            "id":"flp_last_name",
             "text":"Please provide your Last Name",
             "short_text":"Last Name",
             "type":"text"
          },
          {
-            "id":"reporter_email",
+            "id":"flp_email",
             "text":"Please provide your Email Address",
             "short_text":"Email",
             "type":"text"
          },
          {
-            "id":"reporter_residence_city",
+            "id":"flp_password",
+            "text":"Please provide your Password",
+            "short_text":"Password",
+            "type":"password"
+         },
+         {
+            "id":"flp_organisation",
+            "text":"Please provide your organisation",
+            "short_text":"Organisation",
+            "type":"text"
+         },
+         {
+            "id":"flp_years_of_experience",
+            "text":"How many years of experience do you have in this profession?",
+            "short_text":"experience",
+            "type":"text"
+         },
+         {
+            "id":"flp_city",
             "text":"What is your current City/Town",
             "short_text":"Town",
             "type":"text"
          }
       ]
    },
-   "M1.2":{
-      "state_text":"Please specify the approximate time of the suspect event.",
-      "id":"event_time",
-      "short_text":"Event time",
-      "show_header": "true",
-      "state_type":"datetime"
-   },
-   "M1.3":{
-      "state_text":"How would you categorize the occurred suspect event?",
-      "short_text":"Event Category",
-      "id":"event_category",
+   "M1.7":{
+      "state_text":"Please Select your Skills",
+      "short_text":"Skills Category",
+      "id":"flp_skills",
+      "show_header": true,
       "state_type":"checkbox",
-      "show_header": "true",
       "state_answers":[
+         {
+            "id":"Deradicalisation",
+            "text":"Deradicalisation"
+         },
+         {
+            "id":"Hate Speech",
+            "text":"Hate Speech"
+         },
+         {
+            "id":"Juvenile Lawyer",
+            "text":"Juvenile Lawyer"
+         },
+         {
+            "id":"Organised Crime",
+            "text":"Organised Crime"
+         },
+         {
+            "id":"Prosecutor",
+            "text":"Prosecutor"
+         },
+         {
+            "id":"Psychologist",
+            "text":"Psychologist"
+         },
          {
             "id":"Radicalisation",
             "text":"Radicalisation"
          },
          {
-            "id":"Corruption",
-            "text":"Corruption"
+            "id":"School",
+            "text":"School"
          },
          {
-            "id":"Online Radicalisation",
-            "text":"Online Radicalisation"
+            "id":"Social Media",
+            "text":"Social Media"
          },
          {
-            "id":"Bully",
-            "text":"Bully"
+            "id":"Young People",
+            "text":"Young People"
          },
          {
-            "id":"Polarization",
-            "text":"Polarization"
-         },
-         {
-            "id":"Antisemitism",
-            "text":"Antisemitism"
-         },
-         {
-            "id":"Religious Radicalisation",
-            "text":"Religious Radicalisation"
-         },
-         {
-            "id":"Sexism",
-            "text":"Sexism"
-         },
-         {
-            "id":"Racism",
-            "text":"Racism"
-         },
-         {
-            "id":"Domestic Violence",
-            "text":"Domestic Violence"
-         },
-         {
-            "id":"Homophobia",
-            "text":"Homophobia"
+            "id":"Youth Gang",
+            "text":"Youth Gang"
          },
          {
             "id":"Other",
@@ -349,37 +437,21 @@
          }
       ]
    },
-   "M1.4":{
-      "state_text":"Event Detailed Information",
-      "state_type":"description",
+   "M1.8":{
+      "short_text":"Bio/Skills Description",
+      "state_text":"Please provide a description of your experience and expertise",
+      "id":"flp_description",
       "show_header": "true",
-      "id": "report_infos",
-      "state_answers":[
-         {
-            "id":"description_subject",
-            "text":"Please provide a Subject for your Alert Description",
-            "short_text":"Description Subject",
-            "type":"text"
-         },
-         {
-            "short_text":"Event Description",
-            "text":"Please provide us a description of what has happened.",
-            "id":"event_description",
-            "type":"description"
-         },
-         {
-            "short_text":"Deadline",
-            "text":"Please provide us an estimated date until when can a Solution be provided",
-            "id":"deadline",
-            "type":"date"
-         }
-      ]
+      "state_type":"description"
    },
-   "M1.5":{
-      "state_type":"result"
+   "M1.9":{
+      "short_text":"Email Verification",
+      "state_text":"Please provide the verification Code that has been sent to the email provided",
+      "id":"verification",
+      "state_type":"verification"
    },
    "ERROR":{
-      "state_text":"An error has occured! Please restart the report process.",
+      "state_text":"An error has occurred! Please restart the report process.",
       "state_type":"error"
    }
 }

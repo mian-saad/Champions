@@ -1,14 +1,10 @@
 <?php
 
-
-// add arena topic under <hr>
-// add country list in alert module
-
-
 namespace Contain\Display\View;
 
 use Contain\Display\Controller\LoadData;
 use Contain\Display\Model\LoggedComponents;
+use function WPMailSMTP\Vendor\GuzzleHttp\Psr7\str;
 
 class LandingPage {
     public function RenderPage($Email) {
@@ -28,18 +24,19 @@ class LandingPage {
         $ArenaExpertLastName = $LoadArenaData->loadArenaData('last_name', $Email);
         $Name = ($ArenaExpertFirstName[0]  ." ".  $ArenaExpertLastName[0]);
         $html .= "<div class='col-6'>";
-        $html .= "<h4 class='NameHeader' id='MyName' name='".$Email."'>".$Name."</h4>";
+        $html .= "<h4 class='NameHeader' id='MyName' name='".$Email."'><a id='edit' data-value='".$Email."'>".$Name."</a></h4>";
         $html .= "</div>";
         $html .= "</div>";
         $html .= "<hr>";
         $html .= " <br>";
-        $html .= "<div class='row'><h3 style='margin: 0 auto'>My Arena Panel</h3></div><br><br>";
+        $str = $_SESSION['strings'];
+        $html .= "<div class='row'><h3 style='margin: 0 auto'>".$str['arena_panel']."</h3></div><br><br>";
         return $html;
     }
-    //TODO: redirect to arena the flp who comes to generate alert
 
     // return multiple functions that forms the instance on landing page (Subject of Case, Deadline, Button Status)
     public function InstanceOfCase ($Email) {
+
 
         // idea: initaitae a var with 0 and add 1 when it runs first time, when back button is pressed it remains 1 and can go without validation
         $MatchedLanguageId = $this->MatchLanguage($Email);
@@ -47,10 +44,12 @@ class LandingPage {
         $AlertDeclinedId = $this->Declined();
         // $FinalIds consists of all the common ids from $MatchedLanguageId, $MatchedSkillsId
         $FinalIds = array_intersect($MatchedLanguageId, $MatchedSkillsId);
+        $FinalIds = $this->CaseStatus($FinalIds);
         // $FinalIds consists of all the above $FinalIds which are not Rejected
-        $FinalIds = array_diff($FinalIds, $AlertDeclinedId);
+//        $FinalIds = array_diff($FinalIds, $AlertDeclinedId);
 
-        $html = "<div class='row'>";
+        $html = "<div class='row'>Please click on the topic of the case to see details.</div>";
+        $html .= "<div class='row'>";
         $html .= "<table>";
         $html .= " <tr> ";
         $html .= " <td> ";
@@ -74,33 +73,37 @@ class LandingPage {
         $html .= " </td> ";
         $html .= " </tr> ";
         $html .= " <tr> ";
-        foreach ($FinalIds as $id) {
-            // call subject
-            // if joined green else this
+
+            foreach ($FinalIds as $id) {
+//                if ($CaseStatus == true) {
+                // call subject
+                // if joined green else this
 
                 $html .= " <td class='subject' id='".$id."'> ";
-                    $html .= $this->subject($id);
+                $html .= $this->subject($id);
                 $html .= " </td> ";
-            // call deadline
+                // call deadline
                 $html .= " <td> ";
-                    $html .= $this->deadline($id);
+                $html .= $this->deadline($id);
                 $html .= " </td> ";
-            // call deadline
+                // call deadline
 //                $html .= " <td> ";
 //                    $html .= $this->Recommendations($id);
 //                $html .= " </td> ";
-            // call button from Alert
+                // call button from Alert
                 $html .= " <td> ";
-                    $html .= $this->InProgressClosed($id, $Email);
+                $html .= $this->InProgressClosed($id, $Email);
                 $html .= " </td> ";
-            // call button from relative to expert
+                // call button from relative to expert
                 $html .= " <td> ";
-                    $html .= $this->JoinNotJoin($id, $Email);
+                $html .= $this->JoinNotJoin($id, $Email);
                 $html .= " </td> ";
-            $html .= " </tr> ";
+                $html .= " </tr> ";
 //             $this->button($FinalIds[$counter]);
 //             $this->ButtonStatusArena($Email, $FinalIds[$counter]); //if true then buttons to render inprogress and close, if false buttons to render join and not join
-         }
+//            }
+        }
+
         $html .= "</table>";
         $html .= "</div>";
         return $html;
@@ -158,7 +161,6 @@ class LandingPage {
             $html .= " <button class='ArenaClickableButtons button' id='Decline-".$FinalReportIds."'>Decline</button> ";
             return $html;
         }
-        $html .= "</div>";
     }
 
     public function Declined () {
@@ -183,7 +185,7 @@ class LandingPage {
         $LoadArenaData = new LoadData();
         $ArenaCaseStatusClose = $LoadArenaData->loadArenaData('closed_associated_alert', $Email);
         $ArenaCaseStatusAssociated = $LoadArenaData->loadArenaData('associated_alert', $Email);
-        if (strpos($ArenaCaseStatusClose[0], $FinalReportIds) !== false) {
+        if (strpos($ArenaCaseStatusClose[0], $FinalReportIds) !== false && $AlertCaseStatus[0] !== 'Closed') {
             return "<span class='alert-status-in-progress'>In Closing</span>";
         }
         // if Accepted then in progress and close should render
@@ -224,6 +226,7 @@ class LandingPage {
         $AlertSkills = $LoadAlertData->loadAlertData('event_category');
         $AlertReportId = $LoadAlertData->loadAlertData('report_id');
         $ArenaSkills = $LoadArenaData->loadArenaData('skill', $Email);
+        $Arena_AlertID = $LoadArenaData->loadArenaData('alert_id', $Email);
 
         $ArenaSkills = explode(',', $ArenaSkills[0]);
         for ($ArenaSkillsCounter = 0; $ArenaSkillsCounter<count($ArenaSkills); $ArenaSkillsCounter++) {
@@ -231,16 +234,21 @@ class LandingPage {
                 if (strpos($AlertSkills[$AlertSkillsCounter], $ArenaSkills[$ArenaSkillsCounter]) !== false) {
                     array_push($MatchedSkillsId, $AlertReportId[$AlertSkillsCounter]);
                 }
+                // if its an FLP add the alert_id to $MatchedSkillsId
+                if (strpos($Arena_AlertID[0], $AlertReportId[$AlertSkillsCounter]) !== false) {
+                    if (!in_array($AlertReportId[$AlertSkillsCounter], $MatchedSkillsId)) {
+                        array_push($MatchedSkillsId, $AlertReportId[$AlertSkillsCounter]);
+                    }
+                }
             }
         }
+
         // takes the skills of arena expert and breaks it down into an array then matches those against all the alert event categories
         return $MatchedSkillsId;
         // NOTE: this array is from ALERT
     }
 
     public function ClickButton ($Identifier, $Email) {
-        $LoadArenaData = new LoadData();
-//        $CurrentExpert = $LoadArenaData->loadArenaData('report_id', $Email);
 
         // on clicking join button update database and call InProgressClose
         global $wpdb;
@@ -254,140 +262,44 @@ class LandingPage {
             $LoadArenaAssociatedAlertData = $LoadArenaData->loadArenaData('associated_alert', $Email);
             $Id = $Id1 .",".$LoadArenaAssociatedAlertData[0];
 
-            $wpdb->update("wp_arena", array('associatedAlert' => $Id), array('email' => $Email));
+            $wpdb->update("wp_arena", array('flp_associatedAlert' => $Id), array('flp_email' => $Email));
         }
         // When clicked on Decline
         if ($Status === 'Decline') {
+            $LoadArenaData = new LoadData();
+            $LoadArenaAssociatedAlertData = $LoadArenaData->loadArenaData('not_associated_alert', $Email);
+            $Id = $Id1 .",".$LoadArenaAssociatedAlertData[0];
             // on clicking not join button update database(add another column NotAssociatedAlert) and call Declined
-            $wpdb->update("wp_arena", array('notAssociatedAlert' => $Id), array('email' => $Email));
+            $wpdb->update("wp_arena", array('flp_notAssociatedAlert' => $Id), array('flp_email' => $Email));
         }
         // When clicked on Close
         if ($Status === 'Close') {
-            // on clicking close button
-            // this is going to be complex - if its been closed by flp or an expert
-            // if closed by flp update database
-            // if closed by expert add another column in arena, where all experts who closed the case appear - then update database
-            // after every update call Closed
-            $LoadArenaData = new LoadData();
-            $LoadArenaClosedAssociatedAlertData = $LoadArenaData->loadArenaData('closed_associated_alert', $Email);
+            $LoadData = new LoadData();
+            $FLPId = $LoadData->loadArenaData('flp_id', $Email);
+            $LoadArenaClosedAssociatedAlertData = $LoadData->loadArenaData('closed_associated_alert', $Email);
             $Id = $Id1 .",".$LoadArenaClosedAssociatedAlertData[0];
-            $wpdb->update("wp_arena", array('ClosedAssociatedAlert' => $Id), array('email' => $Email));
-            // add if flp condition
-            // if $Email === all login_reports email
-            $LoadArenaData = new LoadData();
-            $LoadArenaExpertTypeData = $LoadArenaData->loadArenaData('expert_type', $Email);
-
-            if ($LoadArenaExpertTypeData[0] === 'FLP') {
-
-                $wpdb->update("wp_alert", array('alert_status_flp' => 'Closed'), array('reporter_email' => $Email));
+            $FLPIdInAlert = $LoadData->loadAlertData('flp_id', $Id1);
+            if (strpos($FLPIdInAlert[0], $FLPId[0]) !== false) {
+                $wpdb->update("wp_arena", array('flp_ClosedAssociatedAlert' => $Id), array('flp_email' => $Email));
+                $wpdb->update("wp_alert", array('alert_status_flp' => 'Closed'), array('alert_id' => $Id1));
             }
-            else{
-                $wpdb->update("wp_alert", array('alert_status_mutual' => 'Closed'), array('report_id' => $Id1));
+            else {
+                $wpdb->update("wp_arena", array('flp_ClosedAssociatedAlert' => $Id), array('flp_email' => $Email));
+                $wpdb->update("wp_alert", array('alert_status_mutual' => 'Closed'), array('alert_id' => $Id1));
             }
-
         }
-
-
         $this->RenderPage($Email);
     }
 
-
-
-
-
-
-
-
-
-
-
-    /* ---------------------------------  */
-
-    public function loggedMain() {
-
-        $_SESSION['Email'] = sanitize_text_field( $_GET['email'] );
-        $_SESSION['Password'] = sanitize_text_field( $_GET['pass'] );
-
-        $clicked = sanitize_text_field( $_GET['id'] );
-        $id = 0;
-
-        global $wpdb;
-        if ($clicked != 'alertBack' && $clicked != 'join'){
-            $email = sanitize_text_field( $_GET['email'] );
-            $pass= sanitize_text_field( $_GET['pass'] );
-            $_SESSION['mail'] = $email;
-            $_SESSION['pass'] = $pass;
-            $r = 0;
-        }
-        elseif ($clicked != 'join'){
-            $r = $_SESSION["iterator"];
-        }
-        else{
-            $email= $_SESSION['mail'];
-            $pass = $_SESSION['pass'];
-            $r = 0;
-        }
-        $alert = $wpdb->get_results( "SELECT report_id, tempID, event_category, event_description, description_subject FROM {$wpdb->prefix}alert", OBJECT );
-        $arena = $wpdb->get_results( "SELECT first_name, arenaTempID, last_name, email, password, associatedAlert, skill FROM {$wpdb->prefix}arena", OBJECT );
-        for ($r; $r<count($arena); $r++) {
-            if (($email === $arena[$r]->email && $pass === $arena[$r]->password) OR ($clicked === 'alertBack')) {
-                $_SESSION['mail'] = $arena[$r] -> email;
-                $_SESSION["iterator"] = $r ;
-                if ($clicked != 'alertBack' && $clicked != 'join') {
-
-                    $Header = new LoggedComponents();
-                    $Header->header($arena[$r] -> first_name, $arena[$r] -> last_name);
-
-                    echo "<hr>";
-                    echo "<div id='alertPanel' class='row'>";
-                }
-
-                $arenaSkills = explode(',', $arena[$r] -> skill);
-                for ($j=0; $j<count($alert); $j++) {
-                    $alertSkills = explode(',', $alert[$j] -> event_category);
-                    for ($k=0; $k<count($alertSkills); $k++) {
-                        for ($i=0; $i<count($arenaSkills); $i++) {
-                            if (($arenaSkills[$i] === $alertSkills[$k]) || ($arena[$r]->arenaTempID === $alert[$j]->tempID )) {
-                                echo "<div value='$j' id='toAlert' class='alertPost col-7'>";
-                                echo $alert[$j] -> description_subject;
-                                echo "</div>";
-                                $arenaID = explode(',', $arena[$r] -> associatedAlert);
-                                for ($o=0; $o<count($arenaID); $o++){
-                                    if ($arenaID[$o] === $alert[$j] -> report_id){
-                                        echo "<button id='inprogress$id' value='$j' class='button inprogress col-3' >IN PROGRESS</button><br>";
-                                        $o = 999;
-                                    }
-                                    elseif($arenaID[$o] === ""){
-                                        $event = $alert[$j] -> report_id;
-                                        echo "<button id='join$id' class='button join' value='$event' class='col-3'>JOIN</button>";
-                                    }
-
-                                    $id++;
-                                }
-                                $k = 999;
-
-                            }
-                        }
-                    }
-                }
-                echo "</div>";
-                wp_die();
+    public function CaseStatus($Id) {
+        $MatchedId = [];
+        $LoadData = new LoadData();
+        foreach ($Id as $id) {
+        $CaseStatus = $LoadData->loadAlertData('alert_case_status', $id);
+            if ($CaseStatus[0] === "Accepted" || $CaseStatus[0] === "Closed") {
+                array_push($MatchedId, $id);
             }
         }
+        return $MatchedId;
     }
-
-    // Logged In Page Section
-    public function loggedAlert() {
-        global $wpdb;
-        $alertV = sanitize_text_field( $_GET['alertV'] );
-        $mail = $_SESSION['mail'];
-        $_SESSION['assocAlert'] = $alertV;
-        $arena = $wpdb->get_results( "SELECT associatedAlert FROM {$wpdb->prefix}arena WHERE email='$mail'", OBJECT );
-        $data = $alertV.",".$arena[0]->associatedAlert;
-
-
-        $wpdb -> update('wp_arena', array('associatedAlert' => $data), array('email' => $mail));
-        $this->loggedMain();
-    }
-
 }

@@ -174,32 +174,17 @@ jQuery(document).ready(function ($) {
 
     // On click at Accept/Reject Expert
     $('body').on('click', '.decide_expert', function (e) {
-        //e.preventDefault();
 
         let ID = $(this).attr('id');
-        // let decision_case = $(this).attr('class');
-        // decision_case = decision_case.split(" ").pop();
-        // decision_class = "." + decision_class;
-        // $(decision_class).prop('disabled', true);
-
         let Id1 = ID.split('-').pop();
-        // $(this).prop('disabled', true);
-
-        // if (ID.includes("Accepted")) {
-        //     console.log("working ..");
-        $("#Accepted-"+Id1).prop('disabled', true);
-        $("#Rejected-"+Id1).prop('disabled', true);
-        // }
-        // else {
-        //     console.log("not working ..")
-        // }
-
         const req_data = {
             action: 'summon',
             id: 'decide_expert_case',
             DecideId: ID
         };
-        jQuery.get(login_ajax.ajaxurl, req_data, function (response) {});
+        jQuery.get(login_ajax.ajaxurl, req_data, function (response) {
+            $contentBox.html(response);
+        });
     });
 
     // On click at Join, Decline, Close
@@ -338,6 +323,30 @@ jQuery(document).ready(function ($) {
         }
     });
 
+    $('body').on('click', '#to_arena_login_module', function (e) {
+        const req_data = {
+            action: 'summon',
+            id: 'SelectLanguage'
+        };
+        jQuery.get(login_ajax.ajaxurl, req_data, function (response) {
+            $contentBox.html(response);
+        });
+
+    });
+
+    $('body').on('click', '#login_session', function (e) {
+
+
+        const req_data = {
+            action: 'summon',
+            id: 'MainPage',
+            data: $('#lang_select').val()
+        };
+        jQuery.get(login_ajax.ajaxurl, req_data, function (response) {
+            $contentBox.html(response);
+        });
+
+    });
 
     // $(".RecommendClass").hover(function() {
     //
@@ -369,6 +378,7 @@ jQuery(document).ready(function ($) {
         const req_data = {
             action: 'summon',
             id: 'InvitationMechanism',
+            alert: $('#invitation-button').val(),
             InvitationEmail: $('#invitation-email').val()
         };
         jQuery.get(login_ajax.ajaxurl, req_data, function (response) {
@@ -379,6 +389,94 @@ jQuery(document).ready(function ($) {
     });
 
 
+    $('body').on('click', '#forgot', function (e) {
+        //e.preventDefault();
+
+        const req_data = {
+            action: 'summon',
+            id: 'Forgot'
+        };
+        jQuery.get(login_ajax.ajaxurl, req_data, function (response) {
+            $contentBox.html(response);
+        });
+
+    });
+
+    $('body').on('click', '#forgot_password', function (e) {
+        //e.preventDefault();
+
+        const req_data = {
+            action: 'summon',
+            data: $('#naam').val(),
+            id: 'ForgotPassword'
+        };
+        jQuery.get(login_ajax.ajaxurl, req_data, function (response) {
+            $contentBox.html(response);
+        });
+
+    });
+
+    $('body').on('click', '#edit', function (e) {
+        //e.preventDefault();
+
+        const req_data = {
+            action: 'summon',
+            data: $('#edit').data("value"),
+            id: 'Edit'
+        };
+        jQuery.get(login_ajax.ajaxurl, req_data, function (response) {
+            $contentBox.html(response);
+        });
+
+    });
+
+    // on clicking update
+    $('body').on('click', '#update', function (e) {
+        //e.preventDefault();
+
+        const $notify = $('#notify');
+        var provided_answers = arena_question_validation();
+
+        const req_data = {
+            action: 'summon',
+            data: provided_answers,
+            id: 'Update'
+        };
+        jQuery.get(login_ajax.ajaxurl, req_data, function (response) {
+
+            $notify.html(response);
+        });
+        setTimeout(function() {
+            $('#notify2').fadeOut();
+        }, 3000);
+    });
+
+
+    function arena_question_validation() {
+
+        var formData = $('#arena_question_form').serializeArray();
+
+        result = {};
+
+        for (var i in formData) {
+            var fieldname = formData[i]['name'];
+            var fieldvalue = formData[i]['value'];
+
+            if (!(fieldname in result)) {                // if key doesnt exist, add it to array
+                result[fieldname] = fieldvalue
+            } else {                                  // else key already exists
+
+                if (Array.isArray(result[fieldname])) {    // if field already contains an array, lets push new element there
+                    result[fieldname].push(fieldvalue);
+                } else {
+                    var newvalue = [result[fieldname], fieldvalue]    // else lets create new array with two elements in it
+                    result[fieldname] = newvalue;
+                }
+            }
+        }
+
+        return result;
+    }
     /* <-- OLD SECTION --> */
 
 

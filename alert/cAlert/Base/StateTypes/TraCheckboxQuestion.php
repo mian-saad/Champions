@@ -8,11 +8,11 @@ class TraCheckboxQuestion extends TraState
 {
     public $continue_string;
 
-    public function __construct($report_id, $state_code, $state, $continue_string, $back_string, $field_warning, $warning)
+    public function __construct($alert_id, $state_code, $state, $continue_string, $back_string, $field_warning, $warning)
     {
         $this->field_warning = $field_warning;
         $this->back_string = $back_string;
-        $this->report_id = $report_id;
+        $this->alert_id = $alert_id;
         $this->state_code = $state_code;
         $this->state = $state;
         $this->continue_string = $continue_string;
@@ -21,7 +21,7 @@ class TraCheckboxQuestion extends TraState
 
     public function generate_html()
     {
-        $html = $this->generate_hidden_fields($this->report_id);
+        $html = $this->generate_hidden_fields($this->alert_id);
         if($this->state['show_header']=="true"){
             $html .= "<h3 class='alert_question'>" . $this->state['short_text'] . "</h3>";
         }
@@ -95,7 +95,9 @@ class TraCheckboxQuestion extends TraState
 
                 if ($item == $checkbox_answer['id']) {
                     // handle the other_text_input here
-                    if ($checkbox_answer['id'] == 'other' and $this->response['other_text_input'] != "") {
+                    $w = $checkbox_answer['id'];
+                    $x = $this->response['other_text_input'];
+                    if (($checkbox_answer['id'] === 'Other') && ($this->response['other_text_input'] !== "")) {
                         $value = $checkbox_answer['text'] . " - " . $this->response['other_text_input'];
                     } else {
                         $value = $checkbox_answer['text'];

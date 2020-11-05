@@ -15,7 +15,7 @@ class AlertDecidePage {
         $html = " <h2>Accept/Reject Alert Case</h2> ";
         $html .= " <table> ";
         $html .= " <tr> ";
-        $html .= " <td> ";
+        /*$html .= " <td> ";
         $html .= " <b>Title</b> ";
         $html .= " </td> ";
         $html .= " <td> ";
@@ -26,19 +26,25 @@ class AlertDecidePage {
         $html .= " </td> ";
         $html .= " <td> ";
         $html .= " <b>Email</b> ";
-        $html .= " </td> ";
-        $html .= " <td> ";
-        $html .= " <b>Country</b> ";
-        $html .= " </td> ";
-        $html .= " <td> ";
-        $html .= " <b>Event Time</b> ";
-        $html .= " </td> ";
-        $html .= " <td> ";
-        $html .= " <b>Category</b> ";
-        $html .= " </td> ";
+        $html .= " </td> ";*/
+
         $html .= " <td> ";
         $html .= " <b>Subject</b> ";
         $html .= " </td> ";
+
+        $html .= " <td> ";
+        $html .= " <b>Event Time</b> ";
+        $html .= " </td> ";
+
+        $html .= " <td> ";
+        $html .= " <b>Category</b> ";
+        $html .= " </td> ";
+
+        $html .= " <td> ";
+        $html .= " <b>Country</b> ";
+        $html .= " </td> ";
+
+
         $html .= " <td> ";
         $html .= " <b>FLP Status</b> ";
         $html .= " </td> ";
@@ -50,9 +56,9 @@ class AlertDecidePage {
         $html .= " </td> ";
         $html .= " </tr> ";
         for ($counter = 0; $counter<$length; $counter++) {
-            if ($Country[0] === $Data[$counter] -> reporter_residence) {
+            if ($Country[0] === $Data[$counter] -> alert_country) {
                 $html .= " <tr> ";
-                $html .= " <td> ";
+                /*$html .= " <td> ";
                 $html .= " <p>" . $Data[$counter] -> title . "</p> ";
                 $html .= " </td> ";
                 $html .= " <td> ";
@@ -63,19 +69,22 @@ class AlertDecidePage {
                 $html .= " </td> ";
                 $html .= " <td> ";
                 $html .= " <p>" . $Data[$counter] -> reporter_email . "</p> ";
+                $html .= " </td> ";*/
+
+                $html .= " <td> ";
+                $html .= " <p>" . $Data[$counter] -> alert_subject . "</p> ";
                 $html .= " </td> ";
                 $html .= " <td> ";
-                $html .= " <p>" . $Data[$counter] -> reporter_residence . "</p> ";
+                $html .= " <p>" . $Data[$counter] -> alert_time . "</p> ";
                 $html .= " </td> ";
                 $html .= " <td> ";
-                $html .= " <p>" . $Data[$counter] -> event_time . "</p> ";
+                $html .= " <p>" . $Data[$counter] -> alert_category . "</p> ";
                 $html .= " </td> ";
                 $html .= " <td> ";
-                $html .= " <p>" . $Data[$counter] -> event_category . "</p> ";
+                $html .= " <p>" . $Data[$counter] -> alert_country . "</p> ";
                 $html .= " </td> ";
-                $html .= " <td> ";
-                $html .= " <p>" . $Data[$counter] -> description_subject . "</p> ";
-                $html .= " </td> ";
+
+
                 if ($Data[$counter] -> alert_status_flp === null) {
                     $html .= " <td> ";
                     $html .= " <p>Open</p> ";
@@ -97,7 +106,7 @@ class AlertDecidePage {
                     $html .= " </td> ";
                 }
                 $html .= " <td class='table_entry'> ";
-                $html .= " <p id='".$Data[$counter] -> report_id."'>" . $this->decide($counter, $Data[$counter] -> report_id, $Data[$counter] -> alert_case_status) . "</p> ";
+                $html .= " <p id='".$Data[$counter] -> alert_id."'>" . $this->decide($counter, $Data[$counter] -> alert_id, $Data[$counter] -> alert_case_status) . "</p> ";
                 $html .= " </td> ";
                 $html .= " </tr> ";
             }
@@ -140,34 +149,60 @@ class AlertDecidePage {
 
     }
 
-    public function transition($result, $id) {
+    public function transition($res, $id) {
         $html = "";
-        if ($result === 'Rejected') {
+        if ($res === 'Rejected') {
             $html .= "<button id='Closed-". $id ."' class='button decide close_case' disabled>Rejected</button>";
         }
-        else if ($result === 'Closed') {
+        else if ($res === 'Closed') {
             $html .= "<button id='Closed-". $id ."' class='button decide close_case' disabled>Closed</button>";
         }
         else {
-            $html .= "<button id='Closed-". $id ."' class='button decide close_case'>Close Case</button>";
+            $html .= "<button id='Closed-". $id ."' class='button decide close_case'>Close </button>";
         }
         return $html;
     }
 
     public function validate_entry($decision_entry) {
+
         //        if (other alert case are closed)
         $LoadData = new LoadData();
         $DataFLP = $LoadData->loadAlertData('alert_status_flp', $decision_entry);
         $DataMutual = $LoadData->loadAlertData('alert_status_mutual', $decision_entry);
+        // when there is only flp and a moderator part of the case => then to close the case exempt the expert
+        if ($this->validate_no_expert($decision_entry) && !empty($DataFLP[0])) {
+            return true;
+        }
         if (empty($DataFLP[0]) || empty($DataMutual[0])) {
             return false;
         }
-        return true;
+        if (!empty($DataFLP[0]) && !empty($DataMutual[0])) {
+            return true;
+        }
+        return false;
     }
 
-    public function update_entry($result, $entry) {
+    public function validate_no_expert($decision_entry) {
         global $wpdb;
-        $wpdb->update("wp_alert", array('alert_case_status' => $result), array('report_id' => $entry));
+        $count = 0;
+        $isExpert = $wpdb->get_results( "SELECT flp_associatedAlert FROM {$wpdb->prefix}arena", OBJECT );
+        for ($counter = 0; $counter < count($isExpert); $counter++) {
+            $values = explode(",", $isExpert[$counter]->flp_associatedAlert);
+            for ($iterator = 0; $iterator < count($values); $iterator++) {
+                if ($values[$iterator] === $decision_entry) {
+                    $count++;
+                }
+            }
+        }
+        if ($count < 2) {
+            return true;
+        }
+        return false;
+    }
+
+    public function update_entry($results, $entrys) {
+        global $wpdb;
+        $wpdb->update("wp_alert", array('alert_case_status' => $results), array('alert_id' => $entrys));
     }
 
     public function SendMail($UserID, $State) {

@@ -63,7 +63,7 @@ class ControlCenter {
             case 'decide_expert_case':
                 $decisionId = sanitize_text_field( $_GET['DecideId'] );
                 $loggedState = new View\ExpertDecidePage();
-                $loggedState->decide_state($decisionId);
+                $loggedState->decide_state($decisionId, $_SESSION['Country']);
                 break;
 
             case 'AcceptRejectCase':
@@ -109,6 +109,39 @@ class ControlCenter {
                 $loggedState->RenderRecommendation($_SESSION['Email'], sanitize_text_field( $_GET['ID']));
                 break;
 
+            case 'SelectLanguage':
+                $loggedState = new View\SelectLanguage();
+                $loggedState->Render();
+                break;
+
+            case 'MainPage':
+                $loggedState = new View\MainPage();
+                $plugin_path = plugin_dir_path( dirname(__FILE__, 3));
+                $string_file = json_decode(file_get_contents($plugin_path . "assets/base/" . sanitize_text_field( $_GET['data'] ) . "/alert_strings.json"), true);
+                $_SESSION['strings'] = $string_file;
+                $loggedState->Render($_SESSION['strings']);
+                break;
+
+            case 'Forgot':
+                $loggedState = new View\ForgotPassword();
+                $loggedState->Render();
+                break;
+
+            case 'ForgotPassword':
+                $loggedState = new View\PasswordSent();
+                $loggedState->Render(sanitize_text_field( $_GET['data'] ));
+                break;
+
+            case 'Edit':
+                $loggedState = new View\EditProfile();
+                $loggedState->render(sanitize_text_field( $_GET['data']));
+                break;
+
+            case 'Update':
+                $loggedState = new View\ProfileUpdated();
+                $loggedState->update($_GET['data'], $_SESSION['Email']);
+                break;
+
             case 'AddRecommendation':
                 $loggedState = new View\DiscussionPage();
                 $loggedState->InsertRecommendation(sanitize_text_field( $_GET['ID']), $_SESSION['Email'], sanitize_text_field( $_GET['Data']));
@@ -131,7 +164,7 @@ class ControlCenter {
 
             case 'InvitationMechanism':
                 $loggedState = new Model\LoggedComponents();
-                $loggedState->InviteExperts(sanitize_text_field( $_GET['InvitationEmail']));
+                $loggedState->InviteExperts(sanitize_text_field( $_GET['InvitationEmail']), $_GET['alert'] );
                 break;
         }
         wp_die();
@@ -157,7 +190,7 @@ class ControlCenter {
         $LoadData = new LoadData();
         $DataEmail = $LoadData->loadArenaData('email', $Email);
         $DataPassword = $LoadData->loadArenaData('password', $Email);
-        $DataExpertType = $LoadData->loadArenaData('expert_type', $Email);
+        $DataExpertType = $LoadData->loadArenaData('title', $Email);
         $_SESSION['Country'] = $LoadData->loadArenaData('country', $Email);
         $length = count($DataEmail);
 

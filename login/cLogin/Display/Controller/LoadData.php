@@ -11,30 +11,45 @@ class LoadData {
             $alertData = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}alert", OBJECT );
         }
         else {
-            $alertData = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}alert WHERE report_id='$Node'", OBJECT );
+            $alertData = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}alert WHERE alert_id='$Node'", OBJECT );
         }
+        /*  ALERT DATABASE COLUMNS
+                alert_id VARCHAR(32),
+                alert_report_time TEXT,
+                alert_report_locale TEXT,
+                alert_report_ip TEXT,
+                alert_country TEXT,
+                alert_city TEXT,
+                alert_time TEXT,
+                alert_category TEXT,
+                alert_subject TEXT,
+                alert_description TEXT,
+                alert_deadline TEXT,
+                flp_id TEXT,
+                alert_case_status TEXT,
+                alert_status_moderator TEXT,
+                alert_status_flp TEXT,
+                alert_status_mutual TEXT,
+        */
 
         for ($counter = 0; $counter<count($alertData); $counter++) {
-            $ReportId[$counter] = $alertData[$counter] -> report_id;
-            $Language[$counter] = $alertData[$counter] -> report_locale;
-            $FirstName[$counter] = $alertData[$counter] -> reporter_fName;
-            $LastName[$counter] = $alertData[$counter] -> reporter_lName;
-            $Email[$counter] = $alertData[$counter] -> reporter_email;
-            $Residence[$counter] = $alertData[$counter] -> reporter_residence;
-            $Deadline[$counter] = $alertData[$counter] -> deadline;
-            $Title[$counter] = $alertData[$counter] -> title;
-            $EventTime[$counter] = $alertData[$counter] -> event_time;
-            $EventCategory[$counter] = $alertData[$counter] -> event_category;
-            $EventDescription[$counter] = $alertData[$counter] -> event_description;
-            $EventDescriptionSubject[$counter] = $alertData[$counter] -> description_subject;
-            $AlertStatusModerator[$counter] = $alertData[$counter] -> alert_status_moderator;
-            $AlertStatusFLP[$counter] = $alertData[$counter] -> alert_status_flp;
-            $AlertStatusMutual[$counter] = $alertData[$counter] -> alert_status_mutual;
-            $AlertCaseStatus[$counter] = $alertData[$counter] -> alert_case_status;
+            $Id[$counter] = $alertData[$counter] -> alert_id;
+            $Language[$counter] = $alertData[$counter] -> alert_report_locale;
+            $Country[$counter] = $alertData[$counter] -> alert_country;
+            $City[$counter] = $alertData[$counter] -> alert_city;
+            $Category[$counter] = $alertData[$counter] -> alert_category;
+            $Subject[$counter] = $alertData[$counter] -> alert_subject;
+            $Description[$counter] = $alertData[$counter] -> alert_description;
+            $Deadline[$counter] = $alertData[$counter] -> alert_deadline;
+            $FLP[$counter] = $alertData[$counter] -> flp_id;
+            $CaseStatus[$counter] = $alertData[$counter] -> alert_case_status;
+            $StatusModerator[$counter] = $alertData[$counter] -> alert_status_moderator;
+            $StatusFLP[$counter] = $alertData[$counter] -> alert_status_flp;
+            $StatusMutual[$counter] = $alertData[$counter] -> alert_status_mutual;
         }
 
         if ($Data === 'report_id') {
-            return $ReportId;
+            return $Id;
         }
         if ($Data === 'deadline') {
             return $Deadline;
@@ -42,44 +57,35 @@ class LoadData {
         if ($Data === 'report_locale') {
             return $Language;
         }
-        if ($Data === 'first_name') {
-            return $FirstName;
+        if ($Data === 'flp_id') {
+            return $FLP;
         }
-        if ($Data === 'last_name') {
-            return $LastName;
-        }
-        if ($Data === 'email') {
-            return $Email;
+        if ($Data === 'city') {
+            return $City;
         }
         if ($Data === 'residence') {
-            return $Residence;
-        }
-        if ($Data === 'title') {
-            return $Title;
-        }
-        if ($Data === 'event_time') {
-            return $EventTime;
+            return $Country;
         }
         if ($Data === 'event_category') {
-            return $EventCategory;
+            return $Category;
         }
         if ($Data === 'event_description') {
-            return $EventDescription;
+            return $Description;
         }
         if ($Data === 'description_subject') {
-            return $EventDescriptionSubject;
+            return $Subject;
         }
         if ($Data === 'alert_status_moderator') {
-            return $AlertStatusModerator;
+            return $StatusModerator;
         }
         if ($Data === 'alert_status_flp') {
-            return $AlertStatusFLP;
+            return $StatusFLP;
         }
         if ($Data === 'alert_case_status') {
-            return $AlertCaseStatus;
+            return $CaseStatus;
         }
         if ($Data === 'alert_status_mutual') {
-            return $AlertStatusMutual;
+            return $StatusMutual;
         }
         if ($Data === 'All') {
             return $alertData;
@@ -93,27 +99,56 @@ class LoadData {
             $arenaData = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}arena", OBJECT );
         }
         else {
-            $arenaData = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}arena WHERE email='$Node'", OBJECT );
+            $arenaData = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}arena WHERE flp_email='$Node'", OBJECT );
         }
+
+        /* ARENA DATABASE COLUMNS
+                flp_id VARCHAR(32),
+                flp_locale TEXT,
+                flp_registration_time TEXT,
+                flp_reporting_ip TEXT,
+                flp_title TEXT,
+                flp_country TEXT,
+                flp_first_name TEXT,
+                flp_last_name TEXT,
+                flp_email VARCHAR(32),
+                flp_password TEXT,
+                flp_organisation TEXT,
+                flp_years_of_experience TEXT,
+                flp_city TEXT,
+                flp_skills TEXT,
+                flp_description TEXT,
+                flp_status TEXT,
+                alert_id TEXT,
+                flp_ClosedAssociatedAlert TEXT,
+                flp_associatedAlert TEXT,
+                flp_notAssociatedAlert TEXT,
+        */
 
         for ($counter = 0; $counter<count($arenaData); $counter++) {
-            $Language[$counter] = $arenaData[$counter] -> report_locale;
-            $Title[$counter] = $arenaData[$counter] -> title;
-            $Country[$counter] = $arenaData[$counter] -> country;
-            $FirstName[$counter] = $arenaData[$counter] -> first_name;
-            $LastName[$counter] = $arenaData[$counter] -> last_name;
-            $Email[$counter] = $arenaData[$counter] -> email;
-            $Password[$counter] = $arenaData[$counter] -> password;
-            $Skill[$counter] = $arenaData[$counter] -> skill;
-            $ArenaTempId[$counter] = $arenaData[$counter] -> arenaTempID;
-            $Description[$counter] = $arenaData[$counter] -> description;
-            $AssociatedAlert[$counter] = $arenaData[$counter] -> associatedAlert;
-            $NotAssociatedAlert[$counter] = $arenaData[$counter] -> notAssociatedAlert;
-            $ClosedAssociatedAlert[$counter] = $arenaData[$counter] -> ClosedAssociatedAlert;
-            $ExpertType[$counter] = $arenaData[$counter] -> expert_type;
-            $ExpertStatus[$counter] = $arenaData[$counter] -> expert_status;
+            $FLP[$counter] = $arenaData[$counter] -> flp_id;
+            $Language[$counter] = $arenaData[$counter] -> flp_locale;
+            $Title[$counter] = $arenaData[$counter] -> flp_title;
+            $Country[$counter] = $arenaData[$counter] -> flp_country;
+            $FirstName[$counter] = $arenaData[$counter] -> flp_first_name;
+            $LastName[$counter] = $arenaData[$counter] -> flp_last_name;
+            $Email[$counter] = $arenaData[$counter] -> flp_email;
+            $Password[$counter] = $arenaData[$counter] -> flp_password;
+            $Skill[$counter] = $arenaData[$counter] -> flp_skills;
+            $Description[$counter] = $arenaData[$counter] -> flp_description;
+            $ExpertStatus[$counter] = $arenaData[$counter] -> flp_status;
+            $ALERT[$counter] = $arenaData[$counter] -> alert_id;
+            $AssociatedAlert[$counter] = $arenaData[$counter] -> flp_associatedAlert;
+            $NotAssociatedAlert[$counter] = $arenaData[$counter] -> flp_notAssociatedAlert;
+            $ClosedAssociatedAlert[$counter] = $arenaData[$counter] -> flp_ClosedAssociatedAlert;
         }
 
+        if ($Data === 'flp_id') {
+            return $FLP;
+        }
+        if ($Data === 'alert_id') {
+            return $ALERT;
+        }
         if ($Data === 'expert_status') {
             return $ExpertStatus;
         }
@@ -141,9 +176,6 @@ class LoadData {
         if ($Data === 'skill') {
             return $Skill;
         }
-        if ($Data === 'arena_temp_id') {
-            return $ArenaTempId;
-        }
         if ($Data === 'description') {
             return $Description;
         }
@@ -156,9 +188,9 @@ class LoadData {
         if ($Data === 'closed_associated_alert') {
             return $ClosedAssociatedAlert;
         }
-        if ($Data === 'expert_type') {
-            return $ExpertType;
-        }
+//        if ($Data === 'expert_type') {
+//            return $ALERT;
+//        }
         if ($Data === 'All') {
             return $arenaData;
         }

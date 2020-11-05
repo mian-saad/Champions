@@ -26,7 +26,6 @@ class Summon extends BaseController {
         $loggedState = new Controller\ControlCenter();
         $loggedState->controlLogic($clicked);
 
-
         wp_die();
     }
 }

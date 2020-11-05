@@ -8,11 +8,11 @@ class TraRadioQuestion extends TraState
 {
     public $continue_string;
 
-    public function __construct($report_id, $state_code, $state, $continue_string, $back_string, $field_warning, $warning)
+    public function __construct($alert_id, $state_code, $state, $continue_string, $back_string, $field_warning, $warning)
     {
         $this->field_warning = $field_warning;
         $this->back_string = $back_string;
-        $this->report_id = $report_id;
+        $this->alert_id = $alert_id;
         $this->state_code = $state_code;
         $this->state = $state;
         $this->continue_string = $continue_string;
@@ -21,7 +21,7 @@ class TraRadioQuestion extends TraState
 
     public function generate_html()
     {
-        $html = $this->generate_hidden_fields($this->report_id);
+        $html = $this->generate_hidden_fields($this->alert_id);
         $html .= "<form id='alert_question_form'>";
         $html .= $this->generate_question_text($this->state['state_text']);
         $html .= $this->generate_radio_question($this->state);

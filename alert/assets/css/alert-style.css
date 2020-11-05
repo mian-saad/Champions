@@ -8,6 +8,17 @@ body {
   margin-bottom: 10px!important;
 }
 
+/*.entry-content {*/
+/*  margin-right: 5% !important;*/
+/*  margin-left: 5% !important;*/
+/*}*/
+
+/*@media screen and (min-width: 61.5625em){*/
+/*  .site-header {*/
+/*    padding: 2.25em 4.5455%!important;*/
+/*  }*/
+/*}*/
+
 .button {
   border: none;
   color: #fff;
@@ -17,6 +28,7 @@ body {
   line-height: 1.4;
   padding: 8px 12px;
   vertical-align: middle;
+  font-family: 'Quicksand' !important;
   text-transform: uppercase !important;
   -webkit-transition: all .3s ease;
   -moz-transition: all .3s ease;
@@ -26,6 +38,10 @@ body {
   white-space: normal;
   background-color: #0eacdb !important;
   }
+
+.button a{
+  color: white!important;
+}
 
 .alert_horizontal_choice label{
   display: inline;
@@ -59,4 +75,40 @@ p.alert_warning{
 .input-margin {
   display: block;
   margin-top: 10px!important;
+}
+
+.login-form {
+  margin-right: 5px!important;
+  margin-top: 5px!important;
+}
+
+.NoUser {
+  background-color: #ca2a2a;
+  font-size: 22px;
+  border: 1px solid white;
+  color: white;
+  padding-left: 38%;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+#register_button_pane {
+  padding-top: 20px;
+}
+
+a {
+  box-shadow: none!important;
+}
+
+a:link  {
+  text-decoration: none!important;
+}
+
+a:hover {
+  color: #0a0a0a!important;
+  cursor: pointer!important;
+  -webkit-transition: all .5s ease;
+  -moz-transition: all .5s ease;
+  -o-transition: all .5s ease;
+  transition: all .5s ease;
 }

@@ -4,21 +4,12 @@
     <p>Chose your preferred language:</p>
     <form>
         <select name="lang" id='lang_select'>
-            <option value="en">English</option>
-            <option value="it">Italian</option>
-            <option value="ge">German</option>
-            <option value="spa">Spanish</option>
-            <option value="ro">Romanian</option>
-            <option value="no">Norwegian</option>
-            <option value="pol">Polish</option>
-            <option value="cz">Czech</option>
-            <option value="sl">Slovakian</option>
-            <option value="ne">Netherlands</option>
-            <option value="is">Hebrew</option>
-            <option value="fr">French</option>
-            <option value="gr">Greek</option>
-            <option value="bu">Bulgarian</option>
-            <option value="por">Portuguese</option>
+            <option value="en">🇬🇧 English</option>
+            <option value="ge">🇩🇪 German</option>
+            <option value="ro">🇭🇺 Hungarian</option>
+            <option value="it">🇮🇹 Italian</option>
+            <option value="pol">🇵🇱 Polish</option>
+            <option value="ro">🇷🇴 Romanian</option>
             </select>
         </form>
     <div id='register_button_pane'><a class='button' type='submit' id='arena_new_expert' href='#' onclick='return false;'>Register</a></div>

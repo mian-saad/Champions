@@ -12,7 +12,7 @@ class DiscussionPage {
         $loggedState = new View\LandingPage();
         $html = $loggedState ->header($Email);
         $html .= "<div class='row'>";
-        $html .= "<div class='col-8'>";
+        $html .= "<div class='col-7'>";
         $html .= $this->PostSubject($ID);
         $html .= $this->PostDescription($ID);
         $html .= $this->DisplayComments($ID);
@@ -20,6 +20,9 @@ class DiscussionPage {
             $html .= $this->CommentsSection($ID);
         }
         $html .= $this->BackButton();
+        if ($this->JoinCommentsSectionValidation($Email, $ID)) {
+            $html .= $this->CloseButton($ID, $Email);
+        }
         $html .= "</div>";
         $html .= $this->Participants($ID);
         $html .= "</div>";
@@ -27,25 +30,6 @@ class DiscussionPage {
         $html .= $this->RenderRecommendation($Email, $ID);
         echo $html;
     }
-
-//    public function RenderRecommendation($Email, $ID) {
-//
-//        $loggedState = new View\LandingPage();
-//        $html = $loggedState ->header($Email);
-//        $html .= "<div class='row'>";
-//        $html .= "<div class='col-8'>";
-//        $html .= $this->PostSubject($ID);
-//        $html .= $this->PostDescription($ID);
-//        $html .= $this->DisplayRecommendation($ID);
-//        if ($this->JoinCommentsSectionValidation($Email, $ID)) {
-//            $html .= $this->RecommendationsSection($ID);
-//        }
-//        $html .= $this->BackButton();
-//        $html .= "</div>";
-//        $html .= $this->Participants($ID);
-//        $html .= "</div>";
-//        echo $html;
-//    }
 
     public function RenderRecommendation($Email, $ID) {
 
@@ -63,12 +47,12 @@ class DiscussionPage {
 
     public function JoinCommentsSectionValidation ($Email, $ID) {
         // if associatedAlert contains $ID where email is $Email
-        $LoadArenaData = new LoadData();
-        $ArenaAssociatedAlertReportId = $LoadArenaData->loadArenaData('associated_alert', $Email);
-        $ArenaClosedAssociatedAlertReportId = $LoadArenaData->loadArenaData('closed_associated_alert', $Email);
-        if (strpos($ArenaAssociatedAlertReportId[0], $ID) !== false) {
-            if (strpos($ArenaClosedAssociatedAlertReportId[0], $ID) !== false) {
-                return true;
+        $LoadData = new LoadData();
+        $ArenaData = $LoadData->loadArenaData('associated_alert', $Email);
+        $ArenaClosedReportId = $LoadData->loadAlertData('alert_case_status', $ID);
+        if (strpos($ArenaData[0], $ID) !== false) {
+            if ($ArenaClosedReportId[0] === 'Closed') {
+                return false;
             }
             return true;
         }
@@ -99,14 +83,14 @@ class DiscussionPage {
         $data = array('recommendation_data' => $Data, 'recommendation_email' => $Email,'recommendation_name' => $Name[0], 'recommendation_id' => $RId ,'alert_ID' => $ID);
         $wpdb->insert('wp_recommendationData', $data);
         $this->ValidationBeforeMail($ID, 'Recommendation');
-        $this->RenderRecommendation($Email, $ID);
+        $this->Render($Email, $ID);
     }
 
     public function UpdateRecommendation ($ID, $Email, $Data, $RId) {
         global $wpdb;
         $wpdb->update("wp_recommendationData", array('recommendation_data' => $Data), array('recommendation_id' => $RId));
         $this->ValidationBeforeMail($ID, 'Recommendation');
-        $this->RenderRecommendation($Email, $ID);
+        $this->Render($Email, $ID);
     }
 
     public function RecommendationsSection($ID) {
@@ -161,6 +145,23 @@ class DiscussionPage {
         return $html;
     }
 
+    public function CloseButton ($ID, $Email) {
+
+        $LoadArenaData = new LoadData();
+        $ArenaClosedAssociatedReportId = $LoadArenaData->loadArenaData('closed_associated_alert', $Email);
+        $html = "";
+        if (strpos($ArenaClosedAssociatedReportId[0], $ID) !== false) {
+            $html .= " <button disabled class='ArenaClickableButtons button' id='Closed-".$ID."'>Closed</button> ";
+            $html .= "<p><i>Case/Topic will be closed once it has been closed by Moderator and one more FLP</i></p>";
+            return $html;
+        }
+        else {
+            $html = "<button class='discussion-close ArenaClickableButtons button Close' id='Close-".$ID."'>Close Case</button>";
+            $html .= "<p><i>In order to close the discussion about the current case/topic, once you are satisfied with it, please click the close button</i></p>";
+        }
+        return $html;
+    }
+
     public function PostSubject ($ID) {
         $LoadAlertData = new LoadData();
         $AlertCaseSubject = $LoadAlertData->loadAlertData('description_subject', $ID);
@@ -177,7 +178,7 @@ class DiscussionPage {
     }
 
     public function Participants ($ID) {
-        $html = "<div class='col-4 Participants'><h4><b>Participants</b></h4>";
+        $html = "<div class='col-5 Participants'><h4><b>Participants</b></h4>";
         $LoadArenaData = new LoadData();
         $Participants = $LoadArenaData->loadArenaData('associated_alert');
         $ParticipantName = $LoadArenaData->loadArenaData('first_name');
@@ -188,7 +189,12 @@ class DiscussionPage {
                 $html .= "<li id='Participants'>".$ParticipantName[$counter]."</li>";
             }
         }
-        $html .= "<br><br><div id='invite'><input id='invitation-email'/><br><button id='invitation-button' class='button invitation-button'>Invite</button></div>";
+        $html .= "<br><br>";
+            $html .= "<div id='invite' class='row'>";
+                $html .= "<div class='col-9'><p class='invite-text'>Invite a FLP via E-mail</p></div> ";
+                $html .= "<div class='col-9'><input id='invitation-email' placeholder='example@mail.com'/></div> ";
+                $html .= "<div class='col-3'><button id='invitation-button' value='".$ID."' class='button invitation-button'>Invite</button></div>";
+            $html .= "</div>";
         $html .= "</div>";
         return $html;
     }
@@ -208,7 +214,7 @@ class DiscussionPage {
         $Emails = [];
         $increment = 0;
         global $wpdb;
-        $ArenaData = $wpdb->get_results( "SELECT email, associatedAlert FROM {$wpdb->prefix}arena", OBJECT );
+        $ArenaData = $wpdb->get_results( "SELECT flp_email, flp_associatedAlert FROM {$wpdb->prefix}arena", OBJECT );
         for ($counter = 0; $counter<count($ArenaData); $counter++) {
             if (strpos($ArenaData[$counter]->associatedAlert, $UserID) !== false) {
                 $Emails[$increment] = $ArenaData[$counter]->email;

@@ -35,41 +35,32 @@ class ExpertDecidePage {
         $html .= " <b>Skills</b> ";
         $html .= " </td> ";
         $html .= " <td> ";
-        $html .= " <b>Expert Type</b> ";
-        $html .= " </td> ";
-        $html .= " <td> ";
-        $html .= " <b>Expert Status</b> ";
+        $html .= " <b class='table_expert_column'>Expert Status</b> ";
         $html .= " </td> ";
         $html .= " </tr> ";
         for ($counter = 0; $counter<$length; $counter++) {
-            if ($Country[0] === $Data[$counter] -> country) {
+            if ($Country[0] === $Data[$counter] -> flp_country) {
                     $html .= " <tr> ";
                         $html .= " <td> ";
-                            $html .= " <p>" . $Data[$counter] -> title . "</p> ";
+                            $html .= " <p>" . $Data[$counter] -> flp_title . "</p> ";
                         $html .= " </td> ";
                         $html .= " <td> ";
-                            $html .= " <p>" . $Data[$counter] -> first_name . "</p> ";
+                            $html .= " <p>" . $Data[$counter] -> flp_first_name . "</p> ";
                         $html .= " </td> ";
                         $html .= " <td> ";
-                            $html .= " <p>" . $Data[$counter] -> last_name . "</p> ";
+                            $html .= " <p>" . $Data[$counter] -> flp_last_name . "</p> ";
                         $html .= " </td> ";
                         $html .= " <td> ";
-                            $html .= " <p>" . $Data[$counter] -> email . "</p> ";
+                            $html .= " <p>" . $Data[$counter] -> flp_email . "</p> ";
                         $html .= " </td> ";
                         $html .= " <td> ";
-                            $html .= " <p>" . $Data[$counter] -> country . "</p> ";
+                            $html .= " <p>" . $Data[$counter] -> flp_country . "</p> ";
                         $html .= " </td> ";
                         $html .= " <td> ";
-                            $html .= " <p>" . $Data[$counter] -> skill . "</p> ";
-                        $html .= " </td> ";
-                        /*$html .= " <td> ";
-                            $html .= " <p>" . $Data[$counter] -> description . "</p> ";
-                        $html .= " </td> ";*/
-                        $html .= " <td> ";
-                            $html .= " <p>" . $Data[$counter] -> expert_type . "</p> ";
+                            $html .= " <p>" . $Data[$counter] -> flp_skills . "</p> ";
                         $html .= " </td> ";
                         $html .= " <td class='table_entry'> ";
-                            $html .= " <p>" . $this->decide($Data[$counter] -> expert_type, $counter, $Data[$counter] -> report_id, $Data[$counter] -> expert_status) . "</p> ";
+                            $html .= " <p>" . $this->decide($Data[$counter] -> flp_title, $counter, $Data[$counter] -> flp_id, $Data[$counter] -> flp_status) . "</p> ";
                         $html .= " </td> ";
                     $html .= " </tr> ";
                 }
@@ -86,9 +77,11 @@ class ExpertDecidePage {
                 $html = "<button id='Accepted-". $id ."' class='button decide decide_expert decide-".$counter."'>Accept</button>";
                 $html .= "<button id='Rejected-". $id ."' class='button decide decide_expert decide-".$counter."'>Reject</button>";
             }
+            elseif ($status === 'Accepted') {
+                $html = "<button class='button decide decide_expert' disabled>Accepted</button>";
+            }
             else {
-                $html = "<button class='button decide decide_expert' disabled>Accept</button>";
-                $html .= "<button class='button decide decide_expert' disabled>Reject</button>";
+                $html = "<button class='button decide decide_expert' disabled>Rejected</button>";
             }
         }
         else {
@@ -99,23 +92,24 @@ class ExpertDecidePage {
         return $html;
     }
 
-    public function decide_state($decision) {
+    public function decide_state($decision, $country) {
         $result = explode('-', $decision);
         $decision_result = $result[0];
         $decision_entry = $result[1];
         $this->update_entry($decision_result, $decision_entry);
         $this->SendMail($decision_entry);
+        $this->loggedMain($country);
     }
 
     public function update_entry($result, $entry) {
         global $wpdb;
-        $wpdb->update("wp_arena", array('expert_status' => $result), array('report_id' => $entry));
+        $wpdb->update("wp_arena", array('flp_status' => $result), array('flp_id' => $entry));
     }
 
     public function SendMail($UserID) {
         global $wpdb;
-        $Email = $wpdb->get_results( "SELECT email FROM {$wpdb->prefix}arena WHERE report_id='$UserID'", OBJECT );
-        $Email = $Email[0]->email;
+        $Email = $wpdb->get_results( "SELECT flp_email FROM {$wpdb->prefix}arena WHERE flp_id='$UserID'", OBJECT );
+        $Email = $Email[0]->flp_email;
         wp_mail( "$Email", "Arena Login Module", "Your Email Address has been approved.", array('Content-Type: text/html; charset=UTF-8'));
     }
 

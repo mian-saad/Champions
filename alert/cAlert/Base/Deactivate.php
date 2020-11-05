@@ -12,8 +12,8 @@ class Deactivate
 
         $charset_collate = $wpdb->get_charset_collate();
 
-        $alert_reports_db_name = $wpdb->prefix . 'alert';
-        $sql = "DROP TABLE IF EXISTS $alert_reports_db_name;";
+        $alert_db = $wpdb->prefix . 'alert';
+        $sql = "DROP TABLE IF EXISTS $alert_db;";
         $wpdb->query($sql);
 
         flush_rewrite_rules();

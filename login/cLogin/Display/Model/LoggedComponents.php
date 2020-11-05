@@ -68,7 +68,16 @@ class LoggedComponents {
         echo $html;
     }
 
-    public function InviteExperts($InvitationEmail) {
-        wp_mail( "$InvitationEmail", "Champions - Arena Notification Module", "You have been Invited to the Arena.", array('Content-Type: text/html; charset=UTF-8'));
+    public function InviteExperts($InvitationEmail, $alert) {
+
+        global $wpdb;
+        $alert_db = $wpdb->prefix . 'arena';
+        $answers = [
+            'flp_email' => $InvitationEmail,
+            'flp_associatedAlert' => $alert,
+            'alert_id' => $alert
+        ];
+        $wpdb->insert($alert_db, $answers);
+        wp_mail( "$InvitationEmail", "Champions - Arena Notification Module", "You have been Invited to the Arena. Please register at https://www.firstlinepractitioners.com/arena/ before you can login.", array('Content-Type: text/html; charset=UTF-8'));
     }
 }

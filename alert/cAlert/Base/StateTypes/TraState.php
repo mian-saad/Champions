@@ -8,12 +8,13 @@ namespace Cover\Base\StateTypes;
 abstract class TraState
 {
     public $state_code;
-    public $report_id;
+    public $alert_id;
     public $response;
     public $warning;
     public $show_warning;
     public $field_warning;
     public $back_string;
+    public $isValidated;
 
     // this function should generate the html string for the question
     abstract public function generate_html();
@@ -25,9 +26,14 @@ abstract class TraState
     abstract public function validate($response);
 
     // this function generates hidden fields for the report
-    public function generate_hidden_fields($report_id)
+    public function generate_hidden_fields($alert_id)
     {
-        return $html = "<input type='hidden' id='report_id' name='report_id' value='" . $this->report_id . "'>";
+        return $html = "<input type='hidden' id='alert_id' name='alert_id' value='" . $this->alert_id . "'>";
+    }
+
+    public function generate_question_title($text)
+    {
+        return "<h3 class='register_question'>" . $text . "</h3>";
     }
 
     public function generate_question_text($text)
@@ -36,8 +42,7 @@ abstract class TraState
     }
 
     // prints warning message only if show_warning is set
-    public function generate_warning()
-    {
+    public function generate_warning() {
         if ($this->show_warning) {
             return "<p class='alert_warning'>" . $this->warning . "</p>";
         } else {

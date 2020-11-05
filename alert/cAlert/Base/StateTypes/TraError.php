@@ -9,10 +9,10 @@ class TraError extends TraState
     public $button_string;
     public $state_text;
 
-    public function __construct($report_id, $state_code, $state_text, $button_string)
+    public function __construct($alert_id, $state_code, $state_text, $button_string)
     {
         $this->state_text = $state_text;
-        $this->report_id = $report_id;
+        $this->alert_id = $alert_id;
         $this->state_code = $state_code;
         $this->button_string = $button_string;
     }

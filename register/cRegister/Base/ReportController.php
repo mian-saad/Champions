@@ -148,8 +148,8 @@ class ReportController extends BaseController
     {
         $state_obj = $this->state_list[$this->current_state_code];
 
-        if(!empty($response['email']))
-        $this->verification_code($response['email']);
+        if(!empty($response['flp_email']))
+        $this->verification_code($response['flp_email']);
 
         if ($state_obj->validate($response)) { // if answer is valid, lets advance the state
             $state_obj->show_warning = false;
@@ -176,8 +176,7 @@ class ReportController extends BaseController
     }
 
     // state advancing logic, hapens after a state answer was validated
-    public function get_next_state()
-    {
+    public function get_next_state() {
         if ($this->current_state_code == "M0.0") {
             $this->current_step_counter--;
             unset($this->state_list["M0.0"]);
@@ -194,24 +193,19 @@ class ReportController extends BaseController
         return "ERROR";
     }
 
-    public function db_store()
-    {
+    public function db_store() {
             global $wpdb;
 
             $register_reports_db_name = $wpdb->prefix . 'arena';
 
             // lets delete entry if it already exists in the db
-            $entries = $wpdb->get_results("SELECT report_id FROM ".$register_reports_db_name." WHERE report_id=\"".$this->report_id."\"");
-            if(sizeof($entries)!= 0){
-                $wpdb->get_results("DELETE FROM ".$register_reports_db_name." WHERE report_id=\"".$this->report_id."\"");
-            }
+
 
             $answers = [
-                'report_id' => $this->report_id,
-                'report_locale' => $this->language,
-                'report_time' => date("Y/m/d H:i"),
-                'report_ip' => $_SERVER['REMOTE_ADDR'],
-                'expert_type' => 'Expert',
+                'flp_id' => $this->report_id,
+                'flp_locale' => $this->language,
+                'flp_registration_time' => date("Y/m/d H:i"),
+                'flp_reporting_ip' => $_SERVER['REMOTE_ADDR']
             ];
 
             foreach ($this->state_list as $code => $state) {
@@ -245,7 +239,15 @@ class ReportController extends BaseController
                     break;
                 }
             }
+
+        $entries = $wpdb->get_results("SELECT flp_email, flp_associatedAlert FROM ".$register_reports_db_name." WHERE flp_email=\"".$answers['flp_email']."\"");
+        if(sizeof($entries[0]->flp_email)!= 0 && sizeof($entries[0]->flp_associatedAlert)){
+            $wpdb->update("wp_arena", $answers, array('flp_email' => $answers['flp_email']));
+        }
+        else {
             $wpdb->insert($register_reports_db_name, $answers);
+        }
+        wp_mail( $answers['flp_email'], "Registration Confirmed", "Your registration has been confirmed. You will be able to login once the Moderator accepts your request.");
     }
 
 
@@ -253,7 +255,7 @@ class ReportController extends BaseController
         $verifyCode = rand(1111, 9999);
         $_SESSION["verifyCode"] = $verifyCode;
 
-        wp_mail( $email, "Verification Code", "Yor Verification Code: ". $verifyCode ."");
+        wp_mail( $email, "Verification Code", "Your Verification Code: ". $verifyCode ."");
     }
 
     public function verify_code($code) {

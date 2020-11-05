@@ -8,11 +8,11 @@ class TraDescriptionQuestion extends TraState
 {
     public $continue_string;
 
-    public function __construct($report_id, $state_code, $state, $continue_string, $back_string, $field_warning, $warning)
+    public function __construct($alert_id, $state_code, $state, $continue_string, $back_string, $field_warning, $warning)
     {
         $this->field_warning = $field_warning;
         $this->back_string = $back_string;
-        $this->report_id = $report_id;
+        $this->alert_id = $alert_id;
         $this->state_code = $state_code;
         $this->state = $state;
         $this->continue_string = $continue_string;
@@ -21,11 +21,16 @@ class TraDescriptionQuestion extends TraState
 
     public function generate_html()
     {
-        $html = $this->generate_hidden_fields($this->report_id);
+        $html = $this->generate_hidden_fields($this->alert_id);
         if($this->state['show_header']=="true"){
+            $html .= "<h3 class='alert_question'>" . $this->state['short_text'] . "</h3>";
             $html .= "<h4 class='alert_question'>" . $this->state['state_text'] . "</h4>";
         }
         $html .= "<form id='alert_question_form'>";
+        if ($this->state['id'] == 'flp_description') {
+            $html .= "<textarea id='alert_text_big' name='" . $this->state['id'] . "' rows='10'>" . $this->response[$this->state['id']] . "</textarea>";
+        }
+
         foreach ($this->state['state_answers'] as $answer) {
             $html .= $this->generate_question_text($answer['text']);
             $html .= $this->generate_field_warning($answer['id']);
@@ -35,7 +40,7 @@ class TraDescriptionQuestion extends TraState
             } else if ($answer['type'] == 'description') {
                 $html .= "<textarea id='alert_text_big' name='" . $answer['id'] . "' rows='10'>" . $this->response[$answer['id']] . "</textarea>";
             } else if ($answer['type'] == 'date') {
-                $html .= "<input rows='10' class='picker' type='text' name='" . $answer['id'] . "' value='" . $this->response[$this->state['id']] . "' />";
+                $html .= "<input rows='10' class='picker' type='text' name='" . $answer['id'] . "' value='" . $this->response[$answer['id']] . "' />";
 //                $html .= "<textarea id='alert_text_big' name='" . $answer['id'] . "' rows='10'>" . $this->response[$answer['id']] . "</textarea>";
             }
         }
@@ -49,11 +54,20 @@ class TraDescriptionQuestion extends TraState
     public function validate($response) { // how do we wanna store the items to the db
         $this->response = $response;
 
-        foreach ($this->state['state_answers'] as $state_answer) {
-            if (!(array_key_exists($state_answer['id'], $response) and $response[$state_answer['id']] != "")) {
+        if ($this->state['state_answers']) {
+            foreach ($this->state['state_answers'] as $state_answer) {
+                if (!(array_key_exists($state_answer['id'], $response) and $response[$state_answer['id']] != "")) {
+                    return false;
+                }
+            }
+        }
+        else {
+            if (!(array_key_exists($this->state['id'], $response) and $response[$this->state['id']] != "")) {
+                $this->response = $response;
                 return false;
             }
         }
+
         return true;
     }
 

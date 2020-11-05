@@ -39,6 +39,9 @@ class TraFinal extends TraState
         $html .= "<h3>Please Review your Data</h3>";
 
         foreach ($this->answers as $short_text => $value) {
+            if ($short_text == 'Password') {
+                $value = "********";
+            }
             $html .= "<p>" . $short_text . " : " . $value . "</p>";
         }
 

@@ -19,9 +19,12 @@ class MainPage {
                                 <label>".$string_file['password']."</label>
                                 <input id='paas' type='password' name='password' minlength='4'>
                 
-                                <button class='button login-button' id='Login' type='submit' >".$string_file['login_flp']."</button>
+                                <div class='login-button'>
+                                    <a class='button' id='Login'  >".$string_file['login_flp']."</a>
+                                    <a class='button' id='backtolanguage' >".$string_file['back']."</a>
+                                </div>
+                                
                 
-                                <a id=\"forgot\" href=\"#\" onclick=\"return false;\">".$string_file['forgot']."</a>
                             </form>
                 <!--                <input type='hidden' name='action' value='getData'>-->
                         </div>
@@ -32,8 +35,9 @@ class MainPage {
                         <div class='col-2'></div>
                         <div class=\"col-8\">
                             <div id='login_button_pane'>
+                                <a id=\"forgot\" href=\"#\" onclick=\"return false;\">".$string_file['forgot']."</a><br>
                                <!-- <a class='button' href='https://www.firstlinepractitioners.com/arena/' >Register as FLP Expert</a> -->
-                                <a id=\"ToBackdoorLogin\" class='button' href='#' onclick='return false;'>".$string_file['login_moderator']."</a>
+                                <a id=\"ToBackdoorLogin\" href='#' onclick='return false;'>".$string_file['login_moderator']."</a>
                             </div>
                         </div>
                         <div class='col-2'></div>

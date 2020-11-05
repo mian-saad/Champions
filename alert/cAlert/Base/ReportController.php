@@ -333,6 +333,16 @@ class ReportController extends BaseController {
         foreach ($this->state_list as $code => $state) {
             if ($code == "M1.6" || $code == "M1.7" || $code == "M1.8") {
 
+                // --- make flp_title better
+                if (count($state->response['flp_title']) > 1) {
+                    $state->response['flp_title'] = implode(',', $state->response['flp_title']);
+                }
+                if (!empty($state->response['other_text_input'])) {
+                    $state->response['flp_title'] = $state->response['flp_title'] .','. $state->response['other_text_input'];
+                }
+                unset($state->response['other_text_input']);
+                // ---
+
 //                if ($this->oldstate == "M1.9") {
 //                    if ($code == "M1.5" || $code == "M1.6" || $code == "M1.7" || $code == "M1.8" || $code == "M1.9") {
 //                        echo "Not to be Included !";

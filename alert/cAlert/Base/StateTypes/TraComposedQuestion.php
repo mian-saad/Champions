@@ -50,6 +50,12 @@ class TraComposedQuestion extends TraState {
                     $html .= $this->generate_select_question($answer);
                     $html .= "</div>";
                 }
+                else if ($answer['type'] == 'checkbox') {
+                    $html .= "<div class='col-12'>";
+                    $html .= $this->generate_question_text($answer['text']);
+                    $html .= $this->generate_checkbox_question($answer, $answer['id']);
+                    $html .= "</div>";
+                }
                 else if ($answer['type'] == 'password') {
                     $html .= "<div class='col-6'>";
                     $html .= $this->generate_field_warning($answer['id']);
@@ -132,6 +138,30 @@ class TraComposedQuestion extends TraState {
         return $html;
     }
 
+    public function generate_checkbox_question($answer_array, $name_string) {
+        $html = '<div class="register_checkbox_answers">';
+
+        foreach ($answer_array['answers'] as $answer_option) {
+            if (!empty($this->response) and in_array($answer_option['id'], $this->response[$name_string])) {
+                // this is a checked answer
+                if ($answer_option['id'] == 'Other') {
+                    $html .= '<div class="register_horizontal_choice"><input type="checkbox" class="register_checkbox" name="' . $answer_array['id'] . '" id="' . $answer_option['id'] . '" value="' . $answer_option['id'] . '" checked required><label for="' . $answer_option['id'] . '">' . $answer_option['text'] . '</label> ' . $this->generate_other_text_input($this->response['other_text_input']) . '</div>';
+                } else {
+                    $html .= '<div class="register_horizontal_choice"><input type="checkbox" class="register_checkbox" name="' . $answer_array['id'] . '" id="' . $answer_option['id'] . '" value="' . $answer_option['id'] . '" checked required><label for="' . $answer_option['id'] . '">' . $answer_option['text'] . '</label></div>';
+                }
+            } else {
+                if ($answer_option['id'] == 'Other') {
+                    $html .= '<div class="register_horizontal_choice"><input type="checkbox" class="register_checkbox" name="' . $answer_array['id'] . '" id="' . $answer_option['id'] . '" value="' . $answer_option['id'] . '" required><label for="' . $answer_option['id'] . '">' . $answer_option['text'] . '</label> ' . $this->generate_other_text_input("") . '</div>';
+                } else {
+                    $html .= '<div class="register_horizontal_choice"><input type="checkbox" class="register_checkbox" name="' . $answer_array['id'] . '" id="' . $answer_option['id'] . '" value="' . $answer_option['id'] . '" required><label for="' . $answer_option['id'] . '">' . $answer_option['text'] . '</label></div>';
+                }
+            }
+
+        }
+        $html .= '</div>';
+        return $html;
+    }
+
     public function generate_select_question($answer) {
         $counter = 0; // need it for labeling and stuff
         $html = '<div class="alert_select_answers ">';
@@ -162,11 +192,34 @@ class TraComposedQuestion extends TraState {
             $key = $answer['short_text'];
             if ($answer['type'] == 'text') { // for text answers , just store the received input
                 $value = $this->response[$answer['id']];
-            } else if ($answer['type'] == 'select') { // need to search in the answer array for the response id in the answers
+            }
+            else if ($answer['type'] == 'select') { // need to search in the answer array for the response id in the answers
                 foreach ($answer['answers'] as $radio_answer) {
                     if ($this->response[$answer['id']] == $radio_answer['id']) {
                         $value = $radio_answer['short_text'];
                     }
+                }
+            }
+            else if ($answer['type'] == 'checkbox') {
+                foreach ($answer['answers'] as $checkbox_answer) {
+                    if (count($this->response[$answer['id']]) < 2) {
+                        if ($this->response[$answer['id']] == $checkbox_answer['id']) {
+                            // handle the other_text_input here
+                            if ($checkbox_answer['id'] == 'other' and $this->response['other_text_input'] != "") {
+                                $value = $checkbox_answer['text'] . " - " . $this->response['other_text_input'];
+                            }
+                            else {
+                                $value = $checkbox_answer['text'];
+                            }
+                        }
+                    }
+                    else {
+                        $value = implode(",", $this->response[$answer['id']]);
+                        if ($checkbox_answer['id'] == 'Other' and $this->response['other_text_input'] != "") {
+                            $value = $value . " - " . $this->response['other_text_input'];
+                        }
+                    }
+
                 }
             }
             $result[$key] = $value;

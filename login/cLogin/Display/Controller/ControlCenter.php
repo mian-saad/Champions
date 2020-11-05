@@ -118,13 +118,20 @@ class ControlCenter {
                 $loggedState = new View\MainPage();
                 $plugin_path = plugin_dir_path( dirname(__FILE__, 3));
                 $string_file = json_decode(file_get_contents($plugin_path . "assets/base/" . sanitize_text_field( $_GET['data'] ) . "/alert_strings.json"), true);
-                $_SESSION['strings'] = $string_file;
-                $loggedState->Render($_SESSION['strings']);
+
+                if (!empty($_GET['data'])) {
+                    $_SESSION['strings'] = $string_file;
+                    $loggedState->Render($_SESSION['strings']);
+                }
+                else {
+                    $loggedState->Render($_SESSION['strings']);
+                }
+
                 break;
 
             case 'Forgot':
                 $loggedState = new View\ForgotPassword();
-                $loggedState->Render();
+                $loggedState->Render($_SESSION['strings']);
                 break;
 
             case 'ForgotPassword':

@@ -348,6 +348,32 @@ jQuery(document).ready(function ($) {
 
     });
 
+    $('body').on('click', '#backto', function (e) {
+
+
+        const req_data = {
+            action: 'summon',
+            id: 'MainPage'
+        };
+        jQuery.get(login_ajax.ajaxurl, req_data, function (response) {
+            $contentBox.html(response);
+        });
+
+    });
+
+    $('body').on('click', '#backtolanguage', function (e) {
+
+
+        const req_data = {
+            action: 'summon',
+            id: 'SelectLanguage'
+        };
+        jQuery.get(login_ajax.ajaxurl, req_data, function (response) {
+            $contentBox.html(response);
+        });
+
+    });
+
     // $(".RecommendClass").hover(function() {
     //
     // });

@@ -201,6 +201,7 @@ class ReportController extends BaseController
             // lets delete entry if it already exists in the db
 
 
+
             $answers = [
                 'flp_id' => $this->report_id,
                 'flp_locale' => $this->language,
@@ -210,6 +211,17 @@ class ReportController extends BaseController
 
             foreach ($this->state_list as $code => $state) {
                 if (($code == "M1.1") || ($code == "M1.2") || ($code == "M1.3")) { // M1.8 doesnt have a response
+
+                    // --- make flp_title better
+                    if (count($state->response['flp_title']) > 1) {
+                        $state->response['flp_title'] = implode(',', $state->response['flp_title']);
+                    }
+                    if (!empty($state->response['other_text_input'])) {
+                        $state->response['flp_title'] = $state->response['flp_title'] .','. $state->response['other_text_input'];
+                    }
+                    unset($state->response['other_text_input']);
+                    // ---
+
                     if (is_array($state->response)) {
                         if (!isset($state->response[$state->state['id']])){          // only the case for composed questions
                             $response = $state->response;

@@ -26,7 +26,7 @@
                {
                   "text":"Bus/Tram Driver",
                   "short_text":"Bus/Tram Driver",
-                  "id":"Bus/Tram_Driver"
+                  "id":"Bus/Tram Driver"
                },
                {
                   "text":"Counsellor",
@@ -36,72 +36,72 @@
                {
                   "text":"Diversity Officer",
                   "short_text":"Diversity Officer",
-                  "id":"Diversity_Officer"
+                  "id":"Diversity Officer"
                },
                {
                   "text":"Employee of a Culture Centre",
                   "short_text":"Employee of a Culture Centre",
-                  "id":"Employee_of_a_Culture_Centre"
+                  "id":"Employee of a Culture Centre"
                },
                {
                   "text":"Employee of Women Shelter",
                   "short_text":"Employee of Women Shelter",
-                  "id":"Employee_of_Women_Shelter"
+                  "id":"Employee of Women Shelter"
                },
                {
                   "text":"Football Coach",
                   "short_text":"Football Coach",
-                  "id":"Football_Coach"
+                  "id":"Football Coach"
                },
                {
                   "text":"Football Fan",
                   "short_text":"Football Fan",
-                  "id":"Football_Fan"
+                  "id":"Football Fan"
                },
                {
                   "text":"Football Referee",
                   "short_text":"Football Referee",
-                  "id":"Football_Referee"
+                  "id":"Football Referee"
                },
                {
                   "text":"Forest Worker",
                   "short_text":"Forest Worker",
-                  "id":"Forest_Worker"
+                  "id":"Forest Worker"
                },
                {
                   "text":"International School Teacher",
                   "short_text":"International School Teacher",
-                  "id":"International_School_Teacher"
+                  "id":"International School Teacher"
                },
                {
                   "text":"International Volunteer",
                   "short_text":"International Volunteer",
-                  "id":"International_Volunteer"
+                  "id":"International Volunteer"
                },
                {
                   "text":"Municipal Employee",
                   "short_text":"Municipal Employee",
-                  "id":"Municipal_Employee"
+                  "id":"Municipal Employee"
                },
                {
                   "text":"NGO Worker",
                   "short_text":"NGO Worker",
-                  "id":"NGO_Worker"
+                  "id":"NGO Worker"
                },
                {
                   "text":"Police Officer",
                   "short_text":"Police Officer",
-                  "id":"Police_Officer"
+                  "id":"Police Officer"
                },
                {
                   "text":"Primary School Teacher",
                   "short_text":"Primary School Teacher",
-                  "id":"Primary_School_Teacher"
+                  "id":"Primary School Teacher"
                },
                {
                   "text":"Probation Officer",
                   "short_text":"Probation Officer",
-                  "id":"Probation_Officer"
+                  "id":"Probation Officer"
                },
                {
                   "text":"Psychotherapist",
@@ -111,17 +111,17 @@
                {
                   "text":"Secondary School Teacher",
                   "short_text":"Secondary School Teacher",
-                  "id":"Secondary_School_Teacher"
+                  "id":"Secondary School Teacher"
                },
                {
                   "text":"Social Worker",
                   "short_text":"Social Worker",
-                  "id":"Social_Worker"
+                  "id":"Social Worker"
                },
                {
                   "text":"Student Volunteer",
                   "short_text":"Student Volunteer",
-                  "id":"Student_Volunteer"
+                  "id":"Student Volunteer"
                },
 
                {
@@ -132,7 +132,7 @@
                {
                   "text":"University Lecturer",
                   "short_text":"University Lecturer",
-                  "id":"University_Lecturer"
+                  "id":"University Lecturer"
                },
                {
                   "text":"Volunteer",
@@ -142,12 +142,12 @@
                {
                   "text":"Youth Prison Ward",
                   "short_text":"Youth Prison Ward",
-                  "id":"Youth_Prison_Ward"
+                  "id":"Youth Prison Ward"
                },
                {
                   "text":"Youth Worker",
                   "short_text":"Youth Worker",
-                  "id":"Youth_Worker"
+                  "id":"Youth Worker"
                },
                {
                   "id":"Other",

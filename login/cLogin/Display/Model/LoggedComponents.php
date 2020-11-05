@@ -40,6 +40,7 @@ class LoggedComponents {
                             <input id=\"paas\" type=\"password\" name=\"password\" minlength=\"4\">
                               
                             <button class='button login-button' id=\"BackdoorLogin\" type=\"submit\" onclick=\"return false;\">Login</button>
+                            <button class='button login-button' id=\"backto\" onclick=\"return false;\">Back</button>
                             <input type=\"hidden\" name=\"action\" value=\"getData\">
                         </div>
                         <div class='col-3'></div>

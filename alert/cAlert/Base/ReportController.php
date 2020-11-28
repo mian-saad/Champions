@@ -60,7 +60,8 @@ class ReportController extends BaseController {
     public function generate_content() {
         if (array_key_exists($this->current_state_code, $this->state_list)) {
             $state = $this->state_list[$this->current_state_code];
-        } else {
+        }
+        else {
             $state = $this->initialize_state($this->current_state_code);
         }
         $html = $state->generate_html(); // IMPORTANT: GENERATES THE HTML
@@ -82,6 +83,8 @@ class ReportController extends BaseController {
             $state_obj = new StateTypes\TraDatetimeQuestion($this->alert_id, $state_code, $state, $this->language, $this->string_file['continue'], $this->string_file['back'], $this->string_file['field_warning'], $this->string_file['wrong_time_warning']);
         } else if ($state['state_type'] == 'checkbox') {
             $state_obj = new StateTypes\TraCheckboxQuestion($this->alert_id, $state_code, $state, $this->string_file['continue'], $this->string_file['back'], $this->string_file['field_warning'], $this->string_file['warning']);
+        } else if ($state['state_type'] == 'composed_checkbox') {
+            $state_obj = new StateTypes\TraComposedCheckboxQuestion($this->alert_id, $state_code, $state, $this->string_file['continue'], $this->string_file['back'], $this->string_file['field_warning'], $this->string_file['warning'], $this->string_file['other']);
         } else if ($state['state_type'] == 'verification') {
             $state_obj = new StateTypes\VerificationCode($this->alert_id, $state_code, $state, $this->string_file['continue'], $this->string_file['back'], $this->string_file['field_warning'], $this->string_file['warning'], $this->string_file['complete_registration_string']);
 //            $state_obj = new StateTypes\TraFinal        ($this->alert_id, $state_code, $this->string_file['back']);
@@ -277,9 +280,16 @@ class ReportController extends BaseController {
                 else {
                     if (is_array($state->response)) {
                         if (!isset($state->response[$state->state['id']])) {  // only the case for composed questions
+
+                            foreach ($state->state['state_answers'] as $type) {
+                                if (is_array($state->response[$type['id']])) {
+                                    $state->response[$type['id']] = implode(", ", $state->response[$type['id']]);
+                                }
+                            }
+
                             $response = $state->response;
                         }
-                        else if (is_array($state->response[$state->state['id']])) {      // is only the case for checkbox question
+                        /*else if (is_array($state->response[$state->state['id']])) {      // is only the case for checkbox question
                             if (in_array('Other', $state->response[$state->state['id']]) AND isset($state->response['other_text_input'])) {
                                 foreach ($state->response[$state->state['id']] as &$str) {
                                     $str = str_replace('Other', $state->response['other_text_input'], $str);
@@ -294,7 +304,7 @@ class ReportController extends BaseController {
                             }
                             unset($state->response['other_text_input']);
                             $response = $state->response;
-                        }
+                        }*/
                         $answers = $answers + $response;
                     }
                     else {  // if response is some text, lets create an array with its state id and add it to answers array

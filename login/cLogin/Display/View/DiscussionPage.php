@@ -7,9 +7,15 @@ use Contain\Display\View;
 
 class DiscussionPage {
 
+    public $lang;
+
+    public function __construct($language) {
+        $this->lang = $language;
+    }
+
     public function Render($Email, $ID) {
 
-        $loggedState = new View\LandingPage();
+        $loggedState = new View\LandingPage($this->lang);
         $html = $loggedState ->header($Email);
         $html .= "<div class='row'>";
         $html .= "<div class='col-7'>";
@@ -35,7 +41,7 @@ class DiscussionPage {
 
         $html = "<div class='row'>";
         $html .= "<div class='col-8'>";
-        $html .= "<h4>Recommendations</h4>";
+        $html .= "<h4>".$this->lang['recommendation']."</h4>";
         $html .= $this->DisplayRecommendation($ID);
         if ($this->JoinCommentsSectionValidation($Email, $ID)) {
             $html .= $this->RecommendationsSection($ID);
@@ -97,7 +103,7 @@ class DiscussionPage {
         $html = "<div class='row'>";
             $html .= "<div id='RecommendationsSection' class='col-8'>";
                 $html .= "<textarea id='RecommendationText'></textarea><br>";
-                $html .= "<button class='button' id='Recommend' value='".$ID."'>Add Recommendation</button><br>";
+                $html .= "<button class='button' id='Recommend' value='".$ID."'>".$this->lang['add_recommendation']."</button><br>";
             $html .= "</div>";
         $html .= "</div><br>";
 
@@ -123,7 +129,7 @@ class DiscussionPage {
         $html = "<div class='row'>";
             $html .= "<div id='CommentSection' class='col-8'>";
                 $html .= "<textarea id='commentText'></textarea><br>";
-                $html .= "<button class='button' id='comment' value='".$ID."'>Comment</button><br>";
+                $html .= "<button class='button' id='comment' value='".$ID."'>".$this->lang['comment']."</button><br>";
             $html .= "</div>";
         $html .= "</div><br>";
 
@@ -141,7 +147,7 @@ class DiscussionPage {
     }
 
     public function BackButton () {
-        $html = "<button class='button' id='BackDiscussion'>Back</button>";
+        $html = "<button class='button' id='BackDiscussion'>".$this->lang['back']."</button>";
         return $html;
     }
 
@@ -151,13 +157,13 @@ class DiscussionPage {
         $ArenaClosedAssociatedReportId = $LoadArenaData->loadArenaData('closed_associated_alert', $Email);
         $html = "";
         if (strpos($ArenaClosedAssociatedReportId[0], $ID) !== false) {
-            $html .= " <button disabled class='ArenaClickableButtons button' id='Closed-".$ID."'>Closed</button> ";
-            $html .= "<p><i>Case/Topic will be closed once it has been closed by Moderator and one more FLP</i></p>";
+            $html .= " <button disabled class='ArenaClickableButtons button' id='Closed-".$ID."'>".$this->lang['closed']."</button> ";
+            $html .= "<p><i>".$this->lang['discussion_hint1']."</i></p>";
             return $html;
         }
         else {
-            $html = "<button class='discussion-close ArenaClickableButtons button Close' id='Close-".$ID."'>Close Case</button>";
-            $html .= "<p><i>In order to close the discussion about the current case/topic, once you are satisfied with it, please click the close button</i></p>";
+            $html = "<button class='discussion-close ArenaClickableButtons button Close' id='Close-".$ID."'>".$this->lang['close_case']."</button>";
+            $html .= "<p><i>".$this->lang['discussion_hint2']."</i></p>";
         }
         return $html;
     }
@@ -178,7 +184,7 @@ class DiscussionPage {
     }
 
     public function Participants ($ID) {
-        $html = "<div class='col-5 Participants'><h4><b>Participants</b></h4>";
+        $html = "<div class='col-5 Participants'><h4><b>".$this->lang['participants']."</b></h4>";
         $LoadArenaData = new LoadData();
         $Participants = $LoadArenaData->loadArenaData('associated_alert');
         $ParticipantName = $LoadArenaData->loadArenaData('first_name');
@@ -191,16 +197,16 @@ class DiscussionPage {
         }
         $html .= "<br><br>";
             $html .= "<div id='invite' class='row'>";
-                $html .= "<div class='col-9'><p class='invite-text'>Invite a FLP via E-mail</p></div> ";
+                $html .= "<div class='col-9'><p class='invite-text'>".$this->lang['invite_flp']."</p></div> ";
                 $html .= "<div class='col-9'><input id='invitation-email' placeholder='example@mail.com'/></div> ";
-                $html .= "<div class='col-3'><button id='invitation-button' value='".$ID."' class='button invitation-button'>Invite</button></div>";
+                $html .= "<div class='col-3'><button id='invitation-button' value='".$ID."' class='button invitation-button'>".$this->lang['invite']."</button></div>";
             $html .= "</div>";
         $html .= "</div>";
         return $html;
     }
 
     public function ClickButton($Email) {
-        $loggedState = new View\LandingPage();
+        $loggedState = new View\LandingPage($this->lang);
         $loggedState -> RenderPage($Email);
     }
 

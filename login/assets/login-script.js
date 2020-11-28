@@ -207,7 +207,7 @@ jQuery(document).ready(function ($) {
         // $(RowID).css("background", "green");
     });
 
-    // On click at Recomendations
+    // On click at Recommendations
     $('body').on('click', '.Recommend', function (e) {
         //e.preventDefault();
         ID = $(this).attr('id');
@@ -270,7 +270,7 @@ jQuery(document).ready(function ($) {
         });
     });
 
-// On click Add Recommendation
+    // On click Add Recommendation
     $('body').on('click', '#Recommend', function (e) {
         //e.preventDefault();
 
@@ -323,10 +323,10 @@ jQuery(document).ready(function ($) {
         }
     });
 
-    $('body').on('click', '#to_arena_login_module', function (e) {
+    $('body').on('click', '#start_arena', function (e) {
         const req_data = {
             action: 'summon',
-            id: 'SelectLanguage'
+            id: 'LanguageSelect'
         };
         jQuery.get(login_ajax.ajaxurl, req_data, function (response) {
             $contentBox.html(response);
@@ -374,10 +374,6 @@ jQuery(document).ready(function ($) {
 
     });
 
-    // $(".RecommendClass").hover(function() {
-    //
-    // });
-
     // On click at Update Recommendation
     $('body').on('click', '#Update', function (e) {
         //e.preventDefault();
@@ -413,7 +409,6 @@ jQuery(document).ready(function ($) {
         });
 
     });
-
 
     $('body').on('click', '#forgot', function (e) {
         //e.preventDefault();
@@ -502,216 +497,6 @@ jQuery(document).ready(function ($) {
         }
 
         return result;
-    }
-    /* <-- OLD SECTION --> */
-
-
-
-
-
-
-
-
-
-
-
-
-    // On click at JOIN
-    $('body').on('click', '.join', function (e) {
-        //e.preventDefault();
-
-        const $alertBox = $('#alertPanel');
-        var alert = $(this).attr('value');
-        const $alertPost = $('.alertPost').text();
-        $('.tojoin').prop('disabled', true);
-        $('.tojoin').addClass('grey');
-        const req_data = {
-            action: 'summon',
-            id: 'join',
-            post: $alertPost,
-            alertV: alert
-        };
-        jQuery.get(login_ajax.ajaxurl, req_data, function (response) {
-            // console.log("disble");
-            $alertBox.html(response);
-        });
-        console.log("logged");
-    });
-
-    // On click at In progress
-    $('body').on('click', '.inprogress', function (e) {
-        //e.preventDefault();
-
-        // var inprogress = $(this).attr('id');
-        var  inprogress = $(this).attr('value');
-        // const $alertPost = $('.alertPost').text();
-        // $('.tojoin').prop('disabled', true);
-        // $('.tojoin').addClass('grey');
-        const $alertBox = $('#alertPanel');
-        const req_data = {
-            action: 'summon',
-            id: 'in_progress',
-            alertID: inprogress
-        };
-        jQuery.get(login_ajax.ajaxurl, req_data, function (response) {
-            // console.log("disble");
-            $alertBox.html(response);
-        });
-        console.log("logged");
-    });
-
-    // On click at ALERT
-    $('body').on('click', '#toAlert', function (e) {
-        e.preventDefault();
-
-        var  alertID = $(this).attr('value');
-        const $alertBox = $('#alertPanel');
-
-        const req_data = {
-            action: 'summon',
-            id: 'alerter',
-            alertID: alertID
-        };
-
-        jQuery.get(login_ajax.ajaxurl, req_data, function (response) {
-            $alertBox.html(response);
-        });
-
-
-    });
-
-    // On click at Invitation in Discussion Page
-    $('body').on('click', '#invite', function (e) {
-        e.preventDefault();
-        const $inviteEmail = $('#invite_address');
-        const req_data = {
-            action: 'summon',
-            inviteEmail: $inviteEmail.val(),
-            id: 'invitation'
-        };
-        jQuery.get(login_ajax.ajaxurl, req_data, function (response) {
-            $inviteEmail.val('');
-        });
-    });
-
-    // On click at Add Recommendation
-    $('body').on('click', '#addRecommendation', function (e) {
-        e.preventDefault();
-
-        const $btnText = $('#addRecommendation');
-
-        if ($btnText.text() == "Update") {
-
-            const $added_recommendation = $('#added_recommendation');
-            const $user = $('.userEmail').text();
-            const $recommendation = $('#recommend');
-            const $rId = recommendationID;
-            const req_data = {
-                action: 'summon',
-                recommendation: $recommendation.val(),
-                id: 'updateRecommendation',
-                mail: $user,
-                rId: $rId
-            };
-            jQuery.get(login_ajax.ajaxurl, req_data, function (response) {
-                $added_recommendation.html(response);
-                // $recommendation.val('');
-            });
-        }
-        else {
-            $btnText.text("Add");
-
-            const $added_recommendation = $('#added_recommendation');
-            const $user = $('.userEmail').text();
-            const $recommendation = $('#recommend');
-            const $rId = recommendationID;
-            const req_data = {
-                action: 'summon',
-                recommendation: $recommendation.val(),
-                id: 'addRecommendation',
-                rId: $rId,
-                mail: $user
-            };
-            jQuery.get(login_ajax.ajaxurl, req_data, function (response) {
-                $('#added_recommendation').empty();
-                $added_recommendation.html(response);
-                $recommendation.val('');
-            });
-        }
-    });
-
-    // On click at Recommendation Text
-    $('body').on('click', '.getRecomendID', function (e) {
-        e.preventDefault();
-
-        const $btnText = $('#addRecommendation');
-        $btnText.text("Update");
-        const $user = $('.userEmail').text();
-        recommendationID = $(this).attr('value');
-        const $recommendation = $('#recommend');
-        $recommendation.val(recommendationID);
-
-    });
-
-        // On click at BACK
-    $('body').on('click', '#alertBack', function (e) {
-        e.preventDefault();
-
-        const $alertBox = $('#alertPanel');
-        const $j = $('#toAlert').val();
-
-        const req_data = {
-            action: 'summon',
-            id: 'alertBack',
-            iterator: $j
-        };
-
-        jQuery.get(login_ajax.ajaxurl, req_data, function (response) {
-            $alertBox.html(response);
-        });
-
-
-    });
-
-    // On click at add comment
-    $('body').on('click', '.submit_comment', function (e) {
-        e.preventDefault();
-
-        // let $id = $(this).attr('id').match(/\d+$/).toString();
-
-        const $user = $('.userEmail').text();
-
-        const $txtfield = $('#get_comment');
-        const $comment = $('#display_comment');
-        const req_data = {
-            action: 'summon',
-            comment_data: $('#get_comment').val(),
-            // comment_idd: $id,
-            id: 'cmnt',
-            mail: $user
-        };
-
-
-        jQuery.get(login_ajax.ajaxurl, req_data, function (response) {
-            console.log("Comment Added");
-            $comment.html(response);
-            $txtfield.val('');
-        });
-        RefreshComment();
-    });
-
-    function RefreshComment() {
-        setInterval(function (e) {
-
-            const $comment = $('#display_comment');
-            const req_data = {
-                action: 'summon',
-                id: 'showcmnt',
-            };
-            jQuery.get(login_ajax.ajaxurl, req_data, function (response) {
-                $comment.html(response);
-            });
-        }, 3000);
     }
 });
 

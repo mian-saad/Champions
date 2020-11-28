@@ -36,6 +36,7 @@ class TraFinal extends TraState {
 
 
     public function generate_html() {
+
         $html = $this->generate_hidden_fields($this->alert_id);
         $html .= "<h3 class='alert_question'> $this->summary </h3>";
         foreach ($this->answers as $short_text => $value) {
@@ -71,7 +72,7 @@ class TraFinal extends TraState {
         // if matches then retrieve id of that alert case
         // chec in recommendation table if its there
         foreach ($this->answers as $short_text => $value) {
-            if ($short_text === "Category") {
+            if ($short_text === $this->string_file['alert_category']) {
                 return $value;
             }
         }
@@ -118,7 +119,7 @@ class TraFinal extends TraState {
                     $html .= "<p><h6>".$this->string_file['satisfied_recommendation']."</h6></p>";
                 }
                 else {
-                    if ($html === "<hr> <h3>Recommendations</h3>") {
+                    if ($html === "<hr> <h3>".$this->string_file['recommendation']."</h3>") {
                         $html = "<hr> <h3>".$this->string_file['recommendation']."</h3>";
                         $html .= "<p>".$this->string_file['no_recommendation']."</p>";
                     }

@@ -7,6 +7,13 @@ use Contain\Display\Model\LoggedComponents;
 use function WPMailSMTP\Vendor\GuzzleHttp\Psr7\str;
 
 class LandingPage {
+
+    public $language;
+
+    public function __construct($language) {
+        $this->lang = $language;
+    }
+
     public function RenderPage($Email) {
         $html = $this->header($Email);
         $html .= $this->InstanceOfCase($Email);
@@ -48,16 +55,16 @@ class LandingPage {
         // $FinalIds consists of all the above $FinalIds which are not Rejected
 //        $FinalIds = array_diff($FinalIds, $AlertDeclinedId);
 
-        $html = "<div class='row'>Please click on the topic of the case to see details.</div>";
+        $html = "<div class='row'>".$this->lang['landingpage_hint']."</div>";
         $html .= "<div class='row'>";
         $html .= "<table>";
         $html .= " <tr> ";
         $html .= " <td> ";
-        $html .= "<b>Subject</b>";
+        $html .= "<b>".$this->lang['subject']."</b>";
         $html .= " </td> ";
         // call deadline
         $html .= " <td> ";
-        $html .= "<b>Expected Feedback</b>";
+        $html .= "<b>".$this->lang['feedback']."</b>";
         $html .= " </td> ";
         // call deadline
 //        $html .= " <td> ";
@@ -65,11 +72,11 @@ class LandingPage {
 //        $html .= " </td> ";
         // call button from Alert
         $html .= " <td> ";
-        $html .= "<b>Case Status</b>";
+        $html .= "<b>".$this->lang['status']."</b>";
         $html .= " </td> ";
         // call button from relative to expert
         $html .= " <td> ";
-        $html .= "<b>Request</b>";
+        $html .= "<b>".$this->lang['request']."</b>";
         $html .= " </td> ";
         $html .= " </tr> ";
         $html .= " <tr> ";
@@ -110,7 +117,7 @@ class LandingPage {
     }
 
     public function Recommendations ($FinalReportIds) {
-        $html = " <button id='Recommend-".$FinalReportIds."' class='Recommend button'>Recommendations</button> ";
+        $html = " <button id='Recommend-".$FinalReportIds."' class='Recommend button'>".$this->lang['recommendation']."</button> ";
         return $html;
     }
 
@@ -143,22 +150,22 @@ class LandingPage {
         $html = "";
         if (strpos($ArenaAssociatedReportId[0], $FinalReportIds) !== false) {
             if (strpos($ArenaClosedAssociatedReportId[0], $FinalReportIds) !== false) {
-                $html .= " <button disabled class='ArenaClickableButtons button' id='Closed-".$FinalReportIds."'>Closed</button> ";
+                $html .= " <button disabled class='ArenaClickableButtons button' id='Closed-".$FinalReportIds."'>".$this->lang['closed']."</button> ";
                 return $html;
             }
             else {
-                $html .= " <button class='ArenaClickableButtons button Joined' id='Joined-".$FinalReportIds."'>Joined</button> ";
-                $html .= " <button class='ArenaClickableButtons button Close' id='Close-".$FinalReportIds."'>Close</button> ";
+                $html .= " <button class='ArenaClickableButtons button Joined' id='Joined-".$FinalReportIds."'>".$this->lang['joined']."</button> ";
+                $html .= " <button class='ArenaClickableButtons button Close' id='Close-".$FinalReportIds."'>".$this->lang['close']."</button> ";
                 return $html;
             }
         }
         elseif (strpos($ArenaNotAssociatedReportId[0], $FinalReportIds) !== false) {
-            $html .= " <button class='ArenaClickableButtons button' disabled id='Declined-".$FinalReportIds."'>Declined</button> ";
+            $html .= " <button class='ArenaClickableButtons button' disabled id='Declined-".$FinalReportIds."'>".$this->lang['rejected']."</button> ";
             return $html;
         }
         elseif ($AlertCaseStatus[0] !== 'Closed') {
-            $html .= " <button class='ArenaClickableButtons button' id='Join-".$FinalReportIds."'>Join</button> ";
-            $html .= " <button class='ArenaClickableButtons button' id='Decline-".$FinalReportIds."'>Decline</button> ";
+            $html .= " <button class='ArenaClickableButtons button' id='Join-".$FinalReportIds."'>".$this->lang['join']."</button> ";
+            $html .= " <button class='ArenaClickableButtons button' id='Decline-".$FinalReportIds."'>".$this->lang['reject']."</button> ";
             return $html;
         }
     }
@@ -186,15 +193,15 @@ class LandingPage {
         $ArenaCaseStatusClose = $LoadArenaData->loadArenaData('closed_associated_alert', $Email);
         $ArenaCaseStatusAssociated = $LoadArenaData->loadArenaData('associated_alert', $Email);
         if (strpos($ArenaCaseStatusClose[0], $FinalReportIds) !== false && $AlertCaseStatus[0] !== 'Closed') {
-            return "<span class='alert-status-in-progress'>In Closing</span>";
+            return "<span class='alert-status-in-progress'>".$this->lang['closing']."</span>";
         }
         // if Accepted then in progress and close should render
         if ($AlertCaseStatus[0] === 'Accepted') {
-            return "<span class='alert-status-in-progress'>In Progress</span>";
+            return "<span class='alert-status-in-progress'>".$this->lang['in_progress']."</span>";
         }
         // if Closed then closed should render
         if ($AlertCaseStatus[0] === 'Closed') {
-            return "<span class='alert-status-closed'>Closed</span>";
+            return "<span class='alert-status-closed'>".$this->lang['closed']."</span>";
         }
         // if Rejected nothing should  render - check declined
     }

@@ -162,6 +162,11 @@ class TraComposedQuestion extends TraState {
         return $html;
     }
 
+    public function generate_other_text_input($value)
+    {
+        return "<input class='col-8 input-margin' type='text' value='" . $value . "'>";
+    }
+
     public function generate_select_question($answer) {
         $counter = 0; // need it for labeling and stuff
         $html = '<div class="alert_select_answers ">';

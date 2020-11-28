@@ -173,8 +173,7 @@ jQuery(document).ready(function ($) {
         jQuery.get(alert_object.ajaxurl, req_data, function (response) {
             $contentBox.html(response);
             setTimeout(function(){
-                window.location.href = 'https://www.firstlinepractitioners.com/alert/';
-                // window.location.href = 'http://localhost:8888/wordpress/alert/';
+                window.location.reload();
             }, 3000);
         });
     }

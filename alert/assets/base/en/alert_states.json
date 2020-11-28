@@ -38,12 +38,6 @@
                   "short_text":"Hungary",
                   "id":"Hungary"
                },
-
-               {
-                  "text":"\uD83C\uDDEE\uD83C\uDDF9 Italy",
-                  "short_text":"Italy",
-                  "id":"Italy"
-               },
                {
                   "text":"\uD83C\uDDF5\uD83C\uDDF1 Poland",
                   "short_text":"Poland",
@@ -73,39 +67,135 @@
       ]
    },
    "M1.2":{
-      "state_text":"How would you categorize the occurred suspect event? (You can select several categories.)",
-      "short_text":"Category",
-      "id":"alert_category",
-      "state_type":"checkbox",
+      "state_text":"Incident Category",
       "show_header": "true",
+      "short_text":"Alert",
+      "state_type":"composed_checkbox",
+      "id": "alert_details",
       "state_answers":[
          {
-            "id":"Internet, Social Media and Hate Speech",
-            "text":"Internet, Social Media and Hate Speech"
+            "id":"alert_category",
+            "type":"checkbox",
+            "text":"How would you classify the character of the incident?",
+            "short_text":"Alert Category",
+            "answers":[
+               {
+                  "text":"Extremist propaganda, conspiracy theories and/or recruitment",
+                  "short_text":"Extremist propaganda, conspiracy theories and/or recruitment",
+                  "id":"Extremist propaganda, conspiracy theories and/or recruitment"
+               },
+               {
+                  "text":"Physical violence (e.g. assaults, threats, insults)",
+                  "short_text":"Physical violence (e.g. assaults, threats, insults)",
+                  "id":"Physical violence (e.g. assaults, threats, insults)"
+               },
+               {
+                  "text":"Extremist hate speech and/or incitement to violence",
+                  "short_text":"Extremist hate speech and/or incitement to violence",
+                  "id":"Extremist hate speech and/or incitement to violence"
+               },
+               {
+                  "text":"Property damage",
+                  "short_text":"Property damage",
+                  "id":"Property damage"
+               },
+               {
+                  "text":"I don't know",
+                  "short_text":"I don't know",
+                  "id":"I don't know_a"
+               },
+               {
+                  "text":"Other",
+                  "short_text":"Other",
+                  "id":"Other_a"
+               }
+            ]
          },
          {
-            "id":"Gatherings, Concerts, Sports Events, Other Events",
-            "text":"Gatherings, Concerts, Sports Events, Other Events"
+            "id":"alert_location",
+            "type":"checkbox",
+            "text":"Where did it happen?",
+            "short_text":"Alert Location",
+            "answers":[
+               {
+                  "text":"The internet and social media",
+                  "short_text":"The internet and social media",
+                  "id":"The internet and social media"
+               },
+               {
+                  "text":"Public space (e.g. school, concert hall, sports facility, park, street etc.)",
+                  "short_text":"Public space (e.g. school, concert hall, sports facility, park, street etc.)",
+                  "id":"Public space (e.g. school, concert hall, sports facility, park, street etc.)"
+               },
+               {
+                  "text":"Private space (e.g. school, concert hall, workplace, sports club etc.)",
+                  "short_text":"Private space (e.g. school, concert hall, workplace, sports club etc.)",
+                  "id":"Private space (e.g. school, concert hall, workplace, sports club etc.)"
+               },
+               {
+                  "text":"Public event (public organiser)",
+                  "short_text":"Public event (public organiser)",
+                  "id":"Public event (public organiser)"
+               },
+               {
+                  "text":"Private event (private organiser)",
+                  "short_text":"Private event (private organiser)",
+                  "id":"Private event (private organiser)"
+               },
+               {
+                  "text":"I don't know",
+                  "short_text":"I don't know",
+                  "id":"I don't know_b"
+               },
+               {
+                  "text":"Other",
+                  "short_text":"Other",
+                  "id":"Other_b"
+               }
+            ]
          },
          {
-            "id":"Physical Violence, Assaults, Threats, Insults",
-            "text":"Physical Violence, Assaults, Threats, Insults"
-         },
-         {
-            "id":"Propaganda in Public Space: Writings on the wall, Posters, Stickers, Flyers",
-            "text":"Propaganda in Public Space: Writings on the wall, Posters, Stickers, Flyers"
-         },
-         {
-            "id":"School and Young People",
-            "text":"School and Young People"
-         },
-         {
-            "id":"I don't know",
-            "text":"I don't know"
-         },
-         {
-            "id":"Other",
-            "text":"Other(e.g. Alpha,Bravo,Charlie)"
+            "id":"alert_target",
+            "type":"checkbox",
+            "text":"Who was the target of the incident?",
+            "short_text":"Alert Target",
+            "answers":[
+               {
+                  "text":"Religious minority (e.g. Jews, Muslims)",
+                  "short_text":"Religious minority (e.g. Jews, Muslims)",
+                  "id":"Religious minority (e.g. Jews, Muslims)"
+               },
+               {
+                  "text":"Women",
+                  "short_text":"Women",
+                  "id":"Women"
+               },
+               {
+                  "text":"LGBTQ+",
+                  "short_text":"LGBTQ+",
+                  "id":"LGBTQ+"
+               },
+               {
+                  "text":"Ethnic minority (migrants, refugees) or foreigners",
+                  "short_text":"Ethnic minority (migrants, refugees) or foreigners",
+                  "id":"Ethnic minority (migrants, refugees) or foreigners"
+               },
+               {
+                  "text":"People presenting opposite political and/or ideological views ",
+                  "short_text":"People presenting opposite political and/or ideological views ",
+                  "id":"People presenting opposite political and/or ideological views "
+               },
+               {
+                  "text":"I don't know",
+                  "short_text":"I don't know",
+                  "id":"I don't know_c"
+               },
+               {
+                  "text":"Other",
+                  "short_text":"Other",
+                  "id":"Other_c"
+               }
+            ]
          }
       ]
    },
@@ -167,68 +257,23 @@
          {
             "id":"flp_title",
             "type":"checkbox",
-            "text":"Please Select your Profession",
+            "text":"Please Select your Profession(You may select several options)",
             "short_text":"Profession",
             "answers":[
                {
-                  "text":"Bus/Tram Driver",
-                  "short_text":"Bus/Tram Driver",
-                  "id":"Bus/Tram Driver"
+                  "text":"Public employee",
+                  "short_text":"Public employee",
+                  "id":"Public employee"
                },
                {
-                  "text":"Counsellor",
-                  "short_text":"Counsellor",
-                  "id":"Counsellor"
+                  "text":"Arts and culture institution employee",
+                  "short_text":"Arts and culture institution employee",
+                  "id":"Arts and culture institution employee"
                },
                {
-                  "text":"Diversity Officer",
-                  "short_text":"Diversity Officer",
-                  "id":"Diversity Officer"
-               },
-               {
-                  "text":"Employee of a Culture Centre",
-                  "short_text":"Employee of a Culture Centre",
-                  "id":"Employee of a Culture Centre"
-               },
-               {
-                  "text":"Employee of Women Shelter",
-                  "short_text":"Employee of Women Shelter",
-                  "id":"Employee of Women Shelter"
-               },
-               {
-                  "text":"Football Coach",
-                  "short_text":"Football Coach",
-                  "id":"Football Coach"
-               },
-               {
-                  "text":"Football Fan",
-                  "short_text":"Football Fan",
-                  "id":"Football Fan"
-               },
-               {
-                  "text":"Football Referee",
-                  "short_text":"Football Referee",
-                  "id":"Football Referee"
-               },
-               {
-                  "text":"Forest Worker",
-                  "short_text":"Forest Worker",
-                  "id":"Forest Worker"
-               },
-               {
-                  "text":"International School Teacher",
-                  "short_text":"International School Teacher",
-                  "id":"International School Teacher"
-               },
-               {
-                  "text":"International Volunteer",
-                  "short_text":"International Volunteer",
-                  "id":"International Volunteer"
-               },
-               {
-                  "text":"Municipal Employee",
-                  "short_text":"Municipal Employee",
-                  "id":"Municipal Employee"
+                  "text":"Sports facility employee",
+                  "short_text":"Sports facility employee",
+                  "id":"Sports facility employee"
                },
                {
                   "text":"NGO Worker",
@@ -236,14 +281,14 @@
                   "id":"NGO Worker"
                },
                {
-                  "text":"Police Officer",
-                  "short_text":"Police Officer",
-                  "id":"Police Officer"
+                  "text":"Community Police Officer",
+                  "short_text":"Community Police Officer",
+                  "id":"Community Police Officer"
                },
                {
-                  "text":"Primary School Teacher",
-                  "short_text":"Primary School Teacher",
-                  "id":"Primary School Teacher"
+                  "text":"Primary Teacher",
+                  "short_text":"Primary Teacher",
+                  "id":"Primary Teacher"
                },
                {
                   "text":"Probation Officer",
@@ -251,14 +296,14 @@
                   "id":"Probation Officer"
                },
                {
-                  "text":"Psychotherapist",
-                  "short_text":"Psychotherapist",
-                  "id":"Psychotherapist"
+                  "text":"Psychologist/Psychotherapist ",
+                  "short_text":"Psychologist/Psychotherapist ",
+                  "id":"Psychologist/Psychotherapist "
                },
                {
-                  "text":"Secondary School Teacher",
-                  "short_text":"Secondary School Teacher",
-                  "id":"Secondary School Teacher"
+                  "text":"Secondary Teacher",
+                  "short_text":"Secondary Teacher",
+                  "id":"Secondary Teacher"
                },
                {
                   "text":"Social Worker",
@@ -266,35 +311,19 @@
                   "id":"Social Worker"
                },
                {
-                  "text":"Student Volunteer",
-                  "short_text":"Student Volunteer",
-                  "id":"Student Volunteer"
-               },
-
-               {
-                  "text":"Teacher",
-                  "short_text":"Teacher",
-                  "id":"Teacher"
-               },
-               {
                   "text":"University Lecturer",
                   "short_text":"University Lecturer",
                   "id":"University Lecturer"
                },
                {
-                  "text":"Volunteer",
-                  "short_text":"Volunteer",
-                  "id":"Volunteer"
-               },
-               {
-                  "text":"Youth Prison Ward",
-                  "short_text":"Youth Prison Ward",
-                  "id":"Youth Prison Ward"
-               },
-               {
                   "text":"Youth Worker",
                   "short_text":"Youth Worker",
                   "id":"Youth Worker"
+               },
+               {
+                  "text":"Other",
+                  "short_text":"Other",
+                  "id":"Other"
                }
             ]
          },
@@ -318,11 +347,6 @@
                   "text":"\uD83C\uDDED\uD83C\uDDFA Hungary",
                   "short_text":"Hungary",
                   "id":"Hungary"
-               },
-               {
-                  "text":"\uD83C\uDDEE\uD83C\uDDF9 Italy",
-                  "short_text":"Italy",
-                  "id":"Italy"
                },
                {
                   "text":"\uD83C\uDDF5\uD83C\uDDF1 Poland",
@@ -388,48 +412,92 @@
       "state_type":"checkbox",
       "state_answers":[
          {
-            "id":"Deradicalisation",
-            "text":"Deradicalisation"
+            "id":"School teacher",
+            "text":"School teacher"
          },
          {
-            "id":"Hate Speech",
-            "text":"Hate Speech"
+            "id":"University lecturer",
+            "text":"University lecturer"
          },
          {
-            "id":"Juvenile Lawyer",
-            "text":"Juvenile Lawyer"
+            "id":"Researcher",
+            "text":"Researcher"
          },
          {
-            "id":"Organised Crime",
-            "text":"Organised Crime"
+            "id":"Municipal Employee",
+            "text":"Municipal Employee"
          },
          {
-            "id":"Prosecutor",
-            "text":"Prosecutor"
+            "id":"NGO worker",
+            "text":"NGO worker"
          },
          {
-            "id":"Psychologist",
-            "text":"Psychologist"
+            "id":"Police officer",
+            "text":"Police officer"
          },
          {
-            "id":"Radicalisation",
-            "text":"Radicalisation"
+            "id":"Municipal guard officer",
+            "text":"Municipal guard officer"
          },
          {
-            "id":"School",
-            "text":"School"
+            "id":"Probation officer",
+            "text":"Probation officer"
          },
          {
-            "id":"Social Media",
-            "text":"Social Media"
+            "id":"Psychoterapist/psychologist",
+            "text":"Psychoterapist/psychologist"
          },
          {
-            "id":"Young People",
-            "text":"Young People"
+            "id":"Social worker",
+            "text":"Social worker"
          },
          {
-            "id":"Youth Gang",
-            "text":"Youth Gang"
+            "id":"Youth worker",
+            "text":"Youth worker"
+         },
+         {
+            "id":"Security expert",
+            "text":"Security expert"
+         },
+         {
+            "id":"Radicalisation expert",
+            "text":"Radicalisation expert"
+         },
+         {
+            "id":"Hate crimes expert",
+            "text":"Hate crimes expert"
+         },
+         {
+            "id":"Religious minority representative",
+            "text":"Religious minority representative"
+         },
+         {
+            "id":"Cultural institution employee",
+            "text":"Cultural institution employee"
+         },
+         {
+            "id":"Sports institution employee/expert",
+            "text":"Sports institution employee/expert"
+         },
+         {
+            "id":"Prison employee/expert",
+            "text":"Prison employee/expert"
+         },
+         {
+            "id":"Exit expert",
+            "text":"Exit expert"
+         },
+         {
+            "id":"Youth gangs expert",
+            "text":"Youth gangs expert"
+         },
+         {
+            "id":"Social media expert",
+            "text":"Social media expert"
+         },
+         {
+            "id":"National Expert Team Member",
+            "text":"National Expert Team Member"
          },
          {
             "id":"Other",

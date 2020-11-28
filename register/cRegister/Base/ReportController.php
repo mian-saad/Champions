@@ -70,8 +70,8 @@ class ReportController extends BaseController
 
         // read json
         //ADD for LANGUAGE . $language . in place of en
-        $this->state_file = json_decode(file_get_contents($this->plugin_path . "assets/base/en/registration_states.json"), true);
-        $this->string_file = json_decode(file_get_contents($this->plugin_path . "assets/base/en/registration_strings.json"), true);
+        $this->state_file = json_decode(file_get_contents($this->plugin_path . "assets/base/".$this->language."/registration_states.json"), true);
+        $this->string_file = json_decode(file_get_contents($this->plugin_path . "assets/base/".$this->language."/registration_strings.json"), true);
     }
 
     // generates the content for the current state
@@ -102,7 +102,7 @@ class ReportController extends BaseController
         if ($state['state_type'] == 'composed') {
             $state_obj = new StateTypes\TraComposedQuestion($this->report_id, $state_code, $state, $this->string_file['continue'], $this->string_file['back'], $this->string_file['field_warning'], $this->string_file['warning']);
         } else if ($state['state_type'] == 'checkbox') {
-            $state_obj = new StateTypes\TraCheckboxQuestion($this->report_id, $state_code, $state, $this->string_file['continue'], $this->string_file['back'], $this->string_file['field_warning'], $this->string_file['warning']);
+            $state_obj = new StateTypes\TraCheckboxQuestion($this->string_file, $this->report_id, $state_code, $state, $this->string_file['continue'], $this->string_file['back'], $this->string_file['field_warning'], $this->string_file['warning']);
         } else if ($state['state_type'] == 'description') {
             $state_obj = new StateTypes\TraDescriptionQuestion($this->report_id, $state_code, $state, $this->string_file['continue'], $this->string_file['back'], $this->string_file['field_warning'], $this->string_file['warning']);
         } else if ($state['state_type'] == 'result') {
@@ -111,7 +111,7 @@ class ReportController extends BaseController
             foreach ($this->state_list as $code => $state) {
                 $answers += $state->generate_readable_response_array();
             }
-            $state_obj = new StateTypes\TraFinal($this->report_id, $state_code, $answers, $this->string_file['pdf_download'], $this->string_file['back'], $this->string_file['crime_location_proposals'], $this->string_file['language_pref_proposals'], $this->string_file['residence_state_proposals'], $this->string_file['no_results']);
+            $state_obj = new StateTypes\TraFinal($this->string_file, $this->report_id, $state_code, $answers, $this->string_file['pdf_download'], $this->string_file['back'], $this->string_file['crime_location_proposals'], $this->string_file['language_pref_proposals'], $this->string_file['residence_state_proposals'], $this->string_file['no_results']);
         } else if ($state['state_type'] == 'expert_login') {
             $state_obj = new StateTypes\ExpertLogin($this->report_id, $state_code, $state, $this->string_file['login'], $this->string_file['back'], $this->string_file['field_warning'], $this->string_file['warning']);
         } else if ($state['state_type'] == 'verification') {
@@ -260,6 +260,7 @@ class ReportController extends BaseController
             $wpdb->insert($register_reports_db_name, $answers);
         }
         wp_mail( $answers['flp_email'], "Registration Confirmed", "Your registration has been confirmed. You will be able to login once the Moderator accepts your request.");
+
     }
 
 

@@ -17,8 +17,9 @@ class TraFinal extends TraState
     public $proposal_html;
     public $no_results_string;
     public $pdfurl;
+    public $string_file;
 
-    public function __construct($report_id, $state_code, array $answers, $submit_string, $back_string, $crime_location_string, $language_pref_string, $residence_string, $no_results_string)
+    public function __construct($string_file, $report_id, $state_code, array $answers, $submit_string, $back_string, $crime_location_string, $language_pref_string, $residence_string, $no_results_string)
     {
 
         $this->no_results_string = $no_results_string;
@@ -30,13 +31,14 @@ class TraFinal extends TraState
         $this->state_code = $state_code;
         $this->submit_string = $submit_string;
         $this->answers = $answers;
+        $this->string_file = $string_file;
     }
 
 
     public function generate_html()
     {
         $html = $this->generate_hidden_fields($this->report_id);
-        $html .= "<h3>Please Review your Data</h3>";
+        $html .= "<h3>".$this->string_file['review_data']."</h3>";
 
         foreach ($this->answers as $short_text => $value) {
             if ($short_text == 'Password') {
@@ -57,6 +59,6 @@ class TraFinal extends TraState
 
     public function generate_buttons()
     {
-        return "<div id='register_button_pane'><a class='button' id='arena_back' href='#' onclick='return false;'>$this->back_string</a> <a class='button' id='arena_submit' onClick=\"window.location.reload();\" href='#' >$this->submit_string</a></div>";
+        return "<div id='register_button_pane'><a class='button' id='arena_back' href='#' onclick='return false;'>$this->back_string</a> <a class='button' id='arena_submit' href='#' >$this->submit_string</a></div>";
     }
 }

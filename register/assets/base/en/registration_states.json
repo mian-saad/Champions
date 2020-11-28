@@ -20,68 +20,23 @@
          {
             "id":"flp_title",
             "type":"checkbox",
-            "text":"Please Select your Profession",
-            "short_text":"Title",
+            "text":"Please Select your Profession(You may select several options)",
+            "short_text":"Profession",
             "answers":[
                {
-                  "text":"Bus/Tram Driver",
-                  "short_text":"Bus/Tram Driver",
-                  "id":"Bus/Tram Driver"
+                  "text":"Public employee",
+                  "short_text":"Public employee",
+                  "id":"Public employee"
                },
                {
-                  "text":"Counsellor",
-                  "short_text":"Counsellor",
-                  "id":"Counsellor"
+                  "text":"Arts and culture institution employee",
+                  "short_text":"Arts and culture institution employee",
+                  "id":"Arts and culture institution employee"
                },
                {
-                  "text":"Diversity Officer",
-                  "short_text":"Diversity Officer",
-                  "id":"Diversity Officer"
-               },
-               {
-                  "text":"Employee of a Culture Centre",
-                  "short_text":"Employee of a Culture Centre",
-                  "id":"Employee of a Culture Centre"
-               },
-               {
-                  "text":"Employee of Women Shelter",
-                  "short_text":"Employee of Women Shelter",
-                  "id":"Employee of Women Shelter"
-               },
-               {
-                  "text":"Football Coach",
-                  "short_text":"Football Coach",
-                  "id":"Football Coach"
-               },
-               {
-                  "text":"Football Fan",
-                  "short_text":"Football Fan",
-                  "id":"Football Fan"
-               },
-               {
-                  "text":"Football Referee",
-                  "short_text":"Football Referee",
-                  "id":"Football Referee"
-               },
-               {
-                  "text":"Forest Worker",
-                  "short_text":"Forest Worker",
-                  "id":"Forest Worker"
-               },
-               {
-                  "text":"International School Teacher",
-                  "short_text":"International School Teacher",
-                  "id":"International School Teacher"
-               },
-               {
-                  "text":"International Volunteer",
-                  "short_text":"International Volunteer",
-                  "id":"International Volunteer"
-               },
-               {
-                  "text":"Municipal Employee",
-                  "short_text":"Municipal Employee",
-                  "id":"Municipal Employee"
+                  "text":"Sports facility employee",
+                  "short_text":"Sports facility employee",
+                  "id":"Sports facility employee"
                },
                {
                   "text":"NGO Worker",
@@ -89,14 +44,14 @@
                   "id":"NGO Worker"
                },
                {
-                  "text":"Police Officer",
-                  "short_text":"Police Officer",
-                  "id":"Police Officer"
+                  "text":"Community Police Officer",
+                  "short_text":"Community Police Officer",
+                  "id":"Community Police Officer"
                },
                {
-                  "text":"Primary School Teacher",
-                  "short_text":"Primary School Teacher",
-                  "id":"Primary School Teacher"
+                  "text":"Primary Teacher",
+                  "short_text":"Primary Teacher",
+                  "id":"Primary Teacher"
                },
                {
                   "text":"Probation Officer",
@@ -104,14 +59,14 @@
                   "id":"Probation Officer"
                },
                {
-                  "text":"Psychotherapist",
-                  "short_text":"Psychotherapist",
-                  "id":"Psychotherapist"
+                  "text":"Psychologist/Psychotherapist ",
+                  "short_text":"Psychologist/Psychotherapist ",
+                  "id":"Psychologist/Psychotherapist "
                },
                {
-                  "text":"Secondary School Teacher",
-                  "short_text":"Secondary School Teacher",
-                  "id":"Secondary School Teacher"
+                  "text":"Secondary Teacher",
+                  "short_text":"Secondary Teacher",
+                  "id":"Secondary Teacher"
                },
                {
                   "text":"Social Worker",
@@ -119,30 +74,9 @@
                   "id":"Social Worker"
                },
                {
-                  "text":"Student Volunteer",
-                  "short_text":"Student Volunteer",
-                  "id":"Student Volunteer"
-               },
-
-               {
-                  "text":"Teacher",
-                  "short_text":"Teacher",
-                  "id":"Teacher"
-               },
-               {
                   "text":"University Lecturer",
                   "short_text":"University Lecturer",
                   "id":"University Lecturer"
-               },
-               {
-                  "text":"Volunteer",
-                  "short_text":"Volunteer",
-                  "id":"Volunteer"
-               },
-               {
-                  "text":"Youth Prison Ward",
-                  "short_text":"Youth Prison Ward",
-                  "id":"Youth Prison Ward"
                },
                {
                   "text":"Youth Worker",
@@ -150,8 +84,9 @@
                   "id":"Youth Worker"
                },
                {
-                  "id":"Other",
-                  "text":"Other"
+                  "text":"Other",
+                  "short_text":"Other",
+                  "id":"Other"
                }
             ]
          },
@@ -175,11 +110,6 @@
                   "text":"\uD83C\uDDED\uD83C\uDDFA Hungary",
                   "short_text":"Hungary",
                   "id":"Hungary"
-               },
-               {
-                  "text":"\uD83C\uDDEE\uD83C\uDDF9 Italy",
-                  "short_text":"Italy",
-                  "id":"Italy"
                },
                {
                   "text":"\uD83C\uDDF5\uD83C\uDDF1 Poland",
@@ -226,7 +156,7 @@
          {
             "id":"flp_years_of_experience",
             "text":"How many years of experience do you have in this profession?",
-            "short_text":"experience",
+            "short_text":"Experience",
             "type":"text"
          },
          {
@@ -241,51 +171,96 @@
       "state_text":"Please Select your Skills",
       "short_text":"Skills Category",
       "id":"flp_skills",
+      "show_header": true,
       "state_type":"checkbox",
       "state_answers":[
          {
-            "id":"Juvenile Lawyer",
-            "text":"Juvenile Lawyer"
+            "id":"School teacher",
+            "text":"School teacher"
          },
          {
-            "id":"Prosecutor",
-            "text":"Prosecutor"
+            "id":"University lecturer",
+            "text":"University lecturer"
          },
          {
-            "id":"Psychologist",
-            "text":"Psychologist"
+            "id":"Researcher",
+            "text":"Researcher"
          },
          {
-            "id":"Social Media",
-            "text":"Social Media"
+            "id":"Municipal Employee",
+            "text":"Municipal Employee"
          },
          {
-            "id":"Radicalisation",
-            "text":"Radicalisation"
+            "id":"NGO worker",
+            "text":"NGO worker"
          },
          {
-            "id":"Young People",
-            "text":"Young People"
+            "id":"Police officer",
+            "text":"Police officer"
          },
          {
-            "id":"School",
-            "text":"School"
+            "id":"Municipal guard officer",
+            "text":"Municipal guard officer"
          },
          {
-            "id":"Hate Speech",
-            "text":"Hate Speech"
+            "id":"Probation officer",
+            "text":"Probation officer"
          },
          {
-            "id":"Deradicalisation",
-            "text":"Deradicalisation"
+            "id":"Psychoterapist/psychologist",
+            "text":"Psychoterapist/psychologist"
          },
          {
-            "id":"Organised Crime",
-            "text":"Organised Crime"
+            "id":"Social worker",
+            "text":"Social worker"
          },
          {
-            "id":"Youth Gang",
-            "text":"Youth Gang"
+            "id":"Youth worker",
+            "text":"Youth worker"
+         },
+         {
+            "id":"Security expert",
+            "text":"Security expert"
+         },
+         {
+            "id":"Radicalisation expert",
+            "text":"Radicalisation expert"
+         },
+         {
+            "id":"Hate crimes expert",
+            "text":"Hate crimes expert"
+         },
+         {
+            "id":"Religious minority representative",
+            "text":"Religious minority representative"
+         },
+         {
+            "id":"Cultural institution employee",
+            "text":"Cultural institution employee"
+         },
+         {
+            "id":"Sports institution employee/expert",
+            "text":"Sports institution employee/expert"
+         },
+         {
+            "id":"Prison employee/expert",
+            "text":"Prison employee/expert"
+         },
+         {
+            "id":"Exit expert",
+            "text":"Exit expert"
+         },
+         {
+            "id":"Youth gangs expert",
+            "text":"Youth gangs expert"
+         },
+         {
+            "id":"Social media expert",
+            "text":"Social media expert"
+         },
+         {
+            "id":"National Expert Team Member",
+            "text":"National Expert Team Member"
          },
          {
             "id":"Other",

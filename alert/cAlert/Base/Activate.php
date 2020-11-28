@@ -27,6 +27,8 @@ class Activate
                 alert_city TEXT,
                 alert_time TEXT,
                 alert_category TEXT,
+                alert_location TEXT,
+                alert_target TEXT,
                 alert_subject TEXT,
                 alert_description TEXT,
                 alert_deadline TEXT,

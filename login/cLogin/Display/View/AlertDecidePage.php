@@ -207,8 +207,10 @@ class AlertDecidePage {
 
     public function SendMail($UserID, $State) {
         global $wpdb;
-        $Email = $wpdb->get_results( "SELECT reporter_email FROM {$wpdb->prefix}alert WHERE report_id='$UserID'", OBJECT );
-        $Email = $Email[0]->reporter_email;
+        $flp_id = $wpdb->get_results( "SELECT flp_id FROM {$wpdb->prefix}alert WHERE alert_id='$UserID'", OBJECT );
+        $id = $flp_id[0]->flp_id;
+        $Email = $wpdb->get_results( "SELECT flp_email FROM {$wpdb->prefix}arena WHERE flp_id = '$id'", OBJECT );
+        $Email = $Email[0]->flp_email;
         wp_mail( "$Email", "Arena Case Module", "Your Case has been ".$State.".", array('Content-Type: text/html; charset=UTF-8'));
     }
 

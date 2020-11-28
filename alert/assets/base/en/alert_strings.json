@@ -25,5 +25,6 @@
     "no_user":"No Such User",
     "register_now": "Not Registered ? Register Now",
     "register_btn": "Register",
-    "alert_report": "ALERT REPORT"
+    "alert_report": "ALERT REPORT",
+    "other": "Other"
 }

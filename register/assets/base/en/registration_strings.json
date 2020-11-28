@@ -17,5 +17,8 @@
     "residence_state_proposals": "Helpline proposals based on your state of residence.",
     "no_results": "No results.",
     "phone_number": "Phone number",
-    "login": "Login"
+    "login": "Login",
+    "review_data": "Please review your data",
+    "other": "Other",
+    "redirect": "User Registered. Redirecting back to Arena . . ."
 }

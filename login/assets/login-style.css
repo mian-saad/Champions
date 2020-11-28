@@ -21,6 +21,7 @@ button[disabled]:hover {
 
 .button {
     border: none;
+    cursor: pointer;
     color: #fff!important;
     border-radius: 0;
     outline: 0;
@@ -209,7 +210,7 @@ table {
     margin-bottom: 5px!important;
 }
 
-.padd {
+.padd_sync {
     margin-left: 15px!important;
 }
 
@@ -219,4 +220,15 @@ table {
 
 .discussion-close {
     margin-left: 5px;
+}
+
+.question {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.login_links {
+    color: #0c83e7!important;
+    font-size: x-large;
+    cursor: pointer;
 }

@@ -14,8 +14,11 @@
     "request": "Request",
     "closed": "Closed",
     "join": "Join",
+    "joined": "Joined",
     "reject": "Reject",
+    "rejected": "Rejected",
     "close": "Close",
+    "close_case": "Close Case",
     "closing": "In Closing",
     "comment": "COMMENT",
     "invite": "INVITE",
@@ -24,5 +27,14 @@
     "discussion_hint2": "In order to close the discussion about the current case/topic, once you are satisfied with it, please click the close button",
     "recommendation": "RECOMMENDATIONS",
     "add_recommendation": "ADD RECOMMENDATION",
-    "update_recommendation": "UPDATE RECOMMENDATION"
+    "update_recommendation": "UPDATE RECOMMENDATION",
+    "in_progress": "In progress",
+    "participants": "Participants",
+    "select_profession": "Please select your Profession",
+    "select_skills": "Please select your Skills",
+    "other": "Other",
+    "provide_description": "Please provide a description of your experience and expertise",
+    "update": "Update",
+    "edit_profile": "Edit Profile",
+    "select_country": "Please Select your Country"
 }

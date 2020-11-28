@@ -7,7 +7,6 @@
             <option value="en">🇬🇧 English</option>
             <option value="ge">🇩🇪 German</option>
             <option value="ro">🇭🇺 Hungarian</option>
-            <option value="it">🇮🇹 Italian</option>
             <option value="pol">🇵🇱 Polish</option>
             <option value="ro">🇷🇴 Romanian</option>
             </select>

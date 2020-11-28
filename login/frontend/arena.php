@@ -6,8 +6,8 @@
 
         <div class="col-12">
             <div id='login_button_pane'>
-                <a class='button' id="to_arena_login_module" >ARENA Login Module</a>
-                <a class='button' href='https://www.firstlinepractitioners.com/arena/' >ARENA Registration Module</a>
+                <a class="login_links" id="start_arena" >Login</a><br>
+                <a class="login_links" href='https://www.firstlinepractitioners.com/arena/' >Registration</a>
             </div>
         </div>
     </div>

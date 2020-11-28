@@ -1,0 +1,312 @@
+{
+  "M0.0":{
+    "state_text":"Bine ați venit la „Modulul de ALERTĂ”. Acest instrument vă va ghida prin procesul de ALERTĂ. <br><br>Pentru mai multe informații verifică <a target='_blank' href='https://ec.europa.eu/info/law/law-topic/data-protection_en'>„Termenii și Condițiile”</a>",
+    "short_text":"GDPR agreement",
+    "id":"gdpr_agreement",
+    "state_type":"gdpr",
+    "state_answers":[
+      {
+        "id":"gdpr_agree",
+        "text":"Înțeleg că datele personale de la alte persoane nu pot fi încărcate și partajate prin acest modul de alertă sau prin oricare dintre secțiunile și instrumentele acestui site web."
+      }
+    ]
+  },
+  "M1.1":{
+    "state_text":"Practicieni Informații personale",
+    "state_type":"composed",
+    "show_header": "true",
+    "id": "flp_register_infos",
+    "state_answers":[
+      {
+        "id":"flp_title",
+        "type":"checkbox",
+        "text":"Vă rugăm să vă selectați profesia",
+        "short_text":"Profesie",
+        "answers":[
+          {
+            "text":"Angajat public",
+            "short_text":"Public employee",
+            "id":"Public employee"
+          },
+          {
+            "text":"Angajat al instituției de artă și cultură",
+            "short_text":"Arts and culture institution employee",
+            "id":"Arts and culture institution employee"
+          },
+          {
+            "text":"Angajat în instalația sportivă",
+            "short_text":"Sports facility employee",
+            "id":"Sports facility employee"
+          },
+          {
+            "text":"Angajat într-un ONG",
+            "short_text":"NGO Worker",
+            "id":"NGO Worker"
+          },
+          {
+            "text":"Ofițer de poliție comunitară",
+            "short_text":"Community Police Officer",
+            "id":"Community Police Officer"
+          },
+          {
+            "text":"Profesor școală primară",
+            "short_text":"Primary Teacher",
+            "id":"Primary Teacher"
+          },
+          {
+            "text":"Ofițer de probă",
+            "short_text":"Probation Officer",
+            "id":"Probation Officer"
+          },
+          {
+            "text":"Psiholog / psihoterapeut",
+            "short_text":"Psychologist/Psychotherapist ",
+            "id":"Psychologist/Psychotherapist "
+          },
+          {
+            "text":"Profesor de liceu",
+            "short_text":"Secondary Teacher",
+            "id":"Secondary Teacher"
+          },
+          {
+            "text":"Asistent social",
+            "short_text":"Social Worker",
+            "id":"Social Worker"
+          },
+          {
+            "text":"Lector universitar",
+            "short_text":"University Lecturer",
+            "id":"University Lecturer"
+          },
+          {
+            "text":"Muncitor tanar",
+            "short_text":"Youth Worker",
+            "id":"Youth Worker"
+          },
+          {
+            "text":"Altele",
+            "short_text":"Other",
+            "id":"Other"
+          }
+        ]
+
+      },
+      {
+        "id":"flp_country",
+        "type":"select",
+        "text":"Vă rugăm să vă selectați țara",
+        "short_text":"Țara",
+        "answers":[
+          {
+            "text":"\uD83C\uDDE6\uD83C\uDDF9 Austria",
+            "short_text":"Austria",
+            "id":"Austria"
+          },
+          {
+            "text":"\uD83C\uDDE9\uD83C\uDDEA Germania",
+            "short_text":"Germany",
+            "id":"Germany"
+          },
+          {
+            "text":"\uD83C\uDDED\uD83C\uDDFA Ungaria",
+            "short_text":"Hungary",
+            "id":"Hungary"
+          },
+          {
+            "text":"\uD83C\uDDF5\uD83C\uDDF1 Polonia",
+            "short_text":"Poland",
+            "id":"Poland"
+          },
+          {
+            "text":"\uD83C\uDDF7\uD83C\uDDF4 România",
+            "short_text":"Romania",
+            "id":"Romania"
+          }
+        ]
+      },
+      {
+        "id":"flp_first_name",
+        "text":"Vă rugăm să vă notați prenumele",
+        "short_text":"Nume",
+        "type":"text"
+      },
+      {
+        "id":"flp_last_name",
+        "text":"Vă rugăm să vă notați numele de familie",
+        "short_text":"Numele de familie",
+        "type":"text"
+      },
+      {
+        "id":"flp_email",
+        "text":"Vă rugăm să vă notați adresa de email",
+        "short_text":"Email",
+        "type":"text"
+      },
+      {
+        "id":"flp_password",
+        "text":"Vă rugăm să vă notați parola",
+        "short_text":"Parola",
+        "type":"password"
+      },
+      {
+        "id":"flp_organisation",
+        "text":"Vă rugăm să vă notați organizația",
+        "short_text":"Organizare",
+        "type":"text"
+      },
+      {
+        "id":"flp_years_of_experience",
+        "text":"Câți ani de experiență aveți în această profesie?",
+        "short_text":"Experienţă",
+        "type":"text"
+      },
+      {
+        "id":"flp_city",
+        "text":"Care este orașul / localitatea dvs. actuală",
+        "short_text":"Oraș",
+        "type":"text"
+      }
+    ]
+  },
+  "M1.2":{
+    "state_text":"Vă rugăm să vă selectați abilitățile",
+    "short_text":"Categoria de competențe",
+    "id":"flp_skills",
+    "show_header": true,
+    "state_type":"checkbox",
+    "state_answers":[
+      {
+        "id":"Profesor de școală",
+        "text":"Profesor de școală"
+      },
+      {
+        "id":"lector universitar",
+        "text":"lector universitar"
+      },
+      {
+        "id":"Cercetător",
+        "text":"Cercetător"
+      },
+      {
+        "id":"Angajat municipal",
+        "text":"Angajat municipal"
+      },
+      {
+        "id":"Angajat într-un ONG",
+        "text":"Angajat într-un ONG"
+      },
+      {
+        "id":"Ofițer de poliție",
+        "text":"Ofițer de poliție"
+      },
+      {
+        "id":"Ofițer de gardă municipală",
+        "text":"Ofițer de gardă municipală"
+      },
+      {
+        "id":"Ofițer de probă",
+        "text":"Ofițer de probă"
+      },
+      {
+        "id":"Psihoterapeut / psiholog",
+        "text":"Psihoterapeut / psiholog"
+      },
+      {
+        "id":"Asistent social",
+        "text":"Asistent social"
+      },
+      {
+        "id":"Muncitor tanar",
+        "text":"Muncitor tanar"
+      },
+      {
+        "id":"Expert în securitate",
+        "text":"Expert în securitate"
+      },
+      {
+        "id":"Expert în radicalizare",
+        "text":"Expert în radicalizaret"
+      },
+      {
+        "id":"Expert în crime de ură",
+        "text":"Expert în crime de ură"
+      },
+      {
+        "id":"Reprezentant al minorității religioase",
+        "text":"Reprezentant al minorității religioase"
+      },
+      {
+        "id":"Angajat al instituției de artă și cultură",
+        "text":"Angajat al instituției de artă și cultură"
+      },
+      {
+        "id":"Angajat / expert al instituției sportivet",
+        "text":"Angajat / expert al instituției sportive"
+      },
+      {
+        "id":"Angajat / expert în închisoare",
+        "text":"Angajat / expert în închisoare"
+      },
+      {
+        "id":"Expert în deradicalizare / ieșire",
+        "text":"Expert în deradicalizare / ieșire"
+      },
+      {
+        "id":"Expert în bande de tineri",
+        "text":"Expert în bande de tinerit"
+      },
+      {
+        "id":"Expert în social media",
+        "text":"Expert în social media"
+      },
+      {
+        "id":"Membru al Comitetului consultativ național",
+        "text":"Membru al Comitetului consultativ național"
+      },
+      {
+        "id":"Altele",
+        "text":"Altele"
+      }
+    ]
+  },
+  "M1.3":{
+    "short_text":"Bio/ Descriere abilități",
+    "state_text":"Vă rugăm să oferiți o descriere a experienței și expertizei dvs.",
+    "id":"flp_description",
+    "show_header": "true",
+    "state_type":"description"
+  },
+  "M1.4":{
+    "short_text":"Verificare Email",
+    "state_text":"Vă rugăm să furnizați codul de verificare care a fost trimis către e-mailul furnizat",
+    "id":"verification",
+    "state_type":"verification"
+  },
+  "M1.5":{
+    "state_type":"result"
+  },
+  "M2.0":{
+    "state_text":"Expert Login",
+    "state_type":"expert_login",
+    "show_header": "false",
+    "id": "expert_infos",
+    "state_answers":[
+      {
+        "id":"email",
+        "text":"Please provide your Email",
+        "short_text":"Email",
+        "type":"text"
+      },
+      {
+        "id":"password",
+        "text":"Please provide your Password",
+        "short_text":"Password",
+        "type":"text"
+      }
+    ]
+  },
+  "ERROR":{
+    "state_text":"An error has occured! Please restart the report process.",
+    "state_type":"error"
+  }
+}

@@ -7,8 +7,7 @@ namespace Comprise\Base;
 /**
  *
  */
-class AjaxCalls
-{
+class AjaxCalls {
     public function register()
     {
         add_action('wp_ajax_nopriv_retrieve_question', array($this, 'retrieve_question'));
@@ -42,9 +41,10 @@ class AjaxCalls
             # if language is not set properly, we will throw errors
             $d = $_GET['lang'];
             if (empty($_GET['lang']) or !in_array($_GET['lang'], ['en', 'it', 'ge', 'spa', 'ro', 'no', 'pol', 'cz', 'sl', 'ne', 'is', 'fr', 'gr', 'bu', 'por' ])) {
-                echo "Don't make me laugh!";
+                echo "Language not set properly";
                 wp_die();
             }
+            $_SESSION['language'] = $_GET['lang'];
             $report_id = $this->getPseudoRandomString(19) . uniqid(); // 19+13 = 32
             $report_controller = new ReportController();
             // lets read the language input value and pass to the shit
@@ -92,6 +92,12 @@ class AjaxCalls
             $report_controller = unserialize(base64_decode(get_transient($report_id)));
 
             $report_controller->db_store();
+
+            $plugin_path = plugin_dir_path( dirname(__FILE__, 2));
+            $state_file = json_decode(file_get_contents($plugin_path . "assets/base/".$_SESSION['language']."/registration_strings.json"), true);
+
+            $Notification = new StateTypes\Notification($state_file);
+            $Notification->render();
         }
 
         wp_die();

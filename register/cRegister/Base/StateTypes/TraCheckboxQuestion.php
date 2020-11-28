@@ -7,8 +7,9 @@ namespace Comprise\Base\StateTypes;
 class TraCheckboxQuestion extends TraState
 {
     public $continue_string;
+    public $string_file;
 
-    public function __construct($report_id, $state_code, $state, $continue_string, $back_string, $field_warning, $warning)
+    public function __construct($string_file, $report_id, $state_code, $state, $continue_string, $back_string, $field_warning, $warning)
     {
         $this->field_warning = $field_warning;
         $this->back_string = $back_string;
@@ -17,6 +18,7 @@ class TraCheckboxQuestion extends TraState
         $this->state = $state;
         $this->continue_string = $continue_string;
         $this->warning = $warning;
+        $this->string_file = $string_file;
     }
 
     public function generate_html()
@@ -38,7 +40,8 @@ class TraCheckboxQuestion extends TraState
         if (array_key_exists($this->state['id'], $response) and $response[$this->state['id']] != null) {
             if (is_array($response[$this->state['id']])) {
                 $this->response = $response;
-            } else {
+            }
+            else {
                 $this->response[$this->state['id']] = array($response[$this->state['id']]);
                 $this->response['other_text_input'] = $response['other_text_input'];
             }
@@ -55,13 +58,13 @@ class TraCheckboxQuestion extends TraState
         foreach ($answer_array as $answer_option) {
             if (!empty($this->response) and in_array($answer_option['id'], $this->response[$name_string])) {
                 // this is a checked answer
-                if ($answer_option['id'] == 'Other') {
+                if ($answer_option['id'] == $this->string_file['other']) {
                     $html .= '<div class="register_horizontal_choice"><input type="checkbox" class="register_checkbox" name="' . $this->state['id'] . '" id="' . $answer_option['id'] . '" value="' . $answer_option['id'] . '" checked required><label for="' . $answer_option['id'] . '">' . $answer_option['text'] . '</label> ' . $this->generate_other_text_input($this->response['other_text_input']) . '</div>';
                 } else {
                     $html .= '<div class="register_horizontal_choice"><input type="checkbox" class="register_checkbox" name="' . $this->state['id'] . '" id="' . $answer_option['id'] . '" value="' . $answer_option['id'] . '" checked required><label for="' . $answer_option['id'] . '">' . $answer_option['text'] . '</label></div>';
                 }
             } else {
-                if ($answer_option['id'] == 'Other') {
+                if ($answer_option['id'] == $this->string_file['other']) {
                     $html .= '<div class="register_horizontal_choice"><input type="checkbox" class="register_checkbox" name="' . $this->state['id'] . '" id="' . $answer_option['id'] . '" value="' . $answer_option['id'] . '" required><label for="' . $answer_option['id'] . '">' . $answer_option['text'] . '</label> ' . $this->generate_other_text_input("") . '</div>';
                 } else {
                     $html .= '<div class="register_horizontal_choice"><input type="checkbox" class="register_checkbox" name="' . $this->state['id'] . '" id="' . $answer_option['id'] . '" value="' . $answer_option['id'] . '" required><label for="' . $answer_option['id'] . '">' . $answer_option['text'] . '</label></div>';
@@ -93,7 +96,7 @@ class TraCheckboxQuestion extends TraState
 
                 if ($item == $checkbox_answer['id']) {
                     // handle the other_text_input here
-                    if ($checkbox_answer['id'] == 'other' and $this->response['other_text_input'] != "") {
+                    if ($checkbox_answer['id'] == $this->string_file['other'] and $this->response['other_text_input'] != "") {
                         $value = $checkbox_answer['text'] . " - " . $this->response['other_text_input'];
                     } else {
                         $value = $checkbox_answer['text'];
@@ -102,7 +105,7 @@ class TraCheckboxQuestion extends TraState
                     $i++;
 
                     if (sizeof($this->response[$this->state['id']]) > $i) {
-                        $response_string = $response_string . $value . ", ";
+                        $response_string = $response_string . $value . ",";
                     } else {
                         $response_string = $response_string . $value;
                     }

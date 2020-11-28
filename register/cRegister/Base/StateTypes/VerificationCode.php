@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Comprise\Base\StateTypes;
 
 

@@ -10,6 +10,8 @@ class ControlCenter {
     // Redirection Conditions
     public function controlLogic($clicked) {
 
+        $plugin_path = plugin_dir_path( dirname(__FILE__, 3));
+
         switch ($clicked) {
 
             /* <-- Backdoor Login Section --> */
@@ -54,12 +56,6 @@ class ControlCenter {
                 $loggedState->case_decision($_SESSION['Country']);
                 break;
 
-            case 'decide':
-                $decision = sanitize_text_field( $_GET['determine'] );
-                $loggedState = new View\LandingPage1();
-                $loggedState->decide_state($decision);
-                break;
-
             case 'decide_expert_case':
                 $decisionId = sanitize_text_field( $_GET['DecideId'] );
                 $loggedState = new View\ExpertDecidePage();
@@ -84,7 +80,7 @@ class ControlCenter {
                 $_SESSION['Email'] = sanitize_text_field( $_GET['email'] );
                 $_SESSION['Password'] = sanitize_text_field( $_GET['pass'] );
                 if ($this->VerifyCredentials($_SESSION['Email'],$_SESSION['Password']) === true) {
-                    $loggedState = new View\LandingPage();
+                    $loggedState = new View\LandingPage($_SESSION['strings']);
                     $loggedState->RenderPage($_SESSION['Email']);
                     break;
                 }
@@ -95,31 +91,30 @@ class ControlCenter {
                 }
 
             case 'ArenaClickableButtons':
-                    $loggedState = new View\LandingPage();
+                    $loggedState = new View\LandingPage($_SESSION['strings']);
                     $loggedState->ClickButton(sanitize_text_field( $_GET['ID'] ), $_SESSION['Email']);
                     break;
 
             case 'OnClickSubject':
-                $loggedState = new View\DiscussionPage();
-                $loggedState->Render($_SESSION['Email'], sanitize_text_field( $_GET['ID']));
+                $loggedState = new View\DiscussionPage($_SESSION['strings']);
+                $loggedState->Render($_SESSION['Email'], sanitize_text_field( $_GET['ID']), );
                 break;
 
             case 'Recommend':
-                $loggedState = new View\DiscussionPage();
+                $loggedState = new View\DiscussionPage($_SESSION['strings']);
                 $loggedState->RenderRecommendation($_SESSION['Email'], sanitize_text_field( $_GET['ID']));
                 break;
 
-            case 'SelectLanguage':
+            case 'LanguageSelect':
                 $loggedState = new View\SelectLanguage();
                 $loggedState->Render();
                 break;
 
             case 'MainPage':
                 $loggedState = new View\MainPage();
-                $plugin_path = plugin_dir_path( dirname(__FILE__, 3));
-                $string_file = json_decode(file_get_contents($plugin_path . "assets/base/" . sanitize_text_field( $_GET['data'] ) . "/alert_strings.json"), true);
-
                 if (!empty($_GET['data'])) {
+                    $_SESSION['language'] = $_GET['data'];
+                    $string_file = json_decode(file_get_contents($plugin_path . "assets/base/" . sanitize_text_field( $_GET['data'] ) . "/alert_strings.json"), true);
                     $_SESSION['strings'] = $string_file;
                     $loggedState->Render($_SESSION['strings']);
                 }
@@ -140,8 +135,8 @@ class ControlCenter {
                 break;
 
             case 'Edit':
-                $loggedState = new View\EditProfile();
-                $loggedState->render(sanitize_text_field( $_GET['data']));
+                $loggedState = new View\EditProfile($_SESSION['strings'], sanitize_text_field( $_GET['data']));
+                $loggedState->render();
                 break;
 
             case 'Update':
@@ -150,22 +145,22 @@ class ControlCenter {
                 break;
 
             case 'AddRecommendation':
-                $loggedState = new View\DiscussionPage();
+                $loggedState = new View\DiscussionPage($_SESSION['strings']);
                 $loggedState->InsertRecommendation(sanitize_text_field( $_GET['ID']), $_SESSION['Email'], sanitize_text_field( $_GET['Data']));
                 break;
 
             case 'UpdateRecommendation':
-                $loggedState = new View\DiscussionPage();
+                $loggedState = new View\DiscussionPage($_SESSION['strings']);
                 $loggedState->UpdateRecommendation(sanitize_text_field( $_GET['ID']), $_SESSION['Email'], sanitize_text_field( $_GET['Data']), sanitize_text_field( $_GET['RecommendationId']));
                 break;
 
             case 'OnClickBack':
-                $loggedState = new View\DiscussionPage();
+                $loggedState = new View\DiscussionPage($_SESSION['strings']);
                 $loggedState->ClickButton($_SESSION['Email']);
                 break;
 
             case 'OnClickComment':
-                $loggedState = new View\DiscussionPage();
+                $loggedState = new View\DiscussionPage($_SESSION['strings']);
                 $loggedState->CommentsLogic(sanitize_text_field( $_GET['ID']), $_SESSION['Email'], sanitize_text_field( $_GET['Data']));
                 break;
 
@@ -176,7 +171,6 @@ class ControlCenter {
         }
         wp_die();
     }
-
 
     public function VerifyCredentials($Email, $Password) {
         $LoadData = new LoadData();

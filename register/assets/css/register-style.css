@@ -41,10 +41,6 @@ body {
   cursor: pointer;
 }
 
-.register_horizontal_choice {
-  margin-bottom: 15px;
-}
-
 p.register_question{
   font: bold;
   font-size: 110%;

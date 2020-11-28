@@ -80,7 +80,12 @@ jQuery(document).ready(function ($) {
             report_id: $('input#report_id').val()
         };
 
-        jQuery.get(register_object.ajaxurl, req_data, function (response) {});
+        jQuery.get(register_object.ajaxurl, req_data, function (response) {
+            $contentBox.html(response).animate({ opacity: 1 }, 100);
+        });
+        // setTimeout(function() {
+        //     location.reload(true);
+        // }, 3000);
     });
 
     // back button action

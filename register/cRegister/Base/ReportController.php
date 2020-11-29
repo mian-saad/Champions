@@ -7,6 +7,7 @@ namespace Comprise\Base;
 use TCPDF;
 use \Comprise\Base\BaseController;
 use \Comprise\Base\StateTypes;
+use function WPMailSMTP\Vendor\GuzzleHttp\Psr7\str;
 
 class ReportController extends BaseController
 {
@@ -259,7 +260,7 @@ class ReportController extends BaseController
         else {
             $wpdb->insert($register_reports_db_name, $answers);
         }
-        wp_mail( $answers['flp_email'], "Registration Confirmed", "Your registration has been confirmed. You will be able to login once the Moderator accepts your request.");
+        wp_mail( $answers['flp_email'], $this->string_file['registration_confirmed'], $this->string_file['your_registration_confirmed']);
 
     }
 
@@ -268,7 +269,7 @@ class ReportController extends BaseController
         $verifyCode = rand(1111, 9999);
         $_SESSION["verifyCode"] = $verifyCode;
 
-        wp_mail( $email, "Verification Code", "Your Verification Code: ". $verifyCode ."");
+        wp_mail( $email, $this->string_file['verification_code'], $this->string_file['your_verification_code']. $verifyCode);
     }
 
     public function verify_code($code) {

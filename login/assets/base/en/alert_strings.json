@@ -1,5 +1,4 @@
 {
-    "arena_login_module": "ARENA Login Module",
     "email": "Email",
     "password": "Password",
     "login_flp": "Login as FLP Expert",
@@ -36,5 +35,15 @@
     "provide_description": "Please provide a description of your experience and expertise",
     "update": "Update",
     "edit_profile": "Edit Profile",
-    "select_country": "Please Select your Country"
+    "select_country": "Please Select your Country",
+    "arena_login_module": "ARENA Login Module",
+    "email_approved": "Your Email Address has been approved.",
+    "arena_case_module": "Arena Case Module",
+    "your_case": "Your Case has been ",
+    "arena_notification": "Arena Notification Module",
+    "new_notification": "The case you are part of has a new ",
+    "new_password": "New Password",
+    "default_password": "Please change the password after logging in and editing your profile. Your New Password: ",
+    "champions_notification": "Champions - Arena Notification Module",
+    "invited": "You have been Invited to the Arena. Please register at https://www.firstlinepractitioners.com/arena/ before you can login."
 }

@@ -1,5 +1,4 @@
 {
-    "arena_login_module": "Modul de conectare ARENA",
     "email": "Email",
     "password": "Parolă",
     "login_flp": "Conectați-vă ca expert practician",
@@ -22,6 +21,11 @@
     "close_case": "caz apropiat",
     "comment": "Comentariu/ Comentează",
     "invite": "Invită",
+    "other": "Altele",
+    "update": "Actualizați",
+    "select_skills": "Vă rugăm să vă selectați abilitățile",
+    "provide_description": "Vă rugăm să oferiți o descriere a experienței și expertizei dvs.",
+    "select_country": "Vă rugăm să vă selectați țara",
     "invite_flp": "Invitați un practician prin e-mail",
     "discussion_hint1": "Cazul / subiectul va fi închis după ce a fost închis de Moderator și încă un practician",
     "discussion_hint2": "Pentru a închide discuția despre cazul / subiectul curent, odată ce sunteți mulțumit de acesta, faceți clic pe butonul de închidere.",
@@ -30,5 +34,15 @@
     "update_recommendation": "Actualizează recomandarea",
     "in_progress": "In progres",
     "participants": "participanți",
-    "select_profession": "Vă rugăm să vă selectați profesia"
+    "select_profession": "Vă rugăm să vă selectați profesia",
+    "arena_login_module": "Modul de conectare ARENA",
+    "email_approved": "Adresa dvs. de e-mail a fost aprobată.",
+    "arena_case_module": "Modulul Casei Arena",
+    "your_case": "Cazul tău a fost ",
+    "arena_notification": "Modulul de notificare Arena",
+    "new_notification": "Cazul din care faceți parte are un nou ",
+    "new_password": "Parolă Nouă",
+    "default_password": "Vă rugăm să schimbați parola după ce v-ați conectat și ați modificat profilul. Noua ta parola:",
+    "champions_notification": "Champions - Modulul de notificare Arena",
+    "invited": "Ai fost invitat pe arena. Vă rugăm să vă înregistrați la https://www.firstlinepractitioners.com/arena/ înainte de a vă putea autentifica."
 }

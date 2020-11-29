@@ -1,0 +1,237 @@
+{
+  "title":[
+    {
+      "text":"Angajat public",
+      "short_text":"Public employee",
+      "id":"Public employee"
+    },
+    {
+      "text":"Angajat al instituției de artă și cultură",
+      "short_text":"Arts and culture institution employee",
+      "id":"Arts and culture institution employee"
+    },
+    {
+      "text":"Angajat în instalația sportivă",
+      "short_text":"Sports facility employee",
+      "id":"Sports facility employee"
+    },
+    {
+      "text":"Angajat într-un ONG",
+      "short_text":"NGO Worker",
+      "id":"NGO Worker"
+    },
+    {
+      "text":"Ofițer de poliție comunitară",
+      "short_text":"Community Police Officer",
+      "id":"Community Police Officer"
+    },
+    {
+      "text":"Profesor școală primară",
+      "short_text":"Primary Teacher",
+      "id":"Primary Teacher"
+    },
+    {
+      "text":"Ofițer de probă",
+      "short_text":"Probation Officer",
+      "id":"Probation Officer"
+    },
+    {
+      "text":"Psiholog / psihoterapeut",
+      "short_text":"Psychologist/Psychotherapist ",
+      "id":"Psychologist/Psychotherapist "
+    },
+    {
+      "text":"Profesor de liceu",
+      "short_text":"Secondary Teacher",
+      "id":"Secondary Teacher"
+    },
+    {
+      "text":"Asistent social",
+      "short_text":"Social Worker",
+      "id":"Social Worker"
+    },
+    {
+      "text":"Lector universitar",
+      "short_text":"University Lecturer",
+      "id":"University Lecturer"
+    },
+    {
+      "text":"Muncitor tanar",
+      "short_text":"Youth Worker",
+      "id":"Youth Worker"
+    },
+    {
+      "text":"Altele",
+      "short_text":"Other",
+      "id":"Other"
+    }
+  ],
+
+  "country":[
+    {
+      "text":"\uD83C\uDDE6\uD83C\uDDF9 Austria",
+      "short_text":"Austria",
+      "id":"Austria"
+    },
+    {
+      "text":"\uD83C\uDDE9\uD83C\uDDEA Germania",
+      "short_text":"Germany",
+      "id":"Germany"
+    },
+    {
+      "text":"\uD83C\uDDED\uD83C\uDDFA Ungaria",
+      "short_text":"Hungary",
+      "id":"Hungary"
+    },
+    {
+      "text":"\uD83C\uDDF5\uD83C\uDDF1 Polonia",
+      "short_text":"Poland",
+      "id":"Poland"
+    },
+    {
+      "text":"\uD83C\uDDF7\uD83C\uDDF4 România",
+      "short_text":"Romania",
+      "id":"Romania"
+    }
+  ],
+
+  "inputs":[
+    {
+      "id":"flp_first_name",
+      "text":"Vă rugăm să vă notați prenumele",
+      "short_text":"First Name",
+      "type":"text"
+    },
+    {
+      "id":"flp_last_name",
+      "text":"Vă rugăm să vă notați numele de familie",
+      "short_text":"Last Name",
+      "type":"text"
+    },
+    {
+      "id":"flp_email",
+      "text":"Vă rugăm să vă notați adresa de email",
+      "short_text":"Email",
+      "type":"text"
+    },
+    {
+      "id":"flp_password",
+      "text":"Vă rugăm să vă notați parola",
+      "short_text":"Password",
+      "type":"password"
+    },
+    {
+      "id":"flp_organisation",
+      "text":"Vă rugăm să vă notați organizația",
+      "short_text":"Organisation",
+      "type":"text"
+    },
+    {
+      "id":"flp_years_of_experience",
+      "text":"Câți ani de experiență aveți în această profesie?",
+      "short_text":"experience",
+      "type":"text"
+    },
+    {
+      "id":"flp_city",
+      "text":"Care este orașul / localitatea dvs. actuală",
+      "short_text":"Town",
+      "type":"text"
+    }
+  ],
+
+  "skills":[
+    {
+      "text":"Profesor de școală",
+      "id":"School teacher"
+    },
+    {
+      "text":"lector universitar",
+      "id":"University lecturer"
+    },
+    {
+      "text":"Cercetător",
+      "id":"Researcher"
+    },
+    {
+      "text":"Angajat municipal",
+      "id":"Municipal Employee"
+    },
+    {
+      "text":"Angajat într-un ONG",
+      "id":"NGO worker"
+    },
+    {
+      "text":"Ofițer de poliție",
+      "id":"Police officer"
+    },
+    {
+      "text":"Ofițer de gardă municipală",
+      "id":"Municipal guard officer"
+    },
+    {
+      "text":"Ofițer de probă",
+      "id":"Probation officer"
+    },
+    {
+      "text":"Psihoterapeut / psiholog",
+      "id":"Psychoterapist/psychologist"
+    },
+    {
+      "text":"Asistent social",
+      "id":"Social worker"
+    },
+    {
+      "text":"Muncitor tanar",
+      "id":"Youth worker"
+    },
+    {
+      "text":"Expert în securitate",
+      "id":"Security expert"
+    },
+    {
+      "text":"Expert în radicalizare",
+      "id":"Radicalisation expert"
+    },
+    {
+      "text":"Expert în crime de ură",
+      "id":"Hate crimes expert"
+    },
+    {
+      "text":"Reprezentant al minorității religioase",
+      "id":"Religious minority representative"
+    },
+    {
+      "text":"Angajat al instituției de artă și cultură",
+      "id":"Cultural institution employee"
+    },
+    {
+      "text":"Angajat / expert al instituției sportivet",
+      "id":"Sports institution employee/expert"
+    },
+    {
+      "text":"Angajat / expert în închisoare",
+      "id":"Prison employee/expert"
+    },
+    {
+      "text":"Expert în deradicalizare / ieșire",
+      "id":"Exit expert"
+    },
+    {
+      "text":"Expert în bande de tineri",
+      "id":"Youth gangs expert"
+    },
+    {
+      "text":"Expert în social media",
+      "id":"Social media expert"
+    },
+    {
+      "text":"Membru al Comitetului consultativ național",
+      "id":"National Expert Team Member"
+    },
+    {
+      "text":"Altele",
+      "id":"Other"
+    }
+  ]
+}

@@ -20,5 +20,9 @@
     "login": "Login",
     "review_data": "Please review your data",
     "other": "Other",
-    "redirect": "User Registered. Redirecting back to Arena . . ."
+    "redirect": "User Registered. Redirecting back to Arena . . .",
+    "registration_confirmed": "Registration Confirmed",
+    "your_registration_confirmed": "Your registration has been confirmed. You will be able to login once the Moderator accepts your request.",
+    "verification_code": "Verification Code",
+    "your_verification_code": "Your Verification Code: "
 }

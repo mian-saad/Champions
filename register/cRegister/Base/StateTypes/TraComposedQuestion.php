@@ -4,10 +4,13 @@
 namespace Comprise\Base\StateTypes;
 
 
+use function WPMailSMTP\Vendor\GuzzleHttp\Psr7\str;
+
 class TraComposedQuestion extends TraState {
     public $continue_string;
+    public $lang;
 
-    public function __construct($report_id, $state_code, $state, $continue_string, $back_string, $field_warning, $warning) {
+    public function __construct($string_file, $report_id, $state_code, $state, $continue_string, $back_string, $field_warning, $warning) {
         $this->field_warning = $field_warning;
         $this->back_string = $back_string;
         $this->report_id = $report_id;
@@ -15,6 +18,7 @@ class TraComposedQuestion extends TraState {
         $this->state = $state;
         $this->continue_string = $continue_string;
         $this->warning = $warning;
+        $this->lang = $string_file;
     }
 
     public function generate_html() {
@@ -77,13 +81,13 @@ class TraComposedQuestion extends TraState {
         foreach ($answer_array['answers'] as $answer_option) {
             if (!empty($this->response) and in_array($answer_option['id'], $this->response[$name_string])) {
                 // this is a checked answer
-                if ($answer_option['id'] == 'Other') {
+                if ($answer_option['id'] == $this->lang['other']) {
                     $html .= '<div class="register_horizontal_choice"><input type="checkbox" class="register_checkbox" name="' . $answer_array['id'] . '" id="' . $answer_option['id'] . '" value="' . $answer_option['id'] . '" checked required><label for="' . $answer_option['id'] . '">' . $answer_option['text'] . '</label> ' . $this->generate_other_text_input($this->response['other_text_input']) . '</div>';
                 } else {
                     $html .= '<div class="register_horizontal_choice"><input type="checkbox" class="register_checkbox" name="' . $answer_array['id'] . '" id="' . $answer_option['id'] . '" value="' . $answer_option['id'] . '" checked required><label for="' . $answer_option['id'] . '">' . $answer_option['text'] . '</label></div>';
                 }
             } else {
-                if ($answer_option['id'] == 'Other') {
+                if ($answer_option['id'] == $this->lang['other']) {
                     $html .= '<div class="register_horizontal_choice"><input type="checkbox" class="register_checkbox" name="' . $answer_array['id'] . '" id="' . $answer_option['id'] . '" value="' . $answer_option['id'] . '" required><label for="' . $answer_option['id'] . '">' . $answer_option['text'] . '</label> ' . $this->generate_other_text_input("") . '</div>';
                 } else {
                     $html .= '<div class="register_horizontal_choice"><input type="checkbox" class="register_checkbox" name="' . $answer_array['id'] . '" id="' . $answer_option['id'] . '" value="' . $answer_option['id'] . '" required><label for="' . $answer_option['id'] . '">' . $answer_option['text'] . '</label></div>';
@@ -158,7 +162,7 @@ class TraComposedQuestion extends TraState {
                     if (count($this->response[$answer['id']]) < 2) {
                         if ($this->response[$answer['id']] == $checkbox_answer['id']) {
                             // handle the other_text_input here
-                            if ($checkbox_answer['id'] == 'other' and $this->response['other_text_input'] != "") {
+                            if ($checkbox_answer['id'] == $this->lang['other'] and $this->response['other_text_input'] != "") {
                                 $value = $checkbox_answer['text'] . " - " . $this->response['other_text_input'];
                             }
                             else {
@@ -168,7 +172,7 @@ class TraComposedQuestion extends TraState {
                     }
                     else {
                         $value = implode(",", $this->response[$answer['id']]);
-                        if ($checkbox_answer['id'] == 'Other' and $this->response['other_text_input'] != "") {
+                        if ($checkbox_answer['id'] == $this->lang['other'] and $this->response['other_text_input'] != "") {
                             $value = $value . " - " . $this->response['other_text_input'];
                         }
                     }

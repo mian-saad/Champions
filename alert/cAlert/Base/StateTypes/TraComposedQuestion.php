@@ -109,7 +109,7 @@ class TraComposedQuestion extends TraState {
             $verifyCode = rand(1111, 9999);
             $_SESSION["verifyCode"] = $verifyCode;
 
-            wp_mail( $resp['flp_email'], "Verification Code", "Your Verification Code: ". $verifyCode ."");
+            wp_mail( $resp['flp_email'], $this->string_file['verification'], $this->string_file['your_verification_code'] . $verifyCode );
             return true;
         }
     }

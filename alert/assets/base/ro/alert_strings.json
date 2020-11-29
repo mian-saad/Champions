@@ -28,5 +28,12 @@
   "alert_target": "Țintă de alertă",
   "subject": "Subject",
   "description": "Descriere",
-  "other": "Altele"
+  "other": "Altele",
+  "your_verification_code": "Codul dvs. de verificare: ",
+  "verification": "Cod de verificare: ",
+  "alert_submitted": "ALERTĂ trimisă",
+  "your_alert_submitted": "ALERTA dvs. a fost trimisă. Veți putea vedea ALERTA în panoul ARENA după ce a fost acceptat de moderator.",
+  "registration_confirmed": "Înregistrare confirmată",
+  "your_registration_confirmed": "Înregistrarea dvs. a fost confirmată. Vă veți putea conecta odată ce Moderatorul va accepta solicitarea.",
+  "thanks": "Vă mulțumim că utilizați platforma. Redirecționarea înapoi la ALERTĂ"
 }

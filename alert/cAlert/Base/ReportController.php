@@ -82,7 +82,7 @@ class ReportController extends BaseController {
         } else if ($state['state_type'] == 'EventComposed') {
             $state_obj = new StateTypes\TraDatetimeQuestion($this->alert_id, $state_code, $state, $this->language, $this->string_file['continue'], $this->string_file['back'], $this->string_file['field_warning'], $this->string_file['wrong_time_warning']);
         } else if ($state['state_type'] == 'checkbox') {
-            $state_obj = new StateTypes\TraCheckboxQuestion($this->alert_id, $state_code, $state, $this->string_file['continue'], $this->string_file['back'], $this->string_file['field_warning'], $this->string_file['warning']);
+            $state_obj = new StateTypes\TraCheckboxQuestion($this->string_file, $this->alert_id, $state_code, $state, $this->string_file['continue'], $this->string_file['back'], $this->string_file['field_warning'], $this->string_file['warning']);
         } else if ($state['state_type'] == 'composed_checkbox') {
             $state_obj = new StateTypes\TraComposedCheckboxQuestion($this->alert_id, $state_code, $state, $this->string_file['continue'], $this->string_file['back'], $this->string_file['field_warning'], $this->string_file['warning'], $this->string_file['other']);
         } else if ($state['state_type'] == 'verification') {
@@ -289,34 +289,34 @@ class ReportController extends BaseController {
 
                             $response = $state->response;
                         }
-                        /*else if (is_array($state->response[$state->state['id']])) {      // is only the case for checkbox question
-                            if (in_array('Other', $state->response[$state->state['id']]) AND isset($state->response['other_text_input'])) {
-                                foreach ($state->response[$state->state['id']] as &$str) {
-                                    $str = str_replace('Other', $state->response['other_text_input'], $str);
-                                }
-                                unset($state->response['other_text_input']);
-                            }
-                            $response = array($state->state['id'] => implode(",", $state->response[$state->state['id']]));
-                        }
-                        else {  // main response is set and is not an array
-                            if ($state->response[$state->state['id']] == 'Other') {
-                                $state->response[$state->state['id']] = $state->response['other_text_input'];
-                            }
-                            unset($state->response['other_text_input']);
-                            $response = $state->response;
-                        }*/
                         $answers = $answers + $response;
                     }
                     else {  // if response is some text, lets create an array with its state id and add it to answers array
                         $answers = $answers + array($state->state['id'] => $state->response);
                     }
                 }
-
-
             }
         }
+        $answers = $this->parse_other_inputs($answers);
         $wpdb->insert($alert_db, $answers);
-        wp_mail( $_SESSION['flp'], "ALERT Submitted", "Your ALERT has been submitted. You will be able to see the ALERT in ARENA panel once it has been accepted by the Moderator.");
+        wp_mail( $_SESSION['flp'], $this->string_file['alert_submitted'], $this->string_file['your_alert_submitted']);
+    }
+
+    public function parse_other_inputs($answers) {
+
+        if (array_key_exists('other_alert_category', $answers)) {
+            $answers['alert_category'] = $answers['alert_category'] .', '. $answers['other_alert_category'];
+            unset($answers['other_alert_category']);
+        }
+        if (array_key_exists('other_alert_location', $answers)) {
+            $answers['alert_location'] = $answers['alert_location'] .', '. $answers['other_alert_location'];
+            unset($answers['other_alert_location']);
+        }
+        if (array_key_exists('other_alert_target', $answers)) {
+            $answers['alert_target'] = $answers['alert_target'] .', '. $answers['other_alert_target'];
+            unset($answers['other_alert_target']);
+        }
+        return $answers;
     }
 
     public function flp_db_store($flp_id) {
@@ -417,7 +417,7 @@ class ReportController extends BaseController {
         }
         $wpdb->insert($arena_db, $answers);
         $_SESSION['flp'] = $answers['flp_email'];
-        wp_mail( $answers['flp_email'], "Registration Confirmed", "Your registration has been confirmed. You will be able to login once the Moderator accepts your request.");
+        wp_mail( $answers['flp_email'], $this->string_file['registration_confirmed'], $this->string_file['your_registration_confirmed']);
     }
 
     /* create one more db function in process response check if its at the state M1.9

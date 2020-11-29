@@ -100,7 +100,7 @@ class ReportController extends BaseController
         $state = $this->state_file[$state_code];
 
         if ($state['state_type'] == 'composed') {
-            $state_obj = new StateTypes\TraComposedQuestion($this->report_id, $state_code, $state, $this->string_file['continue'], $this->string_file['back'], $this->string_file['field_warning'], $this->string_file['warning']);
+            $state_obj = new StateTypes\TraComposedQuestion($this->string_file, $this->report_id, $state_code, $state, $this->string_file['continue'], $this->string_file['back'], $this->string_file['field_warning'], $this->string_file['warning']);
         } else if ($state['state_type'] == 'checkbox') {
             $state_obj = new StateTypes\TraCheckboxQuestion($this->string_file, $this->report_id, $state_code, $state, $this->string_file['continue'], $this->string_file['back'], $this->string_file['field_warning'], $this->string_file['warning']);
         } else if ($state['state_type'] == 'description') {

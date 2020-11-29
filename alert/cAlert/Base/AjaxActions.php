@@ -46,10 +46,11 @@ class AjaxActions
         else { // we are starting new report here
 
             # if language is not set properly, we will throw errors
-            if (empty($_GET['lang']) or !in_array($_GET['lang'], ['en', 'it', 'ge', 'spa', 'ro', 'no', 'pol', 'cz', 'sl', 'ne', 'is', 'fr', 'gr', 'bu', 'por' ])) {
+            if (empty($_GET['lang']) or !in_array($_GET['lang'], ['en', 'ge', 'hun', 'ro', 'pol'])) {
                 echo "Language Not Set Properly";
                 wp_die();
             }
+            $_SESSION['language'] = $_GET['lang'];
             $alert_id = $this->getPseudoRandomString(19) . uniqid(); // 19+13 = 32
             $report_controller = new ReportController();
             // lets read the language input value and pass to the shit
@@ -96,6 +97,7 @@ class AjaxActions
             $report_controller = unserialize(base64_decode(get_transient($alert_id)));
 
             $report_controller->db_store();
+
         }
 
         wp_die();
@@ -104,7 +106,7 @@ class AjaxActions
     public function thanks() {
 
         if ($_GET['alert_id'] === 'thankyou') {
-            $thankyou = new StateTypes\ThankYou();
+            $thankyou = new StateTypes\ThankYou($_SESSION['language']);
             $thankyou->show_message();
         }
 

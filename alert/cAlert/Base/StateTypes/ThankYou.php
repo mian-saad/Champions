@@ -6,9 +6,16 @@ use Cover\Base\ReportController;
 
 class ThankYou {
 
+    public $lang;
+
+    public function __construct($language) {
+        $this->lang = $language;
+    }
+
     public function show_message() {
-        $html = "<h2>Thank You for using the Platform. Redirecting back to ALERT</h2>";
-//        $html .= "<script>setTimeout(function(){window.location.reload(1);}, 3000);</script>";
+        $plugin_path = plugin_dir_path( dirname(__FILE__, 3));
+        $string_file = json_decode(file_get_contents($plugin_path . "assets/base/" . $this->lang . "/alert_strings.json"), true);
+        $html = "<h2>".$string_file['thanks']."</h2>";
         echo $html;
     }
 }

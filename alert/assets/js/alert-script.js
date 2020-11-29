@@ -153,7 +153,7 @@ jQuery(document).ready(function ($) {
         jQuery.get(alert_object.ajaxurl, req_data, function (response) {
             // $contentBox.html(response);
         });
-        thanks();
+        // thanks();
     });
 
     // Done button action leads to Thank You

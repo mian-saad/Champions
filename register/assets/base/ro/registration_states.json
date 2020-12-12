@@ -175,99 +175,99 @@
     "show_header": true,
     "state_type":"checkbox",
     "state_answers":[
-      {
-        "id":"Profesor de școală",
-        "text":"Profesor de școală"
-      },
-      {
-        "id":"lector universitar",
-        "text":"lector universitar"
-      },
-      {
-        "id":"Cercetător",
-        "text":"Cercetător"
-      },
-      {
-        "id":"Angajat municipal",
-        "text":"Angajat municipal"
-      },
-      {
-        "id":"Angajat într-un ONG",
-        "text":"Angajat într-un ONG"
-      },
-      {
-        "id":"Ofițer de poliție",
-        "text":"Ofițer de poliție"
-      },
-      {
-        "id":"Ofițer de gardă municipală",
-        "text":"Ofițer de gardă municipală"
-      },
-      {
-        "id":"Ofițer de probă",
-        "text":"Ofițer de probă"
-      },
-      {
-        "id":"Psihoterapeut / psiholog",
-        "text":"Psihoterapeut / psiholog"
-      },
-      {
-        "id":"Asistent social",
-        "text":"Asistent social"
-      },
-      {
-        "id":"Muncitor tanar",
-        "text":"Muncitor tanar"
-      },
-      {
-        "id":"Expert în securitate",
-        "text":"Expert în securitate"
-      },
-      {
-        "id":"Expert în radicalizare",
-        "text":"Expert în radicalizaret"
-      },
-      {
-        "id":"Expert în crime de ură",
-        "text":"Expert în crime de ură"
-      },
-      {
-        "id":"Reprezentant al minorității religioase",
-        "text":"Reprezentant al minorității religioase"
-      },
-      {
-        "id":"Angajat al instituției de artă și cultură",
-        "text":"Angajat al instituției de artă și cultură"
-      },
-      {
-        "id":"Angajat / expert al instituției sportivet",
-        "text":"Angajat / expert al instituției sportive"
-      },
-      {
-        "id":"Angajat / expert în închisoare",
-        "text":"Angajat / expert în închisoare"
-      },
-      {
-        "id":"Expert în deradicalizare / ieșire",
-        "text":"Expert în deradicalizare / ieșire"
-      },
-      {
-        "id":"Expert în bande de tineri",
-        "text":"Expert în bande de tinerit"
-      },
-      {
-        "id":"Expert în social media",
-        "text":"Expert în social media"
-      },
-      {
-        "id":"Membru al Comitetului consultativ național",
-        "text":"Membru al Comitetului consultativ național"
-      },
-      {
-        "id":"Altele",
-        "text":"Altele"
-      }
-    ]
+  {
+    "text":"Profesor de școală",
+    "id":"School teacher"
+  },
+  {
+    "text":"lector universitar",
+    "id":"University lecturer"
+  },
+  {
+    "text":"Cercetător",
+    "id":"Researcher"
+  },
+  {
+    "text":"Angajat municipal",
+    "id":"Municipal Employee"
+  },
+  {
+    "text":"Angajat într-un ONG",
+    "id":"NGO worker"
+  },
+  {
+    "text":"Ofițer de poliție",
+    "id":"Police officer"
+  },
+  {
+    "text":"Ofițer de gardă municipală",
+    "id":"Municipal guard officer"
+  },
+  {
+    "text":"Ofițer de probă",
+    "id":"Probation officer"
+  },
+  {
+    "text":"Psihoterapeut / psiholog",
+    "id":"Psychoterapist/psychologist"
+  },
+  {
+    "text":"Asistent social",
+    "id":"Social worker"
+  },
+  {
+    "text":"Muncitor tanar",
+    "id":"Youth worker"
+  },
+  {
+    "text":"Expert în securitate",
+    "id":"Security expert"
+  },
+  {
+    "text":"Expert în radicalizare",
+    "id":"Radicalisation expert"
+  },
+  {
+    "text":"Expert în crime de ură",
+    "id":"Hate crimes expert"
+  },
+  {
+    "text":"Reprezentant al minorității religioase",
+    "id":"Religious minority representative"
+  },
+  {
+    "text":"Angajat al instituției de artă și cultură",
+    "id":"Cultural institution employee"
+  },
+  {
+    "text":"Angajat / expert al instituției sportivet",
+    "id":"Sports institution employee/expert"
+  },
+  {
+    "text":"Angajat / expert în închisoare",
+    "id":"Prison employee/expert"
+  },
+  {
+    "text":"Expert în deradicalizare / ieșire",
+    "id":"Exit expert"
+  },
+  {
+    "text":"Expert în bande de tineri",
+    "id":"Youth gangs expert"
+  },
+  {
+    "text":"Expert în social media",
+    "id":"Social media expert"
+  },
+  {
+    "text":"Membru al Comitetului consultativ național",
+    "id":"National Expert Team Member"
+  },
+  {
+    "text":"Altele",
+    "id":"Other"
+  }
+]
   },
   "M1.3":{
     "short_text":"Bio/ Descriere abilități",
@@ -285,28 +285,8 @@
   "M1.5":{
     "state_type":"result"
   },
-  "M2.0":{
-    "state_text":"Expert Login",
-    "state_type":"expert_login",
-    "show_header": "false",
-    "id": "expert_infos",
-    "state_answers":[
-      {
-        "id":"email",
-        "text":"Please provide your Email",
-        "short_text":"Email",
-        "type":"text"
-      },
-      {
-        "id":"password",
-        "text":"Please provide your Password",
-        "short_text":"Password",
-        "type":"text"
-      }
-    ]
-  },
   "ERROR":{
-    "state_text":"An error has occured! Please restart the report process.",
+    "state_text":"An error has occured! Please restart the process.",
     "state_type":"error"
   }
 }

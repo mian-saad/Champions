@@ -39,5 +39,6 @@
   "registration_confirmed": "Înregistrare confirmată",
   "your_registration_confirmed": "Yînregistrarea noastră a fost confirmată. Vă veți putea conecta odată ce Moderatorul va accepta solicitarea.",
   "verification_code": "Cod de verificare",
-  "your_verification_code": "Codul dvs. de verificare: "
+  "your_verification_code": "Codul dvs. de verificare: ",
+  "redirect": "Utilizator înregistrat. Redirecționarea înapoi la Arena. . ."
 }

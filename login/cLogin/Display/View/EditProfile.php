@@ -27,7 +27,7 @@ class EditProfile {
         $db_title = explode(',', $title->flp_title);
         $html = "";
         foreach ($this->profile['title'] as $title) {
-            if (in_array($title['text'], $db_title)){
+            if (in_array($title['id'], $db_title)){
                 $html .= "<input checked type='checkbox' class='register_quiz_select' name='flp_title' id='".$title['text']."' value='".$title['text']."'>".$title['text']."</input>";
                 if ($title['text']===$this->lang['other']) {
                     $other = end($db_title);
@@ -52,7 +52,7 @@ class EditProfile {
         $db_country = $wpdb->get_row( "SELECT flp_country FROM {$wpdb->prefix}arena WHERE flp_email= '$this->email'", OBJECT ,0);
 
         foreach ($this->profile['country'] as $country) {
-            if ($db_country->flp_country === $country['short_text']) {
+            if ($db_country->flp_country === $country['id']) {
                 $html .= "<option selected class='register_quiz_select' name='flp_country' id='$db_country->flp_country' value='".$country['text']."'>".$country['text']."</option>";
             }
             else {
@@ -101,7 +101,7 @@ class EditProfile {
         $db_skills = explode(',', $skills->flp_skills);
         $html = "";
         foreach ($this->profile['skills'] as $skill) {
-            if (in_array($skill['text'], $db_skills)){
+            if (in_array($skill['id'], $db_skills)){
                 $html .= "<input checked type='checkbox' class='register_quiz_select' name='flp_skills' id='' value='".$skill['text']."'>".$skill['text']."</input>";
                 if ($skill['text']===$this->lang['other']) {
                     $other = end($db_skills);

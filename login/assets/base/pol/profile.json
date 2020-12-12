@@ -1,0 +1,237 @@
+{
+  "title":[
+    {
+      "text":"Pracownik(-niczka) administracji publicznej",
+      "short_text":"Public employee",
+      "id":"Public employee"
+    },
+    {
+      "text":"Pracownik(-niczka) instytucji kultury",
+      "short_text":"Arts and culture institution employee",
+      "id":"Arts and culture institution employee"
+    },
+    {
+      "text":"Pracownik(-niczka) instytucji sportowej",
+      "short_text":"Sports facility employee",
+      "id":"Sports facility employee"
+    },
+    {
+      "text":"Pracownik(-niczka) organizacji społecznej",
+      "short_text":"NGO Worker",
+      "id":"NGO Worker"
+    },
+    {
+      "text":"Dzielnicowy(-wa)",
+      "short_text":"Community Police Officer",
+      "id":"Community Police Officer"
+    },
+    {
+      "text":"Nauczyciel(ka) w szkole podstawowej",
+      "short_text":"Primary Teacher",
+      "id":"Primary Teacher"
+    },
+    {
+      "text":"Kurator(ka) sądowy(-wa)",
+      "short_text":"Probation Officer",
+      "id":"Probation Officer"
+    },
+    {
+      "text":"Pscholog(-lożka)/psychoterapeuta(-tka)",
+      "short_text":"Psychologist/Psychotherapist ",
+      "id":"Psychologist/Psychotherapist "
+    },
+    {
+      "text":"Nauczyciel(ka) w szkole średniej",
+      "short_text":"Secondary Teacher",
+      "id":"Secondary Teacher"
+    },
+    {
+      "text":"Pracownik(-niczka) społeczny(-na)",
+      "short_text":"Social Worker",
+      "id":"Social Worker"
+    },
+    {
+      "text":"Wykładowca(-wczyni) na uczelni wyższej",
+      "short_text":"University Lecturer",
+      "id":"University Lecturer"
+    },
+    {
+      "text":"Pracownik(-niczka) młodzieżowy(-wa)",
+      "short_text":"Youth Worker",
+      "id":"Youth Worker"
+    },
+    {
+      "text":"Inny",
+      "short_text":"Other",
+      "id":"Other"
+    }
+  ],
+
+  "country":[
+    {
+      "text":"\uD83C\uDDE6\uD83C\uDDF9 Austria",
+      "short_text":"Austria",
+      "id":"Austria"
+    },
+    {
+      "text":"\uD83C\uDDE9\uD83C\uDDEA Niemcy",
+      "short_text":"Niemcy",
+      "id":"Germany"
+    },
+    {
+      "text":"\uD83C\uDDED\uD83C\uDDFA Węgry",
+      "short_text":"Węgry",
+      "id":"Hungary"
+    },
+    {
+      "text":"\uD83C\uDDF5\uD83C\uDDF1 Polska",
+      "short_text":"Polska",
+      "id":"Poland"
+    },
+    {
+      "text":"\uD83C\uDDF7\uD83C\uDDF4 Rumunia",
+      "short_text":"Rumunia",
+      "id":"Romania"
+    }
+  ],
+
+  "inputs": [
+    {
+      "id":"flp_first_name",
+      "text":"Podaj swoje imię",
+      "short_text":"First Name",
+      "type":"text"
+    },
+    {
+      "id":"flp_last_name",
+      "text":"Podaj swoje nazwisko",
+      "short_text":"Last Name",
+      "type":"text"
+    },
+    {
+      "id":"flp_email",
+      "text":"Podaj swój adres e-mailowy",
+      "short_text":"Email",
+      "type":"text"
+    },
+    {
+      "id":"flp_password",
+      "text":"Podaj hasło",
+      "short_text":"Password",
+      "type":"password"
+    },
+    {
+      "id":"flp_organisation",
+      "text":"Podaj nazwę organizacji/instytucji, w której pracujesz",
+      "short_text":"Organisation",
+      "type":"text"
+    },
+    {
+      "id":"flp_years_of_experience",
+      "text":"Ile masz lat doświadczenia zawodowego?",
+      "short_text":"experience",
+      "type":"text"
+    },
+    {
+      "id":"flp_city",
+      "text":"W jakiej miejscowości mieszkasz?",
+      "short_text":"Town",
+      "type":"text"
+    }
+  ],
+
+  "skills":[
+    {
+      "id":"School teacher",
+      "text":"Nauczyciel(ka) szkolny(-na)"
+    },
+    {
+      "id":"University lecturer",
+      "text":"Wykładowca(-wczyni) na uczelni wyższej"
+    },
+    {
+      "id":"Researcher",
+      "text":"Badacz(-czka)"
+    },
+    {
+      "id":"Municipal Employee",
+      "text":"Pracownik(-niczka) władz miasta"
+    },
+    {
+      "id":"NGO worker",
+      "text":"Pracownik(-niczka) organizacji społecznej"
+    },
+    {
+      "id":"Police officer",
+      "text":"Oficer(ka) Policji"
+    },
+    {
+      "id":"Municipal guard officer",
+      "text":"Oficer(ka) Straży Miejskiej"
+    },
+    {
+      "id":"Probation officer",
+      "text":"Kurator(ka) sądowy(-wa)"
+    },
+    {
+      "id":"Psychoterapist/psychologist",
+      "text":"Pscholog(-lożka)/psychoterapeuta(-tka)"
+    },
+    {
+      "id":"Social worker",
+      "text":"Pracownik(-niczka) społeczny(-na)"
+    },
+    {
+      "id":"Youth worker",
+      "text":"Pracownik(-niczka) młodzieżowy(-wa)"
+    },
+    {
+      "id":"Security expert",
+      "text":"Ekspert(ka) ds. bezpieczeństwa"
+    },
+    {
+      "id":"Radicalisation expert",
+      "text":"Ekspert(ka) ds. radykalizacji"
+    },
+    {
+      "id":"Hate crimes expert",
+      "text":"Ekspert(ka) ds. przestępstw z nienawiści"
+    },
+    {
+      "id":"Religious minority representative",
+      "text":"Przedstawiciel(ka) mniejszości religijnych"
+    },
+    {
+      "id":"Cultural institution employee",
+      "text":"Pracownik(-niczka) instytucji kultury"
+    },
+    {
+      "id":"Sports institution employee/expert",
+      "text":"Pracownik(-niczka) instytucji sportowej"
+    },
+    {
+      "id":"Prison employee/expert",
+      "text":"Pracownik(-niczka)/ekspert(ka) ds. więziennictwa"
+    },
+    {
+      "id":"Exit expert",
+      "text":"Ekspert(ka) ds. deradykalizacji"
+    },
+    {
+      "id":"Youth gangs expert",
+      "text":"Ekspert(ka) ds. gangów młodzieżowych"
+    },
+    {
+      "id":"Social media expert",
+      "text":"Ekspert(ka) ds. mediów społecznościowych"
+    },
+    {
+      "id":"National Expert Team Member",
+      "text":"Członek(--nkini) Ogólnopolskiego Zespołu Eksperckiego"
+    },
+    {
+      "id":"Other",
+      "text":"Inny"
+    }
+  ]
+}

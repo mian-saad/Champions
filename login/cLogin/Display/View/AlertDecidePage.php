@@ -15,18 +15,6 @@ class AlertDecidePage {
         $html = " <h2>Accept/Reject Alert Case</h2> ";
         $html .= " <table> ";
         $html .= " <tr> ";
-        /*$html .= " <td> ";
-        $html .= " <b>Title</b> ";
-        $html .= " </td> ";
-        $html .= " <td> ";
-        $html .= " <b>First Name</b> ";
-        $html .= " </td> ";
-        $html .= " <td> ";
-        $html .= " <b>Last Name</b> ";
-        $html .= " </td> ";
-        $html .= " <td> ";
-        $html .= " <b>Email</b> ";
-        $html .= " </td> ";*/
 
         $html .= " <td> ";
         $html .= " <b>Subject</b> ";
@@ -44,32 +32,22 @@ class AlertDecidePage {
         $html .= " <b>Country</b> ";
         $html .= " </td> ";
 
-
         $html .= " <td> ";
         $html .= " <b>FLP Status</b> ";
         $html .= " </td> ";
+
         $html .= " <td> ";
         $html .= " <b>Arena Status</b> ";
         $html .= " </td> ";
+
         $html .= " <td> ";
         $html .= " <b>Alert Status</b> ";
         $html .= " </td> ";
+
         $html .= " </tr> ";
         for ($counter = 0; $counter<$length; $counter++) {
             if ($Country[0] === $Data[$counter] -> alert_country) {
                 $html .= " <tr> ";
-                /*$html .= " <td> ";
-                $html .= " <p>" . $Data[$counter] -> title . "</p> ";
-                $html .= " </td> ";
-                $html .= " <td> ";
-                $html .= " <p>" . $Data[$counter] -> reporter_fName . "</p> ";
-                $html .= " </td> ";
-                $html .= " <td> ";
-                $html .= " <p>" . $Data[$counter] -> reporter_lName . "</p> ";
-                $html .= " </td> ";
-                $html .= " <td> ";
-                $html .= " <p>" . $Data[$counter] -> reporter_email . "</p> ";
-                $html .= " </td> ";*/
 
                 $html .= " <td> ";
                 $html .= " <p>" . $Data[$counter] -> alert_subject . "</p> ";

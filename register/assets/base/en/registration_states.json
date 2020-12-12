@@ -169,10 +169,10 @@
    },
    "M1.2":{
       "state_text":"Please Select your Skills",
-      "short_text":"Skills Category",
-      "id":"flp_skills",
-      "show_header": true,
       "state_type":"checkbox",
+      "show_header": true,
+      "id":"flp_skills",
+      "short_text":"Skills Category",
       "state_answers":[
          {
             "id":"School teacher",
@@ -283,28 +283,8 @@
    "M1.5":{
       "state_type":"result"
    },
-   "M2.0":{
-      "state_text":"Expert Login",
-      "state_type":"expert_login",
-      "show_header": "false",
-      "id": "expert_infos",
-      "state_answers":[
-         {
-            "id":"email",
-            "text":"Please provide your Email",
-            "short_text":"Email",
-            "type":"text"
-         },
-         {
-            "id":"password",
-            "text":"Please provide your Password",
-            "short_text":"Password",
-            "type":"text"
-         }
-      ]
-   },
    "ERROR":{
-      "state_text":"An error has occured! Please restart the report process.",
+      "state_text":"An error has occured! Please restart the process.",
       "state_type":"error"
    }
 }

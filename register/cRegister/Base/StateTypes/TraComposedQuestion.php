@@ -158,26 +158,27 @@ class TraComposedQuestion extends TraState {
                 }
             }
             else if ($answer['type'] == 'checkbox') {
-                foreach ($answer['answers'] as $checkbox_answer) {
-                    if (count($this->response[$answer['id']]) < 2) {
-                        if ($this->response[$answer['id']] == $checkbox_answer['id']) {
+                $response_string = "";
+                $i = 0; // needed for koma stripping
+                foreach ($this->response[$answer['id']] as $item) { // for each item, lets find the short text in our $state
+                    foreach ($answer['answers'] as $checkbox_answer) {
+                        if ($item == $checkbox_answer['id']) {
                             // handle the other_text_input here
                             if ($checkbox_answer['id'] == $this->lang['other'] and $this->response['other_text_input'] != "") {
                                 $value = $checkbox_answer['text'] . " - " . $this->response['other_text_input'];
-                            }
-                            else {
+                            } else {
                                 $value = $checkbox_answer['text'];
                             }
+                            $i++;
+                            if (sizeof($this->response[$answer['id']]) > $i) {
+                                $response_string = $response_string . $value . ",";
+                            } else {
+                                $response_string = $response_string . $value;
+                            }
                         }
                     }
-                    else {
-                        $value = implode(",", $this->response[$answer['id']]);
-                        if ($checkbox_answer['id'] == $this->lang['other'] and $this->response['other_text_input'] != "") {
-                            $value = $value . " - " . $this->response['other_text_input'];
-                        }
-                    }
-
                 }
+                $value = $response_string;
             }
             $result[$key] = $value;
         }

@@ -1,62 +1,46 @@
 
 jQuery(document).ready(function ($) {
-
     var $contentBox = $('#alert_questionnaire_content_div');
 
-    // new report button action
+    // Authenticate user when he wants to submit alert
     $('body').on('click', '#authenticate', function (e) {
         e.preventDefault();
-
         var provided_answers = alert_question_validation();
-
-        // need to find all inputs and see get the value
+        // need to find all inputs and get the value
         var req_data = {
             action: 'get_question',
             answer: provided_answers,
             validate: 'validate',
             dataType: 'json',
-            alert_id: $('input#alert_id').val(),
-            // email: $('#auth-email').val(),
-            // pass: $('#auth-pass').val()
+            alert_id: $('input#alert_id').val()
         };
-
-        // try to animate
         $contentBox.animate({ opacity: 0.5 }, 100);
-
         jQuery.get(alert_object.ajaxurl, req_data, function (response) {
             $contentBox
                 .html(response)
                 .animate({ opacity: 1 }, 100);
-
         });
     });
 
-    // new report button action
+    // new alert button action
     $('body').on('click', '#alert_new_report', function (e) {
         e.preventDefault();
-
-        // need to find all inputs and see get the value
+        // need to find all inputs and get the value
         var req_data = {
             action: 'get_question',
             dataType: 'json',
             lang: $('#lang_select').val()
         };
-
-        // try to animate
         $contentBox.animate({ opacity: 0.5 }, 100);
-
         jQuery.get(alert_object.ajaxurl, req_data, function (response) {
             $contentBox
                 .html(response)
                 .animate({ opacity: 1 }, 100);
-
-
-            // lets initiialize dateTimePicker here
+            // Initialize dateTimePicker here
             $('.picker').datetimepicker({
                 allowBlank: true,
                 maxDate: 0,
                 minDate: 0,
-
                 onChangeDateTime: function (ct, $i) {
                     date = new Date();
                     if (ct.getDay() === date.getDay() && ct.getMonth() === date.getMonth() && ct.getHours() > date.getHours()) {
@@ -64,37 +48,27 @@ jQuery(document).ready(function ($) {
                     }
                 },
             });
-            // jQuery.datetimepicker.setLocale('ru');
         });
     });
 
     // continue button action
     $('body').on('click', '#alert_continue', function (e) {
         e.preventDefault();
-
-
         var provided_answers = alert_question_validation();
-
-        // need to find all inputs and see get the value
+        // need to find all inputs and get the value
         var req_data = {
             action: 'get_question',
             dataType: 'json',
             alert_id: $('input#alert_id').val(),
             answer: provided_answers,
         };
-
-        // try to animate
         $contentBox.animate({ opacity: 0.5 }, 100);
-
         jQuery.get(alert_object.ajaxurl, req_data, function (response) {
             $contentBox
                 .html(response)
                 .animate({ opacity: 1 }, 100);
-
-            // let x = $('h3.alert_question').text();
-
             if ($('h3.alert_question').text() === 'Event Details') {
-                // lets initiialize dateTimePicker here
+                // Initialize dateTimePicker here
                 $('.picker').datetimepicker({
                     allowBlank: true,
                     maxDate: 0,
@@ -107,7 +81,7 @@ jQuery(document).ready(function ($) {
                 });
             }
             else {
-                // lets initiialize dateTimePicker here
+                // Initialize dateTimePicker here
                 $('.picker').datetimepicker({
                     allowBlank: true,
                     minDate: -0,
@@ -124,7 +98,7 @@ jQuery(document).ready(function ($) {
         });
     });
 
-    // submit button action
+    // submit button action before authentication
     $('body').on('click', '#alert_register', function (e) {
         // need to find all inputs and see get the value
         var req_data = {
@@ -149,19 +123,13 @@ jQuery(document).ready(function ($) {
             dataType: 'json',
             alert_id: $('input#alert_id').val(),
         };
-
-        jQuery.get(alert_object.ajaxurl, req_data, function (response) {
-            // $contentBox.html(response);
-        });
-        // thanks();
+        jQuery.get(alert_object.ajaxurl, req_data, function (response) {});
+        thanks();
     });
 
     // Done button action leads to Thank You
     $('body').on('click', '#thankyou', function (e) {
-        // need to find all inputs and see get the value
-
         thanks();
-
     });
 
     function thanks() {
@@ -187,15 +155,11 @@ jQuery(document).ready(function ($) {
             alert_id: $('input#alert_id').val(),
             answer: false
         };
-
-        // try to animate
         $contentBox.animate({ opacity: 0.5 }, 100);
-
         jQuery.get(alert_object.ajaxurl, req_data, function (response) {
             $contentBox
                 .html(response)
                 .animate({ opacity: 1 }, 100);
-
             $('.picker').datetimepicker({
                 allowBlank: true,
                 maxDate: 0,

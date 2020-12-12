@@ -29,7 +29,6 @@ class TraDatetimeQuestion extends TraState {
             $html .= $this->generate_question_text($answer['text']);
             if ($answer['type'] == 'select') {
                 $html .= $this->generate_select_question($answer);
-//                $html .= "<input name='" . $answer['id'] . "' value='" . $this->response[$answer['id']] . "'><br>";
             }
             if ($answer['type'] == 'text') {
                 $html .= "<input type='text' name='" . $answer['id'] . "' value='" . $this->response[$answer['id']] . "'><br>";
@@ -64,7 +63,9 @@ class TraDatetimeQuestion extends TraState {
     }
 
     public function generate_select_question($answer) {
-        $counter = 0; // need it for labeling and stuff
+
+        // need it for labeling and stuff
+        $counter = 0;
         $html = '<div class="register_select_answers ">';
         $html .= "<select id='title' name='". $answer['id'] ."'>";
 
@@ -72,9 +73,9 @@ class TraDatetimeQuestion extends TraState {
             // if we got something in response
             if (!empty($this->response) and array_key_exists($answer['id'], $this->response) and $this->response[$answer['id']] == $answer_option['id']) {
                 // this checkbox was checked previously
-                $html .= '<div class="register_horizontal_choice"><option class="register_quiz_select" name="' . $answer['id'] . '" id="' . $answer_option['id'] . $counter . '" value="' . $answer_option['id'] . '" selected><label for="' . $answer_option['id'] . $counter . '">' . $answer_option['text'] . '</label></div>';
+                $html .= '<div class="register_horizontal_choice"><option class="register_quiz_select" name="' . $answer['id'] . '" id="' . $answer_option['id'] . '" value="' . $answer_option['short_text'] . '" selected><label for="' . $answer_option['id'] . $counter . '">' . $answer_option['text'] . '</label></div>';
             } else { // else
-                $html .= '<div class="register_horizontal_choice"><option class="register_quiz_select" name="' . $answer['id'] . '" id="' . $answer_option['id'] . $counter . '" value="' . $answer_option['id'] . '" ><label for="' . $answer_option['id'] . $counter . '">' . $answer_option['text'] . '</label></div>';
+                $html .= '<div class="register_horizontal_choice"><option class="register_quiz_select" name="' . $answer['id'] . '" id="' . $answer_option['id'] . '" value="' . $answer_option['short_text'] . '" ><label for="' . $answer_option['id'] . $counter . '">' . $answer_option['text'] . '</label></div>';
             }
             $counter += 1;
         }
@@ -86,34 +87,8 @@ class TraDatetimeQuestion extends TraState {
     }
 
     public function generate_readable_response_array() {
-//        $result[$this->state['short_text']] = $this->response[$this->state['id']];
-//        return $result;
-
-        /*$result = [];
-
-        foreach ($this->state['state_answers'] as $answer) {
-            $key = $answer['short_text'];
-            if ($answer['type'] == 'text') { // for text answers , just store the received input
-                $value = $this->response[$answer['id']];
-            }
-            else if ($answer['type'] == 'datetime') { // for text answers , just store the received input
-                $value = $this->response[$answer['id']];
-            }
-            else if ($answer['type'] == 'select') { // need to search in the answer array for the response id in the answers
-                foreach ($answer['answers'] as $radio_answer) {
-                    if ($this->response[$answer['id']] == $radio_answer['id']) {
-                        $value = $radio_answer['short_text'];
-                    }
-                }
-            }
-            $result[$key] = $value;
-        }
-        return $result;*/
-
-
 
         $result = [];
-
         foreach ($this->state['state_answers'] as $answer) {
             $key = $answer['short_text'];
             if ($answer['type'] == 'text') { // for text answers , just store the received input
@@ -124,8 +99,8 @@ class TraDatetimeQuestion extends TraState {
             }
             else if ($answer['type'] == 'select') { // need to search in the answer array for the response id in the answers
                 foreach ($answer['answers'] as $radio_answer) {
-                    if ($this->response[$answer['id']] == $radio_answer['id']) {
-                        $value = $radio_answer['short_text'];
+                    if ($this->response[$answer['id']] == $radio_answer['short_text']) {
+                        $value = $radio_answer['id'];
                     }
                 }
             }

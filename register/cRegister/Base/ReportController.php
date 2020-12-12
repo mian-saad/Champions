@@ -112,15 +112,14 @@ class ReportController extends BaseController
             foreach ($this->state_list as $code => $state) {
                 $answers += $state->generate_readable_response_array();
             }
-            $state_obj = new StateTypes\TraFinal($this->string_file, $this->report_id, $state_code, $answers, $this->string_file['pdf_download'], $this->string_file['back'], $this->string_file['crime_location_proposals'], $this->string_file['language_pref_proposals'], $this->string_file['residence_state_proposals'], $this->string_file['no_results']);
+            $state_obj = new StateTypes\TraFinal($this->string_file, $this->report_id, $state_code, $answers, $this->string_file['pdf_download'], $this->string_file['back'], $this->string_file['no_results']);
         } else if ($state['state_type'] == 'expert_login') {
             $state_obj = new StateTypes\ExpertLogin($this->report_id, $state_code, $state, $this->string_file['login'], $this->string_file['back'], $this->string_file['field_warning'], $this->string_file['warning']);
         } else if ($state['state_type'] == 'verification') {
             $state_obj = new StateTypes\VerificationCode($this->report_id, $state_code, $state, $this->string_file['continue'], $this->string_file['back'], $this->string_file['field_warning'], $this->string_file['warning']);
-//            $state_obj = new StateTypes\TraFinal        ($this->report_id, $state_code, $this->string_file['back']);
         } else if ($state['state_type'] == 'gdpr') {
             $state_obj = new StateTypes\TraGDPR($this->report_id, $state_code, $state, $this->string_file['gdpr_accept'], $this->string_file['gdpr_warning']);
-        } else { // else we are expiriencing an error
+        } else { // else experiencing an error
             $state_obj = new StateTypes\TraError($this->report_id, $state_code, $state['state_text'], $this->string_file['continue']);
         }
         $this->state_list[$state_code] = $state_obj;
@@ -170,7 +169,8 @@ class ReportController extends BaseController
                     }
                 }
             }
-        } // else we should be printing some warning
+        }
+        // else we should be printing some warning
         else {
             $state_obj->show_warning = true;
         }
@@ -196,13 +196,7 @@ class ReportController extends BaseController
 
     public function db_store() {
             global $wpdb;
-
             $register_reports_db_name = $wpdb->prefix . 'arena';
-
-            // lets delete entry if it already exists in the db
-
-
-
             $answers = [
                 'flp_id' => $this->report_id,
                 'flp_locale' => $this->language,
@@ -213,7 +207,7 @@ class ReportController extends BaseController
             foreach ($this->state_list as $code => $state) {
                 if (($code == "M1.1") || ($code == "M1.2") || ($code == "M1.3")) { // M1.8 doesnt have a response
 
-                    // --- make flp_title better
+                    // --- make flp_title format better
                     if (count($state->response['flp_title']) > 1) {
                         $state->response['flp_title'] = implode(',', $state->response['flp_title']);
                     }
@@ -236,7 +230,8 @@ class ReportController extends BaseController
                             }
                             $response = array($state->state['id'] => implode(",", $state->response[$state->state['id']]));
                         }
-                        else {  // main response is set and is not an array
+                        else {
+                            // main response is set and is not an array
                             if($state->response[$state->state['id']]=='Other'){
                                 $state->response[$state->state['id']] = $state->response['other_text_input'];
                             }
@@ -244,7 +239,8 @@ class ReportController extends BaseController
                             $response = $state->response;
                         }
                         $answers = $answers + $response;
-                    } else {            // if response is some text, lets create an array with its state id and add it to answers array
+                    } else {
+                        // if response is some text, create an array with its state id and add it to answers array
                         $answers = $answers + array($state->state['id'] => $state->response);
                     }
                 }

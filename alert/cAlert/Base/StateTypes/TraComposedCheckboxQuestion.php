@@ -74,15 +74,15 @@ class TraComposedCheckboxQuestion extends TraState
             if (!empty($this->response) and in_array($answer_option['text'], $this->response[$question_number['id']])) {
                 // this is a checked answer
                 if ($answer_option['text'] == $this->other) {
-                    $html .= '<div class="alert_horizontal_choice"><input type="checkbox" class="alert_checkbox" name="' . $question_number['id'] . '" id="' . $answer_option['id'] . '" value="' . $answer_option['text']. '" checked required><label for="' . $answer_option['id']. '">' . $answer_option['text'] . '</label> ' . $this->generate_other_text_input($this->response['other_'.$question_number['id']], $question_number['id']) . '</div>';
+                    $html .= '<div class="alert_horizontal_choice"><input type="checkbox" class="alert_checkbox" name="' . $question_number['id'] . '" id="' . $answer_option['id'] . '" value="' . $answer_option['id']. '" checked required><label for="' . $answer_option['id']. '">' . $answer_option['text'] . '</label> ' . $this->generate_other_text_input($this->response['other_'.$question_number['id']], $question_number['id']) . '</div>';
                 } else {
-                    $html .= '<div class="alert_horizontal_choice"><input type="checkbox" class="alert_checkbox" name="' . $question_number['id'] . '" id="' . $answer_option['id']. '" value="' . $answer_option['text']. '" checked required><label for="' . $answer_option['id']. '">' . $answer_option['text'] . '</label></div>';
+                    $html .= '<div class="alert_horizontal_choice"><input type="checkbox" class="alert_checkbox" name="' . $question_number['id'] . '" id="' . $answer_option['id']. '" value="' . $answer_option['id']. '" checked required><label for="' . $answer_option['id']. '">' . $answer_option['text'] . '</label></div>';
                 }
             } else {
                 if ($answer_option['text'] == $this->other) {
-                    $html .= '<div class="alert_horizontal_choice"><input type="checkbox" class="alert_checkbox" name="' . $question_number['id'] . '" id="' . $answer_option['id']. '" value="' . $answer_option['text']. '" required><label for="' . $answer_option['id'] . '">' . $answer_option['text'] . '</label> ' . $this->generate_other_text_input("",$question_number['id']) . '</div>';
+                    $html .= '<div class="alert_horizontal_choice"><input type="checkbox" class="alert_checkbox" name="' . $question_number['id'] . '" id="' . $answer_option['id']. '" value="' . $answer_option['id']. '" required><label for="' . $answer_option['id'] . '">' . $answer_option['text'] . '</label> ' . $this->generate_other_text_input("",$question_number['id']) . '</div>';
                 } else {
-                    $html .= '<div class="alert_horizontal_choice"><input type="checkbox" class="alert_checkbox" name="' . $question_number['id'] . '" id="' . $answer_option['id'] . '" value="' . $answer_option['text']. '" required><label for="' . $answer_option['id'] . '">' . $answer_option['text'] . '</label></div>';
+                    $html .= '<div class="alert_horizontal_choice"><input type="checkbox" class="alert_checkbox" name="' . $question_number['id'] . '" id="' . $answer_option['id'] . '" value="' . $answer_option['id']. '" required><label for="' . $answer_option['id'] . '">' . $answer_option['text'] . '</label></div>';
                 }
             }
 
@@ -104,8 +104,41 @@ class TraComposedCheckboxQuestion extends TraState
     public function generate_readable_response_array() {
         
         $t_response = [];
+        $value = null;
         foreach ($this->state['state_answers'] as $state) {
-            $t_response = array_merge($t_response, (array($state['short_text'] => implode(", ", $this->response[$state['id']]))));
+            foreach ($state['answers'] as $answer) {
+                if (in_array($answer['id'], $this->response[$state['id']])) {
+                    if ($value != null) {
+                        $value = $value .', '. $answer['text'];
+                    }
+                    else {
+                        $value = $answer['text'];
+                    }
+                }
+            }
+            $t_response = array_merge($t_response, array($state['short_text'] => $value));
+            $value = null;
+        }
+        return $t_response;
+    }
+
+    public function generate_readable_response_array_eng() {
+
+        $t_response = [];
+        $value = null;
+        foreach ($this->state['state_answers'] as $state) {
+            foreach ($state['answers'] as $answer) {
+                if (in_array($answer['id'], $this->response[$state['id']])) {
+                    if ($value != null) {
+                        $value = $value .', '. $answer['id'];
+                    }
+                    else {
+                        $value = $answer['id'];
+                    }
+                }
+            }
+            $t_response = array_merge($t_response, array($state['short_text'] => $value));
+            $value = null;
         }
         return $t_response;
     }

@@ -1,0 +1,525 @@
+{  
+   "M0.0":{
+      "state_text":"Witaj na platformie ALERT. Przeprowadzimy Cię przez proces wysyłania zgłoszenia. <br><br>Więcej informacji w <a target='_blank' href='https://ec.europa.eu/info/law/law-topic/data-protection_en'>Regulaminie</a>",
+      "short_text":"GDPR agreement",
+      "id":"gdpr_agreement",
+      "state_type":"gdpr",
+      "state_answers":[
+         {
+            "id":"gdpr_agree",
+            "text":"Rozumiem, że dane osobowe pozyskane od innych osób nie mogą być udostępniane za pośrednictwem platformy ALERT oraz żadnych innych narzędzi dostępnych na stronie."
+         }
+      ]
+   },
+   "M1.1":{
+      "state_text":"Szczegóły zgłoszenia",
+      "state_type":"EventComposed",
+      "show_header": "true",
+      "id": "event_details",
+      "state_answers":[
+         {
+            "id":"alert_country",
+            "type":"select",
+            "text":"Wybierz kraj, w którym miało miejsce zgłaszane wydarzenie",
+            "short_text":"Kraj",
+            "answers":[
+               {
+                  "text":"\uD83C\uDDE6\uD83C\uDDF9 Austria",
+                  "short_text":"Austria",
+                  "id":"Austria"
+               },
+               {
+                  "text":"\uD83C\uDDE9\uD83C\uDDEA Niemcy",
+                  "short_text":"Niemcy",
+                  "id":"Germany"
+               },
+               {
+                  "text":"\uD83C\uDDED\uD83C\uDDFA Węgry",
+                  "short_text":"Węgry",
+                  "id":"Hungary"
+               },
+               {
+                  "text":"\uD83C\uDDF5\uD83C\uDDF1 Polska",
+                  "short_text":"Polska",
+                  "id":"Poland"
+               },
+               {
+                  "text":"\uD83C\uDDF7\uD83C\uDDF4 Rumunia",
+                  "short_text":"Rumunia",
+                  "id":"Romania"
+               }
+            ]
+         },
+         {
+            "id":"alert_city",
+            "text":"Wybierz miejscowość, w której miało miejsce zgłaszane wydarzenie",
+            "short_text":"Miejscowość",
+            "type":"text"
+         },
+         {
+            "text":"Podaj przybliżoną datę zgłaszanego wydarzenia ",
+            "optional":"Yes",
+            "id":"alert_time",
+            "short_text":"Data",
+            "show_header": "true",
+            "type":"datetime"
+         }
+      ]
+   },
+   "M1.2":{
+      "state_text":"Incident Category",
+      "show_header": "true",
+      "short_text":"Zgłoszenia",
+      "state_type":"composed_checkbox",
+      "id": "alert_details",
+      "state_answers":[
+         {
+            "id":"alert_category",
+            "type":"checkbox",
+            "text":"Spróbuj sklasyfikować zgłaszane wydarzenie",
+            "short_text":"Kategoria Alertu",
+            "answers":[
+               {
+                  "text":"Propaganda ekstremistyczna, teorie spiskowe i/lub werbunek",
+                  "short_text":"Propaganda ekstremistyczna, teorie spiskowe i/lub werbunek",
+                  "id":"Extremist propaganda, conspiracy theories and/or recruitment"
+               },
+               {
+                  "text":"Przemoc fizyczna (napaści, groźby, obelgi i wyzwiska)",
+                  "short_text":"Przemoc fizyczna (napaści, groźby, obelgi i wyzwiska)",
+                  "id":"Physical violence (e.g. assaults, threats, insults)"
+               },
+               {
+                  "text":"Ekstremistyczna mowa nienawiści i/lub podżeganie do użycia przemocy",
+                  "short_text":"Ekstremistyczna mowa nienawiści i/lub podżeganie do użycia przemocy",
+                  "id":"Extremist hate speech and/or incitement to violence"
+               },
+               {
+                  "text":"Zniszczenie mienia",
+                  "short_text":"Zniszczenie mienia",
+                  "id":"Property damage"
+               },
+               {
+                  "text":"Nie wiem",
+                  "short_text":"Nie wiem",
+                  "id":"I don't know_a"
+               },
+               {
+                  "text":"Inny",
+                  "short_text":"Inny",
+                  "id":"Other"
+               }
+            ]
+         },
+         {
+            "id":"alert_location",
+            "type":"checkbox",
+            "text":"Gdzie wydarzenie miało miejsce?",
+            "short_text":"Alert Lokalizacja",
+            "answers":[
+               {
+                  "text":"Internet i media społecznościowe",
+                  "short_text":"Internet i media społecznościowe",
+                  "id":"The internet and social media"
+               },
+               {
+                  "text":"Przestrzeń publiczna (np. szkoła, sala koncertowa, obiekt sportowy, park, ulica itp.)",
+                  "short_text":"Przestrzeń publiczna (np. szkoła, sala koncertowa, obiekt sportowy, park, ulica itp.)",
+                  "id":"Public space (e.g. school, concert hall, sports facility, park, street etc.)"
+               },
+               {
+                  "text":"Przestrzeń prywatna (np. szkoła, sala koncertowa, miejsce pracy, klub sportowy itp.)",
+                  "short_text":"Przestrzeń prywatna (np. szkoła, sala koncertowa, miejsce pracy, klub sportowy itp.)",
+                  "id":"Private space (e.g. school, concert hall, workplace, sports club etc.)"
+               },
+               {
+                  "text":"Wydarzenie publiczne (publiczny organizator)",
+                  "short_text":"Wydarzenie publiczne (publiczny organizator)",
+                  "id":"Public event (public organiser)"
+               },
+               {
+                  "text":"Wydarzenie prywatne (prywatny organizator)",
+                  "short_text":"Wydarzenie prywatne (prywatny organizator)",
+                  "id":"Private event (private organiser)"
+               },
+               {
+                  "text":"Nie wiem",
+                  "short_text":"Nie wiem",
+                  "id":"I don't know_b"
+               },
+               {
+                  "text":"Inny",
+                  "short_text":"Inny",
+                  "id":"Other"
+               }
+            ]
+         },
+         {
+            "id":"alert_target",
+            "type":"checkbox",
+            "text":"W kogo wymierzone było wydarzenie?",
+            "short_text":"Alert Target",
+            "answers":[
+               {
+                  "text":"Mniejszość religijna (np. Żydzi, Muzułmanie itp.)",
+                  "short_text":"Mniejszość religijna (np. Żydzi, Muzułmanie itp.)",
+                  "id":"Religious minority (e.g. Jews, Muslims)"
+               },
+               {
+                  "text":"Kobiety i/lub dziewczynki",
+                  "short_text":"Kobiety i/lub dziewczynki",
+                  "id":"Women"
+               },
+               {
+                  "text":"Społeczność LGBT+",
+                  "short_text":"Społeczność LGBT+",
+                  "id":"LGBTQ+"
+               },
+               {
+                  "text":"Mniejszość etniczna (migranci, uchodźcy) lub cudzoziemcy",
+                  "short_text":"Mniejszość etniczna (migranci, uchodźcy) lub cudzoziemcy",
+                  "id":"Ethnic minority (migrants, refugees) or foreigners"
+               },
+               {
+                  "text":"Osoby prezentujące przeciwne poglądy polityczne lub ideologiczne  ",
+                  "short_text":"Osoby prezentujące przeciwne poglądy polityczne lub ideologiczne  ",
+                  "id":"People presenting opposite political and/or ideological views "
+               },
+               {
+                  "text":"Nie wiem",
+                  "short_text":"Nie wiem",
+                  "id":"I don't know_c"
+               },
+               {
+                  "text":"Inny",
+                  "short_text":"Inny",
+                  "id":"Other"
+               }
+            ]
+         }
+      ]
+   },
+   "M1.3":{
+      "state_text":"SZCZEGÓŁOWE INFORMACJE O WYDARZENIU",
+      "state_type":"description",
+      "show_header": "true",
+      "id": "alert_infos",
+      "state_answers":[
+         {
+            "id":"alert_subject",
+            "text":"Temat ",
+            "short_text":"Temat ",
+            "type":"text"
+         },
+         {
+            "short_text":"Opis",
+            "text":"Opisz, co się wydarzyło. Postaraj się w opisie odpowiedzieć na następujące pytania: Co dokładnie się wydarzyło? Kto to zrobił? Kiedy wydarzenie miało miejsce? Gdzie? Dlaczego to wydarzenie miało miejsce, Twoim zdaniem? Jak je interpretujesz?",
+            "id":"alert_description",
+            "type":"description"
+         },
+         {
+            "short_text":"Termin dostarczenia rekomendacji",
+            "text":"Podaj, na kiedy potrzebujesz rekomendacji ",
+            "id":"alert_deadline",
+            "type":"date"
+         }
+      ]
+   },
+   "M1.4":{
+      "state_type":"result"
+   },
+   "M1.5":{
+      "state_text":"Zaloguj się/zarejestruj się, aby wysłać zgłoszenie do ARENY",
+      "state_type":"composed",
+      "show_header": "true",
+      "id": "flp_login_infos",
+      "state_answers":[
+         {
+            "id":"flp_email",
+            "text":"Podaj swój adres e-mailowy",
+            "short_text":"Email",
+            "type":"text"
+         },
+         {
+            "id":"flp_password",
+            "text":"Podaj hasło",
+            "short_text":"Password",
+            "type":"password"
+         }
+      ]
+   },
+   "M1.6":{
+      "state_text":"Dane osobowe",
+      "state_type":"composed",
+      "show_header": "true",
+      "id": "flp_register_infos",
+      "state_answers":[
+         {
+            "id":"flp_title",
+            "type":"checkbox",
+            "text":"Wybierz zawód",
+            "short_text":"Profession",
+            "answers":[
+               {
+                  "text":"Pracownik(-niczka) administracji publicznej",
+                  "short_text":"Public employee",
+                  "id":"Public employee"
+               },
+               {
+                  "text":"Pracownik(-niczka) instytucji kultury",
+                  "short_text":"Arts and culture institution employee",
+                  "id":"Arts and culture institution employee"
+               },
+               {
+                  "text":"Pracownik(-niczka) instytucji sportowej",
+                  "short_text":"Sports facility employee",
+                  "id":"Sports facility employee"
+               },
+               {
+                  "text":"Pracownik(-niczka) organizacji społecznej",
+                  "short_text":"NGO Worker",
+                  "id":"NGO Worker"
+               },
+               {
+                  "text":"Dzielnicowy(-wa)",
+                  "short_text":"Community Police Officer",
+                  "id":"Community Police Officer"
+               },
+               {
+                  "text":"Nauczyciel(ka) w szkole podstawowej",
+                  "short_text":"Primary Teacher",
+                  "id":"Primary Teacher"
+               },
+               {
+                  "text":"Kurator(ka) sądowy(-wa)",
+                  "short_text":"Probation Officer",
+                  "id":"Probation Officer"
+               },
+               {
+                  "text":"Pscholog(-lożka)/psychoterapeuta(-tka)",
+                  "short_text":"Psychologist/Psychotherapist ",
+                  "id":"Psychologist/Psychotherapist "
+               },
+               {
+                  "text":"Nauczyciel(ka) w szkole średniej",
+                  "short_text":"Secondary Teacher",
+                  "id":"Secondary Teacher"
+               },
+               {
+                  "text":"Pracownik(-niczka) społeczny(-na)",
+                  "short_text":"Social Worker",
+                  "id":"Social Worker"
+               },
+               {
+                  "text":"Wykładowca(-wczyni) na uczelni wyższej",
+                  "short_text":"University Lecturer",
+                  "id":"University Lecturer"
+               },
+               {
+                  "text":"Pracownik(-niczka) młodzieżowy(-wa)",
+                  "short_text":"Youth Worker",
+                  "id":"Youth Worker"
+               },
+               {
+                  "text":"Inny",
+                  "short_text":"Other",
+                  "id":"Other"
+               }
+            ]
+         },
+         {
+            "id":"flp_country",
+            "type":"select",
+            "text":"Wybierz kraj",
+            "short_text":"Country",
+            "answers":[
+               {
+                  "text":"\uD83C\uDDE6\uD83C\uDDF9 Austria",
+                  "short_text":"Austria",
+                  "id":"Austria"
+               },
+               {
+                  "text":"\uD83C\uDDE9\uD83C\uDDEA Niemcy",
+                  "short_text":"Niemcy",
+                  "id":"Germany"
+               },
+               {
+                  "text":"\uD83C\uDDED\uD83C\uDDFA Węgry",
+                  "short_text":"Węgry",
+                  "id":"Hungary"
+               },
+               {
+                  "text":"\uD83C\uDDF5\uD83C\uDDF1 Polska",
+                  "short_text":"Polska",
+                  "id":"Poland"
+               },
+               {
+                  "text":"\uD83C\uDDF7\uD83C\uDDF4 Rumunia",
+                  "short_text":"Rumunia",
+                  "id":"Romania"
+               }
+            ]
+         },
+         {
+            "id":"flp_first_name",
+            "text":"Podaj swoje imię",
+            "short_text":"First Name",
+            "type":"text"
+         },
+         {
+            "id":"flp_last_name",
+            "text":"Podaj swoje nazwisko",
+            "short_text":"Last Name",
+            "type":"text"
+         },
+         {
+            "id":"flp_email",
+            "text":"Podaj swój adres e-mailowy",
+            "short_text":"Email",
+            "type":"text"
+         },
+         {
+            "id":"flp_password",
+            "text":"Podaj hasło",
+            "short_text":"Password",
+            "type":"password"
+         },
+         {
+            "id":"flp_organisation",
+            "text":"Podaj nazwę organizacji/instytucji, w której pracujesz",
+            "short_text":"Organisation",
+            "type":"text"
+         },
+         {
+            "id":"flp_years_of_experience",
+            "text":"Ile masz lat doświadczenia zawodowego?",
+            "short_text":"experience",
+            "type":"text"
+         },
+         {
+            "id":"flp_city",
+            "text":"W jakiej miejscowości mieszkasz?",
+            "short_text":"Town",
+            "type":"text"
+         }
+      ]
+   },
+   "M1.7":{
+      "state_text":"Zaznacz swój zawód/dziedzinę wiedzy",
+      "short_text":"Skills Category",
+      "id":"flp_skills",
+      "show_header": true,
+      "state_type":"checkbox",
+      "state_answers":[
+         {
+            "id":"School teacher",
+            "text":"Nauczyciel(ka) szkolny(-na)"
+         },
+         {
+            "id":"University lecturer",
+            "text":"Wykładowca(-wczyni) na uczelni wyższej"
+         },
+         {
+            "id":"Researcher",
+            "text":"Badacz(-czka)"
+         },
+         {
+            "id":"Municipal Employee",
+            "text":"Pracownik(-niczka) władz miasta"
+         },
+         {
+            "id":"NGO worker",
+            "text":"Pracownik(-niczka) organizacji społecznej"
+         },
+         {
+            "id":"Police officer",
+            "text":"Oficer(ka) Policji"
+         },
+         {
+            "id":"Municipal guard officer",
+            "text":"Oficer(ka) Straży Miejskiej"
+         },
+         {
+            "id":"Probation officer",
+            "text":"Kurator(ka) sądowy(-wa)"
+         },
+         {
+            "id":"Psychoterapist/psychologist",
+            "text":"Pscholog(-lożka)/psychoterapeuta(-tka)"
+         },
+         {
+            "id":"Social worker",
+            "text":"Pracownik(-niczka) społeczny(-na)"
+         },
+         {
+            "id":"Youth worker",
+            "text":"Pracownik(-niczka) młodzieżowy(-wa)"
+         },
+         {
+            "id":"Security expert",
+            "text":"Ekspert(ka) ds. bezpieczeństwa"
+         },
+         {
+            "id":"Radicalisation expert",
+            "text":"Ekspert(ka) ds. radykalizacji"
+         },
+         {
+            "id":"Hate crimes expert",
+            "text":"Ekspert(ka) ds. przestępstw z nienawiści"
+         },
+         {
+            "id":"Religious minority representative",
+            "text":"Przedstawiciel(ka) mniejszości religijnych"
+         },
+         {
+            "id":"Cultural institution employee",
+            "text":"Pracownik(-niczka) instytucji kultury"
+         },
+         {
+            "id":"Sports institution employee/expert",
+            "text":"Pracownik(-niczka) instytucji sportowej"
+         },
+         {
+            "id":"Prison employee/expert",
+            "text":"Pracownik(-niczka)/ekspert(ka) ds. więziennictwa"
+         },
+         {
+            "id":"Exit expert",
+            "text":"Ekspert(ka) ds. deradykalizacji"
+         },
+         {
+            "id":"Youth gangs expert",
+            "text":"Ekspert(ka) ds. gangów młodzieżowych"
+         },
+         {
+            "id":"Social media expert",
+            "text":"Ekspert(ka) ds. mediów społecznościowych"
+         },
+         {
+            "id":"National Expert Team Member",
+            "text":"Członek(--nkini) Ogólnopolskiego Zespołu Eksperckiego"
+         },
+         {
+            "id":"Other",
+            "text":"Inny"
+         }
+      ]
+   },
+   "M1.8":{
+      "short_text":"Biogram/opis kompetencji zawodowych",
+      "state_text":"PODAJ OPIS SWOICH KOMPETENCJI ZAWODOWYCH",
+      "id":"flp_description",
+      "show_header": "true",
+      "state_type":"description"
+   },
+   "M1.9":{
+      "short_text":"Weryfikacja adresu e-mailowego",
+      "state_text":"Podaj kod weryfikacji otrzymany w e-mailu",
+      "id":"verification",
+      "state_type":"verification"
+   },
+   "ERROR":{
+      "state_text":"An error has occurred! Please restart the report process.",
+      "state_type":"error"
+   }
+}

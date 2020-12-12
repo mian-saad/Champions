@@ -1,0 +1,293 @@
+{
+   "M0.0":{
+      "state_text":"Willkommen bei ALERT. Dieses Tool wird Sie durch den Prozess führen. <br><br>Weitere Informationen finden Sie in den <a target='_blank' href='https://ec.europa.eu/info/law/law-topic/data-protection_en'>allgemeinen Geschäftsbedingungen</a>",
+      "short_text":"GDPR agreement",
+      "id":"gdpr_agreement",
+      "state_type":"gdpr",
+      "state_answers":[
+         {
+            "id":"gdpr_agree",
+            "text":"Ich nehme zur Kenntnis, dass persönliche Daten von Dritten weder über das ALERT Tool noch über andere Dienste auf dieser Webseite hochgeladen oder geteilt werden dürfen."
+         }
+      ]
+   },
+   "M1.1":{
+      "state_text":"Persönliche Informationen",
+      "state_type":"composed",
+      "show_header": "true",
+      "id": "flp_register_infos",
+      "state_answers":[
+         {
+            "id":"flp_title",
+            "type":"checkbox",
+            "text":"Bitte geben Sie Ihren Beruf an",
+            "short_text":"Ihren Beruf",
+            "answers":[
+               {
+                  "text":"Angestellte*r im öffentlichen Dienst",
+                  "short_text":"Public employee",
+                  "id":"Public employee"
+               },
+               {
+                  "text":"Mitarbeiter:in in einer Kunst-/ Kultureinrichtung",
+                  "short_text":"Arts and culture institution employee",
+                  "id":"Arts and culture institution employee"
+               },
+               {
+                  "text":"Mitarbeiter:in in einer Sporteinrichtung",
+                  "short_text":"Sports facility employee",
+                  "id":"Sports facility employee"
+               },
+               {
+                  "text":"Mitarbeiter:in in einer NGO",
+                  "short_text":"NGO Worker",
+                  "id":"NGO Worker"
+               },
+               {
+                  "text":"Polizist:in",
+                  "short_text":"Community Police Officer",
+                  "id":"Community Police Officer"
+               },
+               {
+                  "text":"Lehrer:in in der Primarstufe",
+                  "short_text":"Primary Teacher",
+                  "id":"Primary Teacher"
+               },
+               {
+                  "text":"Bewährungshelfer:in",
+                  "short_text":"Probation Officer",
+                  "id":"Probation Officer"
+               },
+               {
+                  "text":"Psychotherapeut:in/ Psycholog:in",
+                  "short_text":"Psychologist/Psychotherapist ",
+                  "id":"Psychologist/Psychotherapist "
+               },
+               {
+                  "text":"Lehrer:in in der Sekundarstufe",
+                  "short_text":"Secondary Teacher",
+                  "id":"Secondary Teacher"
+               },
+               {
+                  "text":"Sozialarbeiter:in",
+                  "short_text":"Social Worker",
+                  "id":"Social Worker"
+               },
+               {
+                  "text":"Lehrende*r an einer Universtät oder Hochschule",
+                  "short_text":"University Lecturer",
+                  "id":"University Lecturer"
+               },
+               {
+                  "text":"Jugendarbeiter:in",
+                  "short_text":"Youth Worker",
+                  "id":"Youth Worker"
+               },
+               {
+                  "text":"Andere",
+                  "short_text":"Andere",
+                  "id":"Andere"
+               }
+            ]
+         },
+         {
+            "id":"flp_country",
+            "type":"select",
+            "text":"Bitte wählen Sie Ihr Land aus",
+            "short_text":"Land",
+            "answers":[
+               {
+                  "text":"\uD83C\uDDE6\uD83C\uDDF9 Österreich",
+                  "short_text":"Österreich",
+                  "id":"Austria"
+               },
+               {
+                  "text":"\uD83C\uDDE9\uD83C\uDDEA Deutschland",
+                  "short_text":"Deutschland",
+                  "id":"Germany"
+               },
+               {
+                  "text":"\uD83C\uDDED\uD83C\uDDFA Ungarn",
+                  "short_text":"Ungarn",
+                  "id":"Hungary"
+               },
+               {
+                  "text":"\uD83C\uDDF5\uD83C\uDDF1 Polen",
+                  "short_text":"Polen",
+                  "id":"Poland"
+               },
+               {
+                  "text":"\uD83C\uDDF7\uD83C\uDDF4 Rumänien",
+                  "short_text":"Rumänien",
+                  "id":"Romania"
+               }
+            ]
+         },
+         {
+            "id":"flp_first_name",
+            "text":"Bitte geben Sie Ihren Vornamen an",
+            "short_text":"Vornamen",
+            "type":"text"
+         },
+         {
+            "id":"flp_last_name",
+            "text":"Bitte geben Sie Ihren Nachnamen an",
+            "short_text":"Nachnamen",
+            "type":"text"
+         },
+         {
+            "id":"flp_email",
+            "text":"Bitte geben Sie Ihre E-Mailadresse an",
+            "short_text":"E-Mailadresse",
+            "type":"text"
+         },
+         {
+            "id":"flp_password",
+            "text":"Bitte geben Sie ein Passwort ein",
+            "short_text":"Passwort",
+            "type":"password"
+         },
+         {
+            "id":"flp_organisation",
+            "text":"Bitte geben Sie Ihre Organisation an",
+            "short_text":"Organisation",
+            "type":"text"
+         },
+         {
+            "id":"flp_years_of_experience",
+            "text":"Wie viele Jahre Erfahrung haben Sie in diesem Beruf?",
+            "short_text":"Erfahrung",
+            "type":"text"
+         },
+         {
+            "id":"flp_city",
+            "text":"Geben Sie Ihre derzeitige Stadt an",
+            "short_text":"Stadt",
+            "type":"text"
+         }
+      ]
+   },
+   "M1.2":{
+      "state_text":"Bitte wählen Sie den Bereich aus, in dem Sie tätig bzw. erfahren sind",
+      "short_text":"Kompetenzkategorien",
+      "id":"flp_skills",
+      "show_header": true,
+      "state_type":"checkbox",
+      "state_answers":[
+         {
+            "id":"School teacher",
+            "text":"Lehrer:in an einer Schule"
+         },
+         {
+            "id":"University lecturer",
+            "text":"Lehrende:r an einer Universität oder Hochschule"
+         },
+         {
+            "id":"Researcher",
+            "text":"Forscher:in"
+         },
+         {
+            "id":"Municipal Employee",
+            "text":"Mitarbeiter:in bei der Stadt"
+         },
+         {
+            "id":"NGO worker",
+            "text":"Mitarbeiter:in in einer NGO"
+         },
+         {
+            "id":"Police officer",
+            "text":"Polizist:in"
+         },
+         {
+            "id":"Municipal guard officer",
+            "text":"Municipal guard officer"
+         },
+         {
+            "id":"Probation officer",
+            "text":"Bewährungshelfer:in"
+         },
+         {
+            "id":"Psychoterapist/psychologist",
+            "text":"Psychotherapeut:in/ Psycholog:in"
+         },
+         {
+            "id":"Social worker",
+            "text":"Sozialarbeiter:in"
+         },
+         {
+            "id":"Youth worker",
+            "text":"Jugendarbeiter:in"
+         },
+         {
+            "id":"Security expert",
+            "text":"Sicherheitsexpert:in"
+         },
+         {
+            "id":"Radicalisation expert",
+            "text":"Expert:in im Bereich Radikalisierung"
+         },
+         {
+            "id":"Hate crimes expert",
+            "text":"Expert:in im Bereich Hasskriminalität"
+         },
+         {
+            "id":"Religious minority representative",
+            "text":"Vertreter:in einer religiösen Minderheit"
+         },
+         {
+            "id":"Cultural institution employee",
+            "text":"Mitarbeiter:in in einer Kunst-/ Kultureinrichtung"
+         },
+         {
+            "id":"Sports institution employee/expert",
+            "text":"Expert:in/ Mitarbeiter:in in einer Sporteinrichtung"
+         },
+         {
+            "id":"Prison employee/expert",
+            "text":"Expert:in/ Mitarbeiter:in im Gefängnis"
+         },
+         {
+            "id":"Exit expert",
+            "text":"Expert:in im Bereich Ausstieg/Deradikalisierung"
+         },
+         {
+            "id":"Youth gangs expert",
+            "text":"Expert:in im Bereich Jugendgangs"
+         },
+         {
+            "id":"Social media expert",
+            "text":"Expert:in im Bereich Social Media"
+         },
+         {
+            "id":"National Expert Team Member",
+            "text":"Mitglied im nationalen Beirat"
+         },
+         {
+            "id":"Other",
+            "text":"Andere"
+         }
+      ]
+   },
+   "M1.3":{
+      "short_text":"Biografie/Erfahrungen",
+      "state_text":"BITTE BESCHREIBEN SIE IHRE ERFAHRUNG UND IHR FACHWISSEN",
+      "id":"flp_description",
+      "show_header": "true",
+      "state_type":"description"
+   },
+   "M1.4":{
+      "short_text":"E-Mail Verifizierung",
+      "state_text":"Bitte geben Sie den Verifizierungscode an, der an die angegebene E-Mail gesendet wurde.",
+      "id":"verification",
+      "state_type":"verification"
+   },
+   "M1.5":{
+      "state_type":"result"
+   },
+   "ERROR":{
+      "state_text":"An error has occured! Please restart the process.",
+      "state_type":"error"
+   }
+}
+
+

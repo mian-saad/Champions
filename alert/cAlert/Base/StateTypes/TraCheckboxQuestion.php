@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Cover\Base\StateTypes;
-
 
 class TraCheckboxQuestion extends TraState
 {
@@ -57,13 +55,13 @@ class TraCheckboxQuestion extends TraState
         foreach ($answer_array as $answer_option) {
             if (!empty($this->response) and in_array($answer_option['id'], $this->response[$name_string])) {
                 // this is a checked answer
-                if ($answer_option['id'] == $this->lang['other']) {
+                if ($answer_option['text'] == $this->lang['other']) {
                     $html .= '<div class="register_horizontal_choice"><input type="checkbox" class="register_checkbox" name="' . $this->state['id'] . '" id="' . $answer_option['id'] . '" value="' . $answer_option['id'] . '" checked required><label for="' . $answer_option['id'] . '">' . $answer_option['text'] . '</label> ' . $this->generate_other_text_input($this->response['other_text_input']) . '</div>';
                 } else {
                     $html .= '<div class="register_horizontal_choice"><input type="checkbox" class="register_checkbox" name="' . $this->state['id'] . '" id="' . $answer_option['id'] . '" value="' . $answer_option['id'] . '" checked required><label for="' . $answer_option['id'] . '">' . $answer_option['text'] . '</label></div>';
                 }
             } else {
-                if ($answer_option['id'] == $this->lang['other']) {
+                if ($answer_option['text'] == $this->lang['other']) {
                     $html .= '<div class="register_horizontal_choice"><input type="checkbox" class="register_checkbox" name="' . $this->state['id'] . '" id="' . $answer_option['id'] . '" value="' . $answer_option['id'] . '" required><label for="' . $answer_option['id'] . '">' . $answer_option['text'] . '</label> ' . $this->generate_other_text_input("") . '</div>';
                 } else {
                     $html .= '<div class="register_horizontal_choice"><input type="checkbox" class="register_checkbox" name="' . $this->state['id'] . '" id="' . $answer_option['id'] . '" value="' . $answer_option['id'] . '" required><label for="' . $answer_option['id'] . '">' . $answer_option['text'] . '</label></div>';

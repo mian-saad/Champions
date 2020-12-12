@@ -1,6 +1,6 @@
 <?php
 /**
- * @package TakedownQuestionsPlugin
+ * @package AlertQuestionsPlugin
  */
 /*
 Plugin Name: Alert

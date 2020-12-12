@@ -1,0 +1,237 @@
+{
+  "title":[
+    {
+      "text":"Közalkalmazott",
+      "short_text":"Public employee",
+      "id":"Public employee"
+    },
+    {
+      "text":"Művészeti és kulturális intézmény alkalmazottja",
+      "short_text":"Arts and culture institution employee",
+      "id":"Arts and culture institution employee"
+    },
+    {
+      "text":"Sportintézmény alkalmazottja",
+      "short_text":"Sports facility employee",
+      "id":"Sports facility employee"
+    },
+    {
+      "text":"Civil szervezet alkalmazottja",
+      "short_text":"NGO Worker",
+      "id":"NGO Worker"
+    },
+    {
+      "text":"Polgárőrség alkalmazottja",
+      "short_text":"Community Police Officer",
+      "id":"Community Police Officer"
+    },
+    {
+      "text":"Általános iskolai tanár",
+      "short_text":"Primary Teacher",
+      "id":"Primary Teacher"
+    },
+    {
+      "text":"Pártfogó felügyelő",
+      "short_text":"Probation Officer",
+      "id":"Probation Officer"
+    },
+    {
+      "text":"Pszichológus / pszichoterapeuta",
+      "short_text":"Psychologist/Psychotherapist ",
+      "id":"Psychologist/Psychotherapist "
+    },
+    {
+      "text":"Középiskolai tanár",
+      "short_text":"Secondary Teacher",
+      "id":"Secondary Teacher"
+    },
+    {
+      "text":"Szociális munkás",
+      "short_text":"Social Worker",
+      "id":"Social Worker"
+    },
+    {
+      "text":"Egyetemi tanár",
+      "short_text":"University Lecturer",
+      "id":"University Lecturer"
+    },
+    {
+      "text":"Ifjúsági munkás",
+      "short_text":"Youth Worker",
+      "id":"Youth Worker"
+    },
+    {
+      "text":"Egyéb",
+      "short_text":"Other",
+      "id":"Other"
+    }
+  ],
+
+  "country":[
+    {
+      "text":"\uD83C\uDDE6\uD83C\uDDF9 Ausztria",
+      "short_text":"Ausztria",
+      "id":"Austria"
+    },
+    {
+      "text":"\uD83C\uDDE9\uD83C\uDDEA Németország",
+      "short_text":"Németország",
+      "id":"Germany"
+    },
+    {
+      "text":"\uD83C\uDDED\uD83C\uDDFA Magyarország",
+      "short_text":"Magyarország",
+      "id":"Hungary"
+    },
+    {
+      "text":"\uD83C\uDDF5\uD83C\uDDF1 Lengyelország",
+      "short_text":"Lengyelország",
+      "id":"Poland"
+    },
+    {
+      "text":"\uD83C\uDDF7\uD83C\uDDF4 Románia",
+      "short_text":"Románia",
+      "id":"Romania"
+    }
+  ],
+
+  "inputs": [
+    {
+      "id":"flp_first_name",
+      "text":"Add meg a keresztnevet!",
+      "short_text":"First Name",
+      "type":"text"
+    },
+    {
+      "id":"flp_last_name",
+      "text":"Add meg a vezetéknevet!",
+      "short_text":"Last Name",
+      "type":"text"
+    },
+    {
+      "id":"flp_email",
+      "text":"Add meg az email címedet!",
+      "short_text":"Email",
+      "type":"text"
+    },
+    {
+      "id":"flp_password",
+      "text":"Add meg a jelszavadat!",
+      "short_text":"Password",
+      "type":"password"
+    },
+    {
+      "id":"flp_organisation",
+      "text":"Add meg a szervezeted nevét!",
+      "short_text":"Organisation",
+      "type":"text"
+    },
+    {
+      "id":"flp_years_of_experience",
+      "text":"Hány évnyi tapasztalatot szereztél ebben a szakmában?",
+      "short_text":"experience",
+      "type":"text"
+    },
+    {
+      "id":"flp_city",
+      "text":"A jelenlegi településed",
+      "short_text":"Város",
+      "type":"text"
+    }
+  ],
+
+  "skills":[
+    {
+      "id":"School teacher",
+      "text":"Iskolai oktató"
+    },
+    {
+      "id":"University lecturer",
+      "text":"Egyetemi oktató"
+    },
+    {
+      "id":"Researcher",
+      "text":"Kutató"
+    },
+    {
+      "id":"Municipal Employee",
+      "text":"Önkormányzati alkalmazott"
+    },
+    {
+      "id":"NGO worker",
+      "text":"Civil szervezet alkalmazottja"
+    },
+    {
+      "id":"Police officer",
+      "text":"Rendőr"
+    },
+    {
+      "id":"Municipal guard officer",
+      "text":"Polgárőr"
+    },
+    {
+      "id":"Probation officer",
+      "text":"Pártfogó felügyelő"
+    },
+    {
+      "id":"Psychoterapist/psychologist",
+      "text":"Pszichoterapeuta / pszichológus"
+    },
+    {
+      "id":"Social worker",
+      "text":"Szociális munkás"
+    },
+    {
+      "id":"Youth worker",
+      "text":"Ifjúsági munkás"
+    },
+    {
+      "id":"Security expert",
+      "text":"Biztonsági szakértő"
+    },
+    {
+      "id":"Radicalisation expert",
+      "text":"Radikalizálódási szakértő"
+    },
+    {
+      "id":"Hate crimes expert",
+      "text":"Gyűlölet-bűncselekmény szakértő"
+    },
+    {
+      "id":"Religious minority representative",
+      "text":"Vallási kisebbség képviselője"
+    },
+    {
+      "id":"Cultural institution employee",
+      "text":"Művészeti és kulturális intézet alkalmazottja"
+    },
+    {
+      "id":"Sports institution employee/expert",
+      "text":"Sportintézmény alkalmazottja / szakértője"
+    },
+    {
+      "id":"Prison employee/expert",
+      "text":"Börtön alkalmazottja / -szakértő"
+    },
+    {
+      "id":"Exit expert",
+      "text":"Deradikalizálódás szakértő"
+    },
+    {
+      "id":"Youth gangs expert",
+      "text":"Fiatalokból álló bandák szakértője"
+    },
+    {
+      "id":"Social media expert",
+      "text":"Közösségi média szakértő"
+    },
+    {
+      "id":"National Expert Team Member",
+      "text":"Nemzeti tanácsadó testületi tag (opcionális)"
+    },
+    {
+      "id":"Other",
+      "text":"Egyéb"
+    }
+  ]
+}

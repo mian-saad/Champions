@@ -1,6 +1,6 @@
 <?php
 /**
- * @package  TakedownstatesPlugin
+ * '@package AlertstatesPlugin
  */
 namespace Cover\Base;
 
@@ -13,30 +13,11 @@ class ReportController extends BaseController {
     public $alert_id; // id of report, which is being taken
     public $current_state_code; // id of the current state (which is currently presented to the viewer)
     public $oldstate;
-
     public $state_file; // associative array, contains the states json file
     public $string_file; // associative array, contains all strings with code as key
     public $isValidated;
     public $state_list;
     public $current_step_counter; // counter for iterating through the state list
-
-    public $timepicker_map = [
-        "en"=>"en",
-        "it"=>"it",
-        "ge"=>"de",
-        "spa"=>"es",
-        "ro"=>"ro",
-        "no"=>"no",
-        "pol"=>"pl",
-        "cz"=>"en",
-        "sl"=>"sl",
-        "ne"=>"en",
-        "is"=>"he",
-        "fr"=>"fr",
-        "gr"=>"el",
-        "bu"=>"bg",
-        "por"=>"pt"
-        ];
 
     // initializes the controller object
     public function init($alert_id, $language) {
@@ -46,12 +27,11 @@ class ReportController extends BaseController {
         # DEBUG: here you can chose the first state for debugging, in production the first state is M0.0
         $this->current_state_code = "M0.0";
 
-        $this->report_answers = [];
         $this->state_list = [];
         $this->oldstate = null;
         $this->current_step_counter = 0;
 
-        // read json
+        // reads json
         $this->state_file = json_decode(file_get_contents($this->plugin_path . "assets/base/" . $language . "/alert_states.json"), true);
         $this->string_file = json_decode(file_get_contents($this->plugin_path . "assets/base/" . $language . "/alert_strings.json"), true);
     }
@@ -64,13 +44,10 @@ class ReportController extends BaseController {
         else {
             $state = $this->initialize_state($this->current_state_code);
         }
-        $html = $state->generate_html(); // IMPORTANT: GENERATES THE HTML
-        $html .= $this->generate_post_js();
-        return $html;
-    }
 
-    public function generate_post_js(){
-        return "<script>jQuery.datetimepicker.setLocale('".$this->timepicker_map[$this->language]."');</script>";
+        // IMPORTANT: GENERATES THE HTML
+        $html = $state->generate_html();
+        return $html;
     }
 
     // taking the new state code string, it takes it from the states and initiates a new object
@@ -87,20 +64,24 @@ class ReportController extends BaseController {
             $state_obj = new StateTypes\TraComposedCheckboxQuestion($this->alert_id, $state_code, $state, $this->string_file['continue'], $this->string_file['back'], $this->string_file['field_warning'], $this->string_file['warning'], $this->string_file['other']);
         } else if ($state['state_type'] == 'verification') {
             $state_obj = new StateTypes\VerificationCode($this->alert_id, $state_code, $state, $this->string_file['continue'], $this->string_file['back'], $this->string_file['field_warning'], $this->string_file['warning'], $this->string_file['complete_registration_string']);
-//            $state_obj = new StateTypes\TraFinal        ($this->alert_id, $state_code, $this->string_file['back']);
         } else if ($state['state_type'] == 'description') {
             $state_obj = new StateTypes\TraDescriptionQuestion($this->alert_id, $state_code, $state, $this->string_file['continue'], $this->string_file['back'], $this->string_file['field_warning'], $this->string_file['warning']);
         } else if ($state['state_type'] == 'result') {
-            // here we need to pass all the recorded answers
+            // Pass all the recorded answers
             $answers = [];
+            $eng_answers = [];
             foreach ($this->state_list as $code => $state) {
                 $answers += $state->generate_readable_response_array();
+                if ($code == "M1.2") {
+                    $eng_answers += $state->generate_readable_response_array_eng();
+                }
             }
             $pdfurl = $this->generate_pdf($answers);
-            $state_obj = new StateTypes\TraFinal($this->string_file, $this->string_file['summary'], $this->alert_id, $state_code, $answers, $this->string_file['pdf_download'], $this->string_file['back'], $this->string_file['crime_location_proposals'], $this->string_file['language_pref_proposals'], $this->string_file['residence_state_proposals'], $this->string_file['no_results'],$pdfurl, $this->isValidated);
+            $state_obj = new StateTypes\TraFinal($eng_answers, $this->string_file, $this->string_file['summary'], $this->alert_id, $state_code, $answers, $this->string_file['pdf_download'], $this->string_file['back'],  $this->string_file['no_results'],$pdfurl, $this->isValidated);
         } else if ($state['state_type'] == 'gdpr') {
             $state_obj = new StateTypes\TraGDPR($this->alert_id, $state_code, $state, $this->string_file['gdpr_accept'], $this->string_file['gdpr_warning']);
-        } else { // else we are expiriencing an error
+        } else {
+            // else we are experiencing an error
             $state_obj = new StateTypes\TraError($this->alert_id, $state_code, $state['state_text'], $this->string_file['continue']);
         }
 
@@ -108,12 +89,11 @@ class ReportController extends BaseController {
         return $state_obj;
     }
 
-    // lets unset the current step if we go back
+    // unset the current step if we go back
     public function step_back() {
-        // unset($this->state_list[$this->current_state_code]);
-        $state_obj = $this->state_list[$this->current_state_code];
         $this->current_step_counter = $this->current_step_counter - 1;
-        // lets reload page if our step counter < 0
+
+        // Reload page if our step counter < 0
         if ($this->current_step_counter < 0) {
             echo "<script type='text/javascript'>
             window.location=document.location.href;
@@ -133,13 +113,18 @@ class ReportController extends BaseController {
             $state_obj->show_warning = false;
 
             $this->oldstate = $this->current_state_code;
-            $this->current_state_code = $this->get_next_state(); // <=== IMPORTANT PLACE, HERE WE ADVANCE THE STATE CODE
+
+            // IMPORTANT PLACE, HERE WE ADVANCE THE STATE CODE
+            $this->current_state_code = $this->get_next_state();
             $this->current_step_counter = $this->current_step_counter + 1;
+
             // lets see if we are trying to change our questionnaire tree, if so, lets unset old states
             if ($this->current_step_counter < count($this->state_list)) {
-                // we are in the statelist
+
+                // in the statelist
                 if ($this->current_state_code != array_keys($this->state_list)[$this->current_step_counter]) {
-                    // we are changing the tree
+
+                    // Changing the tree
                     $counter = count($this->state_list);
                     while ($this->current_step_counter <= $counter) {
                         $key = array_keys($this->state_list)[$counter];
@@ -152,13 +137,13 @@ class ReportController extends BaseController {
         else if($validation_response == 'NoUser') {
             $state_obj->show_nouser = true;
         }
-        // else we should be printing some warning
+        // else printing some warning
         else {
             $state_obj->show_warning = true;
         }
     }
 
-    // state advancing logic, hapens after a state answer was validated
+    // state advancing logic, happens after a state answer is validated
     public function get_next_state() {
 
         if ($this->current_state_code == "M0.0") {
@@ -192,36 +177,50 @@ class ReportController extends BaseController {
     }
 
     public function generate_pdf($answers) {
-        $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false); // create TCPDF object with default constructor args
+
+        // create TCPDF object with default constructor args
+        $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
         $pdf->setFont('freeserif');
-        $pdf->AddPage(); // pretty self-explanatory
 
+        // pretty self-explanatory
+        $pdf->AddPage();
         header('Content-Type: text/html; charset=utf-8');
-
         $html = "<h1>".$this->string_file['alert_report']."</h1><br>";
-
         foreach ($answers as $short_text => $value) {
             $html .= "<p>" . $short_text . " : " . $value . "</p>";
         }
 
         // output the HTML content
         $pdf->writeHTML($html, true, false, true, false, '');
-
         ob_clean();
+        $pdf->Output($this->plugin_path . 'pdf/' . $this->alert_id . '.pdf', 'F');
+        return $this->plugin_url . 'pdf/' . $this->alert_id . '.pdf';
+    }
 
-        $pdf->Output($this->plugin_path . 'reports/' . $this->alert_id . '.pdf', 'F');
-        return $this->plugin_url . 'reports/' . $this->alert_id . '.pdf';
+    public function alert_parser($state) {
+        $answer = [];
+        foreach ($state->response as $key => $response) {
+            if (is_array($response)) {
+                $answer = $answer + array($key => implode(', ', $response));
+            }
+        }
+        return $answer;
+    }
+
+    public function delete_entry($wpdb, $alert_db) {
+
+        $entries = $wpdb->get_results("SELECT alert_id FROM ".$alert_db." WHERE alert_id=\"".$this->alert_id."\"");
+        if(sizeof($entries)!= 0){
+            $wpdb->get_results("DELETE FROM ".$alert_db." WHERE alert_id=\"".$this->alert_id."\"");
+        }
     }
 
     public function db_store() {
         global $wpdb;
         $alert_db = $wpdb->prefix . 'alert';
 
-        // lets delete entry if it already exists in the db
-        $entries = $wpdb->get_results("SELECT alert_id FROM ".$alert_db." WHERE alert_id=\"".$this->alert_id."\"");
-        if(sizeof($entries)!= 0){
-            $wpdb->get_results("DELETE FROM ".$alert_db." WHERE alert_id=\"".$this->alert_id."\"");
-        }
+        // delete entry if it already exists in the db
+        $this->delete_entry($wpdb, $alert_db);
 
         if ($this->oldstate == "M1.9") {
             $answers = [
@@ -252,7 +251,12 @@ class ReportController extends BaseController {
 
                         if (is_array($state->response)) {
                             if (!isset($state->response[$state->state['id']])) {  // only the case for composed questions
-                                $response = $state->response;
+                                if ($code == "M1.2") {
+                                    $answers = $answers + $this->alert_parser($state);
+                                }
+                                else {
+                                    $response = $state->response;
+                                }
                             }
                             else if (is_array($state->response[$state->state['id']])) {      // is only the case for checkbox question
                                 if (in_array('Other', $state->response[$state->state['id']]) AND isset($state->response['other_text_input'])) {
@@ -297,6 +301,7 @@ class ReportController extends BaseController {
                 }
             }
         }
+
         $answers = $this->parse_other_inputs($answers);
         $wpdb->insert($alert_db, $answers);
         wp_mail( $_SESSION['flp'], $this->string_file['alert_submitted'], $this->string_file['your_alert_submitted']);
@@ -420,8 +425,4 @@ class ReportController extends BaseController {
         wp_mail( $answers['flp_email'], $this->string_file['registration_confirmed'], $this->string_file['your_registration_confirmed']);
     }
 
-    /* create one more db function in process response check if its at the state M1.9
-    if yes then call the new db function and slice the array in it
-    and when the original db_store is called slice the array there if some other logic is not implemented
-    */
 }

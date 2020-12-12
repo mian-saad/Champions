@@ -97,7 +97,7 @@ class ControlCenter {
 
             case 'OnClickSubject':
                 $loggedState = new View\DiscussionPage($_SESSION['strings']);
-                $loggedState->Render($_SESSION['Email'], sanitize_text_field( $_GET['ID']), );
+                $loggedState->Render($_SESSION['Email'], sanitize_text_field( $_GET['ID']));
                 break;
 
             case 'Recommend':

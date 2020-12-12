@@ -7,25 +7,14 @@ namespace Comprise\Base\StateTypes;
 class TraFinal extends TraState
 {
     public $submit_string;
-    public $pdf_string;
     public $answers;
-    public $contact_proposals;
-    public $proposals_string;
-    public $crime_location_string;
-    public $language_pref_string;
-    public $residence_string;
-    public $proposal_html;
     public $no_results_string;
-    public $pdfurl;
     public $string_file;
 
-    public function __construct($string_file, $report_id, $state_code, array $answers, $submit_string, $back_string, $crime_location_string, $language_pref_string, $residence_string, $no_results_string)
+    public function __construct($string_file, $report_id, $state_code, array $answers, $submit_string, $back_string, $no_results_string)
     {
 
         $this->no_results_string = $no_results_string;
-        $this->crime_location_string=$crime_location_string;
-        $this->language_pref_string=$language_pref_string;
-        $this->residence_string=$residence_string;
         $this->back_string = $back_string;
         $this->report_id = $report_id;
         $this->state_code = $state_code;

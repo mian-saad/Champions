@@ -1,6 +1,6 @@
 <?php
 
-namespace Contain\Display\View;
+namespace Contain\Display\View\FlpSection;
 
 use Contain\Display\Controller\LoadData;
 use Contain\Display\Model\LoggedComponents;
@@ -21,7 +21,7 @@ class LandingPage {
     }
 
     public function header($Email) {
-        $path = plugin_dir_url( dirname( __FILE__ , 3) );
+        $path = plugin_dir_url( dirname( __FILE__ , 4) );
         $html = "<div class='row'>";
         $html .= "<div class='col-6'>";
         $html .= "<img class='logo' src='".$path."assets/logo.png' alt='logo'>";

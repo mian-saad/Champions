@@ -15,9 +15,7 @@ final class Init
         return [
             Base\AjaxActions::class,
             Pages\Admin::class,
-//            Base\Enqueue::class,
             Base\ActionLinks::class,
-            //Base\TemplateController::class,
             Base\Shortcodes::class,
             
         ];

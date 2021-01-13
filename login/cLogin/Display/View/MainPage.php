@@ -4,8 +4,6 @@ namespace Contain\Display\View;
 
 class MainPage {
     public function render($string_file) {
-//        $plugin_path = plugin_dir_path( dirname(__FILE__, 3));
-//        $string_file = json_decode(file_get_contents($plugin_path . "assets/base/" . $lang . "/alert_strings.json"), true);
 
         $html = "<div class=\"card-body\" id=\"contentBox\">
                     <h1>".$string_file['arena_login_module']."</h1>

@@ -90,8 +90,8 @@
                   "id":"Physical violence (e.g. assaults, threats, insults)"
                },
                {
-                  "text":"Extremistische Hassreden und/oder Aufstachelung zu Gewalt",
-                  "short_text":"Extremistische Hassreden und/oder Aufstachelung zu Gewalt",
+                  "text":"Hassrede und/oder Aufforderung zu Gewalt",
+                  "short_text":"Hassrede und/oder Aufforderung zu Gewalt",
                   "id":"Extremist hate speech and/or incitement to violence"
                },
                {
@@ -128,18 +128,18 @@
                   "id":"Public space (e.g. school, concert hall, sports facility, park, street etc.)"
                },
                {
-                  "text":"Im privaten Raum (z.B. Schulen, Konzerthallen, Sporteinrichtungen, am Arbeitsplatz)",
-                  "short_text":"Im privaten Raum (z.B. Schulen, Konzerthallen, Sporteinrichtungen, am Arbeitsplatz)",
+                  "text":"Im privaten Raum (z.B. Schulen, Konzerthallen, Sporteinrichtungen, Park, Straße)",
+                  "short_text":"Im privaten Raum (z.B. Schulen, Konzerthallen, Sporteinrichtungen, Park, Straße)",
                   "id":"Private space (e.g. school, concert hall, workplace, sports club etc.)"
                },
                {
-                  "text":"Bei einer öffentlichen Veranstaltung (öffentlich veranstaltet)",
-                  "short_text":"Bei einer öffentlichen Veranstaltung (öffentlich veranstaltet)",
+                  "text":"Bei einer öffentlichen Veranstaltung",
+                  "short_text":"Bei einer öffentlichen Veranstaltung",
                   "id":"Public event (public organiser)"
                },
                {
-                  "text":"Bei einer privaten Veranstaltung (privat veranstaltet)",
-                  "short_text":"Bei einer privaten Veranstaltung (privat veranstaltet)",
+                  "text":"Bei einer privaten Veranstaltung",
+                  "short_text":"Bei einer privaten Veranstaltung",
                   "id":"Private event (private organiser)"
                },
                {
@@ -176,8 +176,8 @@
                   "id":"LGBTQ+"
                },
                {
-                  "text":"Ethnische Minderheiten (Migrant:innen, Geflüchtete) oder Ausländer:innen",
-                  "short_text":"Ethnische Minderheiten (Migrant:innen, Geflüchtete) oder Ausländer:innen",
+                  "text":"Ethnische Minderheiten (Migrant*innen, Geflüchtete)",
+                  "short_text":"Ethnische Minderheiten (Migrant*innen, Geflüchtete)",
                   "id":"Ethnic minority (migrants, refugees) or foreigners"
                },
                {
@@ -266,47 +266,47 @@
                   "id":"Public employee"
                },
                {
-                  "text":"Mitarbeiter:in in einer Kunst-/ Kultureinrichtung",
+                  "text":"Mitarbeiter*in in einer Kunst-/ Kultureinrichtung",
                   "short_text":"Arts and culture institution employee",
                   "id":"Arts and culture institution employee"
                },
                {
-                  "text":"Mitarbeiter:in in einer Sporteinrichtung",
+                  "text":"Mitarbeiter*in in einer Sporteinrichtung",
                   "short_text":"Sports facility employee",
                   "id":"Sports facility employee"
                },
                {
-                  "text":"Mitarbeiter:in in einer NGO",
+                  "text":"Mitarbeiter*in in einer NGO",
                   "short_text":"NGO Worker",
                   "id":"NGO Worker"
                },
                {
-                  "text":"Polizist:in",
+                  "text":"Polizist*in",
                   "short_text":"Community Police Officer",
                   "id":"Community Police Officer"
                },
                {
-                  "text":"Lehrer:in in der Primarstufe",
+                  "text":"Lehrer*in in der Primarstufe",
                   "short_text":"Primary Teacher",
                   "id":"Primary Teacher"
                },
                {
-                  "text":"Bewährungshelfer:in",
+                  "text":"Bewährungshelfer*in",
                   "short_text":"Probation Officer",
                   "id":"Probation Officer"
                },
                {
-                  "text":"Psychotherapeut:in/ Psycholog:in",
+                  "text":"Psychotherapeut*in/ Psycholog*in",
                   "short_text":"Psychologist/Psychotherapist ",
                   "id":"Psychologist/Psychotherapist "
                },
                {
-                  "text":"Lehrer:in in der Sekundarstufe",
+                  "text":"Lehrer*in in der Sekundarstufe",
                   "short_text":"Secondary Teacher",
                   "id":"Secondary Teacher"
                },
                {
-                  "text":"Sozialarbeiter:in",
+                  "text":"Sozialarbeiter*in",
                   "short_text":"Social Worker",
                   "id":"Social Worker"
                },
@@ -316,7 +316,7 @@
                   "id":"University Lecturer"
                },
                {
-                  "text":"Jugendarbeiter:in",
+                  "text":"Jugendarbeiter*in",
                   "short_text":"Youth Worker",
                   "id":"Youth Worker"
                },
@@ -413,87 +413,83 @@
       "state_answers":[
          {
             "id":"School teacher",
-            "text":"Lehrer:in an einer Schule"
+            "text":"Lehrer*in an einer Schule"
          },
          {
             "id":"University lecturer",
-            "text":"Lehrende:r an einer Universität oder Hochschule"
+            "text":"Lehrende*r an einer Universität oder Hochschule"
          },
          {
             "id":"Researcher",
-            "text":"Forscher:in"
+            "text":"Forscher*in"
          },
          {
             "id":"Municipal Employee",
-            "text":"Mitarbeiter:in bei der Stadt"
+            "text":"Mitarbeiter*in bei der Stadt"
          },
          {
             "id":"NGO worker",
-            "text":"Mitarbeiter:in in einer NGO"
+            "text":"Mitarbeiter*in in einer NGO"
          },
          {
             "id":"Police officer",
-            "text":"Polizist:in"
-         },
-         {
-            "id":"Municipal guard officer",
-            "text":"Municipal guard officer"
+            "text":"Polizist*in"
          },
          {
             "id":"Probation officer",
-            "text":"Bewährungshelfer:in"
+            "text":"Bewährungshelfer*in"
          },
          {
             "id":"Psychoterapist/psychologist",
-            "text":"Psychotherapeut:in/ Psycholog:in"
+            "text":"Psychotherapeut*in/ Psycholog*in"
          },
          {
             "id":"Social worker",
-            "text":"Sozialarbeiter:in"
+            "text":"Sozialarbeiter*in"
          },
          {
             "id":"Youth worker",
-            "text":"Jugendarbeiter:in"
+            "text":"Jugendarbeiter*in"
          },
          {
             "id":"Security expert",
-            "text":"Sicherheitsexpert:in"
+            "text":"Sicherheitsexpert*in"
          },
          {
             "id":"Radicalisation expert",
-            "text":"Expert:in im Bereich Radikalisierung"
+            "text":"Expert*in im Bereich Radikalisierung"
          },
          {
             "id":"Hate crimes expert",
-            "text":"Expert:in im Bereich Hasskriminalität"
+            "text":"Expert*in im Bereich Hasskriminalität"
          },
          {
             "id":"Religious minority representative",
-            "text":"Vertreter:in einer religiösen Minderheit"
+            "text":"Vertreter*in einer religiösen Minderheit"
          },
          {
             "id":"Cultural institution employee",
-            "text":"Mitarbeiter:in in einer Kunst-/ Kultureinrichtung"
+            "text":"Mitarbeiter*in in einer Kunst-/ Kultureinrichtung"
          },
          {
             "id":"Sports institution employee/expert",
-            "text":"Expert:in/ Mitarbeiter:in in einer Sporteinrichtung"
+            "text":"Expert*in/ Mitarbeiter*in in einer Sporteinrichtung"
          },
          {
             "id":"Prison employee/expert",
-            "text":"Expert:in/ Mitarbeiter:in im Gefängnis"
+            "text":"Expert*in/ Mitarbeiter*in im Gefängnis"
          },
          {
             "id":"Exit expert",
-            "text":"Expert:in im Bereich Ausstieg/Deradikalisierung"
+            "text":"Expert*in im Bereich Ausstieg/Deradikalisierung"
          },
          {
             "id":"Youth gangs expert",
-            "text":"Expert:in im Bereich Jugendgangs"
+            "text":"Expert*in im Bereich Jugendgangs"
          },
          {
             "id":"Social media expert",
-            "text":"Expert:in im Bereich Social Media"
+            "text":"Expert*in im Bereich Social Media"
          },
          {
             "id":"National Expert Team Member",

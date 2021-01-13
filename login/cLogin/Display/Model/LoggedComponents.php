@@ -49,25 +49,25 @@ class LoggedComponents {
         echo $html;
     }
 
-    public function header($FirstName, $LastName) {
-        $html = "<div class='row'>";
-            $html .= "<div class='col-9'></div>";
-            $html .= "<div class=' col-3'>";
-                $html .= "Logged in as <b class='userEmail'>".$FirstName." ".$LastName."</b>";
-            $html .= "</div>";
-        $html .= "</div>";
+//    public function header($FirstName, $LastName) {
+//        $html = "<div class='row'>";
+//            $html .= "<div class='col-9'></div>";
+//            $html .= "<div class=' col-3'>";
+//                $html .= "Logged in as <b class='userEmail'>".$FirstName." ".$LastName."</b>";
+//            $html .= "</div>";
+//        $html .= "</div>";
+//
+//        echo $html;
+//    }
 
-        echo $html;
-    }
-
-    public function instances($DescriptionSubject, $ButtonStatus, $Id) {
-        $html = "<div class='row'>";
-            $html .= "<div id='CaseSubject.$Id.' class='col-8'>. $DescriptionSubject .</div>";
-            $html .= "<div class='col-3'><button id='CaseProgressStatus.$Id.' class='button'> . $ButtonStatus . </button></div>";
-        $html .= "</div>";
-
-        echo $html;
-    }
+//    public function instances($DescriptionSubject, $ButtonStatus, $Id) {
+//        $html = "<div class='row'>";
+//            $html .= "<div id='CaseSubject.$Id.' class='col-8'>. $DescriptionSubject .</div>";
+//            $html .= "<div class='col-3'><button id='CaseProgressStatus.$Id.' class='button'> . $ButtonStatus . </button></div>";
+//        $html .= "</div>";
+//
+//        echo $html;
+//    }
 
     public function InviteExperts($InvitationEmail, $alert) {
 

@@ -17,7 +17,7 @@ class Activate
 
         if ($wpdb->get_var("SHOW TABLES LIKE '$alert_db'") != $alert_db) {
 
-            // creates states table
+            // creates wp_alert table on plugin activation
             $sql = "CREATE TABLE $alert_db (
                 alert_id VARCHAR(32),
                 alert_report_time TEXT,

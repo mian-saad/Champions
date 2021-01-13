@@ -1,6 +1,6 @@
 <?php
 
-namespace Contain\Display\View;
+namespace Contain\Display\View\FlpSection;
 
 
 class ProfileUpdated {

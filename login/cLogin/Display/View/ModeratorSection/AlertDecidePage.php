@@ -1,6 +1,6 @@
 <?php
 
-namespace Contain\Display\View;
+namespace Contain\Display\View\ModeratorSection;
 
 use Contain\Display\Controller\LoadData;
 

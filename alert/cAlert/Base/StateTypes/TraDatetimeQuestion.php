@@ -34,7 +34,7 @@ class TraDatetimeQuestion extends TraState {
                 $html .= "<input type='text' name='" . $answer['id'] . "' value='" . $this->response[$answer['id']] . "'><br>";
             }
             if ($answer['type'] == 'datetime') {
-                $html .= "<input class='picker' type='text' name='" . $answer['id'] . "' value='" . $this->response[$answer['id']] . "'><br>";
+                $html .= "<input id='date_picker' class='picker' type='text' name='" . $answer['id'] . "' value='" . $this->response[$answer['id']] . "'><br>";
             }
         }
         $html .= "</form>";

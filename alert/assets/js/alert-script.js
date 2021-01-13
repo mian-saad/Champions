@@ -67,7 +67,7 @@ jQuery(document).ready(function ($) {
             $contentBox
                 .html(response)
                 .animate({ opacity: 1 }, 100);
-            if ($('h3.alert_question').text() === 'Event Details') {
+            if ($( "#date_picker" ).hasClass( "picker" )) {
                 // Initialize dateTimePicker here
                 $('.picker').datetimepicker({
                     allowBlank: true,

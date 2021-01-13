@@ -25,7 +25,7 @@ class ControlCenter {
                 $_SESSION['Email'] = sanitize_text_field( $_GET['email'] );
                 $_SESSION['Password'] = sanitize_text_field( $_GET['pass'] );
                 if ($this->VerifyModerator($_SESSION['Email'],$_SESSION['Password']) === true) {
-                    $loggedState = new View\DirectionPage();
+                    $loggedState = new View\ModeratorSection\DirectionPage();
                     $loggedState->direction_buttons();
                     break;
                 }
@@ -36,35 +36,35 @@ class ControlCenter {
                 }
 
             case 'decide_expert':
-                $loggedState = new View\ExpertDecidePage();
+                $loggedState = new View\ModeratorSection\ExpertDecidePage();
                 $loggedState->loggedMain($_SESSION['Country']);
                 break;
 
             case 'go_back':
-                $loggedState = new View\DirectionPage();
+                $loggedState = new View\ModeratorSection\DirectionPage();
                 $loggedState->direction_buttons();
                 break;
 
             case 'CloseCase':
                 $decision = sanitize_text_field( $_GET['close'] );
-                $loggedState = new View\AlertDecidePage();
+                $loggedState = new View\ModeratorSection\AlertDecidePage();
                 $loggedState->decide_case_state($decision);
                 break;
 
             case 'alert_case':
-                $loggedState = new View\AlertDecidePage();
+                $loggedState = new View\ModeratorSection\AlertDecidePage();
                 $loggedState->case_decision($_SESSION['Country']);
                 break;
 
             case 'decide_expert_case':
                 $decisionId = sanitize_text_field( $_GET['DecideId'] );
-                $loggedState = new View\ExpertDecidePage();
+                $loggedState = new View\ModeratorSection\ExpertDecidePage();
                 $loggedState->decide_state($decisionId, $_SESSION['Country']);
                 break;
 
             case 'AcceptRejectCase':
                 $decisionId = sanitize_text_field( $_GET['DecideId'] );
-                $loggedState = new View\AlertDecidePage();
+                $loggedState = new View\ModeratorSection\AlertDecidePage();
                 $loggedState->decide_case_state($decisionId);
                 break;
 
@@ -80,7 +80,7 @@ class ControlCenter {
                 $_SESSION['Email'] = sanitize_text_field( $_GET['email'] );
                 $_SESSION['Password'] = sanitize_text_field( $_GET['pass'] );
                 if ($this->VerifyCredentials($_SESSION['Email'],$_SESSION['Password']) === true) {
-                    $loggedState = new View\LandingPage($_SESSION['strings']);
+                    $loggedState = new View\FlpSection\LandingPage($_SESSION['strings']);
                     $loggedState->RenderPage($_SESSION['Email']);
                     break;
                 }
@@ -91,17 +91,17 @@ class ControlCenter {
                 }
 
             case 'ArenaClickableButtons':
-                    $loggedState = new View\LandingPage($_SESSION['strings']);
+                    $loggedState = new View\FlpSection\LandingPage($_SESSION['strings']);
                     $loggedState->ClickButton(sanitize_text_field( $_GET['ID'] ), $_SESSION['Email']);
                     break;
 
             case 'OnClickSubject':
-                $loggedState = new View\DiscussionPage($_SESSION['strings']);
+                $loggedState = new View\FlpSection\DiscussionPage($_SESSION['strings']);
                 $loggedState->Render($_SESSION['Email'], sanitize_text_field( $_GET['ID']));
                 break;
 
             case 'Recommend':
-                $loggedState = new View\DiscussionPage($_SESSION['strings']);
+                $loggedState = new View\FlpSection\DiscussionPage($_SESSION['strings']);
                 $loggedState->RenderRecommendation($_SESSION['Email'], sanitize_text_field( $_GET['ID']));
                 break;
 
@@ -135,32 +135,32 @@ class ControlCenter {
                 break;
 
             case 'Edit':
-                $loggedState = new View\EditProfile($_SESSION['strings'], sanitize_text_field( $_GET['data']));
+                $loggedState = new View\FlpSection\EditProfile($_SESSION['strings'], sanitize_text_field( $_GET['data']));
                 $loggedState->render();
                 break;
 
             case 'Update':
-                $loggedState = new View\ProfileUpdated();
+                $loggedState = new View\FlpSection\ProfileUpdated();
                 $loggedState->update($_GET['data'], $_SESSION['Email']);
                 break;
 
             case 'AddRecommendation':
-                $loggedState = new View\DiscussionPage($_SESSION['strings']);
+                $loggedState = new View\FlpSection\DiscussionPage($_SESSION['strings']);
                 $loggedState->InsertRecommendation(sanitize_text_field( $_GET['ID']), $_SESSION['Email'], sanitize_text_field( $_GET['Data']));
                 break;
 
             case 'UpdateRecommendation':
-                $loggedState = new View\DiscussionPage($_SESSION['strings']);
+                $loggedState = new View\FlpSection\DiscussionPage($_SESSION['strings']);
                 $loggedState->UpdateRecommendation(sanitize_text_field( $_GET['ID']), $_SESSION['Email'], sanitize_text_field( $_GET['Data']), sanitize_text_field( $_GET['RecommendationId']));
                 break;
 
             case 'OnClickBack':
-                $loggedState = new View\DiscussionPage($_SESSION['strings']);
+                $loggedState = new View\FlpSection\DiscussionPage($_SESSION['strings']);
                 $loggedState->ClickButton($_SESSION['Email']);
                 break;
 
             case 'OnClickComment':
-                $loggedState = new View\DiscussionPage($_SESSION['strings']);
+                $loggedState = new View\FlpSection\DiscussionPage($_SESSION['strings']);
                 $loggedState->CommentsLogic(sanitize_text_field( $_GET['ID']), $_SESSION['Email'], sanitize_text_field( $_GET['Data']));
                 break;
 

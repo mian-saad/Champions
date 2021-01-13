@@ -1,6 +1,6 @@
 <?php
 
-namespace Contain\Display\View;
+namespace Contain\Display\View\FlpSection;
 
 use Contain\Display\Controller\LoadData;
 use Contain\Display\View;
@@ -15,7 +15,7 @@ class DiscussionPage {
 
     public function Render($Email, $ID) {
 
-        $loggedState = new View\LandingPage($this->lang);
+        $loggedState = new View\FlpSection\LandingPage($this->lang);
         $html = $loggedState ->header($Email);
         $html .= "<div class='row'>";
         $html .= "<div class='col-7'>";
@@ -206,7 +206,7 @@ class DiscussionPage {
     }
 
     public function ClickButton($Email) {
-        $loggedState = new View\LandingPage($this->lang);
+        $loggedState = new View\FlpSection\LandingPage($this->lang);
         $loggedState -> RenderPage($Email);
     }
 

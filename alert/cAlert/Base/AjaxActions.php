@@ -27,6 +27,9 @@ class AjaxActions
         $html = "";
         if (!empty($_GET['alert_id'])) {
 
+            exec('hello.py', $result);
+            $resul = $result;
+
             // if in alert scope
             $alert_id = $_GET['alert_id'];
             $report_controller = unserialize(base64_decode(get_transient($alert_id)));

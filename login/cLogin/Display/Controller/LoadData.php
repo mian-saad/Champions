@@ -13,24 +13,6 @@ class LoadData {
         else {
             $alertData = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}alert WHERE alert_id='$Node'", OBJECT );
         }
-        /*  ALERT DATABASE COLUMNS
-                alert_id VARCHAR(32),
-                alert_report_time TEXT,
-                alert_report_locale TEXT,
-                alert_report_ip TEXT,
-                alert_country TEXT,
-                alert_city TEXT,
-                alert_time TEXT,
-                alert_category TEXT,
-                alert_subject TEXT,
-                alert_description TEXT,
-                alert_deadline TEXT,
-                flp_id TEXT,
-                alert_case_status TEXT,
-                alert_status_moderator TEXT,
-                alert_status_flp TEXT,
-                alert_status_mutual TEXT,
-        */
 
         for ($counter = 0; $counter<count($alertData); $counter++) {
             $Id[$counter] = $alertData[$counter] -> alert_id;
@@ -102,29 +84,6 @@ class LoadData {
             $arenaData = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}arena WHERE flp_email='$Node'", OBJECT );
         }
 
-        /* ARENA DATABASE COLUMNS
-                flp_id VARCHAR(32),
-                flp_locale TEXT,
-                flp_registration_time TEXT,
-                flp_reporting_ip TEXT,
-                flp_title TEXT,
-                flp_country TEXT,
-                flp_first_name TEXT,
-                flp_last_name TEXT,
-                flp_email VARCHAR(32),
-                flp_password TEXT,
-                flp_organisation TEXT,
-                flp_years_of_experience TEXT,
-                flp_city TEXT,
-                flp_skills TEXT,
-                flp_description TEXT,
-                flp_status TEXT,
-                alert_id TEXT,
-                flp_ClosedAssociatedAlert TEXT,
-                flp_associatedAlert TEXT,
-                flp_notAssociatedAlert TEXT,
-        */
-
         for ($counter = 0; $counter<count($arenaData); $counter++) {
             $FLP[$counter] = $arenaData[$counter] -> flp_id;
             $Language[$counter] = $arenaData[$counter] -> flp_locale;
@@ -188,9 +147,6 @@ class LoadData {
         if ($Data === 'closed_associated_alert') {
             return $ClosedAssociatedAlert;
         }
-//        if ($Data === 'expert_type') {
-//            return $ALERT;
-//        }
         if ($Data === 'All') {
             return $arenaData;
         }
@@ -247,4 +203,5 @@ class LoadData {
             return $AlertID;
         }
     }
+    
 }

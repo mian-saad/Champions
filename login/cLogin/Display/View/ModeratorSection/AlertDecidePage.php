@@ -6,42 +6,47 @@ use Contain\Display\Controller\LoadData;
 
 class AlertDecidePage {
 
+    function __construct(){
+        $this->language = $_SESSION['strings'];
+    }
+
     public function case_decision($Country) {
+
 
         $LoadData = new LoadData();
         $Data = $LoadData->loadAlertData();
         $length = count($Data);
 
-        $html = " <h2>Accept/Reject Alert Case</h2> ";
+        $html = " <h2>".$this->language['accept_reject_alert']."</h2> ";
         $html .= " <table> ";
         $html .= " <tr> ";
 
         $html .= " <td> ";
-        $html .= " <b>Subject</b> ";
+        $html .= " <b>".$this->language['subject']."</b> ";
         $html .= " </td> ";
 
         $html .= " <td> ";
-        $html .= " <b>Event Time</b> ";
+        $html .= " <b>".$this->language['event_time']."</b> ";
         $html .= " </td> ";
 
         $html .= " <td> ";
-        $html .= " <b>Category</b> ";
+        $html .= " <b>".$this->language['category']."</b> ";
         $html .= " </td> ";
 
         $html .= " <td> ";
-        $html .= " <b>Country</b> ";
+        $html .= " <b>".$this->language['country']."</b> ";
         $html .= " </td> ";
 
         $html .= " <td> ";
-        $html .= " <b>FLP Status</b> ";
+        $html .= " <b>".$this->language['flp_status']."</b> ";
         $html .= " </td> ";
 
         $html .= " <td> ";
-        $html .= " <b>Arena Status</b> ";
+        $html .= " <b>".$this->language['arena_status']."</b> ";
         $html .= " </td> ";
 
         $html .= " <td> ";
-        $html .= " <b>Alert Status</b> ";
+        $html .= " <b>".$this->language['alert_status']."</b> ";
         $html .= " </td> ";
 
         $html .= " </tr> ";
@@ -65,7 +70,7 @@ class AlertDecidePage {
 
                 if ($Data[$counter] -> alert_status_flp === null) {
                     $html .= " <td> ";
-                    $html .= " <p>Open</p> ";
+                    $html .= " <p>".$this->language['open']."</p> ";
                     $html .= " </td> ";
                 }
                 else {
@@ -75,7 +80,7 @@ class AlertDecidePage {
                 }
                 if ($Data[$counter] -> alert_status_mutual === null) {
                     $html .= " <td> ";
-                    $html .= " <p>Open</p> ";
+                    $html .= " <p>".$this->language['open']."</p> ";
                     $html .= " </td> ";
                 }
                 else {
@@ -90,14 +95,14 @@ class AlertDecidePage {
             }
         }
         $html .= " </table> ";
-        $html .= " <button id='back' class='button'>Back</button> ";
+        $html .= " <button id='back' class='button'>".$this->language['back']."</button> ";
         echo $html;
     }
 
     public function decide($counter, $id, $status) {
         if (empty($status)) {
-            $html = "<button id='Accepted-". $id ."' class='button decide decide_case decide-".$counter."'>Accept</button>";
-            $html .= "<button id='Rejected-". $id ."' class='button decide decide_case decide-".$counter."'>Reject</button>";
+            $html = "<button id='Accepted-". $id ."' class='button decide decide_case decide-".$counter."'>".$this->language['accept']."</button>";
+            $html .= "<button id='Rejected-". $id ."' class='button decide decide_case decide-".$counter."'>".$this->language['reject']."</button>";
         }
         else {
             $html = $this->transition($status, $id);
@@ -130,13 +135,13 @@ class AlertDecidePage {
     public function transition($res, $id) {
         $html = "";
         if ($res === 'Rejected') {
-            $html .= "<button id='Closed-". $id ."' class='button decide close_case' disabled>Rejected</button>";
+            $html .= "<button id='Closed-". $id ."' class='button decide close_case' disabled>".$this->language['rejected']."</button>";
         }
         else if ($res === 'Closed') {
-            $html .= "<button id='Closed-". $id ."' class='button decide close_case' disabled>Closed</button>";
+            $html .= "<button id='Closed-". $id ."' class='button decide close_case' disabled>".$this->language['closed']."</button>";
         }
         else {
-            $html .= "<button id='Closed-". $id ."' class='button decide close_case'>Close </button>";
+            $html .= "<button id='Closed-". $id ."' class='button decide close_case'>".$this->language['close']."</button>";
         }
         return $html;
     }
@@ -189,7 +194,7 @@ class AlertDecidePage {
         $id = $flp_id[0]->flp_id;
         $Email = $wpdb->get_results( "SELECT flp_email FROM {$wpdb->prefix}arena WHERE flp_id = '$id'", OBJECT );
         $Email = $Email[0]->flp_email;
-        wp_mail( "$Email", "Arena Case Module", "Your Case has been ".$State.".", array('Content-Type: text/html; charset=UTF-8'));
+        wp_mail( "$Email", $this->language['arena_case_module'], $this->language['your_case']." ".$State.".", array('Content-Type: text/html; charset=UTF-8'));
     }
 
 }

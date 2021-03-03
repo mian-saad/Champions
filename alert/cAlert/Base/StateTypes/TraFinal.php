@@ -42,7 +42,12 @@ class TraFinal extends TraState {
             $html .= "<p class='summary_tags'>" . $short_text . " : " . $value . "</p>";
         }
         $html .= $this->generate_buttons();
-        $html .= $this->GetRecommendations($categories);
+//        $html .= $this->GetRecommendations($categories);
+        $html .= $this->AIRecommendations();
+
+        if ($_SESSION['state_code'] == '1.4') {
+            $this->AIExpert();
+        }
         return $html;
     }
 
@@ -127,5 +132,41 @@ class TraFinal extends TraState {
         }
     }
 
+    public function AIRecommendations() {
+
+        $unseen_text = 'damaged';
+
+        $html = "<hr> <h3>".$this->string_file['recommendation']."</h3>";
+
+        $plugin_path = plugin_dir_path( dirname(__FILE__, 2));
+        exec("/usr/local/bin/python3 ".$plugin_path."/Base/Recommendation.py '$unseen_text'", $test_result);
+//        $test_result = implode(" ",$test_result);
+        foreach ($test_result as $item) {
+            $html .= "<p>".$item."</p>";
+        }
+
+
+        return $html;
+//        $command = escapeshellcmd('/usr/local/bin/python3 '.$plugin_path.'/Base/test.py');
+//        $output = shell_exec($command);
+//        echo $output;
+    }
+
+    public function AIExpert() {
+
+        $unseen_text = 'this is unseen';
+
+        $plugin_path = plugin_dir_path( dirname(__FILE__, 2));
+        exec("/usr/local/bin/python3 ".$plugin_path."/Base/Recommendation.py '$unseen_text'", $test_result);
+//        $test_result = implode(" ",$test_result);
+        foreach ($test_result as $item) {
+            $xv= $item;
+        }
+
+
+//        $command = escapeshellcmd('/usr/local/bin/python3 '.$plugin_path.'/Base/test.py');
+//        $output = shell_exec($command);
+//        echo $output;
+    }
 
 }

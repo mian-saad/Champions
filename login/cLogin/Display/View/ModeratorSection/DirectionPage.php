@@ -5,8 +5,11 @@ namespace Contain\Display\View\ModeratorSection;
 class DirectionPage {
 
     public function direction_buttons() {
-        $html = " <button class='button' id='expert'>Accept/Reject FLP</button> ";
-        $html .= " <button class='button' id='alert_case'>Accept/Reject Alert Case</button> ";
+
+        $language = $_SESSION['strings'];
+
+        $html = " <button class='button' id='expert'>".$language['accept_reject_flp']."</button> ";
+        $html .= " <button class='button' id='alert_case'>".$language['accept_reject_alert']."</button> ";
 
         echo $html;
     }

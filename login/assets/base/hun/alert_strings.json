@@ -45,5 +45,24 @@
     "new_password": "New Password",
     "default_password": "Please change the password after logging in and editing your profile. Your New Password: ",
     "champions_notification": "Champions - Arena Notification Module",
-    "invited": "You have been Invited to the Arena. Please register at https://www.firstlinepractitioners.com/arena/ before you can login."
+    "invited": "You have been Invited to the Arena. Please register at https://www.firstlinepractitioners.com/arena/ before you can login.",
+
+    "accept_reject_flp": "Gyakorlati szakember felvétele/elutasítása",
+    "accept_reject_alert": "ALERT jelzés elfogadása/elutasítása",
+    "title": "Titulus",
+    "first_name": "Családnév",
+    "last_name": "Keresztnév",
+    "country": "Ország",
+    "skills": "Képesítés",
+    "expert_status": "Szakértői státus",
+    "accept": "Felvétel",
+    "accepted": "Elfogadott",
+    "event_time": "Az esemény ideje",
+    "category": "Kategória",
+    "flp_status": "Gyakorlati szakember státusza",
+    "arena_status": "ARENA állapot",
+    "alert_status": "ALERT állapot",
+    "open": "Nyitott",
+    "moderator_panel": "moderator panel",
+    "login": "Login"
 }

@@ -18,7 +18,7 @@ class ControlCenter {
 
             case 'BackdoorLogin':
                 $loggedState = new View\LoginForm();
-                $loggedState->BackdoorLogin();
+                $loggedState->BackdoorLogin($_SESSION['strings']);
                 break;
 
             case 'Backdoor':

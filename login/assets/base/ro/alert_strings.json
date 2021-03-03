@@ -44,5 +44,24 @@
     "new_password": "Parolă Nouă",
     "default_password": "Vă rugăm să schimbați parola după ce v-ați conectat și ați modificat profilul. Noua ta parola:",
     "champions_notification": "Champions - Modulul de notificare Arena",
-    "invited": "Ai fost invitat pe arena. Vă rugăm să vă înregistrați la https://www.firstlinepractitioners.com/arena/ înainte de a vă putea autentifica."
+    "invited": "Ai fost invitat pe arena. Vă rugăm să vă înregistrați la https://www.firstlinepractitioners.com/arena/ înainte de a vă putea autentifica.",
+
+    "accept_reject_flp": "Acceptă/Respinge Practician",
+    "accept_reject_alert": "Acceptă/Respinge Cazul Alert",
+    "title": "Titlu",
+    "first_name": "Prenume",
+    "last_name": "Nume",
+    "country": "Țara",
+    "skills": "Aptitudini",
+    "expert_status": "Status expert",
+    "accept": "Acceptă",
+    "accepted": "Acceptat",
+    "event_time": "Ora evenimentului",
+    "category": "Categorie",
+    "flp_status": "Status practician",
+    "arena_status": "Status Arena",
+    "alert_status": "Status Alert",
+    "open": "Deschis",
+    "moderator_panel": "Panel moderator",
+    "login": "Login"
 }

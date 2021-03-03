@@ -45,5 +45,24 @@
     "new_password": "New Password",
     "default_password": "Please change the password after logging in and editing your profile. Your New Password: ",
     "champions_notification": "Champions - Arena Notification Module",
-    "invited": "You have been Invited to the Arena. Please register at https://www.firstlinepractitioners.com/arena/ before you can login."
+    "invited": "You have been Invited to the Arena. Please register at https://www.firstlinepractitioners.com/arena/ before you can login.",
+
+    "accept_reject_flp": "Zaakceptuj/odrzuć osobę zgłaszającą",
+    "accept_reject_alert": "Zaakceptuj/odrzuć zgłoszenie",
+    "title": "Tytuł",
+    "first_name": "Imię",
+    "last_name": "Nazwisko",
+    "country": "Kraj",
+    "skills": "Umiejętności",
+    "expert_status": "Status eksperta",
+    "accept": "Zaakceptuj",
+    "accepted": "Zaakceptowane",
+    "event_time": "Data wydarzenia",
+    "category": "Kategoria",
+    "flp_status": "Status osoby zgłaszającej",
+    "arena_status": "Status ARENY",
+    "alert_status": "Status zgłoszenia",
+    "open": "Otwarty",
+    "moderator_panel": "Panel moderatora",
+    "login": "Login"
 }

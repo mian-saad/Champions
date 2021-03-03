@@ -45,6 +45,7 @@ class ReportController extends BaseController {
             $state = $this->initialize_state($this->current_state_code);
         }
 
+        $_SESSION['state_code'] = $this->oldstate;
         // IMPORTANT: GENERATES THE HTML
         $html = $state->generate_html();
         return $html;

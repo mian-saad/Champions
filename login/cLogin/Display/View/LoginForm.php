@@ -13,9 +13,9 @@ class LoginForm {
         $loggedState->login();
     }
 
-    public function BackdoorLogin() {
+    public function BackdoorLogin($language) {
 
         $loggedState = new Model\LoggedComponents();
-        $loggedState->backdoor_login();
+        $loggedState->backdoor_login($language);
     }
 }

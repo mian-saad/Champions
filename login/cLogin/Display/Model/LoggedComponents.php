@@ -26,21 +26,21 @@ class LoggedComponents {
         echo $html;
     }
 
-    public function backdoor_login() {
+    public function backdoor_login($language) {
         $html = "
-                <h2>Backdoor Login</h2><br>
+                <h2>".$language['moderator_panel']."</h2><br>
                 <form id=\"arena-login\" method=\"POST\" action=\"#\" >
                     <div class='row'>
                         <div class='col-3'></div>
                         <div class='col-6'>
-                            <label>Email</label>
+                            <label>".$language['email']."</label>
                             <input id=\"naam\" type=\"email\" name=\"email\"><br>
                                   
-                            <label>Password</label>
+                            <label>".$language['password']."</label>
                             <input id=\"paas\" type=\"password\" name=\"password\" minlength=\"4\">
                               
-                            <button class='button login-button' id=\"BackdoorLogin\" type=\"submit\" onclick=\"return false;\">Login</button>
-                            <button class='button login-button' id=\"backto\" onclick=\"return false;\">Back</button>
+                            <button class='button login-button' id=\"BackdoorLogin\" type=\"submit\" onclick=\"return false;\">".$language['login_moderator']."</button>
+                            <button class='button login-button' id=\"backto\" onclick=\"return false;\">".$language['back']."</button>
                             <input type=\"hidden\" name=\"action\" value=\"getData\">
                         </div>
                         <div class='col-3'></div>

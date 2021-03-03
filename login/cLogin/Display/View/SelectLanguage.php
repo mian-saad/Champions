@@ -13,7 +13,7 @@ class SelectLanguage {
                             <select name='lang' id='lang_select'>
                                 <option value='en'>🇬🇧 English</option>
                                 <option value='ge'>🇩🇪 German</option>
-                                <option value='ro'>🇭🇺 Hungarian</option>
+                                <option value='hun'>🇭🇺 Hungarian</option>
                                 <option value='pol'>🇵🇱 Polish</option>
                                 <option value='ro'>🇷🇴 Romanian</option>
                             </select>

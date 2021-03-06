@@ -1,10 +1,9 @@
 <?php
 
-
 namespace Comprise\Base\StateTypes;
 
 
-class TraDescriptionQuestion extends TraState
+class VerificationCode extends TraState
 {
     public $continue_string;
 
@@ -22,20 +21,23 @@ class TraDescriptionQuestion extends TraState
     public function generate_html()
     {
         $html = $this->generate_hidden_fields($this->report_id);
-        $html .= $this->generate_question_title($this->state['state_text']);
+        $html .= $this->generate_question_title($this->state['short_text']);
         $html .= "<form id='arena_question_form'>";
-//        $html .= $this->generate_question_text($this->state['state_text']);
-        $html .= "<textarea id='register_text_big' name='" . $this->state['id'] . "' rows='10'>" . $this->response[$this->state['id']] . "</textarea>";
+        $html .= $this->generate_question_text($this->state['state_text']);
+        $html .= '<input id="' . $this->state['id'] . '" type="number" name="' . $this->state['id'] . '" value="' . $this->response[$this->state['id']] . '" />';
         $html .= "</form>";
         $html .= $this->generate_buttons();
         $html .= $this->generate_warning();
         return $html;
     }
 
-    // if at least one category is chosen, then we pass the validation
+    // if every answer id is in response, and is not empty, return true
     public function validate($response)
-    { // how do we wanna store the items to the db
-        if (array_key_exists($this->state['id'], $response) and $response[$this->state['id']] != "") {
+    {
+        $x= $_SESSION["verifyCode"];
+        $y = $response;
+        // how do we wanna store the items to the db
+        if ((array_key_exists($this->state['id'], $response)) && ($_SESSION["verifyCode"] == $response['verification'])) {
             $this->response = $response;
             return true;
         }

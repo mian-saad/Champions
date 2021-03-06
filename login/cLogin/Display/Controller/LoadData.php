@@ -93,6 +93,13 @@ class LoadData {
             $LastName[$counter] = $arenaData[$counter] -> flp_last_name;
             $Email[$counter] = $arenaData[$counter] -> flp_email;
             $Password[$counter] = $arenaData[$counter] -> flp_password;
+            $Organisation[$counter] = $arenaData[$counter] -> flp_organisation;
+            $YearsExperience[$counter] = $arenaData[$counter] -> flp_years_of_experience;
+            $City[$counter] = $arenaData[$counter] -> flp_city;
+            $Visibility[$counter] = $arenaData[$counter] -> flp_visibility_level;
+            $ExperienceRadicalisation[$counter] = $arenaData[$counter] -> flp_experience_with_radicalisation;
+            $WorkingWith[$counter] = $arenaData[$counter] -> flp_working_with;
+            $AreaExpertise[$counter] = $arenaData[$counter] -> flp_area_of_expertise;
             $Skill[$counter] = $arenaData[$counter] -> flp_skills;
             $Description[$counter] = $arenaData[$counter] -> flp_description;
             $ExpertStatus[$counter] = $arenaData[$counter] -> flp_status;

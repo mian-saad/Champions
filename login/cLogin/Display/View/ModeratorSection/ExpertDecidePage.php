@@ -64,6 +64,24 @@ class ExpertDecidePage {
                             $html .= " <p>" . $Data[$counter] -> flp_skills . "</p> ";
                         $html .= " </td> ";
                         $html .= " <td class='table_entry'> ";
+                        if ($Data[$counter] -> flp_title != 'Moderator') {
+                            $html .= $this->infoModal(
+                                $Data[$counter] -> flp_title,
+                                $Data[$counter] -> flp_first_name,
+                                $Data[$counter] -> flp_last_name,
+                                $Data[$counter] -> flp_email,
+                                $Data[$counter] -> flp_country,
+                                $Data[$counter] -> flp_skills,
+                                $Data[$counter] -> flp_organisation,
+                                $Data[$counter] -> flp_years_of_experience,
+                                $Data[$counter] -> flp_city,
+                                $Data[$counter] -> flp_visibility_level,
+                                $Data[$counter] -> flp_experience_with_radicalisation,
+                                $Data[$counter] -> flp_working_with,
+                                $Data[$counter] -> flp_area_of_expertise,
+                                $counter
+                            );
+                        }
                             $html .= " <p>" . $this->decide($Data[$counter] -> flp_title, $counter, $Data[$counter] -> flp_id, $Data[$counter] -> flp_status) . "</p> ";
                         $html .= " </td> ";
                     $html .= " </tr> ";
@@ -73,6 +91,32 @@ class ExpertDecidePage {
         $html .= " </table> ";
         $html .= " <button id='back' class='button'>".$this->language['back']."</button> ";
         echo $html;
+    }
+
+    public function infoModal($title, $fname, $lname, $email, $country,
+                              $skills, $organisation, $years_experience,
+                              $city, $visibility, $experience_radicalisation,
+                              $working_with, $area_expertise, $counter  ) {
+
+        if ($visibility == '') {$visibility = 'Not Set';}
+        $html = "<div id='arena".$counter."' class='modal'>
+                            <p><b>Title: </b>".$title."</p>
+                            <p><b>First Name: </b>". $fname ."</p>
+                            <p><b>Last Name: </b>". $lname ."</p>
+                            <p><b>Email: </b>". $email ."</p>
+                            <p><b>Country: </b>". $country ."</p>
+                            <p><b>Organisation: </b>". $organisation ."</p>
+                            <p><b>Years of Experience: </b>". $years_experience ."</p>
+                            <p><b>City: </b>". $city ."</p>
+                            <p><b>Visibility: </b>". $visibility ."</p>
+                            <p><b>Experience With Radicalisation: </b>". $experience_radicalisation ."</p>
+                            <p><b>Working With: </b>". $working_with ."</p>
+                            <p><b>Area of Expertise: </b>". $area_expertise ."</p>
+                            <!-- <a href=\"#\" rel=\"modal:close\">Close</a> -->
+                          </div>
+                          <!-- Link to open the modal -->
+                          <a class='button decide' href='#arena".$counter."' rel='modal:open'>Info</a>";
+        return $html;
     }
 
     public function decide($type, $counter, $id, $status) {

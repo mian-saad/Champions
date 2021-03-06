@@ -18,11 +18,9 @@ class Shortcode extends BaseController
         //turn on output buffering to capture script output
         ob_start();
 
-        //Include a css or js here via echo just for the part which is being rendered after adding shortcode
-        //echo "<link href=\"$this->plugin_url/assets/style.css\" rel=\"stylesheet\"></link>";
-        //echo "<script src=\"$this->plugin_url/assets/script.js\"></script>";
-
         $this->enqueue();
+        echo "<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css\" />";
+        echo "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js\"></script>";
 
         //include the specified file
         require_once("$this->plugin_path/frontend/arena.php");
@@ -36,20 +34,20 @@ class Shortcode extends BaseController
     }
     function enqueue(){
 
-        //Enqueuing JQuery
-        wp_enqueue_script('jquery');
-        wp_enqueue_script('jquery');
-//        wp_enqueue_script('media', $this->plugin_url . 'assets/login.png');
-
         // Enqueue JS and CSS
-        wp_enqueue_style('login_css_bootstrap', $this->plugin_url . 'assets/login-bootstrap.css');
         wp_enqueue_style('login_css_bootstrap-grid', $this->plugin_url . 'assets/login-bootstrap-grid.css');
         wp_enqueue_style('login_css_bootstrap-reboot', $this->plugin_url . 'assets/login-bootstrap-reboot.css');
         wp_enqueue_style('login_css_style', $this->plugin_url . 'assets/login-style.css');
 
         //Enqueuing Scripts
         wp_enqueue_script('login-script', $this->plugin_url . 'assets/login-script.js');
-        wp_localize_script( 'login-script', 'login_ajax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' )));
+        wp_localize_script( 'login-script', 'login_ajax',
+            array( 'ajaxurl' => admin_url( 'admin-ajax.php' )));
+
+        wp_enqueue_script('register_js_script', $this->plugin_url . 'assets/register-script.js');
+        wp_localize_script('register_js_script', 'register_object',
+            array('ajaxurl' => admin_url('admin-ajax.php')));
 
     }
+
 }

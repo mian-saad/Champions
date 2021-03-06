@@ -89,6 +89,19 @@ class AlertDecidePage {
                     $html .= " </td> ";
                 }
                 $html .= " <td class='table_entry'> ";
+                $html .= $this->infoModal(
+                    $Data[$counter] -> alert_report_time,
+                    $Data[$counter] -> alert_country,
+                    $Data[$counter] -> alert_city,
+                    $Data[$counter] -> alert_time,
+                    $Data[$counter] -> alert_category,
+                    $Data[$counter] -> alert_location,
+                    $Data[$counter] -> alert_target,
+                    $Data[$counter] -> alert_subject,
+                    $Data[$counter] -> alert_description,
+                    $Data[$counter] -> alert_deadline,
+                    $counter
+                );;
                 $html .= " <p id='".$Data[$counter] -> alert_id."'>" . $this->decide($counter, $Data[$counter] -> alert_id, $Data[$counter] -> alert_case_status) . "</p> ";
                 $html .= " </td> ";
                 $html .= " </tr> ";
@@ -97,6 +110,29 @@ class AlertDecidePage {
         $html .= " </table> ";
         $html .= " <button id='back' class='button'>".$this->language['back']."</button> ";
         echo $html;
+
+    }
+
+    public function infoModal($alert_report_time, $alert_country, $alert_city, $alert_time,
+                                $alert_category, $alert_location, $alert_target, $alert_subject,
+                                $alert_description, $alert_deadline, $counter  ) {
+
+        $html = "<div id='alert".$counter."' class='modal'>
+                            <p><b>Report Time: </b>".$alert_report_time."</p>
+                            <p><b>Country: </b>". $alert_country ."</p>
+                            <p><b>City: </b>". $alert_city ."</p>
+                            <p><b>Time: </b>". $alert_time ."</p>
+                            <p><b>Category: </b>". $alert_category ."</p>
+                            <p><b>Location: </b>". $alert_location ."</p>
+                            <p><b>Target: </b>". $alert_target ."</p>
+                            <p><b>Subject: </b>". $alert_subject ."</p>
+                            <p><b>Description: </b>". $alert_description ."</p>
+                            <p><b>Deadline: </b>". $alert_deadline ."</p>
+                            <!-- <a href=\"#\" rel=\"modal:close\">Close</a> -->
+                          </div>
+                          <!-- Link to open the modal -->
+                          <a class='button decide' href='#alert".$counter."' rel='modal:open'>Info</a>";
+        return $html;
     }
 
     public function decide($counter, $id, $status) {
@@ -196,5 +232,6 @@ class AlertDecidePage {
         $Email = $Email[0]->flp_email;
         wp_mail( "$Email", $this->language['arena_case_module'], $this->language['your_case']." ".$State.".", array('Content-Type: text/html; charset=UTF-8'));
     }
+
 
 }

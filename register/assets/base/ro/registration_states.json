@@ -1,13 +1,13 @@
 {
   "M0.0":{
-    "state_text":"Bine ați venit la „Modulul de ALERTĂ”. Acest instrument vă va ghida prin procesul de ALERTĂ. <br><br>Pentru mai multe informații verifică <a target='_blank' href='https://ec.europa.eu/info/law/law-topic/data-protection_en'>„Termenii și Condițiile”</a>",
+    "state_text":"Bine ați venit la „Modulul de ARENA”. Acest instrument vă va ghida prin procesul de ARENA. <br><br>Pentru mai multe informații verifică <a target='_blank' href='https://ec.europa.eu/info/law/law-topic/data-protection_en'>„Termenii și Condițiile”</a>",
     "short_text":"GDPR agreement",
     "id":"gdpr_agreement",
     "state_type":"gdpr",
     "state_answers":[
       {
         "id":"gdpr_agree",
-        "text":"Înțeleg că datele personale de la alte persoane nu pot fi încărcate și partajate prin acest modul de alertă sau prin oricare dintre secțiunile și instrumentele acestui site web."
+        "text":"Înțeleg că datele personale de la alte persoane nu pot fi încărcate și partajate prin acest modul de arena sau prin oricare dintre secțiunile și instrumentele acestui site web."
       }
     ]
   },

@@ -34,5 +34,9 @@
     "your_alert_submitted": "Your ALERT has been submitted. You will be able to see the ALERT in ARENA panel once it has been accepted by the Moderator.",
     "registration_confirmed": "Registration Confirmed",
     "your_registration_confirmed": "Your registration has been confirmed. You will be able to login once the Moderator accepts your request.",
-    "thanks": "Thank You for using the Platform. Redirecting back to ALERT"
+    "thanks": "Thank You for using the Platform. Redirecting back to ALERT",
+    "intro": "This tool provides support to First-line Practitioners who have witnessed a case of radicalization and/or polarization and would like to address it. ",
+    "bullet1": "Register a case of radicalization or polarization (for example extremist propaganda, hate speech or violence). ",
+    "bullet2": "Describe in detail what happened, where and when. Who did what to whom? ",
+    "bullet3": "Receive recommendations based on your case description. If there is no similar case in our data base,<br> your case will be sent to the ARENA, where experts will work on your case and issue recommendations."
 }

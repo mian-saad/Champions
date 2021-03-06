@@ -1,6 +1,6 @@
 {  
    "M0.0":{
-      "state_text":"Willkommen bei ALERT. Dieses Tool wird Sie durch den Prozess führen. <br><br>Weitere Informationen finden Sie in den <a target='_blank' href='https://ec.europa.eu/info/law/law-topic/data-protection_en'>allgemeinen Geschäftsbedingungen</a>",
+      "state_text":"Willkommen bei ARENA. Dieses Tool wird Sie durch den Prozess führen. <br><br>Weitere Informationen finden Sie in den <a target='_blank' href='https://ec.europa.eu/info/law/law-topic/data-protection_en'>allgemeinen Geschäftsbedingungen</a>",
       "short_text":"GDPR agreement",
       "id":"gdpr_agreement",
       "state_type":"gdpr",

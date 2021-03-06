@@ -1,13 +1,13 @@
 {
    "M0.0":{
-      "state_text":"Witaj na platformie ALERT. Przeprowadzimy Cię przez proces wysyłania zgłoszenia. <br><br>Więcej informacji w <a target='_blank' href='https://ec.europa.eu/info/law/law-topic/data-protection_en'>Regulaminie</a>",
+      "state_text":"Witaj na platformie ARENA. Przeprowadzimy Cię przez proces wysyłania zgłoszenia. <br><br>Więcej informacji w <a target='_blank' href='https://ec.europa.eu/info/law/law-topic/data-protection_en'>Regulaminie</a>",
       "short_text":"GDPR agreement",
       "id":"gdpr_agreement",
       "state_type":"gdpr",
       "state_answers":[
          {
             "id":"gdpr_agree",
-            "text":"Rozumiem, że dane osobowe pozyskane od innych osób nie mogą być udostępniane za pośrednictwem platformy ALERT oraz żadnych innych narzędzi dostępnych na stronie."
+            "text":"Rozumiem, że dane osobowe pozyskane od innych osób nie mogą być udostępniane za pośrednictwem platformy ARENA oraz żadnych innych narzędzi dostępnych na stronie."
          }
       ]
    },

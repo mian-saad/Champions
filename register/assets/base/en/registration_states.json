@@ -24,69 +24,96 @@
             "short_text":"Profession",
             "answers":[
                {
-                  "text":"Public employee",
-                  "short_text":"Public employee",
-                  "id":"Public employee"
+                  "id":"School teacher",
+                  "text":"School teacher"
                },
                {
-                  "text":"Arts and culture institution employee",
-                  "short_text":"Arts and culture institution employee",
-                  "id":"Arts and culture institution employee"
+                  "id":"University lecturer",
+                  "text":"University lecturer"
                },
                {
-                  "text":"Sports facility employee",
-                  "short_text":"Sports facility employee",
-                  "id":"Sports facility employee"
+                  "id":"Researcher",
+                  "text":"Researcher"
                },
                {
-                  "text":"NGO Worker",
-                  "short_text":"NGO Worker",
-                  "id":"NGO Worker"
+                  "id":"Municipal Employee",
+                  "text":"Municipal Employee"
                },
                {
-                  "text":"Community Police Officer",
-                  "short_text":"Community Police Officer",
-                  "id":"Community Police Officer"
+                  "id":"NGO worker",
+                  "text":"NGO worker"
                },
                {
-                  "text":"Primary Teacher",
-                  "short_text":"Primary Teacher",
-                  "id":"Primary Teacher"
+                  "id":"Police officer",
+                  "text":"Police officer"
                },
                {
-                  "text":"Probation Officer",
-                  "short_text":"Probation Officer",
-                  "id":"Probation Officer"
+                  "id":"Municipal guard officer",
+                  "text":"Municipal guard officer"
                },
                {
-                  "text":"Psychologist/Psychotherapist ",
-                  "short_text":"Psychologist/Psychotherapist ",
-                  "id":"Psychologist/Psychotherapist "
+                  "id":"Probation officer",
+                  "text":"Probation officer"
                },
                {
-                  "text":"Secondary Teacher",
-                  "short_text":"Secondary Teacher",
-                  "id":"Secondary Teacher"
+                  "id":"Psychoterapist/psychologist",
+                  "text":"Psychoterapist/psychologist"
                },
                {
-                  "text":"Social Worker",
-                  "short_text":"Social Worker",
-                  "id":"Social Worker"
+                  "id":"Social worker",
+                  "text":"Social worker"
                },
                {
-                  "text":"University Lecturer",
-                  "short_text":"University Lecturer",
-                  "id":"University Lecturer"
+                  "id":"Youth worker",
+                  "text":"Youth worker"
                },
                {
-                  "text":"Youth Worker",
-                  "short_text":"Youth Worker",
-                  "id":"Youth Worker"
+                  "id":"Security expert",
+                  "text":"Security expert"
                },
                {
-                  "text":"Other",
-                  "short_text":"Other",
-                  "id":"Other"
+                  "id":"Radicalisation expert",
+                  "text":"Radicalisation expert"
+               },
+               {
+                  "id":"Hate crimes expert",
+                  "text":"Hate crimes expert"
+               },
+               {
+                  "id":"Religious minority representative",
+                  "text":"Religious minority representative"
+               },
+               {
+                  "id":"Cultural institution employee",
+                  "text":"Cultural institution employee"
+               },
+               {
+                  "id":"Sports institution employee/expert",
+                  "text":"Sports institution employee/expert"
+               },
+               {
+                  "id":"Prison employee/expert",
+                  "text":"Prison employee/expert"
+               },
+               {
+                  "id":"Exit expert",
+                  "text":"Exit expert"
+               },
+               {
+                  "id":"Youth gangs expert",
+                  "text":"Youth gangs expert"
+               },
+               {
+                  "id":"Social media expert",
+                  "text":"Social media expert"
+               },
+               {
+                  "id":"National Advisory Board Member",
+                  "text":"National Advisory Board Member"
+               },
+               {
+                  "id":"Other",
+                  "text":"Other"
                }
             ]
          },
@@ -168,109 +195,220 @@
       ]
    },
    "M1.2":{
-      "state_text":"Please Select your Skills",
-      "state_type":"checkbox",
-      "show_header": true,
-      "id":"flp_skills",
-      "short_text":"Skills Category",
+      "state_text":"Area of Work",
+      "state_type":"composed",
+      "show_header": "true",
+      "id": "flp_register_infos",
       "state_answers":[
          {
-            "id":"School teacher",
-            "text":"School teacher"
+            "id":"flp_experience_with_radicalisation",
+            "type":"checkbox",
+            "text":"Experience with Radicalisation",
+            "short_text":"Experience with Radicalisation",
+            "answers":[
+               {
+                  "id":"Addressing Extremist Propaganda and Recruitment Online",
+                  "text":"Addressing Extremist Propaganda and Recruitment Online"
+               },
+               {
+                  "id":"Inter-Cultural / Inter-Community Dialogue & Trust Building & Work",
+                  "text":"Inter-Cultural / Inter-Community Dialogue & Trust Building & Work"
+               },
+               {
+                  "id":"Extremist Hate Speech, Fake News and Incitement to Violence Online",
+                  "text":"Extremist Hate Speech, Fake News and Incitement to Violence Online"
+               },
+               {
+                  "id":"Violence Prevention (assaults, threats, insults)",
+                  "text":"Violence Prevention (assaults, threats, insults)"
+               },
+               {
+                  "id":"Public safety and prevention of violence (in public and private spaces)",
+                  "text":"Public safety and prevention of violence (in public and private spaces)"
+               },
+               {
+                  "id":"Child / Youth Safety & Wellbeing ",
+                  "text":"Child / Youth Safety & Wellbeing "
+               },
+               {
+                  "id":"Psychology / Mental Health & Wellbeing",
+                  "text":"Psychology / Mental Health & Wellbeing"
+               },
+               {
+                  "id":"Extremist propaganda and recruitment offline",
+                  "text":"Extremist propaganda and recruitment offline"
+               },
+               {
+                  "id":"Radicalisation and Extremist Violence (antisemitism, anti gypsy, islamophobia)",
+                  "text":"Radicalisation and Extremist Violence (antisemitism, anti gypsy, islamophobia)"
+               },
+               {
+                  "id":"Research (on Social Inclusion, Polarisation, Radicalisation, Extremism, Deradicalisation, fake news/hate)",
+                  "text":"Research (on Social Inclusion, Polarisation, Radicalisation, Extremism, Deradicalisation, fake news/hate)"
+               },
+               {
+                  "id":"Law Enforcement & Legal Response to Hate Crimes",
+                  "text":"Law Enforcement & Legal Response to Hate Crimes"
+               },
+               {
+                  "id":"Multi-agency Work to Prevent and Counter Radicalisation and Extremism",
+                  "text":"Multi-agency Work to Prevent and Counter Radicalisation and Extremism"
+               },
+               {
+                  "id":"Crisis Management, Prevention and Response to Violence",
+                  "text":"Crisis Management, Prevention and Response to Violence"
+               },
+               {
+                  "id":"Inter-faith Work and Peacebuilding",
+                  "text":"Inter-faith Work and Peacebuilding"
+               },
+               {
+                  "id":"Other",
+                  "text":"Other"
+               }
+            ]
          },
          {
-            "id":"University lecturer",
-            "text":"University lecturer"
+            "id":"flp_working_with",
+            "type":"checkbox",
+            "text":"Working With",
+            "short_text":"Working With",
+            "answers":[
+               {
+                  "id":"Young people in schools",
+                  "text":"Young people in schools"
+               },
+               {
+                  "id":"Young people outside school",
+                  "text":"Young people outside school"
+               },
+               {
+                  "id":"Vulnerable young people",
+                  "text":"Vulnerable young people"
+               },
+               {
+                  "id":"Prisoners",
+                  "text":"Prisoners"
+               },
+               {
+                  "id":"Religious communities ",
+                  "text":"Religious communities "
+               },
+               {
+                  "id":"Women and girls",
+                  "text":"Women and girls"
+               },
+               {
+                  "id":"LGBTQ+",
+                  "text":"LGBTQ+"
+               },
+               {
+                  "id":"Refugees, migrants and foreigners",
+                  "text":"Refugees, migrants and foreigners"
+               },
+               {
+                  "id":"Victims of extremist violence",
+                  "text":"Victims of extremist violence"
+               },
+               {
+                  "id":"Teachers & Schools",
+                  "text":"Teachers & Schools"
+               },
+               {
+                  "id":"Social Workers",
+                  "text":"Social Workers"
+               },
+               {
+                  "id":"Police and other Law Enforcement Agencies",
+                  "text":"Police and other Law Enforcement Agencies"
+               },
+               {
+                  "id":"Media Coverage & Reporting",
+                  "text":"Media Coverage & Reporting"
+               },
+               {
+                  "id":"Other",
+                  "text":"Other"
+               }
+
+            ]
          },
          {
-            "id":"Researcher",
-            "text":"Researcher"
+            "id":"flp_area_of_expertise",
+            "type":"checkbox",
+            "text":"Area of Expertise",
+            "short_text":"Area of Expertise",
+            "answers":[
+               {
+                  "id":"Education",
+                  "text":"Education"
+               },
+               {
+                  "id":"Social Media and the Internet",
+                  "text":"Social Media and the Internet"
+               },
+               {
+                  "id":"Youth Gangs/Youth Work",
+                  "text":"Youth Gangs/Youth Work"
+               },
+               {
+                  "id":"Human Rights and Diversity",
+                  "text":"Human Rights and Diversity"
+               },
+               {
+                  "id":"Sports",
+                  "text":"Sports"
+               },
+               {
+                  "id":"Arts and Culture",
+                  "text":"Arts and Culture"
+               },
+               {
+                  "id":"Psychology, Psychotherapy & Well-being",
+                  "text":"Psychology, Psychotherapy & Well-being"
+               },
+               {
+                  "id":"Property Damage",
+                  "text":"Property Damage"
+               },
+               {
+                  "id":"Law Enforcement",
+                  "text":"Law Enforcement"
+               },
+               {
+                  "id":"Community Work ",
+                  "text":"Community Work "
+               },
+               {
+                  "id":"Crisis Management Prevention",
+                  "text":"Crisis Management Prevention"
+               },
+               {
+                  "id":"Other",
+                  "text":"Other"
+               }
+
+            ]
          },
          {
-            "id":"Municipal Employee",
-            "text":"Municipal Employee"
-         },
-         {
-            "id":"NGO worker",
-            "text":"NGO worker"
-         },
-         {
-            "id":"Police officer",
-            "text":"Police officer"
-         },
-         {
-            "id":"Municipal guard officer",
-            "text":"Municipal guard officer"
-         },
-         {
-            "id":"Probation officer",
-            "text":"Probation officer"
-         },
-         {
-            "id":"Psychoterapist/psychologist",
-            "text":"Psychoterapist/psychologist"
-         },
-         {
-            "id":"Social worker",
-            "text":"Social worker"
-         },
-         {
-            "id":"Youth worker",
-            "text":"Youth worker"
-         },
-         {
-            "id":"Security expert",
-            "text":"Security expert"
-         },
-         {
-            "id":"Radicalisation expert",
-            "text":"Radicalisation expert"
-         },
-         {
-            "id":"Hate crimes expert",
-            "text":"Hate crimes expert"
-         },
-         {
-            "id":"Religious minority representative",
-            "text":"Religious minority representative"
-         },
-         {
-            "id":"Cultural institution employee",
-            "text":"Cultural institution employee"
-         },
-         {
-            "id":"Sports institution employee/expert",
-            "text":"Sports institution employee/expert"
-         },
-         {
-            "id":"Prison employee/expert",
-            "text":"Prison employee/expert"
-         },
-         {
-            "id":"Exit expert",
-            "text":"Exit expert"
-         },
-         {
-            "id":"Youth gangs expert",
-            "text":"Youth gangs expert"
-         },
-         {
-            "id":"Social media expert",
-            "text":"Social media expert"
-         },
-         {
-            "id":"National Expert Team Member",
-            "text":"National Expert Team Member"
-         },
-         {
-            "id":"Other",
-            "text":"Other"
+            "id":"flp_visibility_level",
+            "type":"checkbox",
+            "optional": "true",
+            "text":"Visibility Level",
+            "short_text":"Visibility Level",
+            "text_description":"If you wish to be involved only in activities related to your city, please check the box labelled as “City level\". Otherwise you might  be involved in nationwide activities. ",
+            "answers":[
+               {
+                  "id":"City Level",
+                  "text":"City Level"
+               }
+            ]
          }
       ]
    },
    "M1.3":{
-      "short_text":"Bio/Skills Description",
-      "state_text":"Please provide a description of your experience and expertise",
+      "short_text":"FLP Description",
+      "state_text":"Please provide a short description about your professional experience and engagement with issues of extremism, hate, polarisation (with which community did you work? for which organization did you work? when?)",
       "id":"flp_description",
       "state_type":"description"
    },

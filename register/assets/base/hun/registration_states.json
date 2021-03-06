@@ -1,13 +1,13 @@
 {
    "M0.0":{
-      "state_text":"Köszöntünk az ALERT modulban! Ez az eszköz segédletként szolgál az Alert folyamatában. <br><br>További információ az <a target='_blank' href='https://ec.europa.eu/info/law/law-topic/data-protection_en'>Általános szerződési feltételek menüpontban</a>",
+      "state_text":"Köszöntünk az ARENA modulban! Ez az eszköz segédletként szolgál az Arena folyamatában. <br><br>További információ az <a target='_blank' href='https://ec.europa.eu/info/law/law-topic/data-protection_en'>Általános szerződési feltételek menüpontban</a>",
       "short_text":"GDPR agreement",
       "id":"gdpr_agreement",
       "state_type":"gdpr",
       "state_answers":[
          {
             "id":"gdpr_agree",
-            "text":"Megértettem, hogy más személyek személyes adatainak feltöltése és megosztása az Alert Modulban, illetve a honlap minden szekciójában és eszközén tilos."
+            "text":"Megértettem, hogy más személyek személyes adatainak feltöltése és megosztása az Arena Modulban, illetve a honlap minden szekciójában és eszközén tilos."
          }
       ]
    },

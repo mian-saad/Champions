@@ -25,12 +25,13 @@
     "register_now": "Nie jesteś zarejestrowany(-na)? Zarejestruj się teraz",
     "register_btn": "Zarejestruj się",
     "alert_report": "RAPORT ZE ZGŁOSZENIA",
-    "other": "Inny",
-    "your_verification_code": "Your Verification Code: ",
+    "other": "Inne",
+    "your_verification_code": "Kod weryfikacyjny: ",
     "verification": "Verification Code: ",
     "alert_submitted": "ALERT Submitted",
-    "your_alert_submitted": "Your ALERT has been submitted. You will be able to see the ALERT in ARENA panel once it has been accepted by the Moderator.",
+    "your_alert_submitted": "Twoje zgłoszenie zostało wysłane. Będziesz mógł(mogła) je zobaczyć w panelu ARENA po zaakceptowaniu przez moderatora.",
     "registration_confirmed": "Registration Confirmed",
-    "your_registration_confirmed": "Your registration has been confirmed. You will be able to login once the Moderator accepts your request.",
-    "thanks": "Dziękujemy za skorzystanie z platformy. Powrót do ALERTU."
+    "your_registration_confirmed": "Potwierdzamy twoją rejestrację. Będziesz mógł(mogła) się zalogować po zaakceptowaniu przez moderatora.",
+    "thanks": "Dziękujemy za skorzystanie z platformy. Powrót do ALERTU.",
+    "intro": "Dzięki platformie ALERT możesz zgłosić zdarzenie związane z polaryzacją społeczną, radykalizacją lub ekstremizmem (np. propagandę i fake newsy, mowę nienawiści, przemoc fizyczną na tle pochodzenia, płci itp.). Jeśli byłeś(-aś) świadkiem tego typu incydentu lub obawiasz się dalszego rozwoju danej sytuacji, wyślij zgłoszenie na platformie ALERT. Za pośrednictwem platformy otrzymasz rekomendacje dotyczące rozwiązania zgłoszonego problemu. Jeśli w bazie danych nie ma jeszcze rekomendacji dotyczących danego zagadnienia, Twoje zgłoszenie zostanie przesłane do platformy ARENA, na której grupa ekspertów i ekspertek zajmie się ich wypracowaniem."
 }

@@ -17,9 +17,11 @@
     "login": "Login",
     "review_data": "Please review your data",
     "other": "Other",
-    "redirect": "User Registered. Redirecting back to Arena . . .",
+    "redirect": "Thank you for registering on ARENA, a space facilitating your response to the ALERT received. Please wait for the activation from the National Moderator.\nOn ARENA, you will be able to connect with the other experts selected for the case and work towards a response to the situation reported. We would like to remind you to be mindful of the general privacy rules when engaging in the discussions on ARENA and invite you to conduct the consultations, as much as possible, in person. After you have reached an agreement as a team, you will be able to provide your feedback for the ALERT submitted. On ARENA, you will also be able to liaise and connect with experts working in similar areas for future reference.\n Redirecting back to Arena . . .",
     "registration_confirmed": "Registration Confirmed",
     "your_registration_confirmed": "Your registration has been confirmed. You will be able to login once the Moderator accepts your request.",
     "verification_code": "Verification Code",
-    "your_verification_code": "Your Verification Code: "
+    "your_verification_code": "Your Verification Code: ",
+    "arena_register_module": "Arena Registration Module",
+    "flp_registered": "Thank you for registering on ARENA, a space facilitating your response to the ALERT received. Please wait for the activation from the National Moderator.\nOn ARENA, you will be able to connect with the other experts selected for the case and work towards a response to the situation reported. We would like to remind you to be mindful of the general privacy rules when engaging in the discussions on ARENA and invite you to conduct the consultations, as much as possible, in person. After you have reached an agreement as a team, you will be able to provide your feedback for the ALERT submitted. On ARENA, you will also be able to liaise and connect with experts working in similar areas for future reference."
 }

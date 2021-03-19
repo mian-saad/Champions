@@ -28,15 +28,16 @@
     "register_btn": "Register",
     "alert_report": "ALERT REPORT",
     "other": "Other",
-    "your_verification_code": "Your Verification Code: ",
+    "your_verification_code": "Your Verification Code is: ",
     "verification": "Verification Code: ",
     "alert_submitted": "ALERT Submitted",
-    "your_alert_submitted": "Your ALERT has been submitted. You will be able to see the ALERT in ARENA panel once it has been accepted by the Moderator.",
+    "your_alert_submitted": "Your Alert has been submitted. You will be able to see Alert case in the ARENA panel, once it has been accepted by the Moderator.",
     "registration_confirmed": "Registration Confirmed",
     "your_registration_confirmed": "Your registration has been confirmed. You will be able to login once the Moderator accepts your request.",
     "thanks": "Thank You for using the Platform. Redirecting back to ALERT",
-    "intro": "This tool provides support to First-line Practitioners who have witnessed a case of radicalization and/or polarization and would like to address it. ",
-    "bullet1": "Register a case of radicalization or polarization (for example extremist propaganda, hate speech or violence). ",
-    "bullet2": "Describe in detail what happened, where and when. Who did what to whom? ",
-    "bullet3": "Receive recommendations based on your case description. If there is no similar case in our data base,<br> your case will be sent to the ARENA, where experts will work on your case and issue recommendations."
+    "intro": "The ALERT Platform has been created to enable first line practitioners and relevant community members to provide a ‘notification’ or ‘alert’ of a situation or incident of radicalisation, polarisation or hate. If you have witnessed or seen an incident, or are concerned about a developing situation, please register your ALERT here on the platform to help platform expert members in your community develop timely and appropriate response and suggest a course of action.  The ALERT Tool will help you to:",
+    "bullet1": "Register the case or incident of radicalisation, hate or polarisation (for example extremist propaganda, hate speech or gender, race or ethnic violence etc)",
+    "bullet2": "Have this shared to members of the Platform in your community on ARENA. This will help support collaborative or targeted response by relevant experts.",
+    "bullet3": "Receive tailored recommendations which may support your response - based upon your case description. If there is no similar case in the data-base your case will automatically be transferred to the ARENA platform where local experts will work to provide you with support and recommendations."
+
 }

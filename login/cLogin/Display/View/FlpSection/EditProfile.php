@@ -25,15 +25,17 @@ class EditProfile {
 
         $html = "<h3>".$this->lang['edit_profile']."</h3>
                 <form id='arena_question_form'>
+                
                    <!-- Title Checkboxes -->
                    <div class='row'>
-                      <div class='col-6'>
+                      <div class='col-12'>
                          <p class='register_question question'>".$this->lang['select_profession']."</p>
                          <div class='register_select_answers'>
                             ".$this->title()."
                          </div>
                       </div>
                    </div><br>
+                   
                    <!-- Country Selection -->
                    <div class='row'>
                       <div class='col-8'>
@@ -45,23 +47,50 @@ class EditProfile {
                          </div>
                       </div>
                    </div><br>
+                   
                    <!-- Text box Inputs -->
                    ".$this->inputs()."
-                   <!-- Skills checkboxes -->
+                   
+                   <!-- Skills checkboxes 
                    <div class='row'>
                      <div class='col-6'>
                      <p class='register_question question'>".$this->lang['select_skills']."</p>
                      ".$this->skills()."
                      </div>
-                   </div><br>";
+                   </div><br> -->
+                 
+                   <!-- Experience with Radicalisation checkboxes -->
+                   <div class='row'>
+                     <div class='col-12'>
+                     <p class='register_question question'>".$this->lang['experience']."</p>
+                     ".$this->experience()."
+                     </div>
+                   </div><br>
+                   
+                   <!-- Working With checkboxes -->
+                   <div class='row'>
+                     <div class='col-12'>
+                     <p class='register_question question'>".$this->lang['working_with']."</p>
+                     ".$this->working_with()."
+                     </div>
+                   </div><br>
+                   
+                   <!-- Area of Expertise checkboxes -->
+                   <div class='row'>
+                     <div class='col-12'>
+                     <p class='register_question question'>".$this->lang['select_expertise']."</p>
+                     ".$this->expertise()."
+                     </div>
+                   </div><br>
+                    
+                   <!-- Description -->
+                   <section class='padd_sync' > 
+                      <p class='register_question question'>".$this->lang['provide_description']."</p>
+                      <textarea id='register_text_big' name='flp_description' rows='10'>$Data->flp_description</textarea>
+                   </section>
+                 </form><br>";
 
-        $html .= "<section class='padd_sync' >
-                    <!-- Description -->
-                    <p class='register_question question'>".$this->lang['provide_description']."</p>
-                    <textarea id='register_text_big' name='flp_description' rows='10'>$Data->flp_description</textarea>
-                  </section></form><br>";
-
-        $html .= "<div id='register_button_pane' class='padd_sync' >
+        $html .= "<div id='register_button_pane' >
                     <!-- Buttons -->
                     <a class='button' id='BackDiscussion' href='#' onclick='return false;'>".$this->lang['back']."</a> 
                     <a class='button' id='update' href='#' onclick='return false;'>".$this->lang['update']."</a>
@@ -161,6 +190,81 @@ class EditProfile {
             }
             else {
                 $html .= "<input type='checkbox' class='register_quiz_select' name='flp_skills' id='' value='".$skill['text']."'>".$skill['text']."</input>";
+                if ($skill['text']===$this->lang['other']) {
+                    $html .= "<input type='text' name='other_skills' />";
+                }
+            }
+            $html .= "<br>";
+        }
+        return $html;
+    }
+
+    public function expertise() {
+
+        global $wpdb;
+        $skills = $wpdb->get_row( "SELECT flp_area_of_expertise FROM {$wpdb->prefix}arena WHERE flp_email= '$this->email'", OBJECT ,0);
+        $db_skills = explode(',', $skills->flp_area_of_expertise);
+        $html = "";
+        foreach ($this->profile['expertise'] as $skill) {
+            if (in_array($skill['id'], $db_skills)){
+                $html .= "<input checked type='checkbox' class='register_quiz_select' name='flp_area_of_expertise' id='' value='".$skill['text']."'>".$skill['text']."</input>";
+                if ($skill['text']===$this->lang['other']) {
+                    $other = end($db_skills);
+                    $html .= "<br><input type='text' name='other_skills' value='$other' />";
+                }
+            }
+            else {
+                $html .= "<input type='checkbox' class='register_quiz_select' name='flp_area_of_expertise' id='' value='".$skill['text']."'>".$skill['text']."</input>";
+                if ($skill['text']===$this->lang['other']) {
+                    $html .= "<input type='text' name='other_skills' />";
+                }
+            }
+            $html .= "<br>";
+        }
+        return $html;
+    }
+
+    public function experience() {
+
+        global $wpdb;
+        $skills = $wpdb->get_row( "SELECT flp_experience_with_radicalisation FROM {$wpdb->prefix}arena WHERE flp_email= '$this->email'", OBJECT ,0);
+        $db_skills = explode(',', $skills->flp_experience_with_radicalisation);
+        $html = "";
+        foreach ($this->profile['experience_with'] as $skill) {
+            if (in_array($skill['id'], $db_skills)){
+                $html .= "<input checked type='checkbox' class='register_quiz_select' name='flp_experience_with_radicalisation' id='' value='".$skill['text']."'>".$skill['text']."</input>";
+                if ($skill['text']===$this->lang['other']) {
+                    $other = end($db_skills);
+                    $html .= "<br><input type='text' name='other_skills' value='$other' />";
+                }
+            }
+            else {
+                $html .= "<input type='checkbox' class='register_quiz_select' name='flp_experience_with_radicalisation' id='' value='".$skill['text']."'>".$skill['text']."</input>";
+                if ($skill['text']===$this->lang['other']) {
+                    $html .= "<input type='text' name='other_skills' />";
+                }
+            }
+            $html .= "<br>";
+        }
+        return $html;
+    }
+
+    public function working_with() {
+
+        global $wpdb;
+        $skills = $wpdb->get_row( "SELECT flp_working_with FROM {$wpdb->prefix}arena WHERE flp_email= '$this->email'", OBJECT ,0);
+        $db_skills = explode(',', $skills->flp_working_with);
+        $html = "";
+        foreach ($this->profile['working_with'] as $skill) {
+            if (in_array($skill['id'], $db_skills)){
+                $html .= "<input checked type='checkbox' class='register_quiz_select' name='flp_working_with' id='' value='".$skill['text']."'>".$skill['text']."</input>";
+                if ($skill['text']===$this->lang['other']) {
+                    $other = end($db_skills);
+                    $html .= "<br><input type='text' name='other_skills' value='$other' />";
+                }
+            }
+            else {
+                $html .= "<input type='checkbox' class='register_quiz_select' name='flp_working_with' id='' value='".$skill['text']."'>".$skill['text']."</input>";
                 if ($skill['text']===$this->lang['other']) {
                     $html .= "<input type='text' name='other_skills' />";
                 }

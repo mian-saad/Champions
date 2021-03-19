@@ -1,6 +1,6 @@
 {
    "M0.0":{
-      "state_text":"Witaj na platformie ARENA. Przeprowadzimy Cię przez proces wysyłania zgłoszenia. <br><br>Więcej informacji w <a target='_blank' href='https://ec.europa.eu/info/law/law-topic/data-protection_en'>Regulaminie</a>",
+      "state_text":"Witaj na platformie ARENA. Przeprowadzimy Cię przez proces wysyłania zgłoszenia. <br><br>Więcej informacji w <a target='_blank' href='https://ec.europa.eu/info/law/law-topic/data-protection_pl'>Regulaminie</a>",
       "short_text":"GDPR agreement",
       "id":"gdpr_agreement",
       "state_type":"gdpr",
@@ -20,73 +20,100 @@
          {
             "id":"flp_title",
             "type":"checkbox",
-            "text":"Wybierz zawód",
+            "text":"Wybierz zawód (Możesz wybrać więcej niż jedną opcję.) ",
             "short_text":"Zawód",
             "answers":[
                {
-                  "text":"Pracownik(-niczka) administracji publicznej",
-                  "short_text":"Public employee",
-                  "id":"Public employee"
+                  "id":"School teacher",
+                  "text":"Nauczyciel(ka) szkolny(-na)"
                },
                {
-                  "text":"Pracownik(-niczka) instytucji kultury",
-                  "short_text":"Arts and culture institution employee",
-                  "id":"Arts and culture institution employee"
+                  "id":"University lecturer",
+                  "text":"Wykładowca(-wczyni) na uczelni wyższej"
                },
                {
-                  "text":"Pracownik(-niczka) instytucji sportowej",
-                  "short_text":"Sports facility employee",
-                  "id":"Sports facility employee"
+                  "id":"Researcher",
+                  "text":"Badacz(-czka)"
                },
                {
-                  "text":"Pracownik(-niczka) organizacji społecznej",
-                  "short_text":"NGO Worker",
-                  "id":"NGO Worker"
+                  "id":"Municipal Employee",
+                  "text":"Pracownik(-niczka) władz miasta"
                },
                {
-                  "text":"Dzielnicowy(-wa)",
-                  "short_text":"Community Police Officer",
-                  "id":"Community Police Officer"
+                  "id":"NGO worker",
+                  "text":"Pracownik(-niczka) organizacji społecznej"
                },
                {
-                  "text":"Nauczyciel(ka) w szkole podstawowej",
-                  "short_text":"Primary Teacher",
-                  "id":"Primary Teacher"
+                  "id":"Police officer",
+                  "text":"Oficer(ka) Policji"
                },
                {
-                  "text":"Kurator(ka) sądowy(-wa)",
-                  "short_text":"Probation Officer",
-                  "id":"Probation Officer"
+                  "id":"Municipal guard officer",
+                  "text":"Oficer(ka) Straży Miejskiej"
                },
                {
-                  "text":"Pscholog(-lożka)/psychoterapeuta(-tka)",
-                  "short_text":"Psychologist/Psychotherapist ",
-                  "id":"Psychologist/Psychotherapist "
+                  "id":"Probation officer",
+                  "text":"Kurator(ka) sądowy(-wa)"
                },
                {
-                  "text":"Nauczyciel(ka) w szkole średniej",
-                  "short_text":"Secondary Teacher",
-                  "id":"Secondary Teacher"
+                  "id":"Psychoterapist/psychologist",
+                  "text":"Pscholog(-lożka)/psychoterapeuta(-tka)"
                },
                {
-                  "text":"Pracownik(-niczka) społeczny(-na)",
-                  "short_text":"Social Worker",
-                  "id":"Social Worker"
+                  "id":"Social worker",
+                  "text":"Pracownik(-niczka) społeczny(-na)"
                },
                {
-                  "text":"Wykładowca(-wczyni) na uczelni wyższej",
-                  "short_text":"University Lecturer",
-                  "id":"University Lecturer"
+                  "id":"Youth worker",
+                  "text":"Pracownik(-niczka) młodzieżowy(-wa)"
                },
                {
-                  "text":"Pracownik(-niczka) młodzieżowy(-wa)",
-                  "short_text":"Youth Worker",
-                  "id":"Youth Worker"
+                  "id":"Security expert",
+                  "text":"Ekspert(ka) ds. bezpieczeństwa"
                },
                {
-                  "text":"Inny",
-                  "short_text":"Inny",
-                  "id":"Inny"
+                  "id":"Radicalisation expert",
+                  "text":"Ekspert(ka) ds. radykalizacji"
+               },
+               {
+                  "id":"Hate crimes expert",
+                  "text":"Ekspert(ka) ds. przestępstw z nienawiści"
+               },
+               {
+                  "id":"Religious community member",
+                  "text":"Przedstawiciel(-ka) społeczności religijnej"
+               },
+               {
+                  "id":"Cultural and arts workers",
+                  "text":"Pracownik(-niczka) sektora kultury i sztuki"
+               },
+               {
+                  "id":"Sports institution employee/expert",
+                  "text":"Pracownik(-niczka) instytucji sportowej"
+               },
+               {
+                  "id":"Prison employee/expert",
+                  "text":"Pracownik(-niczka)/ekspert(ka) ds. więziennictwa"
+               },
+               {
+                  "id":"Exit expert",
+                  "text":"Ekspert(ka) ds. deradykalizacji"
+               },
+               {
+                  "id":"Youth gangs expert",
+                  "text":"Ekspert(ka) ds. gangów młodzieżowych"
+               },
+               {
+                  "id":"Social media expert",
+                  "text":"Ekspert(ka) ds. mediów społecznościowych"
+               },
+               {
+                  "id":"National Advisory Board Member",
+                  "text":"Członek(-nkini) Ogólnopolskiego Zespołu Eksperckiego"
+               },
+               {
+                  "id":"Other",
+                  "text":"Inna"
                }
             ]
          },
@@ -168,109 +195,216 @@
       ]
    },
    "M1.2":{
-      "state_text":"Zaznacz swój zawód/dziedzinę wiedzy",
-      "short_text":"Zawód/dziedzina wiedzy",
-      "id":"flp_skills",
-      "show_header": true,
-      "state_type":"checkbox",
+      "state_text":"DZIEDZINA PRACY",
+      "state_type":"composed",
+      "show_header": "false",
+      "id": "flp_register_infos",
       "state_answers":[
          {
-            "id":"School teacher",
-            "text":"Nauczyciel(ka) szkolny(-na)"
+            "id":"flp_experience_with_radicalisation",
+            "type":"checkbox",
+            "text":"DOŚWIADCZENIE W ZAKRESIE PREWENCJI RADYKALIZACJI (Możesz wybrać więcej niż jedną opcję.)",
+            "short_text":"Experience with Radicalisation",
+            "answers":[
+               {
+                  "id":"Addressing Extremist Propaganda and Recruitment Online",
+                  "text":"Ekstremistyczna propaganda i werbunek online"
+               },
+               {
+                  "id":"Inter-Cultural / Inter-Community Dialogue & Trust Building & Work",
+                  "text":"Dialog międzykulturowy i praca ze społecznością"
+               },
+               {
+                  "id":"Extremist Hate Speech, Fake News and Incitement to Violence Online",
+                  "text":"Ekstremistyczna mowa nienawiści, fake news i podżeganie do przemocy online"
+               },
+               {
+                  "id":"Violence Prevention (assaults, threats, insults)",
+                  "text":"Zapobieganie przemocy (napaści, groźby, obelgi, wyzwiska, zastraszanie)"
+               },
+               {
+                  "id":"Public safety and prevention of violence (in public and private spaces)",
+                  "text":"Bezpieczeństwo i zapobieganie przemocy (w miejscach publicznych i prywatnych) "
+               },
+               {
+                  "id":"Child / Youth Safety & Wellbeing ",
+                  "text":"Bezpieczeństwo i dobrostan dzieci i młodzieży "
+               },
+               {
+                  "id":"Psychology / Mental Health & Wellbeing",
+                  "text":"Psychologia i zdrowie psychiczne"
+               },
+               {
+                  "id":"Extremist propaganda and recruitment offline",
+                  "text":"Ekstremistyczna propaganda i werbunek offline"
+               },
+               {
+                  "id":"Radicalisation and Extremist Violence (antisemitism, anti gypsy, islamophobia)",
+                  "text":"Radykalizacja i przemoc ekstremistyczna (antysemityzm, islamofobia itp.)"
+               },
+               {
+                  "id":"Research (on Social Inclusion, Polarisation, Radicalisation, Extremism, Deradicalisation, fake news/hate)",
+                  "text":"Badania (w zakresie spójności społecznej, polaryzacji, radykalizacji i ekstremizmu, deradykalizacji, fake newsów i przestępstw z nienawiści)"
+               },
+               {
+                  "id":"Law Enforcement & Legal Response to Hate Crimes",
+                  "text":"Siły ochrony porządku publicznego/aspekty prawne przestępstw z nienawiści"
+               },
+               {
+                  "id":"Multi-agency Work to Prevent and Counter Radicalisation and Extremism",
+                  "text":"Współpraca międzysektorowa na rzecz prewencji radykalizacji i ekstremizmu"
+               },
+               {
+                  "id":"Crisis Management, Prevention and Response to Violence",
+                  "text":"Zarządzanie kryzysem i zapobieganie przemocy"
+               },
+               {
+                  "id":"Inter-faith Work and Peacebuilding",
+                  "text":"Dialog międzykulturowy i budowanie pokoju"
+               },
+               {
+                  "id":"Other",
+                  "text":"Inna"
+               }
+            ]
          },
          {
-            "id":"University lecturer",
-            "text":"Wykładowca(-wczyni) na uczelni wyższej"
+            "id":"flp_working_with",
+            "type":"checkbox",
+            "text":"Pracuję z: (Możesz wybrać więcej niż jedną opcję.)",
+            "short_text":"Working With",
+            "answers":[
+               {
+                  "id":"Young people in schools",
+                  "text":"młodymi ludźmi w szkole"
+               },
+               {
+                  "id":"Young people outside school",
+                  "text":"młodymi ludźmi poza szkołą"
+               },
+               {
+                  "id":"Vulnerable young people",
+                  "text":"wrażliwymi, narażonymi na niebezpieczeństwo młodymi ludźmi"
+               },
+               {
+                  "id":"Prisoners",
+                  "text":"więźniami (-niarkami)"
+               },
+               {
+                  "id":"Religious communities ",
+                  "text":"społecznościami religijnymi"
+               },
+               {
+                  "id":"Women and girls",
+                  "text":"kobietami i dziewczynkami"
+               },
+               {
+                  "id":"LGBTQ+",
+                  "text":"społecznością LGBTQ+"
+               },
+               {
+                  "id":"Refugees, migrants and foreigners",
+                  "text":"uchodźcami i imigrantami"
+               },
+               {
+                  "id":"Victims of extremist violence",
+                  "text":"ofiarami przemocy ekstremistycznej"
+               },
+               {
+                  "id":"Teachers & Schools",
+                  "text":"nauczycielami(-lkami) i szkołami "
+               },
+               {
+                  "id":"Social Workers",
+                  "text":"pracownikami(-niczkami) socjalnymi"
+               },
+               {
+                  "id":"Police and other Law Enforcement Agencies",
+                  "text":"Policją i innymi służbami ochrony porządku publicznego"
+               },
+               {
+                  "id":"Media Coverage & Reporting",
+                  "text":"mediami"
+               },
+               {
+                  "id":"Other",
+                  "text":"Inna"
+               }
+
+            ]
          },
          {
-            "id":"Researcher",
-            "text":"Badacz(-czka)"
+            "id":"flp_area_of_expertise",
+            "type":"checkbox",
+            "text":"Specjalizacja (Możesz wybrać więcej niż jedną opcję.)",
+            "short_text":"Area of Expertise",
+            "answers":[
+               {
+                  "id":"Education",
+                  "text":"Edukacja"
+               },
+               {
+                  "id":"Social Media and the Internet",
+                  "text":"Media społecznościowe i internet"
+               },
+               {
+                  "id":"Youth Gangs/Youth Work",
+                  "text":"Praca z młodzieżą"
+               },
+               {
+                  "id":"Human Rights and Diversity",
+                  "text":"Prawa człowieka i różnorodność"
+               },
+               {
+                  "id":"Sports",
+                  "text":"Sport"
+               },
+               {
+                  "id":"Arts and Culture",
+                  "text":"Kultura i sztuka"
+               },
+               {
+                  "id":"Psychology, Psychotherapy & Well-being",
+                  "text":"Psychologia, psychoterapia i dobrostan"
+               },
+               {
+                  "id":"Law Enforcement",
+                  "text":"Ochrona porządku publicznego"
+               },
+               {
+                  "id":"Community Work ",
+                  "text":"Praca ze społecznością lokalną"
+               },
+               {
+                  "id":"Crisis Management Prevention",
+                  "text":"Zarządzanie kryzysem "
+               },
+               {
+                  "id":"Other",
+                  "text":"Inna"
+               }
+
+            ]
          },
          {
-            "id":"Municipal Employee",
-            "text":"Pracownik(-niczka) władz miasta"
-         },
-         {
-            "id":"NGO worker",
-            "text":"Pracownik(-niczka) organizacji społecznej"
-         },
-         {
-            "id":"Police officer",
-            "text":"Oficer(ka) Policji"
-         },
-         {
-            "id":"Municipal guard officer",
-            "text":"Oficer(ka) Straży Miejskiej"
-         },
-         {
-            "id":"Probation officer",
-            "text":"Kurator(ka) sądowy(-wa)"
-         },
-         {
-            "id":"Psychoterapist/psychologist",
-            "text":"Pscholog(-lożka)/psychoterapeuta(-tka)"
-         },
-         {
-            "id":"Social worker",
-            "text":"Pracownik(-niczka) społeczny(-na)"
-         },
-         {
-            "id":"Youth worker",
-            "text":"Pracownik(-niczka) młodzieżowy(-wa)"
-         },
-         {
-            "id":"Security expert",
-            "text":"Ekspert(ka) ds. bezpieczeństwa"
-         },
-         {
-            "id":"Radicalisation expert",
-            "text":"Ekspert(ka) ds. radykalizacji"
-         },
-         {
-            "id":"Hate crimes expert",
-            "text":"Ekspert(ka) ds. przestępstw z nienawiści"
-         },
-         {
-            "id":"Religious minority representative",
-            "text":"Przedstawiciel(ka) mniejszości religijnych"
-         },
-         {
-            "id":"Cultural institution employee",
-            "text":"Pracownik(-niczka) instytucji kultury"
-         },
-         {
-            "id":"Sports institution employee/expert",
-            "text":"Pracownik(-niczka) instytucji sportowej"
-         },
-         {
-            "id":"Prison employee/expert",
-            "text":"Pracownik(-niczka)/ekspert(ka) ds. więziennictwa"
-         },
-         {
-            "id":"Exit expert",
-            "text":"Ekspert(ka) ds. deradykalizacji"
-         },
-         {
-            "id":"Youth gangs expert",
-            "text":"Ekspert(ka) ds. gangów młodzieżowych"
-         },
-         {
-            "id":"Social media expert",
-            "text":"Ekspert(ka) ds. mediów społecznościowych"
-         },
-         {
-            "id":"National Expert Team Member",
-            "text":"Członek(--nkini) Ogólnopolskiego Zespołu Eksperckiego"
-         },
-         {
-            "id":"Other",
-            "text":"Inny"
+            "id":"flp_visibility_level",
+            "type":"checkbox",
+            "optional": "true",
+            "text":"Zakres działania",
+            "short_text":"Visibility Level",
+            "text_description":"Jeśli chcesz otrzymywać powiadomienia o wszystkich zdarzeniach zgłoszonych na platformie ALERT, które miały miejsce w Twoim mieście, zaznacz opcję \"Poziom miasta\". Opcja ta ułatwia współpracę międzysektorową. Nie zaznaczywszy jej będziesz powiadamiany(-a) tylko o zgłoszeniach dobranych pod kątem Twoich kompetencji.",
+            "answers":[
+               {
+                  "id":"City Level",
+                  "text":"Poziom miejski"
+               }
+            ]
          }
       ]
    },
    "M1.3":{
-      "short_text":"Biogram/opis kompetencji zawodowych",
-      "state_text":"PODAJ OPIS SWOICH KOMPETENCJI ZAWODOWYCH",
+      "short_text":"FLP Description",
+      "state_text":"Napisz krótko o swoim doświadczeniu zawodowym w zakresie zapobiegania polaryzacji społecznej, radykalizacji i ekstremizmowi - z jakimi społecznościami/grupami pracujesz/pracowałeś(-aś), dla jakich instytucji/organizacji, kiedy? ",
       "id":"flp_description",
       "show_header": "true",
       "state_type":"description"

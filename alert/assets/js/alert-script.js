@@ -25,6 +25,7 @@ jQuery(document).ready(function ($) {
     // new alert button action
     $('body').on('click', '#alert_new_report', function (e) {
         e.preventDefault();
+
         // need to find all inputs and get the value
         var req_data = {
             action: 'get_question',
@@ -54,6 +55,7 @@ jQuery(document).ready(function ($) {
     // continue button action
     $('body').on('click', '#alert_continue', function (e) {
         e.preventDefault();
+
         var provided_answers = alert_question_validation();
         // need to find all inputs and get the value
         var req_data = {
@@ -67,6 +69,16 @@ jQuery(document).ready(function ($) {
             $contentBox
                 .html(response)
                 .animate({ opacity: 1 }, 100);
+            if ($('.alert_question:contains("Login in/Register to submit your Alert to the Arena")').length > 0 ||
+                $('.alert_question:contains("Profession")').length > 0 ||
+                $('.alert_question:contains("Area of Work")').length > 0 ||
+                $('.alert_question:contains("Please provide a short description about your professional experience and engagement with issues of extremism, hate, polarisation (with which community did you work? for which organization did you work? when?)")').length > 0 ||
+                $('.alert_question:contains("Please provide the verification Code that has been sent to the email provided")').length > 0) {
+                $('.post-title').text("Arena");
+            }
+            else {
+                $('.post-title').text("Alert");
+            }
             if ($( "#date_picker" ).hasClass( "picker" )) {
                 // Initialize dateTimePicker here
                 $('.picker').datetimepicker({
@@ -101,6 +113,7 @@ jQuery(document).ready(function ($) {
     // submit button action before authentication
     $('body').on('click', '#alert_register', function (e) {
         // need to find all inputs and see get the value
+        $('.entry-title').text("Arena");
         var req_data = {
             action: 'get_question',
             dataType: 'json',
@@ -160,6 +173,16 @@ jQuery(document).ready(function ($) {
             $contentBox
                 .html(response)
                 .animate({ opacity: 1 }, 100);
+            if ($('.alert_question:contains("Login in/Register to submit your Alert to the Arena")').length > 0 ||
+                $('.alert_question:contains("Profession")').length > 0 ||
+                $('.alert_question:contains("Area of Work")').length > 0 ||
+                $('.alert_question:contains("Please provide a short description about your professional experience and engagement with issues of extremism, hate, polarisation (with which community did you work? for which organization did you work? when?)")').length > 0 ||
+                $('.alert_question:contains("Please provide the verification Code that has been sent to the email provided")').length > 0) {
+                $('.post-title').text("Arena");
+            }
+            else {
+                $('.post-title').text("Alert");
+            }
             $('.picker').datetimepicker({
                 allowBlank: true,
                 maxDate: 0,

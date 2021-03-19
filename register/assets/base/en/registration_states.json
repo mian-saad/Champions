@@ -80,12 +80,12 @@
                   "text":"Hate crimes expert"
                },
                {
-                  "id":"Religious minority representative",
-                  "text":"Religious minority representative"
+                  "id":"Religious community member",
+                  "text":"Religious community member"
                },
                {
-                  "id":"Cultural institution employee",
-                  "text":"Cultural institution employee"
+                  "id":"Cultural and arts workers",
+                  "text":"Cultural and arts workers"
                },
                {
                   "id":"Sports institution employee/expert",
@@ -203,7 +203,7 @@
          {
             "id":"flp_experience_with_radicalisation",
             "type":"checkbox",
-            "text":"Experience with Radicalisation",
+            "text":"Experience with Radicalisation(You may select several options)",
             "short_text":"Experience with Radicalisation",
             "answers":[
                {
@@ -271,7 +271,7 @@
          {
             "id":"flp_working_with",
             "type":"checkbox",
-            "text":"Working With",
+            "text":"Working With(You may select several options)",
             "short_text":"Working With",
             "answers":[
                {
@@ -336,7 +336,7 @@
          {
             "id":"flp_area_of_expertise",
             "type":"checkbox",
-            "text":"Area of Expertise",
+            "text":"Area of Expertise(You may select several options)",
             "short_text":"Area of Expertise",
             "answers":[
                {
@@ -366,10 +366,6 @@
                {
                   "id":"Psychology, Psychotherapy & Well-being",
                   "text":"Psychology, Psychotherapy & Well-being"
-               },
-               {
-                  "id":"Property Damage",
-                  "text":"Property Damage"
                },
                {
                   "id":"Law Enforcement",

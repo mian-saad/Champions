@@ -139,6 +139,9 @@ class LoadData {
         if ($Data === 'password') {
             return $Password;
         }
+        if ($Data === 'flp_experience_with_radicalisation') {
+            return $ExperienceRadicalisation;
+        }
         if ($Data === 'skill') {
             return $Skill;
         }

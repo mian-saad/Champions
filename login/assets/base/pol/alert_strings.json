@@ -3,7 +3,7 @@
     "password": "Hasło",
     "login_flp": "Zaloguj się jako ekspert(ka)",
     "login_moderator": "Zaloguj się jako moderator(ka)",
-    "forgot": "Zapomniałeś(-łaś) hasła?",
+    "forgot": "Zapomniałam(-em) hasła.",
     "back": "Powrót",
     "arena_panel": "Mój panel",
     "landingpage_hint": "Kliknij na temat zgłoszenia, aby zobaczyć szczegóły.",
@@ -29,10 +29,10 @@
     "update_recommendation": "AKTUALIZUJ REKOMENDACJE",
     "in_progress": "In progress",
     "participants": "Participants",
-    "select_profession": "Wybierz zawód",
+    "select_profession": "Wybierz zawód (Możesz wybrać więcej niż jedną opcję.)",
     "select_skills": "Please select your Skills",
-    "other": "Inny",
-    "provide_description": "PODAJ OPIS SWOICH KOMPETENCJI ZAWODOWYCH",
+    "other": "Inna",
+    "provide_description": "Napisz krótko o swoim doświadczeniu zawodowym w zakresie zapobiegania polaryzacji społecznej, radykalizacji i ekstremizmowi - z jakimi społecznościami/grupami pracujesz/pracowałeś(-aś), dla jakich instytucji/organizacji, kiedy?",
     "update": "Update",
     "edit_profile": "Edit Profile",
     "select_country": "Wybierz kraj",
@@ -47,8 +47,15 @@
     "champions_notification": "Champions - Arena Notification Module",
     "invited": "You have been Invited to the Arena. Please register at https://www.firstlinepractitioners.com/arena/ before you can login.",
 
-    "accept_reject_flp": "Zaakceptuj/odrzuć osobę zgłaszającą",
-    "accept_reject_alert": "Zaakceptuj/odrzuć zgłoszenie",
+    "select_expertise": "Specjalizacja (Możesz wybrać więcej niż jedną opcję.)",
+    "experience": "DOŚWIADCZENIE W ZAKRESIE PREWENCJI RADYKALIZACJI (Możesz wybrać więcej niż jedną opcję.)",
+    "visible": "Zakres działania",
+    "working_with": "Pracuję z: (Możesz wybrać więcej niż jedną opcję.)",
+
+    "flp_info": "Informacje o osobie zgłaszającej zdarzenie",
+    "alert_info": "Informacje o zgłoszeniu",
+    "accept_reject_flp": "Zarządzaj osobami zgłaszającymi zdarzenie",
+    "accept_reject_alert": "Zarządzaj zgłoszeniami",
     "title": "Tytuł",
     "first_name": "Imię",
     "last_name": "Nazwisko",
@@ -64,5 +71,6 @@
     "alert_status": "Status zgłoszenia",
     "open": "Otwarty",
     "moderator_panel": "Panel moderatora",
-    "login": "Login"
+    "login": "Login",
+    "flp_accepted": "Jesteś teraz aktywnym członkiem(członkinią) ARENY (https://www.firstlinepractitioners.com/arena-2/). Będziesz otrzymywać powiadomienia o zgłaszanych zdarzeniach, zgodnie z Twoim zakresem kompetencji i lokalizacją zdarzenia. "
 }

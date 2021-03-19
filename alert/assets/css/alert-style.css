@@ -53,7 +53,7 @@ body {
 }
 
 .alert_horizontal_choice {
-  margin-bottom: 15px;
+  /*margin-bottom: 15px;*/
 }
 
 p.alert_question{
@@ -112,4 +112,12 @@ a:hover {
   -moz-transition: all .5s ease;
   -o-transition: all .5s ease;
   transition: all .5s ease;
+}
+
+.register_horizontal_choice label{
+  display: inline;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-weight: normal;
+  cursor: pointer;
 }

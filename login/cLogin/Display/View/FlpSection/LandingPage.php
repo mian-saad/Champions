@@ -1,7 +1,5 @@
 <?php
-
 namespace Contain\Display\View\FlpSection;
-
 use Contain\Display\Controller\LoadData;
 use Contain\Display\Model\LoggedComponents;
 use function WPMailSMTP\Vendor\GuzzleHttp\Psr7\str;
@@ -51,6 +49,7 @@ class LandingPage {
         $AlertDeclinedId = $this->Declined();
         // $FinalIds consists of all the common ids from $MatchedLanguageId, $MatchedSkillsId
         $FinalIds = array_intersect($MatchedLanguageId, $MatchedSkillsId);
+        $FinalIds = $this->CityStatus($FinalIds);
         $FinalIds = $this->CaseStatus($FinalIds);
         // $FinalIds consists of all the above $FinalIds which are not Rejected
 //        $FinalIds = array_diff($FinalIds, $AlertDeclinedId);
@@ -232,15 +231,24 @@ class LandingPage {
         $LoadArenaData = new LoadData();
         $AlertSkills = $LoadAlertData->loadAlertData('event_category');
         $AlertReportId = $LoadAlertData->loadAlertData('report_id');
-        $ArenaSkills = $LoadArenaData->loadArenaData('skill', $Email);
+        $ArenaSkills = $LoadArenaData->loadArenaData('flp_experience_with_radicalisation', $Email);
         $Arena_AlertID = $LoadArenaData->loadArenaData('alert_id', $Email);
 
         $ArenaSkills = explode(',', $ArenaSkills[0]);
         for ($ArenaSkillsCounter = 0; $ArenaSkillsCounter<count($ArenaSkills); $ArenaSkillsCounter++) {
             for ($AlertSkillsCounter = 0; $AlertSkillsCounter<count($AlertSkills); $AlertSkillsCounter++) {
-                if (strpos($AlertSkills[$AlertSkillsCounter], $ArenaSkills[$ArenaSkillsCounter]) !== false) {
+
+
+                similar_text($AlertSkills[$AlertSkillsCounter], $ArenaSkills[$ArenaSkillsCounter], $per);
+                similar_text($ArenaSkills[$ArenaSkillsCounter], $AlertSkills[$AlertSkillsCounter], $per_op);
+                if ($per>40 || $per_op>40) {
                     array_push($MatchedSkillsId, $AlertReportId[$AlertSkillsCounter]);
                 }
+
+                /*old logic when algo was based on skills
+                if (strpos($AlertSkills[$AlertSkillsCounter], $ArenaSkills[$ArenaSkillsCounter]) !== false) {
+                    array_push($MatchedSkillsId, $AlertReportId[$AlertSkillsCounter]);
+                }*/
                 // if its an FLP add the alert_id to $MatchedSkillsId
                 if (strpos($Arena_AlertID[0], $AlertReportId[$AlertSkillsCounter]) !== false) {
                     if (!in_array($AlertReportId[$AlertSkillsCounter], $MatchedSkillsId)) {
@@ -304,6 +312,25 @@ class LandingPage {
         foreach ($Id as $id) {
         $CaseStatus = $LoadData->loadAlertData('alert_case_status', $id);
             if ($CaseStatus[0] === "Accepted" || $CaseStatus[0] === "Closed") {
+                array_push($MatchedId, $id);
+            }
+        }
+        return $MatchedId;
+    }
+
+    public function CityStatus($Id) {
+        $MatchedId = [];
+
+        global $wpdb;
+        $email = $_SESSION['Email'];
+        $flp = $wpdb->get_results( "SELECT flp_city, flp_visibility_level FROM {$wpdb->prefix}arena WHERE flp_email='$email'", OBJECT );
+        $flp_city = $flp[0]->flp_city;
+        $flp_visibility = $flp[0]->flp_visibility_level;
+
+        foreach ($Id as $id) {
+            $alert = $wpdb->get_results( "SELECT alert_city FROM {$wpdb->prefix}alert WHERE alert_id='$id'", OBJECT );
+            $alert_city = $alert[0]->alert_city;
+            if ($alert_city == $flp_city && !empty($flp_visibility)) {
                 array_push($MatchedId, $id);
             }
         }

@@ -97,7 +97,7 @@ class AjaxCalls {
             $state_file = json_decode(file_get_contents($plugin_path . "assets/base/".$_SESSION['language']."/registration_strings.json"), true);
 
             $Notification = new StateTypes\Notification($state_file);
-            $Notification->render();
+            $Notification->render($report_id);
         }
 
         wp_die();
@@ -115,4 +115,6 @@ class AjaxCalls {
 
         return $result;
     }
+
+
 }

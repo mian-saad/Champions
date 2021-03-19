@@ -115,7 +115,7 @@ class ExpertDecidePage {
                             <!-- <a href=\"#\" rel=\"modal:close\">Close</a> -->
                           </div>
                           <!-- Link to open the modal -->
-                          <a class='button decide' href='#arena".$counter."' rel='modal:open'>Info</a>";
+                          <a class='button decide' href='#arena".$counter."' rel='modal:open'>".$this->language['flp_info']."</a>";
         return $html;
     }
 
@@ -158,7 +158,7 @@ class ExpertDecidePage {
         global $wpdb;
         $Email = $wpdb->get_results( "SELECT flp_email FROM {$wpdb->prefix}arena WHERE flp_id='$UserID'", OBJECT );
         $Email = $Email[0]->flp_email;
-        wp_mail( "$Email", $this->language['arena_login_module'], $this->language['email_approved'], array('Content-Type: text/html; charset=UTF-8'));
+        wp_mail( "$Email", $this->language['arena_login_module'], $this->language['flp_accepted'], array('Content-Type: text/html; charset=UTF-8'));
     }
 
 }

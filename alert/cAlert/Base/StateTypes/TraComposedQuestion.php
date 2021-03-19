@@ -52,7 +52,13 @@ class TraComposedQuestion extends TraState {
                 }
                 else if ($answer['type'] == 'checkbox') {
                     $html .= "<div class='col-12'>";
+                    if ($answer['id'] == 'flp_title') {
+                        $html .= "<div style='font-size: 22px'><b>".$answer['short_text']."</b></div>";
+                    }
                     $html .= $this->generate_question_text($answer['text']);
+                    if ($answer['text_description']) {
+                        $html .= $this->generate_question_text($answer['text_description']);
+                    }
                     $html .= $this->generate_checkbox_question($answer, $answer['id']);
                     $html .= "</div>";
                 }
@@ -80,6 +86,12 @@ class TraComposedQuestion extends TraState {
         $this->response = $resp;
 
         foreach ($this->state['state_answers'] as $state_answer) {
+            if ($state_answer['optional']) {
+                if ($state_answer['optional'] == 'true') {
+                    return true;
+                }
+            }
+
             if (!(array_key_exists($state_answer['id'], $resp) and $resp[$state_answer['id']] != "")) {
                 return false;
             }
@@ -140,6 +152,10 @@ class TraComposedQuestion extends TraState {
 
     public function generate_checkbox_question($answer_array, $name_string) {
         $html = '<div class="register_checkbox_answers">';
+
+        if (is_string($this->response[$name_string])) {
+            $this->response[$name_string] = str_split($this->response[$name_string], strlen($this->response[$name_string]));
+        }
 
         foreach ($answer_array['answers'] as $answer_option) {
             if (!empty($this->response) and in_array($answer_option['id'], $this->response[$name_string])) {

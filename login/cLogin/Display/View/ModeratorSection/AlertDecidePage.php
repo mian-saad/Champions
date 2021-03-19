@@ -131,7 +131,7 @@ class AlertDecidePage {
                             <!-- <a href=\"#\" rel=\"modal:close\">Close</a> -->
                           </div>
                           <!-- Link to open the modal -->
-                          <a class='button decide' href='#alert".$counter."' rel='modal:open'>Info</a>";
+                          <a class='button decide' href='#alert".$counter."' rel='modal:open'>".$this->language['alert_info']."</a>";
         return $html;
     }
 

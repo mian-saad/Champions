@@ -326,27 +326,29 @@ jQuery(document).ready(function ($) {
     $('body').on('click', '#start_arena', function (e) {
         const req_data = {
             action: 'summon',
-            id: 'LanguageSelect'
-        };
-        jQuery.get(login_ajax.ajaxurl, req_data, function (response) {
-            $contentBox.html(response);
-        });
-
-    });
-
-    $('body').on('click', '#login_session', function (e) {
-
-
-        const req_data = {
-            action: 'summon',
             id: 'MainPage',
             data: $('#lang_select').val()
+
         };
         jQuery.get(login_ajax.ajaxurl, req_data, function (response) {
             $contentBox.html(response);
         });
 
     });
+
+    // $('body').on('click', '#login_session', function (e) {
+    //
+    //
+    //     const req_data = {
+    //         action: 'summon',
+    //         id: 'MainPage',
+    //         data: $('#lang_select').val()
+    //     };
+    //     jQuery.get(login_ajax.ajaxurl, req_data, function (response) {
+    //         $contentBox.html(response);
+    //     });
+    //
+    // });
 
     $('body').on('click', '#backto', function (e) {
 
@@ -456,6 +458,7 @@ jQuery(document).ready(function ($) {
         //e.preventDefault();
 
         const $notify = $('#notify');
+        debugger
         var provided_answers = arena_question_validation();
 
         const req_data = {

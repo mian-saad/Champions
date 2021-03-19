@@ -1,6 +1,6 @@
 {
   "M0.0":{
-    "state_text":"Bine ați venit la „Modulul de ARENA”. Acest instrument vă va ghida prin procesul de ARENA. <br><br>Pentru mai multe informații verifică <a target='_blank' href='https://ec.europa.eu/info/law/law-topic/data-protection_en'>„Termenii și Condițiile”</a>",
+    "state_text":"Bine ați venit la „Modulul de ARENA”. Acest instrument vă va ghida prin procesul de ARENA. <br><br>Pentru mai multe informații verifică <a target='_blank' href='https://ec.europa.eu/info/law/law-topic/data-protection_ro'>„Termenii și Condițiile”</a>",
     "short_text":"GDPR agreement",
     "id":"gdpr_agreement",
     "state_type":"gdpr",
@@ -20,73 +20,100 @@
       {
         "id":"flp_title",
         "type":"checkbox",
-        "text":"Vă rugăm să vă selectați profesia",
+        "text":"Vă rugăm să vă selectați profesia (puteți alege mai multe opțiuni)",
         "short_text":"Profesie",
         "answers":[
           {
-            "text":"Angajat public",
-            "short_text":"Public employee",
-            "id":"Public employee"
+            "text":"Profesor de școală",
+            "id":"School teacher"
           },
           {
-            "text":"Angajat al instituției de artă și cultură",
-            "short_text":"Arts and culture institution employee",
-            "id":"Arts and culture institution employee"
+            "text":"lector universitar",
+            "id":"University lecturer"
           },
           {
-            "text":"Angajat în instalația sportivă",
-            "short_text":"Sports facility employee",
-            "id":"Sports facility employee"
+            "text":"Cercetător",
+            "id":"Researcher"
+          },
+          {
+            "text":"Angajat municipal",
+            "id":"Municipal Employee"
           },
           {
             "text":"Angajat într-un ONG",
-            "short_text":"NGO Worker",
-            "id":"NGO Worker"
+            "id":"NGO worker"
           },
           {
-            "text":"Ofițer de poliție comunitară",
-            "short_text":"Community Police Officer",
-            "id":"Community Police Officer"
+            "text":"Ofițer de poliție",
+            "id":"Police officer"
           },
           {
-            "text":"Profesor școală primară",
-            "short_text":"Primary Teacher",
-            "id":"Primary Teacher"
+            "text":"Ofițer de gardă municipală",
+            "id":"Municipal guard officer"
           },
           {
             "text":"Ofițer de probă",
-            "short_text":"Probation Officer",
-            "id":"Probation Officer"
+            "id":"Probation officer"
           },
           {
-            "text":"Psiholog / psihoterapeut",
-            "short_text":"Psychologist/Psychotherapist ",
-            "id":"Psychologist/Psychotherapist "
-          },
-          {
-            "text":"Profesor de liceu",
-            "short_text":"Secondary Teacher",
-            "id":"Secondary Teacher"
+            "text":"Psihoterapeut / psiholog",
+            "id":"Psychoterapist/psychologist"
           },
           {
             "text":"Asistent social",
-            "short_text":"Social Worker",
-            "id":"Social Worker"
-          },
-          {
-            "text":"Lector universitar",
-            "short_text":"University Lecturer",
-            "id":"University Lecturer"
+            "id":"Social worker"
           },
           {
             "text":"Muncitor tanar",
-            "short_text":"Youth Worker",
-            "id":"Youth Worker"
+            "id":"Youth worker"
+          },
+          {
+            "text":"Expert în securitate",
+            "id":"Security expert"
+          },
+          {
+            "text":"Expert în radicalizare",
+            "id":"Radicalisation expert"
+          },
+          {
+            "text":"Expert în crime de ură",
+            "id":"Hate crimes expert"
+          },
+          {
+            "text":"Membru comunitate religioasă",
+            "id":"Religious community member"
+          },
+          {
+            "text":"Expert artă și cultură",
+            "id":"Cultural and arts workers"
+          },
+          {
+            "text":"Angajat / expert al instituției sportivet",
+            "id":"Sports institution employee/expert"
+          },
+          {
+            "text":"Angajat / expert în închisoare",
+            "id":"Prison employee/expert"
+          },
+          {
+            "text":"Expert în deradicalizare / ieșire",
+            "id":"Exit expert"
+          },
+          {
+            "text":"Expert în bande de tineri",
+            "id":"Youth gangs expert"
+          },
+          {
+            "text":"Expert în social media",
+            "id":"Social media expert"
+          },
+          {
+            "text":"Membru Consiliu Consultativ Național",
+            "id":"National Advisory Board Member"
           },
           {
             "text":"Altele",
-            "short_text":"Altele",
-            "id":"Altele"
+            "id":"Other"
           }
         ]
 
@@ -169,109 +196,216 @@
     ]
   },
   "M1.2":{
-    "state_text":"Vă rugăm să vă selectați abilitățile",
-    "short_text":"Categoria de competențe",
-    "id":"flp_skills",
-    "show_header": true,
-    "state_type":"checkbox",
+    "state_text":"Aria de activitate profesională",
+    "state_type":"composed",
+    "show_header": "false",
+    "id": "flp_register_infos",
     "state_answers":[
-  {
-    "text":"Profesor de școală",
-    "id":"School teacher"
-  },
-  {
-    "text":"lector universitar",
-    "id":"University lecturer"
-  },
-  {
-    "text":"Cercetător",
-    "id":"Researcher"
-  },
-  {
-    "text":"Angajat municipal",
-    "id":"Municipal Employee"
-  },
-  {
-    "text":"Angajat într-un ONG",
-    "id":"NGO worker"
-  },
-  {
-    "text":"Ofițer de poliție",
-    "id":"Police officer"
-  },
-  {
-    "text":"Ofițer de gardă municipală",
-    "id":"Municipal guard officer"
-  },
-  {
-    "text":"Ofițer de probă",
-    "id":"Probation officer"
-  },
-  {
-    "text":"Psihoterapeut / psiholog",
-    "id":"Psychoterapist/psychologist"
-  },
-  {
-    "text":"Asistent social",
-    "id":"Social worker"
-  },
-  {
-    "text":"Muncitor tanar",
-    "id":"Youth worker"
-  },
-  {
-    "text":"Expert în securitate",
-    "id":"Security expert"
-  },
-  {
-    "text":"Expert în radicalizare",
-    "id":"Radicalisation expert"
-  },
-  {
-    "text":"Expert în crime de ură",
-    "id":"Hate crimes expert"
-  },
-  {
-    "text":"Reprezentant al minorității religioase",
-    "id":"Religious minority representative"
-  },
-  {
-    "text":"Angajat al instituției de artă și cultură",
-    "id":"Cultural institution employee"
-  },
-  {
-    "text":"Angajat / expert al instituției sportivet",
-    "id":"Sports institution employee/expert"
-  },
-  {
-    "text":"Angajat / expert în închisoare",
-    "id":"Prison employee/expert"
-  },
-  {
-    "text":"Expert în deradicalizare / ieșire",
-    "id":"Exit expert"
-  },
-  {
-    "text":"Expert în bande de tineri",
-    "id":"Youth gangs expert"
-  },
-  {
-    "text":"Expert în social media",
-    "id":"Social media expert"
-  },
-  {
-    "text":"Membru al Comitetului consultativ național",
-    "id":"National Expert Team Member"
-  },
-  {
-    "text":"Altele",
-    "id":"Other"
-  }
-]
+      {
+        "id":"flp_experience_with_radicalisation",
+        "type":"checkbox",
+        "text":"Experiență de lucru despre radicalizare (puteți alege mai multe opțiuni)",
+        "short_text":"Experience with Radicalisation",
+        "answers":[
+          {
+            "id":"Addressing Extremist Propaganda and Recruitment Online",
+            "text":"consultare propagandă extremistă și recrutare online"
+          },
+          {
+            "id":"Inter-Cultural / Inter-Community Dialogue & Trust Building & Work",
+            "text":"Dialog intercultural/intercomunitar&Creștere încrederii"
+          },
+          {
+            "id":"Extremist Hate Speech, Fake News and Incitement to Violence Online",
+            "text":"Discurs instigator la ură extremist, știri false și incitare la violență în mediul online"
+          },
+          {
+            "id":"Violence Prevention (assaults, threats, insults)",
+            "text":"Prevenire violență (atac, amenințări, insulte)"
+          },
+          {
+            "id":"Public safety and prevention of violence (in public and private spaces)",
+            "text":"Siguranța publică și prevenirea violenței (în public și în privat)"
+          },
+          {
+            "id":"Child / Youth Safety & Wellbeing ",
+            "text":"Siguranța și bunăstarea copiilor și tinerilor"
+          },
+          {
+            "id":"Psychology / Mental Health & Wellbeing",
+            "text":"Psiholog/ Sănătate și bunăstare mintală"
+          },
+          {
+            "id":"Extremist propaganda and recruitment offline",
+            "text":"Propagandă extremistă și recrutare offline"
+          },
+          {
+            "id":"Radicalisation and Extremist Violence (antisemitism, anti gypsy, islamophobia)",
+            "text":"Violență și radicalizare extremistă (antisemitism, antitiganism, islamofobie)"
+          },
+          {
+            "id":"Research (on Social Inclusion, Polarisation, Radicalisation, Extremism, Deradicalisation, fake news/hate)",
+            "text":"Cercetare (incluziune socială, polarizare, radicalizare, extremism, deradicalizare, știri false/incitare la ură)"
+          },
+          {
+            "id":"Law Enforcement & Legal Response to Hate Crimes",
+            "text":"Menținerea ordinii&măsuri legale împotriva discursului de inciitare la ură"
+          },
+          {
+            "id":"Multi-agency Work to Prevent and Counter Radicalisation and Extremism",
+            "text":"Muncă inter-guvernmentală de a preveni și combate radicalizarea și extremismul"
+          },
+          {
+            "id":"Crisis Management, Prevention and Response to Violence",
+            "text":"Managementul crizei, prevenție și răspuns la violență"
+          },
+          {
+            "id":"Inter-faith Work and Peacebuilding",
+            "text":"Muncă interconfensională și de consolidare a păcii"
+          },
+          {
+            "id":"Other",
+            "text":"Altele"
+          }
+        ]
+      },
+      {
+        "id":"flp_working_with",
+        "type":"checkbox",
+        "text":"Lucrați cu (puteți alege mai multe opțiuni)",
+        "short_text":"Working With",
+        "answers":[
+          {
+            "id":"Young people in schools",
+            "text":"Tineri înscriși la școală"
+          },
+          {
+            "id":"Young people outside school",
+            "text":"Tineri care nu sunt înscriși la școală"
+          },
+          {
+            "id":"Vulnerable young people",
+            "text":"Tineri vulnerabili"
+          },
+          {
+            "id":"Prisoners",
+            "text":"Deținuți"
+          },
+          {
+            "id":"Religious communities ",
+            "text":"Comunități religioase"
+          },
+          {
+            "id":"Women and girls",
+            "text":"Femei și fete"
+          },
+          {
+            "id":"LGBTQ+",
+            "text":"LGBTQ+"
+          },
+          {
+            "id":"Refugees, migrants and foreigners",
+            "text":"Refugiați, imigranți"
+          },
+          {
+            "id":"Victims of extremist violence",
+            "text":"Victime ale violenței extremiste"
+          },
+          {
+            "id":"Teachers & Schools",
+            "text":"Profesori și școli"
+          },
+          {
+            "id":"Social Workers",
+            "text":"Asistenți sociali"
+          },
+          {
+            "id":"Police and other Law Enforcement Agencies",
+            "text":"Poliție și alte agenții de menținere a ordinii"
+          },
+          {
+            "id":"Media Coverage & Reporting",
+            "text":"Media și presă"
+          },
+          {
+            "id":"Other",
+            "text":"Altele"
+          }
+
+        ]
+      },
+      {
+        "id":"flp_area_of_expertise",
+        "type":"checkbox",
+        "text":"Arie de expertiză (puteți alege mai multe opțiuni)",
+        "short_text":"Area of Expertise",
+        "answers":[
+          {
+            "id":"Education",
+            "text":"Educație"
+          },
+          {
+            "id":"Social Media and the Internet",
+            "text":"Media socială și internet"
+          },
+          {
+            "id":"Youth Gangs/Youth Work",
+            "text":"Grupări de tineri/lucrul cu tineri"
+          },
+          {
+            "id":"Human Rights and Diversity",
+            "text":"Drepturile omului și diversitate"
+          },
+          {
+            "id":"Sports",
+            "text":"Sport"
+          },
+          {
+            "id":"Arts and Culture",
+            "text":"Artă și cultură"
+          },
+          {
+            "id":"Psychology, Psychotherapy & Well-being",
+            "text":"Psihologie, psihoterapie și bunăstare"
+          },
+          {
+            "id":"Law Enforcement",
+            "text":"Menținerea legii și ordinii"
+          },
+          {
+            "id":"Community Work ",
+            "text":"Muncă pentru comunitate"
+          },
+          {
+            "id":"Crisis Management Prevention",
+            "text":"Managementul crizei și prevenție"
+          },
+          {
+            "id":"Other",
+            "text":"Altele"
+          }
+
+        ]
+      },
+      {
+        "id":"flp_visibility_level",
+        "type":"checkbox",
+        "optional": "true",
+        "text":"Vizibilitate",
+        "short_text":"Visibility Level",
+        "text_description":"Dacă doriți să fiți implicați doar în activități din orașul dvs., vă rugăm bifați căsuța \"La nivelul orașului\". În caz contrat, veți fi implicat în toate activitățile la nivel național. ",
+        "answers":[
+          {
+            "id":"City Level",
+            "text":"La nivelul orașului"
+          }
+        ]
+      }
+    ]
   },
   "M1.3":{
-    "short_text":"Bio/ Descriere abilități",
-    "state_text":"Vă rugăm să oferiți o descriere a experienței și expertizei dvs.",
+    "short_text":"FLP Description",
+    "state_text":"Vă rugăm să descrieți pe scurt experiența dvs. profesională și munca pe subiecte de extremism, discurs instigator la ură și polarizare (cu ce comunitate ați lucrat? pentru ce organizație ați lucrat? Când?",
     "id":"flp_description",
     "show_header": "true",
     "state_type":"description"

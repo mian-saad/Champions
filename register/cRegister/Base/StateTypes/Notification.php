@@ -8,12 +8,20 @@ class Notification {
         $this->lang = $language;
     }
 
-    public function render() {
-        $html = "<h1>".$this->lang['redirect']."</h1>";
-        $html .= "<script>setTimeout(function(){window.location.reload(1);}, 3000);</script>";
+    public function render($flp_id) {
+//        $this->send_mail_new_user($flp_id);
+        $html = "<h5>".$this->lang['redirect']."</h5>";
+        $html .= "<script>setTimeout(function(){window.location.reload(1);}, 15000);</script>";
 
 
         echo $html;
+    }
+
+    public function send_mail_new_user($flp_id) {
+        global $wpdb;
+        $Email = $wpdb->get_results( "SELECT flp_email FROM {$wpdb->prefix}arena WHERE flp_id='$flp_id'", OBJECT );
+        $Email = $Email[0]->flp_email;
+        wp_mail( "$Email", $this->lang['arena_register_module'], $this->lang['flp_registered'], array('Content-Type: text/html; charset=UTF-8'));
     }
 
 }

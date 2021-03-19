@@ -30,5 +30,8 @@
     "your_alert_submitted": "Your ALERT has been submitted. You will be able to see the ALERT in ARENA panel once it has been accepted by the Moderator.",
     "registration_confirmed": "Registration Confirmed",
     "your_registration_confirmed": "Your registration has been confirmed. You will be able to login once the Moderator accepts your request.",
-    "thanks": "Köszönjük, hogy a platformot használod! Visszairányítunk az Alertre."
+    "thanks": "Köszönjük, hogy a platformot használod! Visszairányítunk az Alertre.",
+    "redirect": "Köszönjk, hogy regisztrált az ARENA rendszerbe! Ebben a térben lesz lehetősége a beérkező ALERT-ekre válaszolni. Várja meg az aktiválást a Nemzeti Moderátortól. Az ARENA rendszerben más szakértőkkel tud együttműködni a beérkező esetek közös megoldásán.  Kérjük, hogy az adatok biztonságára a folyamat egésza alatt legyen fokozott figyelemmel. Javasoljuk, hogy az esetek megbeszélését minél hamarabb személyes formában folytassák. Amint az esetben résztvevő szakértpkkel egyetértsre jutottak az eset megoldását illetően, lehetőségük nyílik válaszolni az ALERT-re. \n Redirecting back to Arena . . .",
+    "arena_register_module": "Arena Registration Module",
+    "flp_registered": "Köszönjk, hogy regisztrált az ARENA rendszerbe! Ebben a térben lesz lehetősége a beérkező ALERT-ekre válaszolni. Várja meg az aktiválást a Nemzeti Moderátortól. Az ARENA rendszerben más szakértőkkel tud együttműködni a beérkező esetek közös megoldásán.  Kérjük, hogy az adatok biztonságára a folyamat egésza alatt legyen fokozott figyelemmel. Javasoljuk, hogy az esetek megbeszélését minél hamarabb személyes formában folytassák. Amint az esetben résztvevő szakértpkkel egyetértsre jutottak az eset megoldását illetően, lehetőségük nyílik válaszolni az ALERT-re."
 }

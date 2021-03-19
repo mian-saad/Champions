@@ -22,10 +22,11 @@ class TraDescriptionQuestion extends TraState
     public function generate_html()
     {
         $html = $this->generate_hidden_fields($this->alert_id);
-        if($this->state['show_header']=="true"){
+        if($this->state['show_header']=="true") {
             $html .= "<h3 class='alert_question'>" . $this->state['short_text'] . "</h3>";
-            $html .= "<h4 class='alert_question'>" . $this->state['state_text'] . "</h4>";
         }
+            $html .= "<h3 class='alert_question'>" . $this->state['state_text'] . "</h3>";
+//        }
         $html .= "<form id='alert_question_form'>";
         if ($this->state['id'] == 'flp_description') {
             $html .= "<textarea id='alert_text_big' name='" . $this->state['id'] . "' rows='10'>" . $this->response[$this->state['id']] . "</textarea>";

@@ -1,147 +1,6 @@
 {
   "title":[
     {
-      "text":"Közalkalmazott",
-      "short_text":"Public employee",
-      "id":"Public employee"
-    },
-    {
-      "text":"Művészeti és kulturális intézmény alkalmazottja",
-      "short_text":"Arts and culture institution employee",
-      "id":"Arts and culture institution employee"
-    },
-    {
-      "text":"Sportintézmény alkalmazottja",
-      "short_text":"Sports facility employee",
-      "id":"Sports facility employee"
-    },
-    {
-      "text":"Civil szervezet alkalmazottja",
-      "short_text":"NGO Worker",
-      "id":"NGO Worker"
-    },
-    {
-      "text":"Polgárőrség alkalmazottja",
-      "short_text":"Community Police Officer",
-      "id":"Community Police Officer"
-    },
-    {
-      "text":"Általános iskolai tanár",
-      "short_text":"Primary Teacher",
-      "id":"Primary Teacher"
-    },
-    {
-      "text":"Pártfogó felügyelő",
-      "short_text":"Probation Officer",
-      "id":"Probation Officer"
-    },
-    {
-      "text":"Pszichológus / pszichoterapeuta",
-      "short_text":"Psychologist/Psychotherapist ",
-      "id":"Psychologist/Psychotherapist "
-    },
-    {
-      "text":"Középiskolai tanár",
-      "short_text":"Secondary Teacher",
-      "id":"Secondary Teacher"
-    },
-    {
-      "text":"Szociális munkás",
-      "short_text":"Social Worker",
-      "id":"Social Worker"
-    },
-    {
-      "text":"Egyetemi tanár",
-      "short_text":"University Lecturer",
-      "id":"University Lecturer"
-    },
-    {
-      "text":"Ifjúsági munkás",
-      "short_text":"Youth Worker",
-      "id":"Youth Worker"
-    },
-    {
-      "text":"Egyéb",
-      "short_text":"Other",
-      "id":"Other"
-    }
-  ],
-
-  "country":[
-    {
-      "text":"\uD83C\uDDE6\uD83C\uDDF9 Ausztria",
-      "short_text":"Ausztria",
-      "id":"Austria"
-    },
-    {
-      "text":"\uD83C\uDDE9\uD83C\uDDEA Németország",
-      "short_text":"Németország",
-      "id":"Germany"
-    },
-    {
-      "text":"\uD83C\uDDED\uD83C\uDDFA Magyarország",
-      "short_text":"Magyarország",
-      "id":"Hungary"
-    },
-    {
-      "text":"\uD83C\uDDF5\uD83C\uDDF1 Lengyelország",
-      "short_text":"Lengyelország",
-      "id":"Poland"
-    },
-    {
-      "text":"\uD83C\uDDF7\uD83C\uDDF4 Románia",
-      "short_text":"Románia",
-      "id":"Romania"
-    }
-  ],
-
-  "inputs": [
-    {
-      "id":"flp_first_name",
-      "text":"Add meg a keresztnevet!",
-      "short_text":"First Name",
-      "type":"text"
-    },
-    {
-      "id":"flp_last_name",
-      "text":"Add meg a vezetéknevet!",
-      "short_text":"Last Name",
-      "type":"text"
-    },
-    {
-      "id":"flp_email",
-      "text":"Add meg az email címedet!",
-      "short_text":"Email",
-      "type":"text"
-    },
-    {
-      "id":"flp_password",
-      "text":"Add meg a jelszavadat!",
-      "short_text":"Password",
-      "type":"password"
-    },
-    {
-      "id":"flp_organisation",
-      "text":"Add meg a szervezeted nevét!",
-      "short_text":"Organisation",
-      "type":"text"
-    },
-    {
-      "id":"flp_years_of_experience",
-      "text":"Hány évnyi tapasztalatot szereztél ebben a szakmában?",
-      "short_text":"experience",
-      "type":"text"
-    },
-    {
-      "id":"flp_city",
-      "text":"A jelenlegi településed",
-      "short_text":"Város",
-      "type":"text"
-    }
-  ],
-
-  "skills":[
-    {
       "id":"School teacher",
       "text":"Iskolai oktató"
     },
@@ -198,12 +57,12 @@
       "text":"Gyűlölet-bűncselekmény szakértő"
     },
     {
-      "id":"Religious minority representative",
-      "text":"Vallási kisebbség képviselője"
+      "id":"Religious community member",
+      "text":"Vallás közösségi vezető"
     },
     {
-      "id":"Cultural institution employee",
-      "text":"Művészeti és kulturális intézet alkalmazottja"
+      "id":"Cultural and arts workers",
+      "text":"Kultúrális és művészeti vezető"
     },
     {
       "id":"Sports institution employee/expert",
@@ -226,12 +85,263 @@
       "text":"Közösségi média szakértő"
     },
     {
-      "id":"National Expert Team Member",
-      "text":"Nemzeti tanácsadó testületi tag (opcionális)"
+      "id":"National Advisory Board Member",
+      "text":"nemzeti tanácsadó testület"
     },
     {
       "id":"Other",
       "text":"Egyéb"
+    }
+  ],
+
+  "country":[
+    {
+      "text":"\uD83C\uDDE6\uD83C\uDDF9 Ausztria",
+      "short_text":"Ausztria",
+      "id":"Austria"
+    },
+    {
+      "text":"\uD83C\uDDE9\uD83C\uDDEA Németország",
+      "short_text":"Németország",
+      "id":"Germany"
+    },
+    {
+      "text":"\uD83C\uDDED\uD83C\uDDFA Magyarország",
+      "short_text":"Magyarország",
+      "id":"Hungary"
+    },
+    {
+      "text":"\uD83C\uDDF5\uD83C\uDDF1 Lengyelország",
+      "short_text":"Lengyelország",
+      "id":"Poland"
+    },
+    {
+      "text":"\uD83C\uDDF7\uD83C\uDDF4 Románia",
+      "short_text":"Románia",
+      "id":"Romania"
+    }
+  ],
+
+  "inputs":[
+    {
+      "id":"flp_first_name",
+      "text":"Add meg a keresztnevet!",
+      "short_text":"First Name",
+      "type":"text"
+    },
+    {
+      "id":"flp_last_name",
+      "text":"Add meg a vezetéknevet!",
+      "short_text":"Last Name",
+      "type":"text"
+    },
+    {
+      "id":"flp_email",
+      "text":"Add meg az email címedet!",
+      "short_text":"Email",
+      "type":"text"
+    },
+    {
+      "id":"flp_password",
+      "text":"Add meg a jelszavadat!",
+      "short_text":"Password",
+      "type":"password"
+    },
+    {
+      "id":"flp_organisation",
+      "text":"Add meg a szervezeted nevét!",
+      "short_text":"Organisation",
+      "type":"text"
+    },
+    {
+      "id":"flp_years_of_experience",
+      "text":"Hány évnyi tapasztalatot szereztél ebben a szakmában?",
+      "short_text":"experience",
+      "type":"text"
+    },
+    {
+      "id":"flp_city",
+      "text":"A jelenlegi településed",
+      "short_text":"Város",
+      "type":"text"
+    }
+  ],
+
+  "experience_with":[
+    {
+      "id":"Addressing Extremist Propaganda and Recruitment Online",
+      "text":"Szélsőséges online propaganda"
+    },
+    {
+      "id":"Inter-Cultural / Inter-Community Dialogue & Trust Building & Work",
+      "text":"Inter kultúrális dialógus"
+    },
+    {
+      "id":"Extremist Hate Speech, Fake News and Incitement to Violence Online",
+      "text":"Szélsőséges gyűlöletbeszéd, Álhírek "
+    },
+    {
+      "id":"Violence Prevention (assaults, threats, insults)",
+      "text":"Erőszak prevenció"
+    },
+    {
+      "id":"Public safety and prevention of violence (in public and private spaces)",
+      "text":"Erőszakprevenció"
+    },
+    {
+      "id":"Child / Youth Safety & Wellbeing ",
+      "text":"Gyermekbiztonság"
+    },
+    {
+      "id":"Psychology / Mental Health & Wellbeing",
+      "text":"Pszichológia és mentális egészség"
+    },
+    {
+      "id":"Extremist propaganda and recruitment offline",
+      "text":"Szélsőséges offline propaganda"
+    },
+    {
+      "id":"Radicalisation and Extremist Violence (antisemitism, anti gypsy, islamophobia)",
+      "text":"Radikalizáció és szélsőséges erőszak (antiszemitizmus, romaellenesség"
+    },
+    {
+      "id":"Research (on Social Inclusion, Polarisation, Radicalisation, Extremism, Deradicalisation, fake news/hate)",
+      "text":"Kutatás"
+    },
+    {
+      "id":"Law Enforcement & Legal Response to Hate Crimes",
+      "text":"Bünüldözés és gyülöletbeszédre adható jogi válaszok. "
+    },
+    {
+      "id":"Multi-agency Work to Prevent and Counter Radicalisation and Extremism",
+      "text":"Szervezetek közötti együttműködés a a szélsőségesség megelőzésére "
+    },
+    {
+      "id":"Crisis Management, Prevention and Response to Violence",
+      "text":"Krízis management"
+    },
+    {
+      "id":"Inter-faith Work and Peacebuilding",
+      "text":"Vallások közötti párbeszéd"
+    },
+    {
+      "id":"Other",
+      "text":"Egyéb"
+    }
+  ],
+
+  "working_with":[
+    {
+      "id":"Young people in schools",
+      "text":"Fiatalokkal iskolai környezetben"
+    },
+    {
+      "id":"Young people outside school",
+      "text":"Fiatalokkal iskolán kívül"
+    },
+    {
+      "id":"Vulnerable young people",
+      "text":"Kiszolgáltatott, sérülékeny fiatalokkal "
+    },
+    {
+      "id":"Prisoners",
+      "text":"Rabokkal "
+    },
+    {
+      "id":"Religious communities ",
+      "text":"Vallási közösségekkel "
+    },
+    {
+      "id":"Women and girls",
+      "text":"Nőkkel, lányokkal "
+    },
+    {
+      "id":"LGBTQ+",
+      "text":"LMBTQ+ személyekkel "
+    },
+    {
+      "id":"Refugees, migrants and foreigners",
+      "text":"Bevándorlókkal és menekültekkel "
+    },
+    {
+      "id":"Victims of extremist violence",
+      "text":"Szélsőséges erőszak áldozatival "
+    },
+    {
+      "id":"Teachers & Schools",
+      "text":"Tanárokkal "
+    },
+    {
+      "id":"Social Workers",
+      "text":"Szociális munkásokkal "
+    },
+    {
+      "id":"Police and other Law Enforcement Agencies",
+      "text":"Rendőrökkel és más bűnüldözi szerv tagjaival "
+    },
+    {
+      "id":"Media Coverage & Reporting",
+      "text":"Médiában "
+    },
+    {
+      "id":"Other",
+      "text":"Egyéb"
+    }
+
+  ],
+
+  "expertise":[
+    {
+      "id":"Education",
+      "text":"Oktatás"
+    },
+    {
+      "id":"Social Media and the Internet",
+      "text":"Internet és a közösségi média"
+    },
+    {
+      "id":"Youth Gangs/Youth Work",
+      "text":"Ifjúsági csportok, bandák "
+    },
+    {
+      "id":"Human Rights and Diversity",
+      "text":"Emberi jogok és diverzitás"
+    },
+    {
+      "id":"Sports",
+      "text":"Spotok"
+    },
+    {
+      "id":"Arts and Culture",
+      "text":"Művészet és kultúra"
+    },
+    {
+      "id":"Psychology, Psychotherapy & Well-being",
+      "text":"Pszichológia, terápiás munka"
+    },
+    {
+      "id":"Law Enforcement",
+      "text":"Bűnüldözés"
+    },
+    {
+      "id":"Community Work ",
+      "text":"Társadalmi munka"
+    },
+    {
+      "id":"Crisis Management Prevention",
+      "text":"Krízis managment"
+    },
+    {
+      "id":"Other",
+      "text":"Egyéb"
+    }
+
+  ],
+
+  "visibility":[
+    {
+      "id":"City Level",
+      "text":"Város"
     }
   ]
 }

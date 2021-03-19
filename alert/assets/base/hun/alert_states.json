@@ -1,6 +1,6 @@
 {  
    "M0.0":{
-      "state_text":"Köszöntünk az ALERT modulban! Ez az eszköz segédletként szolgál az Alert folyamatában. <br><br>További információ az <a target='_blank' href='https://ec.europa.eu/info/law/law-topic/data-protection_en'>Általános szerződési feltételek menüpontban</a>",
+      "state_text":"Köszöntünk az ALERT modulban! Ez az eszköz segédletként szolgál az Alert folyamatában. <br><br>További információ az <a target='_blank' href='https://ec.europa.eu/info/law/law-topic/data-protection_hu'>Általános szerződési feltételek menüpontban</a>",
       "short_text":"GDPR agreement",
       "id":"gdpr_agreement",
       "state_type":"gdpr",
@@ -76,7 +76,7 @@
          {
             "id":"alert_category",
             "type":"checkbox",
-            "text":"Milyen kategóriába sorolnád az esetet?",
+            "text":"<b>Hogyan írna le az incidenst? (Több opció is kiválaszthat)</b>",
             "short_text":"Alert Category",
             "answers":[
                {
@@ -85,62 +85,81 @@
                   "id":"Extremist propaganda, conspiracy theories and/or recruitment"
                },
                {
-                  "text":"Fizikai erőszak (pl. tettlegesség, fenyegetés, sértegetés)",
-                  "short_text":"Fizikai erőszak (pl. tettlegesség, fenyegetés, sértegetés)",
-                  "id":"Physical violence (e.g. assaults, threats, insults)"
+                  "text":"Fizikai erőszak (pl. Támadások, fenyegetések, sértések, megfélemlítés)",
+                  "short_text":"Fizikai erőszak (pl. Támadások, fenyegetések, sértések, megfélemlítés)",
+                  "id":"Physical violence (e.g. assaults, threats, insults, intimidation)"
                },
                {
                   "text":"Gyűlöletbeszéd és/vagy erőszakra való uszítás",
                   "short_text":"Gyűlöletbeszéd és/vagy erőszakra való uszítás",
-                  "id":"Extremist hate speech and/or incitement to violence"
+                  "id":"Hate speech and/or incitement to violence"
                },
                {
-                  "text":"Vagyoni kár",
-                  "short_text":"Vagyoni kár",
-                  "id":"Property damage"
+                  "text":"Vagyoni kár (pl: betörés, lopás, vandalizmus, graffitizés stb). ",
+                  "short_text":"Vagyoni kár (pl: betörés, lopás, vandalizmus, graffitizés stb). ",
+                  "id":"Property damage (e.g. break-in, looting, vandalism, graffiti etc)"
                },
                {
-                  "text":"Nem tudom",
-                  "short_text":"Nem tudom",
+                  "text":"Nem tudom ",
+                  "short_text":"Nem tudom ",
                   "id":"I don't know_a"
                },
                {
                   "text":"Egyéb",
                   "short_text":"Egyéb",
-                  "id":"Other"
+                  "id":"Other_a"
                }
             ]
          },
          {
             "id":"alert_location",
             "type":"checkbox",
-            "text":"Hol történt?",
-            "short_text":"Alert Location",
+            "text":"<b>Hol történt? (Több opció is kiválaszthat)</b>",
             "answers":[
                {
-                  "text":"Internet és közösségi média",
-                  "short_text":"Internet és közösségi média",
-                  "id":"The internet and social media"
+                  "text":"Lakóhely (pl: lakás, lakóház, szálloda) ",
+                  "short_text":"Lakóhely (pl: lakás, lakóház, szálloda) ",
+                  "id":"Residential (e.g.  hotels, houses, flats)"
                },
                {
-                  "text":"Nyilvános térben (pl. iskolában, koncerten, sport központban, parkban, utcán stb.)",
-                  "short_text":"Nyilvános térben (pl. iskolában, koncerten, sport központban, parkban, utcán stb.)",
-                  "id":"Public space (e.g. school, concert hall, sports facility, park, street etc.)"
+                  "text":"Szabadidős helyszínek (pl: bár, étterem, mozi, park, játszótér)",
+                  "short_text":"Szabadidős helyszínek (pl: bár, étterem, mozi, park, játszótér)",
+                  "id":"Recreational (e.g.   bars, restaurants, cinemas, playgrounds, parks)"
                },
                {
-                  "text":"Magánterületen",
-                  "short_text":"Magánterületen",
-                  "id":"Private space (e.g. school, concert hall, workplace, sports club etc.)"
+                  "text":"Vallási intézmény (pl: zsinagóga, templom, mecset) ",
+                  "short_text":"Vallási intézmény (pl: zsinagóga, templom, mecset) ",
+                  "id":"Religious (e.g. mosques, churches, synagogues, pray halls)"
                },
                {
-                  "text":"Nyilvános eseményen (állami szervezésű)",
-                  "short_text":"Nyilvános eseményen (állami szervezésű)",
-                  "id":"Public event (public organiser)"
+                  "text":"Irodák (pl. Munkahelyek, üzleti létesítmények, gyárak, raktárak)",
+                  "short_text":"Irodák (pl. Munkahelyek, üzleti létesítmények, gyárak, raktárak)",
+                  "id":"Offices (e.g. work locations, business facilities, factories, warehouses)"
                },
                {
-                  "text":"Privát rendezvényen (civil szervezésű)",
-                  "short_text":"Privát rendezvényen (civil szervezésű)",
-                  "id":"Private event (private organiser)"
+                  "text":"Oktatási intézmény (iskola, egyetem, könyvtár stb.)",
+                  "short_text":"Oktatási intézmény (iskola, egyetem, könyvtár stb.)",
+                  "id":"Education (e.g day care centres, schools, universities, libraries) "
+               },
+               {
+                  "text":"Közéület (pl: kórház, bíróság, rendőrőrs, börtön)    ",
+                  "short_text":"Közéület (pl: kórház, bíróság, rendőrőrs, börtön)    ",
+                  "id":"Human service (e.g. courts, jails, prisons, police stations, hospitals)"
+               },
+               {
+                  "text":"Tömegközlekedési eszközön vagy csomóponton (pl: reptér, busz vagy buszállomás, vonat vagy pályaudvar, autópálya)",
+                  "short_text":"Tömegközlekedési eszközön vagy csomóponton (pl: reptér, busz vagy buszállomás, vonat vagy pályaudvar, autópálya)",
+                  "id":"Critical Infrastructures and public ways (e.g buses, bus stations and bus stops, airplanes and airports, trains and train stations, highways)"
+               },
+               {
+                  "text":"Átmeneti szálláson (pl: elhagyott épület, építkezés, menekülttábor)",
+                  "short_text":"Átmeneti szálláson (pl: elhagyott épület, építkezés, menekülttábor)",
+                  "id":"Transitional areas (e.g. immigration centres, abandoned properties and construction sites)"
+               },
+               {
+                  "text":"Online",
+                  "short_text":"Online",
+                  "id":"Virtual spaces (eg.  internet, social media, cyberspace)"
                },
                {
                   "text":"Nem tudom",
@@ -150,20 +169,20 @@
                {
                   "text":"Egyéb",
                   "short_text":"Egyéb",
-                  "id":"Other"
+                  "id":"Other_b"
                }
             ]
          },
          {
             "id":"alert_target",
             "type":"checkbox",
-            "text":"Ki ellen irányult az eset?",
+            "text":"<b>Ki ellen irányult az eset? (Több opció is kiválaszthat)</b>",
             "short_text":"Alert Target",
             "answers":[
                {
                   "text":"Vallási kisebbség (pl. zsidó, muszlim)",
                   "short_text":"Vallási kisebbség (pl. zsidó, muszlim)",
-                  "id":"Religious minority (e.g. Jews, Muslims)"
+                  "id":"Religious community (e.g. Jews, Muslims)"
                },
                {
                   "text":"Nő",
@@ -176,14 +195,24 @@
                   "id":"LGBTQ+"
                },
                {
-                  "text":"Etnikai kisebbség (bevándorló, menekült) vagy külföldi",
-                  "short_text":"Etnikai kisebbség (bevándorló, menekült) vagy külföldi",
-                  "id":"Ethnic minority (migrants, refugees) or foreigners"
+                  "text":"Különböző kultúrális és Etnikai kisebbség (bevándorló, menekült) vagy külföldi",
+                  "short_text":"Különböző kultúrális és Etnikai kisebbség (bevándorló, menekült) vagy külföldi",
+                  "id":"Different cultural and ethnic background (e.g.immigrants, refugees)"
+               },
+               {
+                  "text":"Ethinkai kisebbség tagja",
+                  "short_text":"Ethinkai kisebbség tagja",
+                  "id":"Different ethnic community within one country (e.g.second generation individuals)"
                },
                {
                   "text":"Ellenkező politikai és/vagy ideológiai nézeteket vallók",
                   "short_text":"Ellenkező politikai és/vagy ideológiai nézeteket vallók",
-                  "id":"People presenting opposite political and/or ideological views "
+                  "id":"People presenting opposite political and/or ideological views (e.g. left activists)"
+               },
+               {
+                  "text":"Rendőrök vagy köztisztisztviselők",
+                  "short_text":"Rendőrök vagy köztisztisztviselők",
+                  "id":"Law Enforcement or Public Official / Politician"
                },
                {
                   "text":"Nem tudom",
@@ -193,7 +222,7 @@
                {
                   "text":"Egyéb",
                   "short_text":"Egyéb",
-                  "id":"Other"
+                  "id":"Other_c"
                }
             ]
          }
@@ -251,79 +280,106 @@
    "M1.6":{
       "state_text":"FLP Személyes Információ",
       "state_type":"composed",
-      "show_header": "true",
+      "show_header": "false",
       "id": "flp_register_infos",
       "state_answers":[
          {
             "id":"flp_title",
             "type":"checkbox",
-            "text":"Válassz szakmát!",
-            "short_text":"Profession",
+            "text":"Válassz szakmát! (Több opció is kiválaszthat)",
+            "short_text":"Szakma",
             "answers":[
                {
-                  "text":"Közalkalmazott",
-                  "short_text":"Public employee",
-                  "id":"Public employee"
+                  "id":"School teacher",
+                  "text":"Iskolai oktató"
                },
                {
-                  "text":"Művészeti és kulturális intézmény alkalmazottja",
-                  "short_text":"Arts and culture institution employee",
-                  "id":"Arts and culture institution employee"
+                  "id":"University lecturer",
+                  "text":"Egyetemi oktató"
                },
                {
-                  "text":"Sportintézmény alkalmazottja",
-                  "short_text":"Sports facility employee",
-                  "id":"Sports facility employee"
+                  "id":"Researcher",
+                  "text":"Kutató"
                },
                {
-                  "text":"Civil szervezet alkalmazottja",
-                  "short_text":"NGO Worker",
-                  "id":"NGO Worker"
+                  "id":"Municipal Employee",
+                  "text":"Önkormányzati alkalmazott"
                },
                {
-                  "text":"Polgárőrség alkalmazottja",
-                  "short_text":"Community Police Officer",
-                  "id":"Community Police Officer"
+                  "id":"NGO worker",
+                  "text":"Civil szervezet alkalmazottja"
                },
                {
-                  "text":"Általános iskolai tanár",
-                  "short_text":"Primary Teacher",
-                  "id":"Primary Teacher"
+                  "id":"Police officer",
+                  "text":"Rendőr"
                },
                {
-                  "text":"Pártfogó felügyelő",
-                  "short_text":"Probation Officer",
-                  "id":"Probation Officer"
+                  "id":"Municipal guard officer",
+                  "text":"Polgárőr"
                },
                {
-                  "text":"Pszichológus / pszichoterapeuta",
-                  "short_text":"Psychologist/Psychotherapist ",
-                  "id":"Psychologist/Psychotherapist "
+                  "id":"Probation officer",
+                  "text":"Pártfogó felügyelő"
                },
                {
-                  "text":"Középiskolai tanár",
-                  "short_text":"Secondary Teacher",
-                  "id":"Secondary Teacher"
+                  "id":"Psychoterapist/psychologist",
+                  "text":"Pszichoterapeuta / pszichológus"
                },
                {
-                  "text":"Szociális munkás",
-                  "short_text":"Social Worker",
-                  "id":"Social Worker"
+                  "id":"Social worker",
+                  "text":"Szociális munkás"
                },
                {
-                  "text":"Egyetemi tanár",
-                  "short_text":"University Lecturer",
-                  "id":"University Lecturer"
+                  "id":"Youth worker",
+                  "text":"Ifjúsági munkás"
                },
                {
-                  "text":"Ifjúsági munkás",
-                  "short_text":"Youth Worker",
-                  "id":"Youth Worker"
+                  "id":"Security expert",
+                  "text":"Biztonsági szakértő"
                },
                {
-                  "text":"Egyéb",
-                  "short_text":"Other",
-                  "id":"Other"
+                  "id":"Radicalisation expert",
+                  "text":"Radikalizálódási szakértő"
+               },
+               {
+                  "id":"Hate crimes expert",
+                  "text":"Gyűlölet-bűncselekmény szakértő"
+               },
+               {
+                  "id":"Religious community member",
+                  "text":"Vallás közösségi vezető"
+               },
+               {
+                  "id":"Cultural and arts workers",
+                  "text":"Kultúrális és művészeti vezető"
+               },
+               {
+                  "id":"Sports institution employee/expert",
+                  "text":"Sportintézmény alkalmazottja / szakértője"
+               },
+               {
+                  "id":"Prison employee/expert",
+                  "text":"Börtön alkalmazottja / -szakértő"
+               },
+               {
+                  "id":"Exit expert",
+                  "text":"Deradikalizálódás szakértő"
+               },
+               {
+                  "id":"Youth gangs expert",
+                  "text":"Fiatalokból álló bandák szakértője"
+               },
+               {
+                  "id":"Social media expert",
+                  "text":"Közösségi média szakértő"
+               },
+               {
+                  "id":"National Advisory Board Member",
+                  "text":"nemzeti tanácsadó testület"
+               },
+               {
+                  "id":"Other",
+                  "text":"Egyéb"
                }
             ]
          },
@@ -405,111 +461,218 @@
       ]
    },
    "M1.7":{
-      "state_text":"Kérjük add meg a kompetenciáidat!",
-      "short_text":"Kompetenciák kategorizálása",
-      "id":"flp_skills",
-      "show_header": true,
-      "state_type":"checkbox",
+      "state_text":"Munkaterület",
+      "state_type":"composed",
+      "show_header": "false",
+      "id": "flp_register_infos",
       "state_answers":[
          {
-            "id":"School teacher",
-            "text":"Iskolai oktató"
+            "id":"flp_experience_with_radicalisation",
+            "type":"checkbox",
+            "text":"Radikalizációs tapasztalat (Több opció is kiválaszthat)",
+            "short_text":"Experience with Radicalisation",
+            "answers":[
+               {
+                  "id":"Addressing Extremist Propaganda and Recruitment Online",
+                  "text":"Szélsőséges online propaganda"
+               },
+               {
+                  "id":"Inter-Cultural / Inter-Community Dialogue & Trust Building & Work",
+                  "text":"Inter kultúrális dialógus"
+               },
+               {
+                  "id":"Extremist Hate Speech, Fake News and Incitement to Violence Online",
+                  "text":"Szélsőséges gyűlöletbeszéd, Álhírek "
+               },
+               {
+                  "id":"Violence Prevention (assaults, threats, insults)",
+                  "text":"Erőszak prevenció"
+               },
+               {
+                  "id":"Public safety and prevention of violence (in public and private spaces)",
+                  "text":"Erőszakprevenció"
+               },
+               {
+                  "id":"Child / Youth Safety & Wellbeing ",
+                  "text":"Gyermekbiztonság"
+               },
+               {
+                  "id":"Psychology / Mental Health & Wellbeing",
+                  "text":"Pszichológia és mentális egészség"
+               },
+               {
+                  "id":"Extremist propaganda and recruitment offline",
+                  "text":"Szélsőséges offline propaganda"
+               },
+               {
+                  "id":"Radicalisation and Extremist Violence (antisemitism, anti gypsy, islamophobia)",
+                  "text":"Radikalizáció és szélsőséges erőszak (antiszemitizmus, romaellenesség"
+               },
+               {
+                  "id":"Research (on Social Inclusion, Polarisation, Radicalisation, Extremism, Deradicalisation, fake news/hate)",
+                  "text":"Kutatás"
+               },
+               {
+                  "id":"Law Enforcement & Legal Response to Hate Crimes",
+                  "text":"Bünüldözés és gyülöletbeszédre adható jogi válaszok. "
+               },
+               {
+                  "id":"Multi-agency Work to Prevent and Counter Radicalisation and Extremism",
+                  "text":"Szervezetek közötti együttműködés a a szélsőségesség megelőzésére "
+               },
+               {
+                  "id":"Crisis Management, Prevention and Response to Violence",
+                  "text":"Krízis management"
+               },
+               {
+                  "id":"Inter-faith Work and Peacebuilding",
+                  "text":"Vallások közötti párbeszéd"
+               },
+               {
+                  "id":"Other",
+                  "text":"Egyéb"
+               }
+            ]
          },
          {
-            "id":"University lecturer",
-            "text":"Egyetemi oktató"
+            "id":"flp_working_with",
+            "type":"checkbox",
+            "text":"Kikkel dolgozik (Több opció is kiválaszthat)",
+            "short_text":"Working With",
+            "answers":[
+               {
+                  "id":"Young people in schools",
+                  "text":"Fiatalokkal iskolai környezetben"
+               },
+               {
+                  "id":"Young people outside school",
+                  "text":"Fiatalokkal iskolán kívül"
+               },
+               {
+                  "id":"Vulnerable young people",
+                  "text":"Kiszolgáltatott, sérülékeny fiatalokkal "
+               },
+               {
+                  "id":"Prisoners",
+                  "text":"Rabokkal "
+               },
+               {
+                  "id":"Religious communities ",
+                  "text":"Vallási közösségekkel "
+               },
+               {
+                  "id":"Women and girls",
+                  "text":"Nőkkel, lányokkal "
+               },
+               {
+                  "id":"LGBTQ+",
+                  "text":"LMBTQ+ személyekkel "
+               },
+               {
+                  "id":"Refugees, migrants and foreigners",
+                  "text":"Bevándorlókkal és menekültekkel "
+               },
+               {
+                  "id":"Victims of extremist violence",
+                  "text":"Szélsőséges erőszak áldozatival "
+               },
+               {
+                  "id":"Teachers & Schools",
+                  "text":"Tanárokkal "
+               },
+               {
+                  "id":"Social Workers",
+                  "text":"Szociális munkásokkal "
+               },
+               {
+                  "id":"Police and other Law Enforcement Agencies",
+                  "text":"Rendőrökkel és más bűnüldözi szerv tagjaival "
+               },
+               {
+                  "id":"Media Coverage & Reporting",
+                  "text":"Médiában "
+               },
+               {
+                  "id":"Other",
+                  "text":"Egyéb"
+               }
+
+            ]
          },
          {
-            "id":"Researcher",
-            "text":"Kutató"
+            "id":"flp_area_of_expertise",
+            "type":"checkbox",
+            "text":"Szakterülete (Több opció is kiválaszthat)",
+            "short_text":"Area of Expertise",
+            "answers":[
+               {
+                  "id":"Education",
+                  "text":"Oktatás"
+               },
+               {
+                  "id":"Social Media and the Internet",
+                  "text":"Internet és a közösségi média"
+               },
+               {
+                  "id":"Youth Gangs/Youth Work",
+                  "text":"Ifjúsági csportok, bandák "
+               },
+               {
+                  "id":"Human Rights and Diversity",
+                  "text":"Emberi jogok és diverzitás"
+               },
+               {
+                  "id":"Sports",
+                  "text":"Spotok"
+               },
+               {
+                  "id":"Arts and Culture",
+                  "text":"Művészet és kultúra"
+               },
+               {
+                  "id":"Psychology, Psychotherapy & Well-being",
+                  "text":"Pszichológia, terápiás munka"
+               },
+               {
+                  "id":"Law Enforcement",
+                  "text":"Bűnüldözés"
+               },
+               {
+                  "id":"Community Work ",
+                  "text":"Társadalmi munka"
+               },
+               {
+                  "id":"Crisis Management Prevention",
+                  "text":"Krízis managment"
+               },
+               {
+                  "id":"Other",
+                  "text":"Egyéb"
+               }
+
+            ]
          },
          {
-            "id":"Municipal Employee",
-            "text":"Önkormányzati alkalmazott"
-         },
-         {
-            "id":"NGO worker",
-            "text":"Civil szervezet alkalmazottja"
-         },
-         {
-            "id":"Police officer",
-            "text":"Rendőr"
-         },
-         {
-            "id":"Municipal guard officer",
-            "text":"Polgárőr"
-         },
-         {
-            "id":"Probation officer",
-            "text":"Pártfogó felügyelő"
-         },
-         {
-            "id":"Psychoterapist/psychologist",
-            "text":"Pszichoterapeuta / pszichológus"
-         },
-         {
-            "id":"Social worker",
-            "text":"Szociális munkás"
-         },
-         {
-            "id":"Youth worker",
-            "text":"Ifjúsági munkás"
-         },
-         {
-            "id":"Security expert",
-            "text":"Biztonsági szakértő"
-         },
-         {
-            "id":"Radicalisation expert",
-            "text":"Radikalizálódási szakértő"
-         },
-         {
-            "id":"Hate crimes expert",
-            "text":"Gyűlölet-bűncselekmény szakértő"
-         },
-         {
-            "id":"Religious minority representative",
-            "text":"Vallási kisebbség képviselője"
-         },
-         {
-            "id":"Cultural institution employee",
-            "text":"Művészeti és kulturális intézet alkalmazottja"
-         },
-         {
-            "id":"Sports institution employee/expert",
-            "text":"Sportintézmény alkalmazottja / szakértője"
-         },
-         {
-            "id":"Prison employee/expert",
-            "text":"Börtön alkalmazottja / -szakértő"
-         },
-         {
-            "id":"Exit expert",
-            "text":"Deradikalizálódás szakértő"
-         },
-         {
-            "id":"Youth gangs expert",
-            "text":"Fiatalokból álló bandák szakértője"
-         },
-         {
-            "id":"Social media expert",
-            "text":"Közösségi média szakértő"
-         },
-         {
-            "id":"National Expert Team Member",
-            "text":"Nemzeti tanácsadó testületi tag (opcionális)"
-         },
-         {
-            "id":"Other",
-            "text":"Egyéb"
+            "id":"flp_visibility_level",
+            "type":"checkbox",
+            "optional": "true",
+            "text":"Láthatóság szintje",
+            "short_text":"Visibility Level",
+            "text_description":"Ha szeretné, hogy értesítést kapjon minden, a városában történt esetről, amely beérkezik az ALERT rendszerbe, kérem, X-elje be a \"Város\" dobozt. ",
+            "answers":[
+               {
+                  "id":"City Level",
+                  "text":"Város"
+               }
+            ]
          }
       ]
    },
    "M1.8":{
-      "short_text":"Önéletrajz / Kompetencia leírása",
-      "state_text":"ÍRD LE, MILYEN TAPASZTALATTAL ÉS KÉSZSÉGEKKEL RENDELKEZEL!",
+      "short_text":"FLP Description",
+      "state_text":"Kérjük, röviden írja le, hogy milyen szakmai tapasztalatokkal rendelkezik a szelsőségesség és a polarizáció kérdéseivel? Milyen közösségekben dolgozott? Milyen szervezetek képviseletében ? Mikor? ",
       "id":"flp_description",
-      "show_header": "true",
+      "show_header": "false",
       "state_type":"description"
    },
    "M1.9":{

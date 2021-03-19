@@ -3,7 +3,7 @@
     "password": "Passwort",
     "login_flp": "Einloggen als FLP Expert:in",
     "login_moderator": "Einloggen als nationale:r Moderator:in",
-    "forgot": "Passwort vergessen",
+    "forgot": "Haben Sie Ihr Passwort vergessen?",
     "back": "Zurück",
     "arena_panel": "Meine ARENA",
     "landingpage_hint": "Bitte klicken Sie auf das Thema des Falles, um nähere Details zu sehen.",
@@ -29,10 +29,10 @@
     "update_recommendation": "EMPFEHLUNGEN AKTUALISIEREN",
     "in_progress": "In progress",
     "participants": "Participants",
-    "select_profession": "Bitte geben Sie Ihren Beruf an",
+    "select_profession": "Bitte geben Sie Ihren Beruf an (Sie können mehr als eine Option auswählen)",
     "select_skills": "Bitte wählen Sie den Bereich aus, in dem Sie tätig bzw. erfahren sind",
     "other": "Andere",
-    "provide_description": "BITTE BESCHREIBEN SIE IHRE ERFAHRUNG UND IHR FACHWISSEN",
+    "provide_description": "Bitte beschreiben Sie kurz Ihre beruflichen Erfahrungen mit den Themen Extremismus, Hass, Polarisierung (mit welcher Gemeinschaft/Gruppe haben Sie gearbeitet? für welche Organisation? Wann?)",
     "update": "AKTUALISIEREN",
     "edit_profile": "Edit Profile",
     "select_country": "Bitte wählen Sie Ihr Land aus",
@@ -47,8 +47,10 @@
     "champions_notification": "Champions - Arena Notification Module",
     "invited": "You have been Invited to the Arena. Please register at https://www.firstlinepractitioners.com/arena/ before you can login.",
 
-    "accept_reject_flp": "FLP annehmen/ablehnen",
-    "accept_reject_alert": "ALERT Fall annehmen/ablehnen",
+    "flp_info": "FLP Info",
+    "alert_info": "Alert Info",
+    "accept_reject_flp": "FLP verwalten",
+    "accept_reject_alert": "Fall verwalten",
     "title": "Titel",
     "first_name": "Vorname",
     "last_name": "Nachname",
@@ -63,6 +65,14 @@
     "arena_status": "ARENA Status",
     "alert_status": "ALERT Status",
     "open": "Offen",
+
+    "select_expertise": "Erfahrungsbereich (Sie können mehr als eine Option auswählen)",
+    "experience": "Erfahrung mit Radikalisierung (Sie können mehr als eine Option auswählen)",
+    "visible": "Sichtbarkeitslevel",
+    "working_with": "Arbeiten mit (Sie können mehr als eine Option auswählen)",
+
     "moderator_panel": "Moderationspanel",
-    "login": "Login"
+    "login": "Login",
+    "intro": "Hier beschäftigen sich Gruppen multidisziplinärer Expert:innen mit Fällen von Radikalisierung und/oder Polarisierung. Sie arbeiten gemeinsam an Lösungen und geben Empfehlungen an First-Line Practitioners (kurz: FLPs). Registrieren Sie sich als FLP/Expert:in und stellen Sie uns Ihr Fachwissen zur Verfügung. Tauschen Sie sich mit anderen Fachleuten aus, sichten Sie Fälle von Radikalisierung und/oder Polarisierung, geben Sie Handlungsempfehlungen, teilen Sie Ihre Best Practice Erfahrungen und unterstützen Sie Kolleg:innen in ihrer täglichen Arbeit gegen Radikalisierung und/oder Polarisierung.",
+    "flp_accepted": "Sie sind nun ein aktives Expertenmitglied auf ARENA (https://www.firstlinepractitioners.com/arena-2/). Sie erhalten eine Benachrichtigung, wenn ein ALERT gemeldet wurde und Ihr Fachgebiet und Ihr Standort für den Fall relevant sind. Bitte beachten Sie während des Vorgangs die Datenschutzbestimmungen."
 }

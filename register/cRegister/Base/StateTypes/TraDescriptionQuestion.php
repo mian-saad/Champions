@@ -21,12 +21,13 @@ class TraDescriptionQuestion extends TraState
 
     public function generate_html()
     {
-        $html = $this->generate_hidden_fields($this->report_id);
+        $html = "<div class='col-12'>";
+        $html .= $this->generate_hidden_fields($this->report_id);
         $html .= $this->generate_question_title($this->state['state_text']);
         $html .= "<form id='arena_question_form'>";
 //        $html .= $this->generate_question_text($this->state['state_text']);
         $html .= "<textarea id='register_text_big' name='" . $this->state['id'] . "' rows='10'>" . $this->response[$this->state['id']] . "</textarea>";
-        $html .= "</form>";
+        $html .= "</form></div>";
         $html .= $this->generate_buttons();
         $html .= $this->generate_warning();
         return $html;

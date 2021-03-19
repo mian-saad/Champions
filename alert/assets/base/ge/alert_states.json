@@ -1,6 +1,6 @@
 {  
    "M0.0":{
-      "state_text":"Willkommen bei ARENA. Dieses Tool wird Sie durch den Prozess führen. <br><br>Weitere Informationen finden Sie in den <a target='_blank' href='https://ec.europa.eu/info/law/law-topic/data-protection_en'>allgemeinen Geschäftsbedingungen</a>",
+      "state_text":"Willkommen bei ALERT. Dieses Tool wird Sie durch den Prozess führen. <br><br>Weitere Informationen finden Sie in den <a target='_blank' href='https://ec.europa.eu/info/law/law-topic/data-protection_de'>allgemeinen Geschäftsbedingungen</a>",
       "short_text":"GDPR agreement",
       "id":"gdpr_agreement",
       "state_type":"gdpr",
@@ -76,32 +76,32 @@
          {
             "id":"alert_category",
             "type":"checkbox",
-            "text":"Wie würden Sie den Vorfall klassifizieren?",
+            "text":"<b>Wie würden Sie den Vorfall kategorisieren? (Sie können mehr als eine Option auswählen)</b>",
             "short_text":"Alert Category",
             "answers":[
                {
-                  "text":"Extremistische Propaganda, Verschwörungstheorien und/oder Rekrutierung ",
-                  "short_text":"Extremistische Propaganda, Verschwörungstheorien und/oder Rekrutierung ",
+                  "text":"Extremistische Propaganda, Rekrutierung oder Verschwörungstheorien",
+                  "short_text":"Extremistische Propaganda, Rekrutierung oder Verschwörungstheorien",
                   "id":"Extremist propaganda, conspiracy theories and/or recruitment"
                },
                {
-                  "text":"Körperliche Gewalt (z.B. Übergriffe, Drohungen, Beleidigungen)",
-                  "short_text":"Körperliche Gewalt (z.B. Übergriffe, Drohungen, Beleidigungen)",
+                  "text":"Physische Gewalt (körperlicher Angriff, Bedrohung, Einschüchterung etc.)",
+                  "short_text":"Physische Gewalt (körperlicher Angriff, Bedrohung, Einschüchterung etc.)",
                   "id":"Physical violence (e.g. assaults, threats, insults)"
                },
                {
-                  "text":"Hassrede und/oder Aufforderung zu Gewalt",
-                  "short_text":"Hassrede und/oder Aufforderung zu Gewalt",
+                  "text":"Hassrede/ Anstiftung zu Gewalt",
+                  "short_text":"Hassrede/ Anstiftung zu Gewalt",
                   "id":"Extremist hate speech and/or incitement to violence"
                },
                {
-                  "text":"Sachbeschädigung",
-                  "short_text":"Sachbeschädigung",
+                  "text":"Sachbeschädigung (Einbruch, Vandalismus, Graffiti, etc.)",
+                  "short_text":"Sachbeschädigung (Einbruch, Vandalismus, Graffiti, etc.)",
                   "id":"Property damage"
                },
                {
-                  "text":"Ich weiß es nicht",
-                  "short_text":"Ich weiß es nicht",
+                  "text":"Weiß ich nicht",
+                  "short_text":"Weiß ich nicht",
                   "id":"I don't know_a"
                },
                {
@@ -114,55 +114,75 @@
          {
             "id":"alert_location",
             "type":"checkbox",
-            "text":"Wo ist der Vorfall passiert?",
+            "text":"<b>Wo ist der Vorfall passiert? (Sie können mehr als eine Option auswählen)</b>",
             "short_text":"Alert Location",
             "answers":[
                {
-                  "text":"Im Internet und/oder in sozialen Medien",
-                  "short_text":"Im Internet und/oder in sozialen Medien",
-                  "id":"The internet and social media"
+                  "text":"Wohngebäude (z. B. Hotels, Häuser, Wohnungen)",
+                  "short_text":"Wohngebäude (z. B. Hotels, Häuser, Wohnungen)",
+                  "id":"Residential (e.g.  hotels, houses, flats)"
                },
                {
-                  "text":"Im öffentlichen Raum (z.B. Schulen, Konzerthallen, Sporteinrichtungen, Park, Straße)",
-                  "short_text":"Im öffentlichen Raum (z.B. Schulen, Konzerthallen, Sporteinrichtungen, Park, Straße)",
-                  "id":"Public space (e.g. school, concert hall, sports facility, park, street etc.)"
+                  "text":"Freizeit (z. B. Bars, Restaurants, Kinos, Spielplätze, Parks)",
+                  "short_text":"Freizeit (z. B. Bars, Restaurants, Kinos, Spielplätze, Parks)",
+                  "id":"Recreational (e.g.   bars, restaurants, cinemas, playgrounds, parks)"
                },
                {
-                  "text":"Im privaten Raum (z.B. Schulen, Konzerthallen, Sporteinrichtungen, Park, Straße)",
-                  "short_text":"Im privaten Raum (z.B. Schulen, Konzerthallen, Sporteinrichtungen, Park, Straße)",
-                  "id":"Private space (e.g. school, concert hall, workplace, sports club etc.)"
+                  "text":"Orte der Religionsausübung (z. B. Moscheen, Kirchen, Synagogen, Gebetshallen etc.)",
+                  "short_text":"Orte der Religionsausübung (z. B. Moscheen, Kirchen, Synagogen, Gebetshallen etc.)",
+                  "id":"Religious (e.g. mosques, churches, synagogues, pray halls)"
                },
                {
-                  "text":"Bei einer öffentlichen Veranstaltung",
-                  "short_text":"Bei einer öffentlichen Veranstaltung",
-                  "id":"Public event (public organiser)"
+                  "text":"Büroräume (z. B. Arbeitsstätten, Geschäftsräume, Fabriken, Lagerhallen)",
+                  "short_text":"Büroräume (z. B. Arbeitsstätten, Geschäftsräume, Fabriken, Lagerhallen)",
+                  "id":"Offices (e.g. work locations, business facilities, factories, warehouses)"
                },
                {
-                  "text":"Bei einer privaten Veranstaltung",
-                  "short_text":"Bei einer privaten Veranstaltung",
-                  "id":"Private event (private organiser)"
+                  "text":"Bildung (z. B. Kindertagesstätten, Schulen, Universitäten, Bibliotheken) ",
+                  "short_text":"Bildung (z. B. Kindertagesstätten, Schulen, Universitäten, Bibliotheken) ",
+                  "id":"Education (e.g day care centres, schools, universities, libraries) "
                },
                {
-                  "text":"Ich weiß es nicht",
-                  "short_text":"Ich weiß es nicht",
+                  "text":"Dienstleistungen (z. B. Gerichte, Gefängnisse, Polizeistationen, Krankenhäuser)",
+                  "short_text":"Dienstleistungen (z. B. Gerichte, Gefängnisse, Polizeistationen, Krankenhäuser)",
+                  "id":"Human service (e.g. courts, jails, prisons, police stations, hospitals)"
+               },
+               {
+                  "text":"Infrastruktur und öffentliche Wege (z. B. Busse, Busbahnhöfe und Bushaltestellen, Flugzeuge und Flughäfen, Züge und Bahnhöfe, Autobahnen",
+                  "short_text":"Infrastruktur und öffentliche Wege (z. B. Busse, Busbahnhöfe und Bushaltestellen, Flugzeuge und Flughäfen, Züge und Bahnhöfe, Autobahnen",
+                  "id":"Critical Infrastructures and public ways (e.g buses, bus stations and bus stops, airplanes and airports, trains and train stations, highways)"
+               },
+               {
+                  "text":"Übergangsbereiche (z. B. Einwanderungszentren, verlassene Immobilien und Baustellen)",
+                  "short_text":"Übergangsbereiche (z. B. Einwanderungszentren, verlassene Immobilien und Baustellen)",
+                  "id":"Transitional areas (e.g. immigration centres, abandoned properties and construction sites)"
+               },
+               {
+                  "text":"Virtuelle Räume (z.B. Internet, Soziale Medien)",
+                  "short_text":"Virtuelle Räume (z.B. Internet, Soziale Medien)",
+                  "id":"Virtual spaces (eg.  internet, social media, cyberspace)"
+               },
+               {
+                  "text":"Weiß ich nicht",
+                  "short_text":"Weiß ich nicht",
                   "id":"I don't know_b"
                },
                {
                   "text":"Anders",
                   "short_text":"Anders",
-                  "id":"Other"
+                  "id":"Other_b"
                }
             ]
          },
          {
             "id":"alert_target",
             "type":"checkbox",
-            "text":"Wer war das Ziel des Vorfalls?",
+            "text":"<b>Wer war das Ziel des Angriffs? (Sie können mehr als eine Option auswählen)</b>",
             "short_text":"Alert Target",
             "answers":[
                {
-                  "text":"Religiöse Minderheiten (z.B. Jüdinnen und Juden, Muslime)",
-                  "short_text":"Religiöse Minderheiten (z.B. Jüdinnen und Juden, Muslime)",
+                  "text":"Religiöse Gemeinschaften (z.B. Jüd:innen, Muslim:innen)",
+                  "short_text":"Religiöse Gemeinschaften (z.B. Jüd:innen, Muslim:innen)",
                   "id":"Religious minority (e.g. Jews, Muslims)"
                },
                {
@@ -176,18 +196,28 @@
                   "id":"LGBTQ+"
                },
                {
-                  "text":"Ethnische Minderheiten (Migrant*innen, Geflüchtete)",
-                  "short_text":"Ethnische Minderheiten (Migrant*innen, Geflüchtete)",
-                  "id":"Ethnic minority (migrants, refugees) or foreigners"
+                  "text":"Menschen mit anderer kultureller oder ethnischer Herkunft (z.B. Menschen mit Migrationsgeschichte, Geflüchtete etc.)",
+                  "short_text":"Menschen mit anderer kultureller oder ethnischer Herkunft (z.B. Menschen mit Migrationsgeschichte, Geflüchtete etc.)",
+                  "id":"Menschen mit anderer kultureller oder ethnischer Herkunft (z.B. Menschen mit Migrationsgeschichte, Geflüchtete etc.)"
                },
                {
-                  "text":"Menschen mit anderen politischen und/oder ideologischen Einstellungen ",
-                  "short_text":"Menschen mit anderen politischen und/oder ideologischen Einstellungen ",
-                  "id":"People presenting opposite political and/or ideological views "
+                  "text":"Ethnische Community in einem Land",
+                  "short_text":"Ethnische Community in einem Land",
+                  "id":"Ethnische Community in einem Land"
                },
                {
-                  "text":"Ich weiß es nicht",
-                  "short_text":"Ich weiß es nicht",
+                  "text":"Menschen mit anderer politischer Meinung",
+                  "short_text":"Menschen mit anderer politischer Meinung",
+                  "id":"Menschen mit anderer politischer Meinung"
+               },
+               {
+                  "text":"Polizei oder Politiker:in",
+                  "short_text":"Polizei oder Politiker:in",
+                  "id":"Polizei oder Politiker:in"
+               },
+               {
+                  "text":"Weiß ich nicht",
+                  "short_text":"Weiß ich nicht",
                   "id":"I don't know_c"
                },
                {
@@ -251,79 +281,102 @@
    "M1.6":{
       "state_text":"Persönliche Informationen",
       "state_type":"composed",
-      "show_header": "true",
+      "show_header": "false",
       "id": "flp_register_infos",
       "state_answers":[
          {
             "id":"flp_title",
             "type":"checkbox",
-            "text":"Bitte geben Sie Ihren Beruf an",
-            "short_text":"Ihren Beruf",
+            "text":"Bitte geben Sie Ihren Beruf an (Sie können mehr als eine Option auswählen)",
+            "short_text":"Beruf",
             "answers":[
                {
-                  "text":"Angestellte*r im öffentlichen Dienst",
-                  "short_text":"Public employee",
-                  "id":"Public employee"
+                  "id":"School teacher",
+                  "text":"Lehrer*in an einer Schule"
                },
                {
-                  "text":"Mitarbeiter*in in einer Kunst-/ Kultureinrichtung",
-                  "short_text":"Arts and culture institution employee",
-                  "id":"Arts and culture institution employee"
+                  "id":"University lecturer",
+                  "text":"Lehrende*r an einer Universität oder Hochschule"
                },
                {
-                  "text":"Mitarbeiter*in in einer Sporteinrichtung",
-                  "short_text":"Sports facility employee",
-                  "id":"Sports facility employee"
+                  "id":"Researcher",
+                  "text":"Forscher*in"
                },
                {
-                  "text":"Mitarbeiter*in in einer NGO",
-                  "short_text":"NGO Worker",
-                  "id":"NGO Worker"
+                  "id":"Municipal Employee",
+                  "text":"Mitarbeiter*in bei der Stadt"
                },
                {
-                  "text":"Polizist*in",
-                  "short_text":"Community Police Officer",
-                  "id":"Community Police Officer"
+                  "id":"NGO worker",
+                  "text":"Mitarbeiter*in in einer NGO"
                },
                {
-                  "text":"Lehrer*in in der Primarstufe",
-                  "short_text":"Primary Teacher",
-                  "id":"Primary Teacher"
+                  "id":"Police officer",
+                  "text":"Polizist*in"
                },
                {
-                  "text":"Bewährungshelfer*in",
-                  "short_text":"Probation Officer",
-                  "id":"Probation Officer"
+                  "id":"Probation officer",
+                  "text":"Bewährungshelfer*in"
                },
                {
-                  "text":"Psychotherapeut*in/ Psycholog*in",
-                  "short_text":"Psychologist/Psychotherapist ",
-                  "id":"Psychologist/Psychotherapist "
+                  "id":"Psychoterapist/psychologist",
+                  "text":"Psychotherapeut*in/ Psycholog*in"
                },
                {
-                  "text":"Lehrer*in in der Sekundarstufe",
-                  "short_text":"Secondary Teacher",
-                  "id":"Secondary Teacher"
+                  "id":"Social worker",
+                  "text":"Sozialarbeiter*in"
                },
                {
-                  "text":"Sozialarbeiter*in",
-                  "short_text":"Social Worker",
-                  "id":"Social Worker"
+                  "id":"Youth worker",
+                  "text":"Jugendarbeiter*in"
                },
                {
-                  "text":"Lehrende*r an einer Universtät oder Hochschule",
-                  "short_text":"University Lecturer",
-                  "id":"University Lecturer"
+                  "id":"Security expert",
+                  "text":"Sicherheitsexpert*in"
                },
                {
-                  "text":"Jugendarbeiter*in",
-                  "short_text":"Youth Worker",
-                  "id":"Youth Worker"
+                  "id":"Radicalisation expert",
+                  "text":"Expert*in im Bereich Radikalisierung"
                },
                {
-                  "text":"Andere",
-                  "short_text":"Other",
-                  "id":"Other"
+                  "id":"Hate crimes expert",
+                  "text":"Expert*in im Bereich Hasskriminalität"
+               },
+               {
+                  "id":"Religious community member",
+                  "text":"Mitglied einer religiösen Gemeinschaft"
+               },
+               {
+                  "id":"Cultural and arts workers",
+                  "text":"Künstler:in"
+               },
+               {
+                  "id":"Sports institution employee/expert",
+                  "text":"Expert*in/ Mitarbeiter*in in einer Sporteinrichtung"
+               },
+               {
+                  "id":"Prison employee/expert",
+                  "text":"Expert*in/ Mitarbeiter*in im Gefängnis"
+               },
+               {
+                  "id":"Exit expert",
+                  "text":"Expert*in im Bereich Ausstieg/Deradikalisierung"
+               },
+               {
+                  "id":"Youth gangs expert",
+                  "text":"Expert*in im Bereich Jugendgangs"
+               },
+               {
+                  "id":"Social media expert",
+                  "text":"Expert*in im Bereich Social Media"
+               },
+               {
+                  "id":"National Advisory Board Member",
+                  "text":"Mitglied eines nationalen Beratungsgremiums"
+               },
+               {
+                  "id":"Other",
+                  "text":"Andere"
                }
             ]
          },
@@ -405,107 +458,218 @@
       ]
    },
    "M1.7":{
-      "state_text":"Bitte wählen Sie den Bereich aus, in dem Sie tätig bzw. erfahren sind",
-      "short_text":"Kompetenzkategorien",
-      "id":"flp_skills",
-      "show_header": true,
-      "state_type":"checkbox",
+      "state_text":"Arbeitsbereiche",
+      "state_type":"composed",
+      "show_header": "false",
+      "id": "flp_register_infos",
       "state_answers":[
          {
-            "id":"School teacher",
-            "text":"Lehrer*in an einer Schule"
+            "id":"flp_experience_with_radicalisation",
+            "type":"checkbox",
+            "text":"Erfahrung mit Radikalisierung (Sie können mehr als eine Option auswählen)",
+            "short_text":"Experience with Radicalisation",
+            "answers":[
+               {
+                  "id":"Addressing Extremist Propaganda and Recruitment Online",
+                  "text":"Online Extremismus und Radikalisierung"
+               },
+               {
+                  "id":"Inter-Cultural / Inter-Community Dialogue & Trust Building & Work",
+                  "text":"Interkultureller Dialog und Vertrauensbildende Arbeit"
+               },
+               {
+                  "id":"Extremist Hate Speech, Fake News and Incitement to Violence Online",
+                  "text":"Hassrede, Fake News, Anstiftung zur Gewalt in der online Sphäre"
+               },
+               {
+                  "id":"Violence Prevention (assaults, threats, insults)",
+                  "text":"Gewaltprävention "
+               },
+               {
+                  "id":"Public safety and prevention of violence (in public and private spaces)",
+                  "text":"Öffentliche Sicherheit "
+               },
+               {
+                  "id":"Child / Youth Safety & Wellbeing ",
+                  "text":"Sicherheit & Wohlbefinden von Kindern / Jugendlichen "
+               },
+               {
+                  "id":"Psychology / Mental Health & Wellbeing",
+                  "text":"Psychologie / Psychische Gesundheit"
+               },
+               {
+                  "id":"Extremist propaganda and recruitment offline",
+                  "text":"Extremistische Propaganda und Rekrutierung im offline Bereich"
+               },
+               {
+                  "id":"Radicalisation and Extremist Violence (antisemitism, anti gypsy, islamophobia)",
+                  "text":"Radikalisierung und extremistische Gewalt (Antisemitismus, Anitziganismus, Islamfeindlichkeit)"
+               },
+               {
+                  "id":"Research (on Social Inclusion, Polarisation, Radicalisation, Extremism, Deradicalisation, fake news/hate)",
+                  "text":"Forschung (zu sozialer Inklusion, Polarisierung, Radikalisierung, Extremismus, Deradikalisierung, Fake News)"
+               },
+               {
+                  "id":"Law Enforcement & Legal Response to Hate Crimes",
+                  "text":"Strafverfolgung und rechtliche Reaktion auf Hassverbrechen"
+               },
+               {
+                  "id":"Multi-agency Work to Prevent and Counter Radicalisation and Extremism",
+                  "text":"Akteursübergreifende Arbeit zur Extremismusprävention"
+               },
+               {
+                  "id":"Crisis Management, Prevention and Response to Violence",
+                  "text":"Krisenmanagement undPrävention"
+               },
+               {
+                  "id":"Inter-faith Work and Peacebuilding",
+                  "text":"Interreligiöser Dialog und Friedensförderung "
+               },
+               {
+                  "id":"Other",
+                  "text":"Anderes"
+               }
+            ]
          },
          {
-            "id":"University lecturer",
-            "text":"Lehrende*r an einer Universität oder Hochschule"
+            "id":"flp_working_with",
+            "type":"checkbox",
+            "text":"Arbeiten mit (Sie können mehr als eine Option auswählen)",
+            "short_text":"Working With",
+            "answers":[
+               {
+                  "id":"Young people in schools",
+                  "text":"Junge Menschen in Schulen"
+               },
+               {
+                  "id":"Young people outside school",
+                  "text":"Junge Menschen außerhalb von Schulen"
+               },
+               {
+                  "id":"Vulnerable young people",
+                  "text":"Gefährdete junge Menschen"
+               },
+               {
+                  "id":"Prisoners",
+                  "text":"Inhaftierte"
+               },
+               {
+                  "id":"Religious communities ",
+                  "text":"Religiöse Gemeinschaften"
+               },
+               {
+                  "id":"Women and girls",
+                  "text":"Frauen und Mädchen"
+               },
+               {
+                  "id":"LGBTQ+",
+                  "text":"LGBTQ+"
+               },
+               {
+                  "id":"Refugees, migrants and foreigners",
+                  "text":"Geflüchtete und Menschen mit Migrationsgeschichte"
+               },
+               {
+                  "id":"Victims of extremist violence",
+                  "text":"Betroffene extremistischer Gewalt"
+               },
+               {
+                  "id":"Teachers & Schools",
+                  "text":"Lehrer:innen und Schulen"
+               },
+               {
+                  "id":"Social Workers",
+                  "text":"Sozialarbeiter:innen"
+               },
+               {
+                  "id":"Police and other Law Enforcement Agencies",
+                  "text":"Polizei und Strafverfolgungsbehörden"
+               },
+               {
+                  "id":"Media Coverage & Reporting",
+                  "text":"Medienvertreter:innen und Journalist:innen"
+               },
+               {
+                  "id":"Other",
+                  "text":"Andere"
+               }
+
+            ]
          },
          {
-            "id":"Researcher",
-            "text":"Forscher*in"
+            "id":"flp_area_of_expertise",
+            "type":"checkbox",
+            "text":"Erfahrungsbereich (Sie können mehr als eine Option auswählen)",
+            "short_text":"Area of Expertise",
+            "answers":[
+               {
+                  "id":"Education",
+                  "text":"Bildung"
+               },
+               {
+                  "id":"Social Media and the Internet",
+                  "text":"Soziale Medien und Internet"
+               },
+               {
+                  "id":"Youth Gangs/Youth Work",
+                  "text":"Jugendgruppen/ Jugendarbeit"
+               },
+               {
+                  "id":"Human Rights and Diversity",
+                  "text":"Menschenrechte und Diversität"
+               },
+               {
+                  "id":"Sports",
+                  "text":"Sport"
+               },
+               {
+                  "id":"Arts and Culture",
+                  "text":"Kunst und Kultur"
+               },
+               {
+                  "id":"Psychology, Psychotherapy & Well-being",
+                  "text":"Psychologie, Psychotherapie"
+               },
+               {
+                  "id":"Law Enforcement",
+                  "text":"Strafverfolgung"
+               },
+               {
+                  "id":"Community Work ",
+                  "text":"Gemeindearbeit"
+               },
+               {
+                  "id":"Crisis Management Prevention",
+                  "text":"Krisenmanagement & Prävention"
+               },
+               {
+                  "id":"Other",
+                  "text":"Andere"
+               }
+
+            ]
          },
          {
-            "id":"Municipal Employee",
-            "text":"Mitarbeiter*in bei der Stadt"
-         },
-         {
-            "id":"NGO worker",
-            "text":"Mitarbeiter*in in einer NGO"
-         },
-         {
-            "id":"Police officer",
-            "text":"Polizist*in"
-         },
-         {
-            "id":"Probation officer",
-            "text":"Bewährungshelfer*in"
-         },
-         {
-            "id":"Psychoterapist/psychologist",
-            "text":"Psychotherapeut*in/ Psycholog*in"
-         },
-         {
-            "id":"Social worker",
-            "text":"Sozialarbeiter*in"
-         },
-         {
-            "id":"Youth worker",
-            "text":"Jugendarbeiter*in"
-         },
-         {
-            "id":"Security expert",
-            "text":"Sicherheitsexpert*in"
-         },
-         {
-            "id":"Radicalisation expert",
-            "text":"Expert*in im Bereich Radikalisierung"
-         },
-         {
-            "id":"Hate crimes expert",
-            "text":"Expert*in im Bereich Hasskriminalität"
-         },
-         {
-            "id":"Religious minority representative",
-            "text":"Vertreter*in einer religiösen Minderheit"
-         },
-         {
-            "id":"Cultural institution employee",
-            "text":"Mitarbeiter*in in einer Kunst-/ Kultureinrichtung"
-         },
-         {
-            "id":"Sports institution employee/expert",
-            "text":"Expert*in/ Mitarbeiter*in in einer Sporteinrichtung"
-         },
-         {
-            "id":"Prison employee/expert",
-            "text":"Expert*in/ Mitarbeiter*in im Gefängnis"
-         },
-         {
-            "id":"Exit expert",
-            "text":"Expert*in im Bereich Ausstieg/Deradikalisierung"
-         },
-         {
-            "id":"Youth gangs expert",
-            "text":"Expert*in im Bereich Jugendgangs"
-         },
-         {
-            "id":"Social media expert",
-            "text":"Expert*in im Bereich Social Media"
-         },
-         {
-            "id":"National Expert Team Member",
-            "text":"Mitglied im nationalen Beirat"
-         },
-         {
-            "id":"Other",
-            "text":"Andere"
+            "id":"flp_visibility_level",
+            "type":"checkbox",
+            "optional": "true",
+            "text":"Sichtbarkeitslevel",
+            "short_text":"Visibility Level",
+            "text_description":"Falls Sie nur an lokalen Aktivitäten beteiligt sein möchten, die sich auf Ihre Stadt beziehen, kreuzen Sie bitte das Kästchen mit der Bezeichnung \"Stadtebene\" an. Andernfalls könnten Sie an landesweiten Aktivitäten beteiligt sein. ",
+            "answers":[
+               {
+                  "id":"City Level",
+                  "text":"Stadtebene"
+               }
+            ]
          }
       ]
    },
    "M1.8":{
-      "short_text":"Biografie/Erfahrungen",
-      "state_text":"BITTE BESCHREIBEN SIE IHRE ERFAHRUNG UND IHR FACHWISSEN",
+      "short_text":"FLP Description",
+      "state_text":"Bitte beschreiben Sie kurz Ihre beruflichen Erfahrungen mit den Themen Extremismus, Hass, Polarisierung (mit welcher Gemeinschaft/Gruppe haben Sie gearbeitet? für welche Organisation? Wann?)",
       "id":"flp_description",
-      "show_header": "true",
+      "show_header": "false",
       "state_type":"description"
    },
    "M1.9":{

@@ -139,10 +139,11 @@ class TraFinal extends TraState {
         $html = "<hr> <h3>".$this->string_file['recommendation']."</h3>";
 
         $plugin_path = plugin_dir_path( dirname(__FILE__, 2));
-        exec("/usr/local/bin/python3 ".$plugin_path."/Base/Recommendation.py '$unseen_text'", $test_result);
+        exec("/usr/local/bin/python3 ".$plugin_path."Base/Recommendation.py '$unseen_text'", $test_result);
 //        $test_result = implode(" ",$test_result);
         foreach ($test_result as $item) {
-            $html .= "<p>".$item."</p>";
+//            $html .= "<p>".$item."</p>";
+            $html .= "<p>No Recommendations for this case</p>";
         }
 
 

@@ -1,147 +1,6 @@
 {
   "title":[
     {
-      "text":"Pracownik(-niczka) administracji publicznej",
-      "short_text":"Public employee",
-      "id":"Public employee"
-    },
-    {
-      "text":"Pracownik(-niczka) instytucji kultury",
-      "short_text":"Arts and culture institution employee",
-      "id":"Arts and culture institution employee"
-    },
-    {
-      "text":"Pracownik(-niczka) instytucji sportowej",
-      "short_text":"Sports facility employee",
-      "id":"Sports facility employee"
-    },
-    {
-      "text":"Pracownik(-niczka) organizacji społecznej",
-      "short_text":"NGO Worker",
-      "id":"NGO Worker"
-    },
-    {
-      "text":"Dzielnicowy(-wa)",
-      "short_text":"Community Police Officer",
-      "id":"Community Police Officer"
-    },
-    {
-      "text":"Nauczyciel(ka) w szkole podstawowej",
-      "short_text":"Primary Teacher",
-      "id":"Primary Teacher"
-    },
-    {
-      "text":"Kurator(ka) sądowy(-wa)",
-      "short_text":"Probation Officer",
-      "id":"Probation Officer"
-    },
-    {
-      "text":"Pscholog(-lożka)/psychoterapeuta(-tka)",
-      "short_text":"Psychologist/Psychotherapist ",
-      "id":"Psychologist/Psychotherapist "
-    },
-    {
-      "text":"Nauczyciel(ka) w szkole średniej",
-      "short_text":"Secondary Teacher",
-      "id":"Secondary Teacher"
-    },
-    {
-      "text":"Pracownik(-niczka) społeczny(-na)",
-      "short_text":"Social Worker",
-      "id":"Social Worker"
-    },
-    {
-      "text":"Wykładowca(-wczyni) na uczelni wyższej",
-      "short_text":"University Lecturer",
-      "id":"University Lecturer"
-    },
-    {
-      "text":"Pracownik(-niczka) młodzieżowy(-wa)",
-      "short_text":"Youth Worker",
-      "id":"Youth Worker"
-    },
-    {
-      "text":"Inny",
-      "short_text":"Other",
-      "id":"Other"
-    }
-  ],
-
-  "country":[
-    {
-      "text":"\uD83C\uDDE6\uD83C\uDDF9 Austria",
-      "short_text":"Austria",
-      "id":"Austria"
-    },
-    {
-      "text":"\uD83C\uDDE9\uD83C\uDDEA Niemcy",
-      "short_text":"Niemcy",
-      "id":"Germany"
-    },
-    {
-      "text":"\uD83C\uDDED\uD83C\uDDFA Węgry",
-      "short_text":"Węgry",
-      "id":"Hungary"
-    },
-    {
-      "text":"\uD83C\uDDF5\uD83C\uDDF1 Polska",
-      "short_text":"Polska",
-      "id":"Poland"
-    },
-    {
-      "text":"\uD83C\uDDF7\uD83C\uDDF4 Rumunia",
-      "short_text":"Rumunia",
-      "id":"Romania"
-    }
-  ],
-
-  "inputs": [
-    {
-      "id":"flp_first_name",
-      "text":"Podaj swoje imię",
-      "short_text":"First Name",
-      "type":"text"
-    },
-    {
-      "id":"flp_last_name",
-      "text":"Podaj swoje nazwisko",
-      "short_text":"Last Name",
-      "type":"text"
-    },
-    {
-      "id":"flp_email",
-      "text":"Podaj swój adres e-mailowy",
-      "short_text":"Email",
-      "type":"text"
-    },
-    {
-      "id":"flp_password",
-      "text":"Podaj hasło",
-      "short_text":"Password",
-      "type":"password"
-    },
-    {
-      "id":"flp_organisation",
-      "text":"Podaj nazwę organizacji/instytucji, w której pracujesz",
-      "short_text":"Organisation",
-      "type":"text"
-    },
-    {
-      "id":"flp_years_of_experience",
-      "text":"Ile masz lat doświadczenia zawodowego?",
-      "short_text":"experience",
-      "type":"text"
-    },
-    {
-      "id":"flp_city",
-      "text":"W jakiej miejscowości mieszkasz?",
-      "short_text":"Town",
-      "type":"text"
-    }
-  ],
-
-  "skills":[
-    {
       "id":"School teacher",
       "text":"Nauczyciel(ka) szkolny(-na)"
     },
@@ -198,12 +57,12 @@
       "text":"Ekspert(ka) ds. przestępstw z nienawiści"
     },
     {
-      "id":"Religious minority representative",
-      "text":"Przedstawiciel(ka) mniejszości religijnych"
+      "id":"Religious community member",
+      "text":"Przedstawiciel(-ka) społeczności religijnej"
     },
     {
-      "id":"Cultural institution employee",
-      "text":"Pracownik(-niczka) instytucji kultury"
+      "id":"Cultural and arts workers",
+      "text":"Pracownik(-niczka) sektora kultury i sztuki"
     },
     {
       "id":"Sports institution employee/expert",
@@ -226,12 +85,263 @@
       "text":"Ekspert(ka) ds. mediów społecznościowych"
     },
     {
-      "id":"National Expert Team Member",
-      "text":"Członek(--nkini) Ogólnopolskiego Zespołu Eksperckiego"
+      "id":"National Advisory Board Member",
+      "text":"Członek(-nkini) Ogólnopolskiego Zespołu Eksperckiego"
     },
     {
       "id":"Other",
-      "text":"Inny"
+      "text":"Inna"
+    }
+  ],
+
+  "country":[
+    {
+      "text":"\uD83C\uDDE6\uD83C\uDDF9 Austria",
+      "short_text":"Austria",
+      "id":"Austria"
+    },
+    {
+      "text":"\uD83C\uDDE9\uD83C\uDDEA Niemcy",
+      "short_text":"Niemcy",
+      "id":"Germany"
+    },
+    {
+      "text":"\uD83C\uDDED\uD83C\uDDFA Węgry",
+      "short_text":"Węgry",
+      "id":"Hungary"
+    },
+    {
+      "text":"\uD83C\uDDF5\uD83C\uDDF1 Polska",
+      "short_text":"Polska",
+      "id":"Poland"
+    },
+    {
+      "text":"\uD83C\uDDF7\uD83C\uDDF4 Rumunia",
+      "short_text":"Rumunia",
+      "id":"Romania"
+    }
+  ],
+
+  "inputs":[
+    {
+      "id":"flp_first_name",
+      "text":"Podaj swoje imię",
+      "short_text":"First Name",
+      "type":"text"
+    },
+    {
+      "id":"flp_last_name",
+      "text":"Podaj swoje nazwisko",
+      "short_text":"Last Name",
+      "type":"text"
+    },
+    {
+      "id":"flp_email",
+      "text":"Podaj swój adres e-mailowy",
+      "short_text":"Email",
+      "type":"text"
+    },
+    {
+      "id":"flp_password",
+      "text":"Podaj hasło",
+      "short_text":"Password",
+      "type":"password"
+    },
+    {
+      "id":"flp_organisation",
+      "text":"Podaj nazwę organizacji/instytucji, w której pracujesz",
+      "short_text":"Organisation",
+      "type":"text"
+    },
+    {
+      "id":"flp_years_of_experience",
+      "text":"Ile masz lat doświadczenia zawodowego?",
+      "short_text":"experience",
+      "type":"text"
+    },
+    {
+      "id":"flp_city",
+      "text":"W jakiej miejscowości mieszkasz?",
+      "short_text":"Town",
+      "type":"text"
+    }
+  ],
+
+  "experience_with":[
+    {
+      "id":"Addressing Extremist Propaganda and Recruitment Online",
+      "text":"Ekstremistyczna propaganda i werbunek online"
+    },
+    {
+      "id":"Inter-Cultural / Inter-Community Dialogue & Trust Building & Work",
+      "text":"Dialog międzykulturowy i praca ze społecznością"
+    },
+    {
+      "id":"Extremist Hate Speech, Fake News and Incitement to Violence Online",
+      "text":"Ekstremistyczna mowa nienawiści, fake news i podżeganie do przemocy online"
+    },
+    {
+      "id":"Violence Prevention (assaults, threats, insults)",
+      "text":"Zapobieganie przemocy (napaści, groźby, obelgi, wyzwiska, zastraszanie)"
+    },
+    {
+      "id":"Public safety and prevention of violence (in public and private spaces)",
+      "text":"Bezpieczeństwo i zapobieganie przemocy (w miejscach publicznych i prywatnych) "
+    },
+    {
+      "id":"Child / Youth Safety & Wellbeing ",
+      "text":"Bezpieczeństwo i dobrostan dzieci i młodzieży "
+    },
+    {
+      "id":"Psychology / Mental Health & Wellbeing",
+      "text":"Psychologia i zdrowie psychiczne"
+    },
+    {
+      "id":"Extremist propaganda and recruitment offline",
+      "text":"Ekstremistyczna propaganda i werbunek offline"
+    },
+    {
+      "id":"Radicalisation and Extremist Violence (antisemitism, anti gypsy, islamophobia)",
+      "text":"Radykalizacja i przemoc ekstremistyczna (antysemityzm, islamofobia itp.)"
+    },
+    {
+      "id":"Research (on Social Inclusion, Polarisation, Radicalisation, Extremism, Deradicalisation, fake news/hate)",
+      "text":"Badania (w zakresie spójności społecznej, polaryzacji, radykalizacji i ekstremizmu, deradykalizacji, fake newsów i przestępstw z nienawiści)"
+    },
+    {
+      "id":"Law Enforcement & Legal Response to Hate Crimes",
+      "text":"Siły ochrony porządku publicznego/aspekty prawne przestępstw z nienawiści"
+    },
+    {
+      "id":"Multi-agency Work to Prevent and Counter Radicalisation and Extremism",
+      "text":"Współpraca międzysektorowa na rzecz prewencji radykalizacji i ekstremizmu"
+    },
+    {
+      "id":"Crisis Management, Prevention and Response to Violence",
+      "text":"Zarządzanie kryzysem i zapobieganie przemocy"
+    },
+    {
+      "id":"Inter-faith Work and Peacebuilding",
+      "text":"Dialog międzykulturowy i budowanie pokoju"
+    },
+    {
+      "id":"Other",
+      "text":"Inna"
+    }
+  ],
+
+  "working_with":[
+    {
+      "id":"Young people in schools",
+      "text":"młodymi ludźmi w szkole"
+    },
+    {
+      "id":"Young people outside school",
+      "text":"młodymi ludźmi poza szkołą"
+    },
+    {
+      "id":"Vulnerable young people",
+      "text":"wrażliwymi, narażonymi na niebezpieczeństwo młodymi ludźmi"
+    },
+    {
+      "id":"Prisoners",
+      "text":"więźniami (-niarkami)"
+    },
+    {
+      "id":"Religious communities ",
+      "text":"społecznościami religijnymi"
+    },
+    {
+      "id":"Women and girls",
+      "text":"kobietami i dziewczynkami"
+    },
+    {
+      "id":"LGBTQ+",
+      "text":"społecznością LGBTQ+"
+    },
+    {
+      "id":"Refugees, migrants and foreigners",
+      "text":"uchodźcami i imigrantami"
+    },
+    {
+      "id":"Victims of extremist violence",
+      "text":"ofiarami przemocy ekstremistycznej"
+    },
+    {
+      "id":"Teachers & Schools",
+      "text":"nauczycielami(-lkami) i szkołami "
+    },
+    {
+      "id":"Social Workers",
+      "text":"pracownikami(-niczkami) socjalnymi"
+    },
+    {
+      "id":"Police and other Law Enforcement Agencies",
+      "text":"Policją i innymi służbami ochrony porządku publicznego"
+    },
+    {
+      "id":"Media Coverage & Reporting",
+      "text":"mediami"
+    },
+    {
+      "id":"Other",
+      "text":"Inna"
+    }
+
+  ],
+
+  "expertise":[
+    {
+      "id":"Education",
+      "text":"Edukacja"
+    },
+    {
+      "id":"Social Media and the Internet",
+      "text":"Media społecznościowe i internet"
+    },
+    {
+      "id":"Youth Gangs/Youth Work",
+      "text":"Praca z młodzieżą"
+    },
+    {
+      "id":"Human Rights and Diversity",
+      "text":"Prawa człowieka i różnorodność"
+    },
+    {
+      "id":"Sports",
+      "text":"Sport"
+    },
+    {
+      "id":"Arts and Culture",
+      "text":"Kultura i sztuka"
+    },
+    {
+      "id":"Psychology, Psychotherapy & Well-being",
+      "text":"Psychologia, psychoterapia i dobrostan"
+    },
+    {
+      "id":"Law Enforcement",
+      "text":"Ochrona porządku publicznego"
+    },
+    {
+      "id":"Community Work ",
+      "text":"Praca ze społecznością lokalną"
+    },
+    {
+      "id":"Crisis Management Prevention",
+      "text":"Zarządzanie kryzysem "
+    },
+    {
+      "id":"Other",
+      "text":"Inna"
+    }
+
+  ],
+
+  "visibility":[
+    {
+      "id":"City Level",
+      "text":"Poziom miejski"
     }
   ]
 }

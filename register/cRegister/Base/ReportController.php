@@ -256,7 +256,7 @@ class ReportController extends BaseController
         else {
             $wpdb->insert($register_reports_db_name, $answers);
         }
-        wp_mail( $answers['flp_email'], $this->string_file['registration_confirmed'], $this->string_file['your_registration_confirmed']);
+        wp_mail( $answers['flp_email'], $this->string_file['arena_register_module'], $this->string_file['flp_registered']);
 
     }
 

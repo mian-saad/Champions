@@ -1,7 +1,7 @@
 
 jQuery(document).ready(function ($) {
 
-    var $contentBox = $('#registration_questionnaire_content_div');
+    var $contentBox = $('#contentBox');
 
     // new report button action
     $('body').on('click', '#start_registration', function (e) {

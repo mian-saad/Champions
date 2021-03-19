@@ -38,6 +38,7 @@ class Shortcode extends BaseController
         wp_enqueue_style('login_css_bootstrap-grid', $this->plugin_url . 'assets/login-bootstrap-grid.css');
         wp_enqueue_style('login_css_bootstrap-reboot', $this->plugin_url . 'assets/login-bootstrap-reboot.css');
         wp_enqueue_style('login_css_style', $this->plugin_url . 'assets/login-style.css');
+        wp_enqueue_style('register_css_style', $this->plugin_url . 'assets/register-style.css');
 
         //Enqueuing Scripts
         wp_enqueue_script('login-script', $this->plugin_url . 'assets/login-script.js');

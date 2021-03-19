@@ -1,4 +1,4 @@
-# import mysql
+import mysql
 # import mysql.connector
 # import nltk
 # import pandas

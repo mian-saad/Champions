@@ -38,7 +38,7 @@ abstract class TraState
 
     public function generate_question_text($text)
     {
-        return "<p class='alert_question'>" . $text . "</p>";
+        return "<p class='alert_question'><b>" . $text . "</b></p>";
     }
 
     // prints warning message only if show_warning is set

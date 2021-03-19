@@ -18,10 +18,10 @@ class TraGDPR extends TraState
     public function generate_html()
     {
         $html = $this->generate_hidden_fields($this->report_id);
-        $html .= "<form id='arena_question_form'>";
+        $html .= "<div class='col-12'><form id='arena_question_form'>";
         $html .= $this->generate_question_text($this->state['state_text']);
         $html .= $this->generate_checkbox_question($this->state['state_answers'], $this->state['id']);
-        $html .= "</form>";
+        $html .= "</form></div>";
         $html .= $this->generate_buttons();
         $html .= $this->generate_warning();
         return $html;

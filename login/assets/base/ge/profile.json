@@ -1,69 +1,92 @@
 {
   "title":[
     {
-      "text":"Angestellte*r im öffentlichen Dienst",
-      "short_text":"Public employee",
-      "id":"Public employee"
+      "id":"School teacher",
+      "text":"Lehrer*in an einer Schule"
     },
     {
-      "text":"Mitarbeiter:in in einer Kunst-/ Kultureinrichtung",
-      "short_text":"Arts and culture institution employee",
-      "id":"Arts and culture institution employee"
+      "id":"University lecturer",
+      "text":"Lehrende*r an einer Universität oder Hochschule"
     },
     {
-      "text":"Mitarbeiter:in in einer Sporteinrichtung",
-      "short_text":"Sports facility employee",
-      "id":"Sports facility employee"
+      "id":"Researcher",
+      "text":"Forscher*in"
     },
     {
-      "text":"Mitarbeiter:in in einer NGO",
-      "short_text":"NGO Worker",
-      "id":"NGO Worker"
+      "id":"Municipal Employee",
+      "text":"Mitarbeiter*in bei der Stadt"
     },
     {
-      "text":"Polizist:in",
-      "short_text":"Community Police Officer",
-      "id":"Community Police Officer"
+      "id":"NGO worker",
+      "text":"Mitarbeiter*in in einer NGO"
     },
     {
-      "text":"Lehrer:in in der Primarstufe",
-      "short_text":"Primary Teacher",
-      "id":"Primary Teacher"
+      "id":"Police officer",
+      "text":"Polizist*in"
     },
     {
-      "text":"Bewährungshelfer:in",
-      "short_text":"Probation Officer",
-      "id":"Probation Officer"
+      "id":"Probation officer",
+      "text":"Bewährungshelfer*in"
     },
     {
-      "text":"Psychotherapeut:in/ Psycholog:in",
-      "short_text":"Psychologist/Psychotherapist ",
-      "id":"Psychologist/Psychotherapist "
+      "id":"Psychoterapist/psychologist",
+      "text":"Psychotherapeut*in/ Psycholog*in"
     },
     {
-      "text":"Lehrer:in in der Sekundarstufe",
-      "short_text":"Secondary Teacher",
-      "id":"Secondary Teacher"
+      "id":"Social worker",
+      "text":"Sozialarbeiter*in"
     },
     {
-      "text":"Sozialarbeiter:in",
-      "short_text":"Social Worker",
-      "id":"Social Worker"
+      "id":"Youth worker",
+      "text":"Jugendarbeiter*in"
     },
     {
-      "text":"Lehrende*r an einer Universtät oder Hochschule",
-      "short_text":"University Lecturer",
-      "id":"University Lecturer"
+      "id":"Security expert",
+      "text":"Sicherheitsexpert*in"
     },
     {
-      "text":"Jugendarbeiter:in",
-      "short_text":"Youth Worker",
-      "id":"Youth Worker"
+      "id":"Radicalisation expert",
+      "text":"Expert*in im Bereich Radikalisierung"
     },
     {
-      "text":"Andere",
-      "short_text":"Other",
-      "id":"Other"
+      "id":"Hate crimes expert",
+      "text":"Expert*in im Bereich Hasskriminalität"
+    },
+    {
+      "id":"Religious community member",
+      "text":"Mitglied einer religiösen Gemeinschaft"
+    },
+    {
+      "id":"Cultural and arts workers",
+      "text":"Künstler:in"
+    },
+    {
+      "id":"Sports institution employee/expert",
+      "text":"Expert*in/ Mitarbeiter*in in einer Sporteinrichtung"
+    },
+    {
+      "id":"Prison employee/expert",
+      "text":"Expert*in/ Mitarbeiter*in im Gefängnis"
+    },
+    {
+      "id":"Exit expert",
+      "text":"Expert*in im Bereich Ausstieg/Deradikalisierung"
+    },
+    {
+      "id":"Youth gangs expert",
+      "text":"Expert*in im Bereich Jugendgangs"
+    },
+    {
+      "id":"Social media expert",
+      "text":"Expert*in im Bereich Social Media"
+    },
+    {
+      "id":"National Advisory Board Member",
+      "text":"Mitglied eines nationalen Beratungsgremiums"
+    },
+    {
+      "id":"Other",
+      "text":"Andere"
     }
   ],
 
@@ -95,7 +118,7 @@
     }
   ],
 
-  "inputs": [
+  "inputs":[
     {
     "id":"flp_first_name",
     "text":"Bitte geben Sie Ihren Vornamen an",
@@ -140,98 +163,181 @@
     }
   ],
 
-  "skills":[
+  "experience_with":[
     {
-      "id":"School teacher",
-      "text":"Lehrer:in an einer Schule"
+      "id":"Addressing Extremist Propaganda and Recruitment Online",
+      "text":"Online Extremismus und Radikalisierung"
     },
     {
-      "id":"University lecturer",
-      "text":"Lehrende:r an einer Universität oder Hochschule"
+      "id":"Inter-Cultural / Inter-Community Dialogue & Trust Building & Work",
+      "text":"Interkultureller Dialog und Vertrauensbildende Arbeit"
     },
     {
-      "id":"Researcher",
-      "text":"Forscher:in"
+      "id":"Extremist Hate Speech, Fake News and Incitement to Violence Online",
+      "text":"Hassrede, Fake News, Anstiftung zur Gewalt in der online Sphäre"
     },
     {
-      "id":"Municipal Employee",
-      "text":"Mitarbeiter:in bei der Stadt"
+      "id":"Violence Prevention (assaults, threats, insults)",
+      "text":"Gewaltprävention "
     },
     {
-      "id":"NGO worker",
-      "text":"Mitarbeiter:in in einer NGO"
+      "id":"Public safety and prevention of violence (in public and private spaces)",
+      "text":"Öffentliche Sicherheit "
     },
     {
-      "id":"Police officer",
-      "text":"Polizist:in"
+      "id":"Child / Youth Safety & Wellbeing ",
+      "text":"Sicherheit & Wohlbefinden von Kindern / Jugendlichen "
     },
     {
-      "id":"Municipal guard officer",
-      "text":"Municipal guard officer"
+      "id":"Psychology / Mental Health & Wellbeing",
+      "text":"Psychologie / Psychische Gesundheit"
     },
     {
-      "id":"Probation officer",
-      "text":"Bewährungshelfer:in"
+      "id":"Extremist propaganda and recruitment offline",
+      "text":"Extremistische Propaganda und Rekrutierung im offline Bereich"
     },
     {
-      "id":"Psychoterapist/psychologist",
-      "text":"Psychotherapeut:in/ Psycholog:in"
+      "id":"Radicalisation and Extremist Violence (antisemitism, anti gypsy, islamophobia)",
+      "text":"Radikalisierung und extremistische Gewalt (Antisemitismus, Anitziganismus, Islamfeindlichkeit)"
     },
     {
-      "id":"Social worker",
-      "text":"Sozialarbeiter:in"
+      "id":"Research (on Social Inclusion, Polarisation, Radicalisation, Extremism, Deradicalisation, fake news/hate)",
+      "text":"Forschung (zu sozialer Inklusion, Polarisierung, Radikalisierung, Extremismus, Deradikalisierung, Fake News)"
     },
     {
-      "id":"Youth worker",
-      "text":"Jugendarbeiter:in"
+      "id":"Law Enforcement & Legal Response to Hate Crimes",
+      "text":"Strafverfolgung und rechtliche Reaktion auf Hassverbrechen"
     },
     {
-      "id":"Security expert",
-      "text":"Sicherheitsexpert:in"
+      "id":"Multi-agency Work to Prevent and Counter Radicalisation and Extremism",
+      "text":"Akteursübergreifende Arbeit zur Extremismusprävention"
     },
     {
-      "id":"Radicalisation expert",
-      "text":"Expert:in im Bereich Radikalisierung"
+      "id":"Crisis Management, Prevention and Response to Violence",
+      "text":"Krisenmanagement undPrävention"
     },
     {
-      "id":"Hate crimes expert",
-      "text":"Expert:in im Bereich Hasskriminalität"
-    },
-    {
-      "id":"Religious minority representative",
-      "text":"Vertreter:in einer religiösen Minderheit"
-    },
-    {
-      "id":"Cultural institution employee",
-      "text":"Mitarbeiter:in in einer Kunst-/ Kultureinrichtung"
-    },
-    {
-      "id":"Sports institution employee/expert",
-      "text":"Expert:in/ Mitarbeiter:in in einer Sporteinrichtung"
-    },
-    {
-      "id":"Prison employee/expert",
-      "text":"Expert:in/ Mitarbeiter:in im Gefängnis"
-    },
-    {
-      "id":"Exit expert",
-      "text":"Expert:in im Bereich Ausstieg/Deradikalisierung"
-    },
-    {
-      "id":"Youth gangs expert",
-      "text":"Expert:in im Bereich Jugendgangs"
-    },
-    {
-      "id":"Social media expert",
-      "text":"Expert:in im Bereich Social Media"
-    },
-    {
-      "id":"National Expert Team Member",
-      "text":"Mitglied im nationalen Beirat"
+      "id":"Inter-faith Work and Peacebuilding",
+      "text":"Interreligiöser Dialog und Friedensförderung "
     },
     {
       "id":"Other",
       "text":"Andere"
+    }
+  ],
+
+  "working_with":[
+    {
+      "id":"Young people in schools",
+      "text":"Junge Menschen in Schulen"
+    },
+    {
+      "id":"Young people outside school",
+      "text":"Junge Menschen außerhalb von Schulen"
+    },
+    {
+      "id":"Vulnerable young people",
+      "text":"Gefährdete junge Menschen"
+    },
+    {
+      "id":"Prisoners",
+      "text":"Inhaftierte"
+    },
+    {
+      "id":"Religious communities ",
+      "text":"Religiöse Gemeinschaften"
+    },
+    {
+      "id":"Women and girls",
+      "text":"Frauen und Mädchen"
+    },
+    {
+      "id":"LGBTQ+",
+      "text":"LGBTQ+"
+    },
+    {
+      "id":"Refugees, migrants and foreigners",
+      "text":"Geflüchtete und Menschen mit Migrationsgeschichte"
+    },
+    {
+      "id":"Victims of extremist violence",
+      "text":"Betroffene extremistischer Gewalt"
+    },
+    {
+      "id":"Teachers & Schools",
+      "text":"Lehrer:innen und Schulen"
+    },
+    {
+      "id":"Social Workers",
+      "text":"Sozialarbeiter:innen"
+    },
+    {
+      "id":"Police and other Law Enforcement Agencies",
+      "text":"Polizei und Strafverfolgungsbehörden"
+    },
+    {
+      "id":"Media Coverage & Reporting",
+      "text":"Medienvertreter:innen und Journalist:innen"
+    },
+    {
+      "id":"Other",
+      "text":"Andere"
+    }
+
+  ],
+
+  "expertise":[
+    {
+      "id":"Education",
+      "text":"Bildung"
+    },
+    {
+      "id":"Social Media and the Internet",
+      "text":"Soziale Medien und Internet"
+    },
+    {
+      "id":"Youth Gangs/Youth Work",
+      "text":"Jugendgruppen/ Jugendarbeit"
+    },
+    {
+      "id":"Human Rights and Diversity",
+      "text":"Menschenrechte und Diversität"
+    },
+    {
+      "id":"Sports",
+      "text":"Sport"
+    },
+    {
+      "id":"Arts and Culture",
+      "text":"Kunst und Kultur"
+    },
+    {
+      "id":"Psychology, Psychotherapy & Well-being",
+      "text":"Psychologie, Psychotherapie"
+    },
+    {
+      "id":"Law Enforcement",
+      "text":"Strafverfolgung"
+    },
+    {
+      "id":"Community Work ",
+      "text":"Gemeindearbeit"
+    },
+    {
+      "id":"Crisis Management Prevention",
+      "text":"Krisenmanagement & Prävention"
+    },
+    {
+      "id":"Other",
+      "text":"Andere"
+    }
+
+  ],
+
+  "visibility":[
+    {
+      "id":"City Level",
+      "text":"Stadtebene"
     }
   ]
 }

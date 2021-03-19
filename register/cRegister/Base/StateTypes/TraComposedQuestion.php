@@ -23,7 +23,7 @@ class TraComposedQuestion extends TraState {
     public function generate_html() {
         $html="";
         if($this->state['show_header']=="true"){
-            $html .= "<h3 class='register_question'>" . $this->state['state_text'] . "</h3>";
+//            $html .= "<h class='register_question'>" . $this->state['state_text'] . "</h>";
         }
         $html .= $this->generate_hidden_fields($this->report_id);
         $html .= "<form id='arena_question_form'>";
@@ -48,9 +48,15 @@ class TraComposedQuestion extends TraState {
                     $html .= $this->generate_question_text($answer['text']);
                     $html .= $this->generate_select_question($answer);
                     $html .= "</div>";
+//                    if ($answer['short_text'] == 'Country') {
+//                        $html .= "<br><br><br>";
+//                    }
                 }
                 else if ($answer['type'] == 'checkbox') {
                     $html .= "<div class='col-12'>";
+                    if ($answer['id'] == 'flp_title') {
+                        $html .= "<div style='font-size: 22px'><b>".$answer['short_text']."</b></div>";
+                    }
                     $html .= $this->generate_question_text($answer['text']);
                     if ($answer['text_description']) {
                         $html .= $this->generate_question_text($answer['text_description']);

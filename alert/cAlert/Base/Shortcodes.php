@@ -49,6 +49,10 @@ class Shortcodes extends BaseController
             'ajaxurl' => admin_url('admin-ajax.php'),
             'nextNonce' => wp_create_nonce('myajax-next-nonce'),
         ));
+
+        wp_enqueue_script('register_js_script', $this->plugin_url . 'assets/js/register-script.js');
+        wp_localize_script('register_js_script', 'register_object',
+            array('ajaxurl' => admin_url('admin-ajax.php')));
     }
 
     public function timepicker_style()

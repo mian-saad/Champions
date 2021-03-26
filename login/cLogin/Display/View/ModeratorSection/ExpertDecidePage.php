@@ -35,9 +35,9 @@ class ExpertDecidePage {
         $html .= " <td> ";
         $html .= " <b>".$this->language['country']."</b> ";
         $html .= " </td> ";
-        $html .= " <td> ";
-        $html .= " <b>".$this->language['skills']."</b> ";
-        $html .= " </td> ";
+//        $html .= " <td> ";
+//        $html .= " <b>".$this->language['skills']."</b> ";
+//        $html .= " </td> ";
         $html .= " <td> ";
         $html .= " <b class='table_expert_column'>".$this->language['expert_status']."</b> ";
         $html .= " </td> ";
@@ -46,7 +46,7 @@ class ExpertDecidePage {
             if ($Country[0] === $Data[$counter] -> flp_country) {
                     $html .= " <tr> ";
                         $html .= " <td> ";
-                            $html .= " <p>" . $Data[$counter] -> flp_title . "</p> ";
+                            $html .= " <p>" . str_replace('~~~', ', ',$Data[$counter] -> flp_title) . "</p> ";
                         $html .= " </td> ";
                         $html .= " <td> ";
                             $html .= " <p>" . $Data[$counter] -> flp_first_name . "</p> ";
@@ -60,9 +60,9 @@ class ExpertDecidePage {
                         $html .= " <td> ";
                             $html .= " <p>" . $Data[$counter] -> flp_country . "</p> ";
                         $html .= " </td> ";
-                        $html .= " <td> ";
-                            $html .= " <p>" . $Data[$counter] -> flp_skills . "</p> ";
-                        $html .= " </td> ";
+//                        $html .= " <td> ";
+//                            $html .= " <p>" . $Data[$counter] -> flp_skills . "</p> ";
+//                        $html .= " </td> ";
                         $html .= " <td class='table_entry'> ";
                         if ($Data[$counter] -> flp_title != 'Moderator') {
                             $html .= $this->infoModal(
@@ -100,7 +100,7 @@ class ExpertDecidePage {
 
         if ($visibility == '') {$visibility = 'Not Set';}
         $html = "<div id='arena".$counter."' class='modal'>
-                            <p><b>Title: </b>".$title."</p>
+                            <p><b>Title: </b>".str_replace('~~~',', ', $title)."</p>
                             <p><b>First Name: </b>". $fname ."</p>
                             <p><b>Last Name: </b>". $lname ."</p>
                             <p><b>Email: </b>". $email ."</p>
@@ -109,9 +109,9 @@ class ExpertDecidePage {
                             <p><b>Years of Experience: </b>". $years_experience ."</p>
                             <p><b>City: </b>". $city ."</p>
                             <p><b>Visibility: </b>". $visibility ."</p>
-                            <p><b>Experience With Radicalisation: </b>". $experience_radicalisation ."</p>
-                            <p><b>Working With: </b>". $working_with ."</p>
-                            <p><b>Area of Expertise: </b>". $area_expertise ."</p>
+                            <p><b>Experience With Radicalisation: </b>". str_replace('~~~', ', ',$experience_radicalisation) ."</p>
+                            <p><b>Working With: </b>". str_replace('~~~',', ', $working_with) ."</p>
+                            <p><b>Area of Expertise: </b>". str_replace('~~~',', ', $area_expertise) ."</p>
                             <!-- <a href=\"#\" rel=\"modal:close\">Close</a> -->
                           </div>
                           <!-- Link to open the modal -->

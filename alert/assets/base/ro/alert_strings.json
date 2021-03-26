@@ -27,14 +27,18 @@
   "alert_location": "Locație alertă",
   "alert_target": "Țintă de alertă",
   "subject": "Subject",
+  "ok": "Bine",
   "description": "Descriere",
   "other": "Altele",
+  "alert_confirmation": "Cazul dvs. de ALERTA a fost trimit. Veți putea vedea descrierea lui în panelul ARENA, după ce a fost acceptată de moderator. Vă rugăm să verificați email-ul.",
   "your_verification_code": "Codul de verificare este: ",
-  "verification": "Cod de verificare: ",
+  "verification": "Cod de verificare",
   "alert_submitted": "ALERTĂ trimisă",
   "your_alert_submitted": "Cazul dvs. de ALERTA a fost trimit. Veți putea vedea descrierea lui în panelul ARENA, după ce a fost acceptată de moderator.",
   "registration_confirmed": "Înregistrare confirmată",
   "your_registration_confirmed": "Înregistrarea a fost confirmată. Vă veți putea conecta imediat cum Moderatorul vă acceptă solicitarea",
   "thanks": "Vă mulțumim că utilizați platforma. Redirecționarea înapoi la ALERTĂ",
-  "intro": "Platforma ALERT a fost creată pentru a permite practicienilor și membrilor relevanți ai comunității să semnaleze o alertă sau o notificare în cazul unei situații sau unui incident de radicalizare, polarizare sau incitare la ură. Dacă ați fost martora/martorul unui asemenea incident, dacă ați aflat despre un asemenea caz, sau dacă sunteți îngrijorat/ă în legătură cu un incident în desfășurare, vă rugăm să vă înregistrați ALERTA pe această platformă pentru a veni în ajutorul experților din cadrul comunității dvs. să găsească răspusuri rapide și adecvate și să sugereze un mod de răspuns. ALERT vă va ajuta să: - înregistrați un caz sau un incident de radicalizare, ură sau polarizare (de exemplu propagandă extremistă, discurs incitator la ură, violență de gen, motivată de motive rasiale sau etnice etc). Vă rugăm să împărtășiți aceste cazuri cu membri ai comunității pe ARENA. Acest lucru va încuraja răspunsuri colaborative și punctuale oferite de experți relevanți. -  primiți recomandări practice care vă pot ajuta în formularea unui răspuns, bazat pe descrierea oferită de dvs. Dacă nu există un caz similar în baza de date veți fi redirecționați automat către ARENA unde experții locali vor colabora să vă asigure recomandări și sprijin."
+  "intro": "Platforma ALERT a fost creată pentru a permite practicienilor și membrilor relevanți ai comunității să semnaleze o alertă sau o notificare în cazul unei situații sau unui incident de radicalizare, polarizare sau incitare la ură. Dacă ați fost martora/martorul unui asemenea incident, dacă ați aflat despre un asemenea caz, sau dacă sunteți îngrijorat/ă în legătură cu un incident în desfășurare, vă rugăm să vă înregistrați ALERTA pe această platformă pentru a veni în ajutorul experților din cadrul comunității dvs. să găsească răspusuri rapide și adecvate și să sugereze un mod de răspuns. ALERT vă va ajuta să: - înregistrați un caz sau un incident de radicalizare, ură sau polarizare (de exemplu propagandă extremistă, discurs incitator la ură, violență de gen, motivată de motive rasiale sau etnice etc). Vă rugăm să împărtășiți aceste cazuri cu membri ai comunității pe ARENA. Acest lucru va încuraja răspunsuri colaborative și punctuale oferite de experți relevanți. -  primiți recomandări practice care vă pot ajuta în formularea unui răspuns, bazat pe descrierea oferită de dvs. Dacă nu există un caz similar în baza de date veți fi redirecționați automat către ARENA unde experții locali vor colabora să vă asigure recomandări și sprijin.",
+  "alert": "Alertă nouă",
+  "new_alert": "Ați fost selectat pentru a face parte dintr-o echipă de experți care să răspundă la un caz de polarizare și extremism. Vă invităm să accesați acest link ca să aflați mai multe despre cazul raportat și să accesați ARENA pentru a vă conecta cu ceilalți experți. (https://www.firstlinepractitioners.com/arena-2/ ) "
 }

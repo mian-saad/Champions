@@ -12,7 +12,7 @@
       ]
    },
    "M1.1":{
-      "state_text":"Persönliche Informationen",
+      "state_text":"Benutzer Registration",
       "state_type":"composed",
       "show_header": "true",
       "id": "flp_register_infos",
@@ -200,7 +200,7 @@
             "id":"flp_experience_with_radicalisation",
             "type":"checkbox",
             "text":"Erfahrung mit Radikalisierung (Sie können mehr als eine Option auswählen)",
-            "short_text":"Experience with Radicalisation",
+            "short_text":"Erfahrung mit Radikalisierung",
             "answers":[
                {
                   "id":"Addressing Extremist Propaganda and Recruitment Online",
@@ -259,8 +259,12 @@
                   "text":"Interreligiöser Dialog und Friedensförderung "
                },
                {
+                  "id":"Nothing",
+                  "text":"Nichts"
+               },
+               {
                   "id":"Other",
-                  "text":"Anderes"
+                  "text":"Andere"
                }
             ]
          },
@@ -268,7 +272,7 @@
             "id":"flp_working_with",
             "type":"checkbox",
             "text":"Arbeiten mit (Sie können mehr als eine Option auswählen)",
-            "short_text":"Working With",
+            "short_text":"Arbeiten mit",
             "answers":[
                {
                   "id":"Young people in schools",
@@ -323,6 +327,10 @@
                   "text":"Medienvertreter:innen und Journalist:innen"
                },
                {
+                  "id":"Nothing",
+                  "text":"Nichts"
+               },
+               {
                   "id":"Other",
                   "text":"Andere"
                }
@@ -333,7 +341,7 @@
             "id":"flp_area_of_expertise",
             "type":"checkbox",
             "text":"Erfahrungsbereich (Sie können mehr als eine Option auswählen)",
-            "short_text":"Area of Expertise",
+            "short_text":"Erfahrungsbereich",
             "answers":[
                {
                   "id":"Education",
@@ -376,6 +384,10 @@
                   "text":"Krisenmanagement & Prävention"
                },
                {
+                  "id":"Nothing",
+                  "text":"Nichts"
+               },
+               {
                   "id":"Other",
                   "text":"Andere"
                }
@@ -387,7 +399,7 @@
             "type":"checkbox",
             "optional": "true",
             "text":"Sichtbarkeitslevel",
-            "short_text":"Visibility Level",
+            "short_text":"Sichtbarkeitslevel",
             "text_description":"Falls Sie nur an lokalen Aktivitäten beteiligt sein möchten, die sich auf Ihre Stadt beziehen, kreuzen Sie bitte das Kästchen mit der Bezeichnung \"Stadtebene\" an. Andernfalls könnten Sie an landesweiten Aktivitäten beteiligt sein. ",
             "answers":[
                {

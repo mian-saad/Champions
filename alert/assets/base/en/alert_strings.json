@@ -28,16 +28,20 @@
     "register_btn": "Register",
     "alert_report": "ALERT REPORT",
     "other": "Other",
+    "ok": "Ok",
+    "alert_confirmation": "Your “Alert” Request has been submitted. You will be able to see Alert case in the ARENA panel, once it has been accepted by the Moderator. Please check your email.",
     "your_verification_code": "Your Verification Code is: ",
-    "verification": "Verification Code: ",
+    "verification": "Verification Code",
     "alert_submitted": "ALERT Submitted",
     "your_alert_submitted": "Your Alert has been submitted. You will be able to see Alert case in the ARENA panel, once it has been accepted by the Moderator.",
     "registration_confirmed": "Registration Confirmed",
     "your_registration_confirmed": "Your registration has been confirmed. You will be able to login once the Moderator accepts your request.",
     "thanks": "Thank You for using the Platform. Redirecting back to ALERT",
-    "intro": "The ALERT Platform has been created to enable first line practitioners and relevant community members to provide a ‘notification’ or ‘alert’ of a situation or incident of radicalisation, polarisation or hate. If you have witnessed or seen an incident, or are concerned about a developing situation, please register your ALERT here on the platform to help platform expert members in your community develop timely and appropriate response and suggest a course of action.  The ALERT Tool will help you to:",
+    "intro": "The ALERT Platform has been created to enable first line practitioners and relevant community members to provide a ‘notification’ or ‘alert’ of a situation or incident of radicalisation, polarisation or hate. If you have witnessed or seen an incident, or are concerned about a developing situation, please register your ALERT here on the platform to help platform expert members in your community develop timely and appropriate response and suggest a course of action.  The ALERT Tool will help you to: Register the case or incident of radicalisation, hate or polarisation (for example extremist propaganda, hate speech or gender, race or ethnic violence etc). Have this shared to members of the Platform in your community on ARENA. This will help support collaborative or targeted response by relevant experts. Receive tailored recommendations which may support your response - based upon your case description. If there is no similar case in the data-base your case will automatically be transferred to the ARENA platform where local experts will work to provide you with support and recommendations.",
     "bullet1": "Register the case or incident of radicalisation, hate or polarisation (for example extremist propaganda, hate speech or gender, race or ethnic violence etc)",
     "bullet2": "Have this shared to members of the Platform in your community on ARENA. This will help support collaborative or targeted response by relevant experts.",
-    "bullet3": "Receive tailored recommendations which may support your response - based upon your case description. If there is no similar case in the data-base your case will automatically be transferred to the ARENA platform where local experts will work to provide you with support and recommendations."
+    "bullet3": "Receive tailored recommendations which may support your response - based upon your case description. If there is no similar case in the data-base your case will automatically be transferred to the ARENA platform where local experts will work to provide you with support and recommendations.",
+    "alert": "New Alert",
+    "new_alert": "You have just been selected for the expert team on an ALERT case of extremism and polarisation. Please follow the link (https://www.firstlinepractitioners.com/arena-2/ ) to read about the situation and access ARENA to connect with the other experts selected for this case."
 
 }

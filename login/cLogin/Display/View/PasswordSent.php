@@ -6,7 +6,7 @@ namespace Contain\Display\View;
 class PasswordSent {
 
 
-    public function Render($email) {
+    public function Render($email, $string_file) {
 
         // generate new random password
         $pass = $this->password(9);
@@ -20,11 +20,11 @@ class PasswordSent {
             $wpdb->update("wp_arena", array('flp_password' => $pass), array('flp_email' => $email));
 
             // send to user in email
-            wp_mail( $email, "New Password", "Please change the password after logging in and editing your profile. Your New Password: ". $pass ."");
+            wp_mail( $email, $string_file['new_password'], $string_file['please_change_password']. $pass ."");
         }
 
         // send message to user
-        $html = "<section>Your new password has been sent to the email address you provided if it exists in the database.</section> ";
+        $html = "<section>".$string_file['your_new_password']."</section> ";
 
         echo $html;
     }

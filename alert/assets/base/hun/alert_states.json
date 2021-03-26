@@ -102,18 +102,19 @@
                {
                   "text":"Nem tudom ",
                   "short_text":"Nem tudom ",
-                  "id":"I don't know_a"
+                  "id":"I don't know"
                },
                {
                   "text":"Egyéb",
                   "short_text":"Egyéb",
-                  "id":"Other_a"
+                  "id":"Other"
                }
             ]
          },
          {
             "id":"alert_location",
             "type":"checkbox",
+            "short_text":"Alert Location",
             "text":"<b>Hol történt? (Több opció is kiválaszthat)</b>",
             "answers":[
                {
@@ -164,12 +165,12 @@
                {
                   "text":"Nem tudom",
                   "short_text":"Nem tudom",
-                  "id":"I don't know_b"
+                  "id":"I don't know"
                },
                {
                   "text":"Egyéb",
                   "short_text":"Egyéb",
-                  "id":"Other_b"
+                  "id":"Other"
                }
             ]
          },
@@ -217,12 +218,12 @@
                {
                   "text":"Nem tudom",
                   "short_text":"Nem tudom",
-                  "id":"I don't know_c"
+                  "id":"I don't know"
                },
                {
                   "text":"Egyéb",
                   "short_text":"Egyéb",
-                  "id":"Other_c"
+                  "id":"Other"
                }
             ]
          }
@@ -248,7 +249,7 @@
          },
          {
             "short_text":"Határidó",
-            "text":"Kérjük, hogy add meg a legkésőbbi céldátumot, amire választ kellene kapnod a kérdéseidre.",
+            "text":"Kérjük, adjon meg nekünk egy becsült dátumot, és szeretne visszajelzést kapni a többi FLP-től.",
             "id":"alert_deadline",
             "type":"date"
          }
@@ -278,9 +279,9 @@
       ]
    },
    "M1.6":{
-      "state_text":"FLP Személyes Információ",
+      "state_text":"Felhasználó regisztráció",
       "state_type":"composed",
-      "show_header": "false",
+      "show_header": "true",
       "id": "flp_register_infos",
       "state_answers":[
          {
@@ -529,6 +530,10 @@
                   "text":"Vallások közötti párbeszéd"
                },
                {
+                  "id":"Nothing",
+                  "text":"Semmi"
+               },
+               {
                   "id":"Other",
                   "text":"Egyéb"
                }
@@ -593,6 +598,10 @@
                   "text":"Médiában "
                },
                {
+                  "id":"Nothing",
+                  "text":"Semmi"
+               },
+               {
                   "id":"Other",
                   "text":"Egyéb"
                }
@@ -646,6 +655,10 @@
                   "text":"Krízis managment"
                },
                {
+                  "id":"Nothing",
+                  "text":"Semmi"
+               },
+               {
                   "id":"Other",
                   "text":"Egyéb"
                }
@@ -678,7 +691,7 @@
    "M1.9":{
       "short_text":"Email megerősítés",
       "state_text":"Add meg az megadott email címre elküldött megerősítő kódot!",
-      "id":"verification",
+      "id":"flp_verification",
       "state_type":"verification"
    },
    "ERROR":{

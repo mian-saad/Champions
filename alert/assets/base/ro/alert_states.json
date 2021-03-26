@@ -102,12 +102,12 @@
             {
               "text":"Nu știu",
               "short_text":"Nu știu",
-              "id":"I don't know_a"
+              "id":"I don't know"
             },
             {
               "text":"Altele",
               "short_text":"Altele",
-              "id":"Other_a"
+              "id":"Other"
             }
           ]
         },
@@ -165,12 +165,12 @@
             {
               "text":"Nu știu",
               "short_text":"Nu știu",
-              "id":"I don't know_b"
+              "id":"I don't know"
             },
             {
               "text":"Altele",
               "short_text":"Altele",
-              "id":"Other_b"
+              "id":"Other"
             }
           ]
         },
@@ -218,12 +218,12 @@
             {
               "text":"Nu știu",
               "short_text":"Nu știu",
-              "id":"I don't know_c"
+              "id":"I don't know"
             },
             {
               "text":"Altele",
               "short_text":"Altele",
-              "id":"Other_c"
+              "id":"Other"
             }
           ]
         }
@@ -249,7 +249,7 @@
         },
         {
           "short_text":"Termen limită",
-          "text":"Vă rugăm să ne furnizați o dată estimativă până când se poate furniza o soluție",
+          "text":"Vă rugăm să ne furnizați o dată estimată în care doriți să primiți un feedback de la celelalte FLP-uri.",
           "id":"alert_deadline",
           "type":"date"
         }
@@ -279,9 +279,9 @@
       ]
     },
     "M1.6":{
-      "state_text":"Practicieni Informații personale",
+      "state_text":"Înregistrare utilizator",
       "state_type":"composed",
-      "show_header": "false",
+      "show_header": "true",
       "id": "flp_register_infos",
       "state_answers":[
         {
@@ -531,6 +531,10 @@
               "text":"Muncă interconfensională și de consolidare a păcii"
             },
             {
+              "id":"Nothing",
+              "text":"Nimic"
+            },
+            {
               "id":"Other",
               "text":"Altele"
             }
@@ -595,6 +599,10 @@
               "text":"Media și presă"
             },
             {
+              "id":"Nothing",
+              "text":"Nimic"
+            },
+            {
               "id":"Other",
               "text":"Altele"
             }
@@ -648,6 +656,10 @@
               "text":"Managementul crizei și prevenție"
             },
             {
+              "id":"Nothing",
+              "text":"Nimic"
+            },
+            {
               "id":"Other",
               "text":"Altele"
             }
@@ -680,7 +692,7 @@
     "M1.9":{
       "short_text":"Verificare Email",
       "state_text":"Vă rugăm să furnizați codul de verificare care a fost trimis către e-mailul furnizat",
-      "id":"verification",
+      "id":"flp_verification",
       "state_type":"verification"
     },
     "ERROR":{

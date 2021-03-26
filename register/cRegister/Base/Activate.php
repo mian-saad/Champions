@@ -33,7 +33,6 @@ class Activate
                 flp_experience_with_radicalisation TEXT,
                 flp_working_with TEXT,
                 flp_area_of_expertise TEXT,
-                flp_skills TEXT,
                 flp_description TEXT,
                 flp_status TEXT,
                 alert_id TEXT,
@@ -45,6 +44,16 @@ class Activate
 
             require_once ABSPATH . 'wp-admin/includes/upgrade.php';
             dbDelta($sql);
+
+//            $link = mysqli_connect("localhost:8888", "admin", "yb#mq0z\$qRBc8HHg5&", "champions");
+//            $moderator_data = "INSERT INTO `wp_arena` (`flp_id`, `flp_locale`, `flp_registration_time`, `flp_reporting_ip`, `flp_title`, `flp_country`, `flp_first_name`, `flp_last_name`, `flp_email`, `flp_password`, `flp_organisation`, `flp_years_of_experience`, `flp_city`, `flp_skills`, `flp_description`, `flp_status`, `alert_id`, `flp_ClosedAssociatedAlert`, `flp_associatedAlert`, `flp_notAssociatedAlert`) VALUES
+//            ('moderator1', 'en', '2020/08/05 09:15', '::1', 'Moderator', 'Romania', 'Admin', 'Romania', 'moderator1@romania.ro', 'Romania01', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL),
+//            ('moderator2', 'en', '2020/08/05 09:15', '::1', 'Moderator', 'Poland',  'Admin', 'Poland',  'moderator1@poland.pl',  'Poland01', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL),
+//            ('moderator3', 'en', '2020/08/05 09:15', '::1', 'Moderator', 'Germany', 'Admin', 'Germany', 'moderator0@germany.de', 'Germany01', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL),
+//            ('moderator4', 'en', '2020/08/05 09:15', '::1', 'Moderator', 'Austria', 'Admin', 'Austria', 'moderator1@austria.at', 'Austria01', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL),
+//            ('moderator5', 'en', '2020/08/05 09:15', '::1', 'Moderator', 'Hungary', 'Admin', 'Hungary', 'moderator1@hungary.hu', 'Hungary01', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL),
+//            ('moderator6', 'en', '2020/08/05 09:15', '::1', 'Moderator', 'Italy',   'Admin', 'Italy',   'moderator1@italy.it',    'Italy01', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL)";
+//            mysqli_query($link, $moderator_data);
         }
 
         flush_rewrite_rules();

@@ -23,14 +23,18 @@
     "no_user":"Nincs ilyen felhasználó",
     "register_now": "Még nem regisztráltál? Regisztrálj most!",
     "register_btn": "Regisztráció",
+    "ok": "rendben",
+    "alert_confirmation": "Az Ön ALERT-je elküldésre került. Az ALERT-jének eseleírása azután fog megjellenni az ARENA felületen, hogya azt a NEmzeti Moderátor elfogadta. Kérlek nézd meg az emailed.",
     "alert_report": "ALERT JELENTÉS",
     "other": "Egyéb",
     "your_verification_code": "Az Ön ellenőrző kódja: ",
-    "verification": "Verification Code: ",
+    "verification": "Ellenőrző kód",
     "alert_submitted": "ALERT Submitted",
     "your_alert_submitted": "Az Ön ALERT-je elküldésre került. Az ALERT-jének eseleírása azután fog megjellenni az ARENA felületen, hogya azt a NEmzeti Moderátor elfogadta. ",
     "registration_confirmed": "Registration Confirmed",
     "your_registration_confirmed": "A regisztrációja befejeződött. Belépnki azt követően fog tudni, hogy a nemzeti moderátor elfogadta jelentkezését. ",
     "thanks": "Köszönjük, hogy a platformot használod! Visszairányítunk az Alertre.",
-    "intro": "Az ARENA platform abból a célből jött létre, hogy a szakértők és a terepen dolgozó szakemberek jelzéseket tudjanak leadni, ha egy radikalizmushoz vagy polarizáció jelenségéhez kapcsolódi incidenssel találkoznak a környezetükben. Ha Ön egy ilyen incidensnek volt szemtanúja, és aggasztja, hogy mi lesz ennek a kimenete, kérjük, hozon létre egy ALERT-et, melynek segítségével jelzést adhat le környezetében dolgozó szakértőknek, akik tanácsokkal  láthatják el, és segítégére lehetnek a megoldás keresében. Az ALERT rendszerben jelzést adhat le, ja radikális incidenssel, gyűlölettel, vagy polarizációval találkozott (pl: szélsőséges propagandával, gyűlöletbeszéddel, etnikai vagy gender alapú  erőszakkal). Ez a jelzés kerül be aztén az ARENA rendszerbe ahol szakértők közösen munkálkodnak, hogy a lehető legjobb választ tudják adni a felmerült problémára. Az eset leírása alapjánn rednelődenk hozzá az esethez a leginkább hozzáértő szakértők. Ha az adarbázis nem talál megfelelő szakérrtőt, akkor a rendszer automatikus atovábbítja a jelzést a közelben dolgozó szakértők számára, akik ajánlásokkal segítik a megoldáskeresést."
+    "intro": "Az ARENA platform abból a célből jött létre, hogy a szakértők és a terepen dolgozó szakemberek jelzéseket tudjanak leadni, ha egy radikalizmushoz vagy polarizáció jelenségéhez kapcsolódi incidenssel találkoznak a környezetükben. Ha Ön egy ilyen incidensnek volt szemtanúja, és aggasztja, hogy mi lesz ennek a kimenete, kérjük, hozon létre egy ALERT-et, melynek segítségével jelzést adhat le környezetében dolgozó szakértőknek, akik tanácsokkal  láthatják el, és segítégére lehetnek a megoldás keresében. Az ALERT rendszerben jelzést adhat le, ja radikális incidenssel, gyűlölettel, vagy polarizációval találkozott (pl: szélsőséges propagandával, gyűlöletbeszéddel, etnikai vagy gender alapú  erőszakkal). Ez a jelzés kerül be aztén az ARENA rendszerbe ahol szakértők közösen munkálkodnak, hogy a lehető legjobb választ tudják adni a felmerült problémára. Az eset leírása alapjánn rednelődenk hozzá az esethez a leginkább hozzáértő szakértők. Ha az adarbázis nem talál megfelelő szakérrtőt, akkor a rendszer automatikus atovábbítja a jelzést a közelben dolgozó szakértők számára, akik ajánlásokkal segítik a megoldáskeresést.",
+    "alert": "Új figyelmeztetés",
+    "new_alert": "Ön felkérték, hogy szakértőként vegyen részt a munkacsoport radikalizációval és polarizációval kapcsolatos esetmegbeszélésein. Kérjük, kövesse a alábbi linket, hogy elolvashassa az eset részleteit, és az ARENA rendszerbe belépve más szakértőkkel tudjon együttműködni az eset megoldásán.(https://www.firstlinepractitioners.com/arena-2/ ) "
 }

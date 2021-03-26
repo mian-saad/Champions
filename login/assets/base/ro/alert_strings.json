@@ -1,5 +1,5 @@
 {
-    "email": "Email",
+    "email": "E-mail",
     "password": "Parolă",
     "login_flp": "Conectați-vă ca expert practician",
     "login_moderator": "Autentificare ca moderator național",
@@ -41,8 +41,6 @@
     "your_case": "Cazul tău a fost ",
     "arena_notification": "Modulul de notificare Arena",
     "new_notification": "Cazul din care faceți parte are un nou ",
-    "new_password": "Parolă Nouă",
-    "default_password": "Vă rugăm să schimbați parola după ce v-ați conectat și ați modificat profilul. Noua ta parola:",
     "champions_notification": "Champions - Modulul de notificare Arena",
     "invited": "Ai fost invitat pe arena. Vă rugăm să vă înregistrați la https://www.firstlinepractitioners.com/arena/ înainte de a vă putea autentifica.",
 
@@ -51,7 +49,7 @@
     "visible": "Vizibilitate",
     "working_with": "Lucrați cu (puteți alege mai multe opțiuni)",
 
-    "flp_info": "Info FLP",
+    "flp_info": "Informații FLP",
     "alert_info": "Informație despre ALERTĂ",
     "accept_reject_flp": "Administrează FLP",
     "accept_reject_alert": "Administrează caz",
@@ -70,6 +68,16 @@
     "alert_status": "Status Alert",
     "open": "Deschis",
     "moderator_panel": "Panel moderator",
-    "login": "Login",
-    "flp_accepted": "Sunteți acum un membru activ pe ARENA (https://www.firstlinepractitioners.com/arena-2/), și veți primi a notificare atunci când o ALERTĂ a fost raportată și aria dvs de expertiză și locația sunt relevante pentru caz. Vă rugăm aveți în vedere specificațiile de confidențialitate pe tot parcursul acestui proces. "
+    "login": "Logare",
+
+    "the_alert": "Alertă: ",
+    "your_case_approved": " a fost confirmat de la Moderator. Acum îl puteți vedea în sistem. https://www.firstlinepractitioners.com/arena-2",
+
+    "flp_accepted": "Sunteți acum un membru activ pe ARENA (https://www.firstlinepractitioners.com/arena-2/), și veți primi a notificare atunci când o ALERTĂ a fost raportată și aria dvs de expertiză și locația sunt relevante pentru caz. Vă rugăm aveți în vedere specificațiile de confidențialitate pe tot parcursul acestui proces. ",
+    "your_new_password": "Noua dvs. parolă a fost trimisă la adresa de e-mail pe care ați furnizat-o dacă există în baza de date.",
+    "forgot_password": "Ați uitat parola",
+    "forgot_password_q": "Ați uitat parola?",
+    "please_enter_email": "Vă rugăm să introduceți adresa de e-mail pe care ați folosit-o pentru a vă înregistra",
+    "new_password": "Parolă Nouă",
+    "please_change_password": "Vă rugăm să modificați parola după ce v-ați conectat și ați modificat profilul. Noua ta parola:"
 }

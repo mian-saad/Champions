@@ -22,6 +22,9 @@ class TraDescriptionQuestion extends TraState
     public function generate_html()
     {
         $html = $this->generate_hidden_fields($this->alert_id);
+        if ($this->state['id'] == 'flp_description') {
+            $html .= "<input id='check-platform' hidden value='arena' /> ";
+        }
         if($this->state['show_header']=="true") {
             $html .= "<h3 class='alert_question'>" . $this->state['short_text'] . "</h3>";
         }

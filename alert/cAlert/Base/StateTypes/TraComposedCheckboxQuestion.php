@@ -58,7 +58,8 @@ class TraComposedCheckboxQuestion extends TraState
         }
         if ($counter===3) {
             // Make the data in correct format
-            $this->response = $this->clean_response($response);
+//            $this->response = $this->clean_response($response);
+            $this->response = $response;
             return true;
         }
         else {
@@ -69,23 +70,24 @@ class TraComposedCheckboxQuestion extends TraState
     public function generate_checkbox_question($question_number, $counter)
     {
         $html = '<div class="alert_checkbox_answers">';
-
+        $i = 0;
         foreach ($question_number['answers'] as $answer_option) {
+
             if (!empty($this->response) and in_array($answer_option['text'], $this->response[$question_number['id']])) {
                 // this is a checked answer
                 if ($answer_option['text'] == $this->other) {
-                    $html .= '<div class="alert_horizontal_choice"><input type="checkbox" class="alert_checkbox" name="' . $question_number['id'] . '" id="' . $answer_option['id'] . '" value="' . $answer_option['id']. '" checked required><label for="' . $answer_option['id']. '">' . $answer_option['text'] . '</label> ' . $this->generate_other_text_input($this->response['other_'.$question_number['id']], $question_number['id']) . '</div>';
+                    $html .= '<div class="alert_horizontal_choice"><input type="checkbox" class="alert_checkbox" name="' . $question_number['id'] . '" id="' . $answer_option['id'] . $i .'" value="' . $answer_option['id']. '" checked required><label >' . $answer_option['text'] . '</label> ' . $this->generate_other_text_input($this->response['other_text_input']) . '</div>';
                 } else {
-                    $html .= '<div class="alert_horizontal_choice"><input type="checkbox" class="alert_checkbox" name="' . $question_number['id'] . '" id="' . $answer_option['id']. '" value="' . $answer_option['id']. '" checked required><label for="' . $answer_option['id']. '">' . $answer_option['text'] . '</label></div>';
+                    $html .= '<div class="alert_horizontal_choice"><input type="checkbox" class="alert_checkbox" name="' . $question_number['id'] . '" id="' . $answer_option['id']. '" value="' . $answer_option['id']. '" checked required><label >' . $answer_option['text'] . '</label></div>';
                 }
             } else {
                 if ($answer_option['text'] == $this->other) {
-                    $html .= '<div class="alert_horizontal_choice"><input type="checkbox" class="alert_checkbox" name="' . $question_number['id'] . '" id="' . $answer_option['id']. '" value="' . $answer_option['id']. '" required><label for="' . $answer_option['id'] . '">' . $answer_option['text'] . '</label> ' . $this->generate_other_text_input("",$question_number['id']) . '</div>';
+                    $html .= '<div class="alert_horizontal_choice"><input type="checkbox" class="alert_checkbox" name="' . $question_number['id'] . '" id="' . $answer_option['id'] . $i .'" value="' . $answer_option['id']. '" required><label >' . $answer_option['text'] . '</label> ' . $this->generate_other_text_input("") . '</div>';
                 } else {
-                    $html .= '<div class="alert_horizontal_choice"><input type="checkbox" class="alert_checkbox" name="' . $question_number['id'] . '" id="' . $answer_option['id'] . '" value="' . $answer_option['id']. '" required><label for="' . $answer_option['id'] . '">' . $answer_option['text'] . '</label></div>';
+                    $html .= '<div class="alert_horizontal_choice"><input type="checkbox" class="alert_checkbox" name="' . $question_number['id'] . '" id="' . $answer_option['id'] . '" value="' . $answer_option['id']. '" required><label >' . $answer_option['text'] . '</label></div>';
                 }
             }
-
+            $i++;
         }
         $html .= '</div>';
         return $html;
@@ -96,9 +98,9 @@ class TraComposedCheckboxQuestion extends TraState
         return "<div id='alert_button_pane'><a class='button' id='alert_back' href='#' onclick='return false;'>$this->back_string</a> <a class='button' id='alert_continue' href='#' onclick='return false;'>$this->continue_string</a></div>";
     }
 
-    public function generate_other_text_input($value, $id)
+    public function generate_other_text_input($value)
     {
-        return "<input class='col-8 input-margin' type='text' name='".$id."' value='" . $value . "'>";
+        return "<input class='col-8 input-margin' type='text' name='other_text_input' value='" . $value . "'>";
     }
 
     public function generate_readable_response_array() {
@@ -106,7 +108,11 @@ class TraComposedCheckboxQuestion extends TraState
         $t_response = [];
         $value = null;
         foreach ($this->state['state_answers'] as $state) {
+            if ( !is_array($this->response[$state['id']])) {
+                $this->response[$state['id']] = str_split($this->response[$state['id']], 100);
+            }
             foreach ($state['answers'] as $answer) {
+
                 if (in_array($answer['id'], $this->response[$state['id']])) {
                     if ($value != null) {
                         $value = $value .', '. $answer['text'];

@@ -42,72 +42,62 @@ class LandingPage {
     // return multiple functions that forms the instance on landing page (Subject of Case, Deadline, Button Status)
     public function InstanceOfCase ($Email) {
 
-
-        // idea: initaitae a var with 0 and add 1 when it runs first time, when back button is pressed it remains 1 and can go without validation
-        $MatchedLanguageId = $this->MatchLanguage($Email);
+        $CountryMatchId = $this->CountryMatch($Email);
         $MatchedSkillsId = $this->MatchSkills($Email);
-        $AlertDeclinedId = $this->Declined();
-        // $FinalIds consists of all the common ids from $MatchedLanguageId, $MatchedSkillsId
-        $FinalIds = array_intersect($MatchedLanguageId, $MatchedSkillsId);
-        $FinalIds = $this->CityStatus($FinalIds);
+
+        $FinalIds = array_intersect($CountryMatchId, $MatchedSkillsId);
+        $CityMatchId = $this->CityMatch($Email);
+        $FinalIds = array_intersect($FinalIds, $CityMatchId);
+
         $FinalIds = $this->CaseStatus($FinalIds);
-        // $FinalIds consists of all the above $FinalIds which are not Rejected
-//        $FinalIds = array_diff($FinalIds, $AlertDeclinedId);
+
+        $FinalIds = $FinalIds + $this->AlertFLP($Email);
 
         $html = "<div class='row'>".$this->lang['landingpage_hint']."</div>";
         $html .= "<div class='row'>";
         $html .= "<table>";
+
         $html .= " <tr> ";
+
         $html .= " <td> ";
         $html .= "<b>".$this->lang['subject']."</b>";
         $html .= " </td> ";
-        // call deadline
+
         $html .= " <td> ";
         $html .= "<b>".$this->lang['feedback']."</b>";
         $html .= " </td> ";
-        // call deadline
-//        $html .= " <td> ";
-//        $html .= "<b>Add Recommendation</b>";
-//        $html .= " </td> ";
-        // call button from Alert
+
         $html .= " <td> ";
         $html .= "<b>".$this->lang['status']."</b>";
         $html .= " </td> ";
-        // call button from relative to expert
+
         $html .= " <td> ";
         $html .= "<b>".$this->lang['request']."</b>";
         $html .= " </td> ";
+
         $html .= " </tr> ";
+
         $html .= " <tr> ";
 
             foreach ($FinalIds as $id) {
-//                if ($CaseStatus == true) {
-                // call subject
-                // if joined green else this
 
                 $html .= " <td class='subject' id='".$id."'> ";
                 $html .= $this->subject($id);
                 $html .= " </td> ";
-                // call deadline
+
                 $html .= " <td> ";
                 $html .= $this->deadline($id);
                 $html .= " </td> ";
-                // call deadline
-//                $html .= " <td> ";
-//                    $html .= $this->Recommendations($id);
-//                $html .= " </td> ";
-                // call button from Alert
+
                 $html .= " <td> ";
                 $html .= $this->InProgressClosed($id, $Email);
                 $html .= " </td> ";
-                // call button from relative to expert
+
                 $html .= " <td> ";
                 $html .= $this->JoinNotJoin($id, $Email);
                 $html .= " </td> ";
+
                 $html .= " </tr> ";
-//             $this->button($FinalIds[$counter]);
-//             $this->ButtonStatusArena($Email, $FinalIds[$counter]); //if true then buttons to render inprogress and close, if false buttons to render join and not join
-//            }
         }
 
         $html .= "</table>";
@@ -234,21 +224,17 @@ class LandingPage {
         $ArenaSkills = $LoadArenaData->loadArenaData('flp_experience_with_radicalisation', $Email);
         $Arena_AlertID = $LoadArenaData->loadArenaData('alert_id', $Email);
 
-        $ArenaSkills = explode(',', $ArenaSkills[0]);
+        $ArenaSkills = explode('~~~', $ArenaSkills[0]);
         for ($ArenaSkillsCounter = 0; $ArenaSkillsCounter<count($ArenaSkills); $ArenaSkillsCounter++) {
             for ($AlertSkillsCounter = 0; $AlertSkillsCounter<count($AlertSkills); $AlertSkillsCounter++) {
 
 
                 similar_text($AlertSkills[$AlertSkillsCounter], $ArenaSkills[$ArenaSkillsCounter], $per);
                 similar_text($ArenaSkills[$ArenaSkillsCounter], $AlertSkills[$AlertSkillsCounter], $per_op);
-                if ($per>40 || $per_op>40) {
+                if ($per>10 || $per_op>10) {
                     array_push($MatchedSkillsId, $AlertReportId[$AlertSkillsCounter]);
                 }
 
-                /*old logic when algo was based on skills
-                if (strpos($AlertSkills[$AlertSkillsCounter], $ArenaSkills[$ArenaSkillsCounter]) !== false) {
-                    array_push($MatchedSkillsId, $AlertReportId[$AlertSkillsCounter]);
-                }*/
                 // if its an FLP add the alert_id to $MatchedSkillsId
                 if (strpos($Arena_AlertID[0], $AlertReportId[$AlertSkillsCounter]) !== false) {
                     if (!in_array($AlertReportId[$AlertSkillsCounter], $MatchedSkillsId)) {
@@ -318,24 +304,50 @@ class LandingPage {
         return $MatchedId;
     }
 
-    public function CityStatus($Id) {
+    public function CityMatch($email) {
         $MatchedId = [];
-
         global $wpdb;
-        $email = $_SESSION['Email'];
         $flp = $wpdb->get_results( "SELECT flp_city, flp_visibility_level FROM {$wpdb->prefix}arena WHERE flp_email='$email'", OBJECT );
         $flp_city = $flp[0]->flp_city;
         $flp_visibility = $flp[0]->flp_visibility_level;
 
-        foreach ($Id as $id) {
-            $alert = $wpdb->get_results( "SELECT alert_city FROM {$wpdb->prefix}alert WHERE alert_id='$id'", OBJECT );
-            $alert_city = $alert[0]->alert_city;
-            if ($alert_city == $flp_city && !empty($flp_visibility)) {
-                array_push($MatchedId, $id);
+        $alert = $wpdb->get_results( "SELECT alert_city, alert_id FROM {$wpdb->prefix}alert", OBJECT );
+        foreach ($alert as $city) {
+            if ($flp_city === $city->alert_city && !empty($flp_visibility)) {
+                array_push($MatchedId, $city->alert_id);
+            }
+            if (empty($flp_visibility)) {
+                array_push($MatchedId, $city->alert_id);
+            }
+        }
+        return $MatchedId;
+    }
+
+    public function CountryMatch($email) {
+        $MatchedId = [];
+        global $wpdb;
+        $flp = $wpdb->get_results( "SELECT flp_country FROM {$wpdb->prefix}arena WHERE flp_email='$email'", OBJECT );
+        $flp_country = $flp[0]->flp_country;
+        $alert = $wpdb->get_results( "SELECT alert_country, alert_id FROM {$wpdb->prefix}alert", OBJECT );
+        foreach ($alert as $country) {
+            if ($flp_country === $country->alert_country) {
+                array_push($MatchedId, $country->alert_id);
+            }
+        }
+        return $MatchedId;
+    }
+
+    public function AlertFLP($email) {
+        $MatchedId = [];
+        global $wpdb;
+        $flp = $wpdb->get_results( "SELECT flp_id FROM {$wpdb->prefix}arena WHERE flp_email='$email'", OBJECT );
+        $alerts = $wpdb->get_results( "SELECT alert_id, alert_case_status, flp_id FROM {$wpdb->prefix}alert", OBJECT );
+        foreach ($alerts as $alert) {
+            if ($alert->flp_id == $flp[0]->flp_id && !empty($alert->alert_case_status) ) {
+                array_push($MatchedId, $alert->alert_id);
             }
         }
         return $MatchedId;
     }
 }
-
 ?>

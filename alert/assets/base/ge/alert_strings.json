@@ -24,13 +24,17 @@
     "register_now": "Noch nicht registriert? Registrieren Sie sich jetzt",
     "register_btn": "Registrieren",
     "alert_report": "ALERT BERICHT",
+    "ok": "Ok",
+    "alert_confirmation": "Ihr gemeldeter ALERT-Fall wurde eingereicht. Sobald er von unseren Moderator:innen akzeptiert wurde, können Sie ihn in der ARENA einsehen. Bitte überprüfen Sie Ihre E-Mails.",
     "other": "Anders",
     "your_verification_code": "Ihr Verifikations-Code lautet: ",
-    "verification": "Verification Code: ",
+    "verification": "Verifikations-Code",
     "alert_submitted": "ALERT Submitted",
     "your_alert_submitted": "Ihr gemeldeter ALERT-Fall wurde eingereicht. Sobald er von unseren Moderator:innen akzeptiert wurde, können Sie ihn in der ARENA einsehen.",
     "registration_confirmed": "Registration Confirmed",
     "your_registration_confirmed": "Ihre Registrierung wurde bestätigt. Sobald unsere Moderator:innen Ihre Anfrage akzeptieren, können Sie sich einloggen.",
     "thanks": "Vielen Dank, dass Sie die Platform benutzen. Sie werden nun zurück geleitet zur ARENA.",
-    "intro": "ALERT: Dieses Tool bietet Unterstützung für First-Line Practitioners (kurz: FLPs), die einen Fall von Radikalisierung und/oder Polarisierung (zum Beispiel extremistische Propaganda, Hassreden oder Gewalt) in ihrem Berufsalltag beobachtet haben und diesen ansprechen möchten. Melden Sie dazu einen Vorfall, und beschreiben Sie detailliert, was wo und wann passiert ist und wer was mit wem getan hat. Basierend auf Ihrer Fallbeschreibung erhalten Sie passende Handlungsempfehlungen und weiterführende Informationen. Falls es keinen ähnlichen Fall in unserer Datenbank gibt, wird Ihr Fall an die sogenannte ARENA weitergeleitet, in der Expert:innen und erfahrene Kolleg:innen Ihren Fall bearbeiten und Empfehlungen aussprechen werden."
+    "intro": "ALERT: Dieses Tool bietet Unterstützung für First-Line Practitioners (kurz: FLPs), die einen Fall von Radikalisierung und/oder Polarisierung (zum Beispiel extremistische Propaganda, Hassreden oder Gewalt) in ihrem Berufsalltag beobachtet haben und diesen ansprechen möchten. Melden Sie dazu einen Vorfall, und beschreiben Sie detailliert, was wo und wann passiert ist und wer was mit wem getan hat. Basierend auf Ihrer Fallbeschreibung erhalten Sie passende Handlungsempfehlungen und weiterführende Informationen. Falls es keinen ähnlichen Fall in unserer Datenbank gibt, wird Ihr Fall an die sogenannte ARENA weitergeleitet, in der Expert:innen und erfahrene Kolleg:innen Ihren Fall bearbeiten und Empfehlungen aussprechen werden.",
+    "alert": "Neuer Alarm",
+    "new_alert": "Sie wurden soeben für das Expertenteam für einen ALERT-Fall zu Extremismus und Polarisierung ausgewählt. Bitte folgen Sie dem Link (https://www.firstlinepractitioners.com/arena-2/ ) , um auf ARENA zuzugreifen und mehr über den Fall zu erfahren und sich mit den anderen für diesen Fall ausgewählten Expert:innen auszutauschen."
 }

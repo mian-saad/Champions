@@ -39,7 +39,6 @@ class AjaxCalls {
         }
         else { // we are starting new report here
             # if language is not set properly, we will throw errors
-            $d = $_GET['lang'];
             if (empty($_GET['lang']) or !in_array($_GET['lang'], ['en', 'ge', 'hun', 'ro', 'pol'])) {
                 echo "Language not set properly";
                 wp_die();
@@ -95,6 +94,7 @@ class AjaxCalls {
 
             $plugin_path = plugin_dir_path( dirname(__FILE__, 2));
             $state_file = json_decode(file_get_contents($plugin_path . "assets/base/".$_SESSION['language']."/registration_strings.json"), true);
+
 
             $Notification = new StateTypes\Notification($state_file);
             $Notification->render($report_id);

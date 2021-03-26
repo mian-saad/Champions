@@ -1,20 +1,19 @@
-@import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
 body {
-    font-family: 'Quicksand' !important;
+    font-family: Roboto, serif;
 }
 
 .card-body {
-    padding: 0px!important;
+    padding: 0 !important;
 }
 
 .login-button {
-    margin-top: 10px!important;
-    margin-left: 0px!important;
+    margin-top: 10px !important;
+    margin-left: 0 !important;
 }
 
 button[disabled]:hover {
-    font-family: Quicksand !important;
     line-height: 1.4 !important;
     padding: 8px 12px !important;
 }
@@ -22,7 +21,7 @@ button[disabled]:hover {
 .button {
     border: none;
     cursor: pointer;
-    color: #fff!important;
+    color: #fff !important;
     border-radius: 0;
     outline: 0;
     height: auto;
@@ -40,7 +39,7 @@ button[disabled]:hover {
 }
 
 .button:hover {
-    background: #1691b5!important;
+    background: #1691b5 !important;
 }
 
 .login_horizontal_choice label{
@@ -80,22 +79,22 @@ a#edit {
 }
 
 .table_entry p {
-    margin: 0!important;
+    margin: 0 !important;
     padding-top: 10px;
     padding-bottom: 5px;
 }
 
 .table_entry p button {
     margin-bottom: 5px;
-    width: 115px!important;
+    width: 115px !important;
 }
 
 .table_expert_column {
-    width: 130px!important;
+    width: 130px !important;
 }
 
 td {
-    text-align: center!important;
+    text-align: center !important;
 }
 
 td.subject:hover {
@@ -105,15 +104,15 @@ td.subject:hover {
 
 .NameHeader {
     text-align: right;
-    margin-bottom: 0px!important;
+    margin-bottom: 0 !important;
 }
 
 .champions {
-    margin-bottom: 0px!important;
+    margin-bottom: 0 !important;
 }
 
 .description {
-    text-align: justify!important;
+    text-align: justify !important;
 }
 
 textarea#commentText {
@@ -125,32 +124,32 @@ textarea#RecommendationText {
 }
 
 .Joined {
-    background: #6c757d!important;
+    background: #6c757d !important;
 }
 
 .Close {
-    background: #a93a32!important;
+    background: #a93a32 !important;
 }
 
 #DisplayCommentSection {
     text-align: left;
-    padding-left: 0!important;
+    padding-left: 0 !important;
 }
 
 #DisplayRecommendationsSection {
-    padding-left: 0!important;
+    padding-left: 0 !important;
 }
 
 #RecommendationsSection {
-    padding-left: 0!important;
+    padding-left: 0 !important;
 }
 
 #CommentSection {
-    padding-left: 0!important;
+    padding-left: 0 !important;
 }
 
 .Participants {
-    text-align: right!important;
+    text-align: right !important;
 }
 
 .HoverRecommendation {
@@ -176,28 +175,28 @@ h4.NameHeader {
 }
 
 hr {
-    margin-top: 0!important;
+    margin-top: 0 !important;
 }
 
 table {
-    table-layout: initial!important;
+    table-layout: initial !important;
 }
 
 .row {
-    margin-left: 0!important;
-    margin-right: 0!important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
 }
 
 #invite .col-9 {
-    padding: 0!important;
+    padding: 0 !important;
 }
 
 #invite .col-3 {
-    padding: 0!important;
+    padding: 0 !important;
 }
 
 #invitation-email {
-    height: 38px!important;
+    height: 38px !important;
 }
 
 ::-webkit-input-placeholder {
@@ -207,15 +206,15 @@ table {
 
 .invite-text {
     padding-right: 14px;
-    margin-bottom: 5px!important;
+    margin-bottom: 5px !important;
 }
 
 .padd_sync {
-    margin-left: 15px!important;
+    margin-left: 15px !important;
 }
 
 #notify {
-    display: inline!important;
+    display: inline !important;
 }
 
 .discussion-close {
@@ -228,7 +227,7 @@ table {
 }
 
 .login_links {
-    color: #0c83e7!important;
+    color: #0c83e7 !important;
     font-size: x-large;
     cursor: pointer;
 }

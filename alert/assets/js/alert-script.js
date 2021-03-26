@@ -69,11 +69,8 @@ jQuery(document).ready(function ($) {
             $contentBox
                 .html(response)
                 .animate({ opacity: 1 }, 100);
-            if ($('.alert_question:contains("Login in/Register to submit your Alert to the Arena")').length > 0 ||
-                $('.alert_question:contains("Profession")').length > 0 ||
-                $('.alert_question:contains("Area of Work")').length > 0 ||
-                $('.alert_question:contains("Please provide a short description about your professional experience and engagement with issues of extremism, hate, polarisation (with which community did you work? for which organization did you work? when?)")').length > 0 ||
-                $('.alert_question:contains("Please provide the verification Code that has been sent to the email provided")').length > 0) {
+            // if ($("#check-platform").val().length == 0)
+            if ($("#check-platform").length > 0 ) {
                 $('.post-title').text("Arena");
             }
             else {
@@ -113,7 +110,7 @@ jQuery(document).ready(function ($) {
     // submit button action before authentication
     $('body').on('click', '#alert_register', function (e) {
         // need to find all inputs and see get the value
-        $('.entry-title').text("Arena");
+        // $('.post-title').text("Arena");
         var req_data = {
             action: 'get_question',
             dataType: 'json',
@@ -136,20 +133,27 @@ jQuery(document).ready(function ($) {
             dataType: 'json',
             alert_id: $('input#alert_id').val(),
         };
-        jQuery.get(alert_object.ajaxurl, req_data, function (response) {});
-        thanks();
+        jQuery.get(alert_object.ajaxurl, req_data, function (response) {
+            $contentBox
+                .html(response)
+                .animate({ opacity: 1 }, 100);
+        });
+    });
+
+    $('body').on('click', '#ok', function (e) {
+        window.location.reload();
     });
 
     // Done button action leads to Thank You
-    $('body').on('click', '#thankyou', function (e) {
-        thanks();
+    $('body').on('click', '#done', function (e) {
+        done();
     });
 
-    function thanks() {
+    function done() {
         var req_data = {
-            action: 'thanks',
+            action: 'done',
             dataType: 'json',
-            alert_id: 'thankyou',
+            alert_id: 'done',
         };
         jQuery.get(alert_object.ajaxurl, req_data, function (response) {
             $contentBox.html(response);
@@ -173,11 +177,7 @@ jQuery(document).ready(function ($) {
             $contentBox
                 .html(response)
                 .animate({ opacity: 1 }, 100);
-            if ($('.alert_question:contains("Login in/Register to submit your Alert to the Arena")').length > 0 ||
-                $('.alert_question:contains("Profession")').length > 0 ||
-                $('.alert_question:contains("Area of Work")').length > 0 ||
-                $('.alert_question:contains("Please provide a short description about your professional experience and engagement with issues of extremism, hate, polarisation (with which community did you work? for which organization did you work? when?)")').length > 0 ||
-                $('.alert_question:contains("Please provide the verification Code that has been sent to the email provided")').length > 0) {
+            if ($("#check-platform").length > 0 ) {
                 $('.post-title').text("Arena");
             }
             else {
@@ -207,13 +207,26 @@ jQuery(document).ready(function ($) {
             var fieldname = formData[i]['name'];
             var fieldvalue = formData[i]['value'];
 
-            if (!(fieldname in result)) {                // if key doesnt exist, add it to array
+            if (!(fieldname in result) && !(fieldname === "other_text_input")) {                // if key doesnt exist, add it to array
                 result[fieldname] = fieldvalue
-            } else {                                  // else key already exists
+            }
+            else if (!(formData[i-1]['name'] in result) && fieldname === "other_text_input" && fieldvalue !== '') {
+                var v_fieldname = formData[i-1]['name'];
+                result[v_fieldname] = fieldvalue;
+            }
+            else if ((formData[i-1]['name'] in result) && fieldname === "other_text_input" && fieldvalue !== '') {
+                var v_fieldname = formData[i-1]['name'];
+                result[v_fieldname].push(fieldvalue);
+            }
+            else if (fieldname === "other_text_input" && fieldvalue === '') {
+                continue;
+            }
+            else {                                  // else key already exists
 
                 if (Array.isArray(result[fieldname])) {    // if field already contains an array, lets push new element there
                     result[fieldname].push(fieldvalue);
-                } else {
+                }
+                else {
                     var newvalue = [result[fieldname], fieldvalue]    // else lets create new array with two elements in it
                     result[fieldname] = newvalue;
                 }

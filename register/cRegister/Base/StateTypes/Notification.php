@@ -10,9 +10,9 @@ class Notification {
 
     public function render($flp_id) {
 //        $this->send_mail_new_user($flp_id);
-        $html = "<h5>".$this->lang['redirect']."</h5>";
-        $html .= "<script>setTimeout(function(){window.location.reload(1);}, 15000);</script>";
-
+        $html = "<p>".$this->lang['redirect']."</p>";
+//        $html .= "<script>setTimeout(function(){window.location.reload(1);}, 15000);</script>";
+        $html .= "<a class='button' onclick='location.reload();' >Finish</a>";
 
         echo $html;
     }

@@ -12,7 +12,7 @@
       ]
    },
    "M1.1":{
-      "state_text":"Dane osobowe",
+      "state_text":"Rejestracja Użytkownika",
       "state_type":"composed",
       "show_header": "true",
       "id": "flp_register_infos",
@@ -263,6 +263,10 @@
                   "text":"Dialog międzykulturowy i budowanie pokoju"
                },
                {
+                  "id":"Nothing",
+                  "text":"Nic"
+               },
+               {
                   "id":"Other",
                   "text":"Inna"
                }
@@ -327,6 +331,10 @@
                   "text":"mediami"
                },
                {
+                  "id":"Nothing",
+                  "text":"Nic"
+               },
+               {
                   "id":"Other",
                   "text":"Inna"
                }
@@ -378,6 +386,10 @@
                {
                   "id":"Crisis Management Prevention",
                   "text":"Zarządzanie kryzysem "
+               },
+               {
+                  "id":"Nothing",
+                  "text":"Nic"
                },
                {
                   "id":"Other",

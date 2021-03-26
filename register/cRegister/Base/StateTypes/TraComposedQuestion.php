@@ -8,6 +8,7 @@ class TraComposedQuestion extends TraState {
     public $continue_string;
     public $lang;
     public  $other_answer = [];
+    private $state;
 
     public function __construct($string_file, $report_id, $state_code, $state, $continue_string, $back_string, $field_warning, $warning) {
         $this->field_warning = $field_warning;
@@ -23,7 +24,7 @@ class TraComposedQuestion extends TraState {
     public function generate_html() {
         $html="";
         if($this->state['show_header']=="true"){
-//            $html .= "<h class='register_question'>" . $this->state['state_text'] . "</h>";
+            $html .= "<h3 class='register_question'>" . $this->state['state_text'] . "</h3>";
         }
         $html .= $this->generate_hidden_fields($this->report_id);
         $html .= "<form id='arena_question_form'>";
@@ -48,9 +49,6 @@ class TraComposedQuestion extends TraState {
                     $html .= $this->generate_question_text($answer['text']);
                     $html .= $this->generate_select_question($answer);
                     $html .= "</div>";
-//                    if ($answer['short_text'] == 'Country') {
-//                        $html .= "<br><br><br>";
-//                    }
                 }
                 else if ($answer['type'] == 'checkbox') {
                     $html .= "<div class='col-12'>";
@@ -91,24 +89,28 @@ class TraComposedQuestion extends TraState {
             $this->response[$name_string] = str_split($this->response[$name_string], strlen($this->response[$name_string]));
         }
 
+        $i = 0;
         foreach ($answer_array['answers'] as $answer_option) {
 
 
             if (!empty($this->response) and in_array($answer_option['id'], $this->response[$name_string])) {
                 // this is a checked answer
                 if ($answer_option['text'] == $this->lang['other']) {
-                    $html .= '<div class="register_horizontal_choice"><input type="checkbox" class="register_checkbox" name="' . $answer_array['id'] . '" id="' . $answer_option['id'] . '" value="' . $answer_option['id'] . '" checked required><label for="' . $answer_option['id'] . '">' . $answer_option['text'] . '</label> ' . $this->generate_other_text_input($this->response['other_text_input'], $answer_array) . '</div>';
-                } else {
-                    $html .= '<div class="register_horizontal_choice"><input type="checkbox" class="register_checkbox" name="' . $answer_array['id'] . '" id="' . $answer_option['id'] . '" value="' . $answer_option['id'] . '" checked required><label for="' . $answer_option['id'] . '">' . $answer_option['text'] . '</label></div>';
+                    $html .= '<div class="register_horizontal_choice"><input type="checkbox" class="register_checkbox" name="' . $answer_array['id'] . '" id="' . $answer_option['id'] . $i . '" value="' . $answer_option['id'] . '" checked required><label >' . $answer_option['text'] . '</label> ' . $this->generate_other_text_input($this->response['other_text_input'], $answer_array) . '</div>';
                 }
-            } else {
-                if ($answer_option['text'] == $this->lang['other']) {
-                    $html .= '<div class="register_horizontal_choice"><input type="checkbox" class="register_checkbox" name="' . $answer_array['id'] . '" id="' . $answer_option['id'] . '" value="' . $answer_option['id'] . '" required><label for="' . $answer_option['id'] . '">' . $answer_option['text'] . '</label> ' . $this->generate_other_text_input("", $answer_array) . '</div>';
-                } else {
-                    $html .= '<div class="register_horizontal_choice"><input type="checkbox" class="register_checkbox" name="' . $answer_array['id'] . '" id="' . $answer_option['id'] . '" value="' . $answer_option['id'] . '" required><label for="' . $answer_option['id'] . '">' . $answer_option['text'] . '</label></div>';
+                else {
+                    $html .= '<div class="register_horizontal_choice"><input type="checkbox" class="register_checkbox" name="' . $answer_array['id'] . '" id="' . $answer_option['id'] . '" value="' . $answer_option['id'] . '" checked required><label >' . $answer_option['text'] . '</label></div>';
                 }
             }
-
+            else {
+                if ($answer_option['text'] == $this->lang['other']) {
+                    $html .= '<div class="register_horizontal_choice"><input type="checkbox" class="register_checkbox" name="' . $answer_array['id'] . '" id="' . $answer_option['id'] . $i . '" value="' . $answer_option['id'] . '" required><label >' . $answer_option['text'] . '</label> ' . $this->generate_other_text_input("", $answer_array) . '</div>';
+                }
+                else {
+                    $html .= '<div class="register_horizontal_choice"><input type="checkbox" class="register_checkbox" name="' . $answer_array['id'] . '" id="' . $answer_option['id'] . '" value="' . $answer_option['id'] . '" required><label >' . $answer_option['text'] . '</label></div>';
+                }
+            }
+            $i++;
         }
         $html .= '</div>';
         return $html;
@@ -171,61 +173,48 @@ class TraComposedQuestion extends TraState {
 
     public function generate_readable_response_array() {
         $result = [];
-        $i = 0; // needed for koma stripping
-//        $response_string = "";
 
         foreach ($this->state['state_answers'] as $answer) {
             $key = $answer['short_text'];
+
             if ($answer['type'] == 'text') { // for text answers , just store the received input
                 $value = $this->response[$answer['id']];
             }
+
+            if ($answer['type'] == 'password') {
+                $value = "********";
+            }
+
             else if ($answer['type'] == 'select') { // need to search in the answer array for the response id in the answers
-                foreach ($answer['answers'] as $radio_answer) {
-                    if ($this->response[$answer['id']] == $radio_answer['id']) {
-                        $value = $radio_answer['short_text'];
+                foreach ($answer['answers'] as $selected_answer) {
+                    if ($this->response[$answer['id']] == $selected_answer['id']) {
+                        $value = $selected_answer['short_text'];
                     }
                 }
             }
+
             else if ($answer['type'] == 'checkbox') {
-                $response_string = "";
-                $i = 0; // needed for koma stripping
-                if (is_array($this->response[$answer['id']])) {
-                    foreach ($this->response[$answer['id']] as $item) { // for each item, lets find the short text in our $state
-                        foreach ($answer['answers'] as $checkbox_answer) {
-                            if ($item == $checkbox_answer['id']) {
-                                // handle the other_text_input here
-                                if ($checkbox_answer['id'] == $this->lang['other'] and $this->response['other_text_input'] != "" && !is_array($this->response['other_text_input'])) {
-                                    $value = $checkbox_answer['text'] . " - " . $this->response['other_text_input'];
-                                }
-                                // when other_text_input is an array here
-                                elseif ($checkbox_answer['id'] == $this->lang['other'] and $this->response['other_text_input'] != "" && is_array($this->response['other_text_input'])) {
-
-                                    $value = $checkbox_answer['text'] . " - " . $this->response['other_text_input'];
-                                }
-                                else {
-                                    $value = $checkbox_answer['text'];
-                                }
-                                $i++;
-                                if (sizeof($this->response[$answer['id']]) > $i) {
-                                    $response_string = $response_string . $value . ",";
-                                } else {
-                                    $response_string = $response_string . $value;
-                                }
-                            }
-                        }
-                    }
-                }
-                else {
-                    $response_string = $this->response[$answer['id']];
-                }
-
-                $value = $response_string;
+                $value = $this->set_language_specific_answers($answer['answers'], $this->response[$answer['id']]);
             }
-            if ($key == 'Visibility Level') {
-                $value = 'Not Set';
-            }
+
             $result[$key] = $value;
         }
         return $result;
+    }
+
+
+    // This function sets the checkbox data to the key
+    public function set_language_specific_answers($state_answers, $response) {
+
+        // When the response is string convert it to array. Happens in City Level
+        if (!is_array($response)) { $response = explode(',', $response); }
+
+        $result = [];
+        foreach ($state_answers as $option) {
+            if (in_array($option['id'],  $response)) {
+                array_push($result, $option['text']);
+            }
+        }
+        return implode(', ', $result);
     }
 }

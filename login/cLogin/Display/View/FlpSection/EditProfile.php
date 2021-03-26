@@ -55,7 +55,7 @@ class EditProfile {
                    <div class='row'>
                      <div class='col-6'>
                      <p class='register_question question'>".$this->lang['select_skills']."</p>
-                     ".$this->skills()."
+                     
                      </div>
                    </div><br> -->
                  
@@ -104,7 +104,7 @@ class EditProfile {
 
         global $wpdb;
         $title = $wpdb->get_row( "SELECT flp_title FROM {$wpdb->prefix}arena WHERE flp_email= '$this->email'", OBJECT ,0);
-        $db_title = explode(',', $title->flp_title);
+        $db_title = explode('~~~', $title->flp_title);
         $html = "";
         foreach ($this->profile['title'] as $title) {
             if (in_array($title['id'], $db_title)){
@@ -174,11 +174,11 @@ class EditProfile {
         return $html;
     }
 
-    public function skills() {
+    /*public function skills() {
 
         global $wpdb;
         $skills = $wpdb->get_row( "SELECT flp_skills FROM {$wpdb->prefix}arena WHERE flp_email= '$this->email'", OBJECT ,0);
-        $db_skills = explode(',', $skills->flp_skills);
+        $db_skills = explode('~~~', $skills->flp_skills);
         $html = "";
         foreach ($this->profile['skills'] as $skill) {
             if (in_array($skill['id'], $db_skills)){
@@ -197,13 +197,13 @@ class EditProfile {
             $html .= "<br>";
         }
         return $html;
-    }
+    }*/
 
     public function expertise() {
 
         global $wpdb;
         $skills = $wpdb->get_row( "SELECT flp_area_of_expertise FROM {$wpdb->prefix}arena WHERE flp_email= '$this->email'", OBJECT ,0);
-        $db_skills = explode(',', $skills->flp_area_of_expertise);
+        $db_skills = explode('~~~', $skills->flp_area_of_expertise);
         $html = "";
         foreach ($this->profile['expertise'] as $skill) {
             if (in_array($skill['id'], $db_skills)){
@@ -228,7 +228,7 @@ class EditProfile {
 
         global $wpdb;
         $skills = $wpdb->get_row( "SELECT flp_experience_with_radicalisation FROM {$wpdb->prefix}arena WHERE flp_email= '$this->email'", OBJECT ,0);
-        $db_skills = explode(',', $skills->flp_experience_with_radicalisation);
+        $db_skills = explode('~~~', $skills->flp_experience_with_radicalisation);
         $html = "";
         foreach ($this->profile['experience_with'] as $skill) {
             if (in_array($skill['id'], $db_skills)){
@@ -253,7 +253,7 @@ class EditProfile {
 
         global $wpdb;
         $skills = $wpdb->get_row( "SELECT flp_working_with FROM {$wpdb->prefix}arena WHERE flp_email= '$this->email'", OBJECT ,0);
-        $db_skills = explode(',', $skills->flp_working_with);
+        $db_skills = explode('~~~', $skills->flp_working_with);
         $html = "";
         foreach ($this->profile['working_with'] as $skill) {
             if (in_array($skill['id'], $db_skills)){

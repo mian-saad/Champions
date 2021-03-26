@@ -26,12 +26,16 @@
     "register_btn": "Zarejestruj się",
     "alert_report": "RAPORT ZE ZGŁOSZENIA",
     "other": "Inne",
+    "ok": "Ok",
+    "alert_confirmation": "Twoje zgłoszenie zostało wysłane. Będziesz mógł(mogła) je zobaczyć w panelu ARENA po zaakceptowaniu przez moderatora. Proszę sprawdzić email.",
     "your_verification_code": "Kod weryfikacyjny: ",
-    "verification": "Verification Code: ",
+    "verification": "Kod weryfikacyjny",
     "alert_submitted": "ALERT Submitted",
     "your_alert_submitted": "Twoje zgłoszenie zostało wysłane. Będziesz mógł(mogła) je zobaczyć w panelu ARENA po zaakceptowaniu przez moderatora.",
     "registration_confirmed": "Registration Confirmed",
     "your_registration_confirmed": "Potwierdzamy twoją rejestrację. Będziesz mógł(mogła) się zalogować po zaakceptowaniu przez moderatora.",
     "thanks": "Dziękujemy za skorzystanie z platformy. Powrót do ALERTU.",
-    "intro": "Dzięki platformie ALERT możesz zgłosić zdarzenie związane z polaryzacją społeczną, radykalizacją lub ekstremizmem (np. propagandę i fake newsy, mowę nienawiści, przemoc fizyczną na tle pochodzenia, płci itp.). Jeśli byłeś(-aś) świadkiem tego typu incydentu lub obawiasz się dalszego rozwoju danej sytuacji, wyślij zgłoszenie na platformie ALERT. Za pośrednictwem platformy otrzymasz rekomendacje dotyczące rozwiązania zgłoszonego problemu. Jeśli w bazie danych nie ma jeszcze rekomendacji dotyczących danego zagadnienia, Twoje zgłoszenie zostanie przesłane do platformy ARENA, na której grupa ekspertów i ekspertek zajmie się ich wypracowaniem."
+    "intro": "Dzięki platformie ALERT możesz zgłosić zdarzenie związane z polaryzacją społeczną, radykalizacją lub ekstremizmem (np. propagandę i fake newsy, mowę nienawiści, przemoc fizyczną na tle pochodzenia, płci itp.). Jeśli byłeś(-aś) świadkiem tego typu incydentu lub obawiasz się dalszego rozwoju danej sytuacji, wyślij zgłoszenie na platformie ALERT. Za pośrednictwem platformy otrzymasz rekomendacje dotyczące rozwiązania zgłoszonego problemu. Jeśli w bazie danych nie ma jeszcze rekomendacji dotyczących danego zagadnienia, Twoje zgłoszenie zostanie przesłane do platformy ARENA, na której grupa ekspertów i ekspertek zajmie się ich wypracowaniem.",
+    "alert": "Nowy alert",
+    "new_alert": "Zapraszamy Cię do pracy nad zgłoszonym zdarzeniem związanym z prewencją radykalizacji i ekstremizmu. Kliknij na link - przeczytaj o zgłoszonym zdarzeniu i nawiąż kontakt z innymi ekspertami i ekspertkami, którzy też zostali zaproszeni do pracy nad tym zgłoszeniem. (https://www.firstlinepractitioners.com/arena-2/ ) "
 }

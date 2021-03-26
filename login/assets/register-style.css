@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
 body {
-  font-family: 'Quicksand' !important;
+  font-family: Roboto, serif;
 }
 
 .input-margin {
@@ -17,7 +17,6 @@ body {
   border: none;
   color: #fff!important;
   border-radius: 0;
-  /*margin: 2px;*/
   outline: 0;
   height: auto;
   line-height: 1.4;

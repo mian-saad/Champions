@@ -23,6 +23,7 @@ class VerificationCode extends TraState
     public function generate_html()
     {
         $html = $this->generate_hidden_fields($this->alert_id);
+        $html .= "<input hidden id='check-platform' value='arena' /> ";
         $html .= $this->generate_question_title($this->state['short_text']);
         $html .= "<form id='alert_question_form'>";
         $html .= $this->generate_question_text($this->state['state_text']);
@@ -39,7 +40,7 @@ class VerificationCode extends TraState
         $x= $_SESSION["verifyCode"];
         $y = $response;
         // how do we wanna store the items to the db
-        if ((array_key_exists($this->state['id'], $response)) && ($_SESSION["verifyCode"] == $response['verification'])) {
+        if ((array_key_exists($this->state['id'], $response)) && ($_SESSION["verifyCode"] == $response['flp_verification'])) {
             $this->response = $response;
             $_SESSION['validate'] = true;
             return true;

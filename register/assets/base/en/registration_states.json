@@ -12,7 +12,7 @@
       ]      
    },
    "M1.1":{
-      "state_text":"Expert Registration",
+      "state_text":"User Registration",
       "state_type":"composed",
       "show_header": "true",
       "id": "flp_register_infos",
@@ -263,6 +263,10 @@
                   "text":"Inter-faith Work and Peacebuilding"
                },
                {
+                  "id":"Nothing",
+                  "text":"Nothing"
+               },
+               {
                   "id":"Other",
                   "text":"Other"
                }
@@ -327,6 +331,10 @@
                   "text":"Media Coverage & Reporting"
                },
                {
+                  "id":"Nothing",
+                  "text":"Nothing"
+               },
+               {
                   "id":"Other",
                   "text":"Other"
                }
@@ -378,6 +386,10 @@
                {
                   "id":"Crisis Management Prevention",
                   "text":"Crisis Management Prevention"
+               },
+               {
+                  "id":"Nothing",
+                  "text":"Nothing"
                },
                {
                   "id":"Other",

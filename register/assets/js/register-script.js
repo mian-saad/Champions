@@ -120,11 +120,17 @@ jQuery(document).ready(function ($) {
 
             if (!(fieldname in result)) {                // if key doesnt exist, add it to array
                 result[fieldname] = fieldvalue
-            } else {                                  // else key already exists
+            }
+            else if (fieldname === "other_text_input") {
+                var v_fieldname = formData[i-1]['name'];
+                result[v_fieldname].push(fieldvalue);
+            }
+            else {                                  // else key already exists
 
                 if (Array.isArray(result[fieldname])) {    // if field already contains an array, lets push new element there
                     result[fieldname].push(fieldvalue);
-                } else {
+                }
+                else {
                     var newvalue = [result[fieldname], fieldvalue]    // else lets create new array with two elements in it
                     result[fieldname] = newvalue;
                 }

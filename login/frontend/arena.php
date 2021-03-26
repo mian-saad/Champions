@@ -23,9 +23,7 @@ echo "
         <!-- English -->
         <div id='en' class='lan' style='display: inline; text-align: justify;'>
             <h1> Welcome to ARENA Module</h1>
-            <p>".$intro."</p>
-            <li>".$bullet1."</li>
-            <li>".$bullet2."</li>
+            <p>The ARENA Platform has been created to link experts addressing radicalisation and polarization. This multi-agency group of experts works together to generate effective and timely responses and preventive measures to address issues and incidents of radicalisation, hate and extremism and provide recommendations and support to first line practitioners. To use the ARENA you can: Register as a First-Line Practitioner (FLP) / Expert. FLPs may include community workers, social workers, teachers, youth workers, local government officials, law enforcement officers and more. Here you can provide a brief background of your areas of work and expertise. Connect with other experts, share and review cases of radicalization and/or polarization, recommend actions, and share best practices to help improve prevention and response and support fellow First-Line Practitioners</p>
             <br>
             <div id='login_button_pane'>
                 <a class=\"login_links\" id=\"start_arena\" >Login</a><br>

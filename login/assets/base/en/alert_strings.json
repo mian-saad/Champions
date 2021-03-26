@@ -44,10 +44,12 @@
     "your_case": "Your Case has been",
     "arena_notification": "Arena Notification Module",
     "new_notification": "The case you are part of has a new ",
-    "new_password": "New Password",
     "default_password": "Please change the password after logging in and editing your profile. Your New Password: ",
     "champions_notification": "Champions - Arena Notification Module",
     "invited": "You have been Invited to the Arena. Please register at https://www.firstlinepractitioners.com/arena/ before you can login.",
+
+    "the_alert": "The Alert: ",
+    "your_case_approved": " has been confirmed from the Moderator. Now you can see it in the system. https://www.firstlinepractitioners.com/arena-2",
 
     "accept_reject_flp": "Manage FLP",
     "accept_reject_alert": "Manage Case",
@@ -74,5 +76,13 @@
     "intro": "The ARENA Platform has been created to link experts addressing radicalisation and polarization. This multi-agency group of experts works together to generate effective and timely responses and preventive measures to address issues and incidents of radicalisation, hate and extremism and provide recommendations and support to first line practitioners. To use the ARENA you can:",
     "bullet1": "Register as a First-Line Practitioner (FLP) / Expert. FLPs may include community workers, social workers, teachers, youth workers, local government officials, law enforcement officers and more. Here you can provide a brief background of your areas of work and expertise.",
     "bullet2": "Connect with other experts, share and review cases of radicalization and/or polarization, recommend actions, and share best practices to help improve prevention and response and support fellow First-Line Practitioners",
-    "flp_accepted": "You are now an active expert member on ARENA (https://www.firstlinepractitioners.com/arena-2/), and will receive a notification when an ALERT has been reported and your area of expertise and your location prove relevant for the case. Please be mindful of the privacy specifications during the process."
+    "flp_accepted": "You are now an active expert member on ARENA (https://www.firstlinepractitioners.com/arena-2/), and will receive a notification when an ALERT has been reported and your area of expertise and your location prove relevant for the case. Please be mindful of the privacy specifications during the process.",
+
+    "your_new_password": "Your new password has been sent to the email address you provided if it exists in the database.",
+    "forgot_password": "Forgot Password",
+    "forgot_password_q": "Forgot Password?",
+    "please_enter_email": "Please Enter the email address you used to register",
+    "new_password": "New Password",
+    "please_change_password": "Please change the password after logging in and editing your profile. Your New Password:"
+
 }

@@ -12,7 +12,7 @@
       ]
    },
    "M1.1":{
-      "state_text":"FLP Személyes Információ",
+      "state_text":"Felhasználó regisztráció",
       "state_type":"composed",
       "show_header": "true",
       "id": "flp_register_infos",
@@ -263,6 +263,10 @@
                   "text":"Vallások közötti párbeszéd"
                },
                {
+                  "id":"Nothing",
+                  "text":"Semmi"
+               },
+               {
                   "id":"Other",
                   "text":"Egyéb"
                }
@@ -327,6 +331,10 @@
                   "text":"Médiában "
                },
                {
+                  "id":"Nothing",
+                  "text":"Semmi"
+               },
+               {
                   "id":"Other",
                   "text":"Egyéb"
                }
@@ -378,6 +386,10 @@
                {
                   "id":"Crisis Management Prevention",
                   "text":"Krízis managment"
+               },
+               {
+                  "id":"Nothing",
+                  "text":"Semmi"
                },
                {
                   "id":"Other",

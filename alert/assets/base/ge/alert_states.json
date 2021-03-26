@@ -102,7 +102,7 @@
                {
                   "text":"Weiß ich nicht",
                   "short_text":"Weiß ich nicht",
-                  "id":"I don't know_a"
+                  "id":"I don't know"
                },
                {
                   "text":"Anders",
@@ -165,12 +165,12 @@
                {
                   "text":"Weiß ich nicht",
                   "short_text":"Weiß ich nicht",
-                  "id":"I don't know_b"
+                  "id":"I don't know"
                },
                {
                   "text":"Anders",
                   "short_text":"Anders",
-                  "id":"Other_b"
+                  "id":"Other"
                }
             ]
          },
@@ -218,7 +218,7 @@
                {
                   "text":"Weiß ich nicht",
                   "short_text":"Weiß ich nicht",
-                  "id":"I don't know_c"
+                  "id":"I don't know"
                },
                {
                   "text":"Anders",
@@ -249,7 +249,7 @@
          },
          {
             "short_text":"Frist",
-            "text":"Teilen Sie uns mit, bis wann Sie in etwa einen Lösungsvorschlag benötigen",
+            "text":"Bitte geben Sie uns ein voraussichtliches Datum an, innerhalb dessen Sie ein Feedback von den anderen FLPs erhalten möchten.",
             "id":"alert_deadline",
             "type":"date"
          }
@@ -279,9 +279,9 @@
       ]
    },
    "M1.6":{
-      "state_text":"Persönliche Informationen",
+      "state_text":"Benutzer Registration",
       "state_type":"composed",
-      "show_header": "false",
+      "show_header": "true",
       "id": "flp_register_infos",
       "state_answers":[
          {
@@ -467,7 +467,7 @@
             "id":"flp_experience_with_radicalisation",
             "type":"checkbox",
             "text":"Erfahrung mit Radikalisierung (Sie können mehr als eine Option auswählen)",
-            "short_text":"Experience with Radicalisation",
+            "short_text":"Erfahrung mit Radikalisierung",
             "answers":[
                {
                   "id":"Addressing Extremist Propaganda and Recruitment Online",
@@ -526,8 +526,12 @@
                   "text":"Interreligiöser Dialog und Friedensförderung "
                },
                {
+                  "id":"Nothing",
+                  "text":"Nichts"
+               },
+               {
                   "id":"Other",
-                  "text":"Anderes"
+                  "text":"Andere"
                }
             ]
          },
@@ -535,7 +539,7 @@
             "id":"flp_working_with",
             "type":"checkbox",
             "text":"Arbeiten mit (Sie können mehr als eine Option auswählen)",
-            "short_text":"Working With",
+            "short_text":"Arbeiten mit",
             "answers":[
                {
                   "id":"Young people in schools",
@@ -590,6 +594,10 @@
                   "text":"Medienvertreter:innen und Journalist:innen"
                },
                {
+                  "id":"Nothing",
+                  "text":"Nichts"
+               },
+               {
                   "id":"Other",
                   "text":"Andere"
                }
@@ -600,7 +608,7 @@
             "id":"flp_area_of_expertise",
             "type":"checkbox",
             "text":"Erfahrungsbereich (Sie können mehr als eine Option auswählen)",
-            "short_text":"Area of Expertise",
+            "short_text":"Erfahrungsbereich",
             "answers":[
                {
                   "id":"Education",
@@ -643,6 +651,10 @@
                   "text":"Krisenmanagement & Prävention"
                },
                {
+                  "id":"Nothing",
+                  "text":"Nichts"
+               },
+               {
                   "id":"Other",
                   "text":"Andere"
                }
@@ -654,7 +666,7 @@
             "type":"checkbox",
             "optional": "true",
             "text":"Sichtbarkeitslevel",
-            "short_text":"Visibility Level",
+            "short_text":"Sichtbarkeitslevel",
             "text_description":"Falls Sie nur an lokalen Aktivitäten beteiligt sein möchten, die sich auf Ihre Stadt beziehen, kreuzen Sie bitte das Kästchen mit der Bezeichnung \"Stadtebene\" an. Andernfalls könnten Sie an landesweiten Aktivitäten beteiligt sein. ",
             "answers":[
                {
@@ -675,7 +687,7 @@
    "M1.9":{
       "short_text":"E-Mail Verifizierung",
       "state_text":"Bitte geben Sie den Verifizierungscode an, der an die angegebene E-Mail gesendet wurde.",
-      "id":"verification",
+      "id":"flp_verification",
       "state_type":"verification"
    },
    "ERROR":{

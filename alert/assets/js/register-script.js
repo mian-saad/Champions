@@ -1,7 +1,7 @@
 
 jQuery(document).ready(function ($) {
 
-    var $contentBox = $('#contentBox');
+    var $contentBox = $('#alert_questionnaire_content_div');
 
     // new report button action
     $('body').on('click', '#start_registration', function (e) {
@@ -11,6 +11,7 @@ jQuery(document).ready(function ($) {
         var req_data = {
             action: 'retrieve_question',
             dataType: 'json',
+            alert_id: $('input#alert_id').val(),
             lang: $('#lang_select').val()
         };
 
@@ -24,27 +25,7 @@ jQuery(document).ready(function ($) {
         });
     });
 
-    // Login button action
-    $('body').on('click', '#arena_login', function (e) {
-        e.preventDefault();
 
-        // need to find all inputs and see get the value
-        var req_data = {
-            action: 'retrieve_question',
-            dataType: 'json',
-            lang: "en",
-            type: 'login'
-        };
-
-        // try to animate
-        $contentBox.animate({ opacity: 0.5 }, 100);
-
-        jQuery.get(register_object.ajaxurl, req_data, function (response) {
-            $contentBox
-                .html(response)
-                .animate({ opacity: 1 }, 100);
-        });
-    });
 
     // continue button action
     $('body').on('click', '#arena_continue', function (e) {
@@ -58,6 +39,7 @@ jQuery(document).ready(function ($) {
             action: 'retrieve_question',
             dataType: 'json',
             report_id: $('input#report_id').val(),
+            alert_id: $('input#alert_id').val(),
             answer: provided_answers,
         };
 
@@ -75,17 +57,15 @@ jQuery(document).ready(function ($) {
     $('body').on('click', '#arena_submit', function (e) {
         // need to find all inputs and see get the value
         var req_data = {
-            action: 'submit_case',
+            action: 'get_question',
             dataType: 'json',
+            alert_id: $('input#alert_id').val(),
             report_id: $('input#report_id').val()
         };
 
         jQuery.get(register_object.ajaxurl, req_data, function (response) {
             $contentBox.html(response).animate({ opacity: 1 }, 100);
         });
-        // setTimeout(function() {
-        //     location.reload(true);
-        // }, 3000);
     });
 
     // back button action
@@ -118,7 +98,7 @@ jQuery(document).ready(function ($) {
             var fieldname = formData[i]['name'];
             var fieldvalue = formData[i]['value'];
 
-            if (!(fieldname in result) && !(fieldname === "other_text_input")) {                // if key doesnt exist, add it to array
+            if (!(fieldname in result) && !(fieldname === "other_text_input")) { // if key doesnt exist, add it to array
                 result[fieldname] = fieldvalue
             }
             else if (fieldname === "other_text_input" && fieldvalue !== '') {
@@ -128,13 +108,13 @@ jQuery(document).ready(function ($) {
             else if (fieldname === "other_text_input" && fieldvalue === '') {
                 continue;
             }
-            else {                                  // else key already exists
+            else { // else key already exists
 
-                if (Array.isArray(result[fieldname])) {    // if field already contains an array, lets push new element there
+                if (Array.isArray(result[fieldname])) { // if field already contains an array, lets push new element there
                     result[fieldname].push(fieldvalue);
                 }
                 else {
-                    var newvalue = [result[fieldname], fieldvalue]    // else lets create new array with two elements in it
+                    var newvalue = [result[fieldname], fieldvalue]  // else lets create new array with two elements in it
                     result[fieldname] = newvalue;
                 }
             }

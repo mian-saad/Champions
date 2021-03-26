@@ -73,9 +73,9 @@ class TraDatetimeQuestion extends TraState {
             // if we got something in response
             if (!empty($this->response) and array_key_exists($answer['id'], $this->response) and $this->response[$answer['id']] == $answer_option['id']) {
                 // this checkbox was checked previously
-                $html .= '<div class="register_horizontal_choice"><option class="register_quiz_select" name="' . $answer['id'] . '" id="' . $answer_option['id'] . '" value="' . $answer_option['short_text'] . '" selected><label for="' . $answer_option['id'] . $counter . '">' . $answer_option['text'] . '</label></div>';
+                $html .= '<div class="register_horizontal_choice"><option class="register_quiz_select" name="' . $answer['id'] . '" id="' . $answer_option['id'] . '" value="' . $answer_option['id'] . '" selected><label for="' . $answer_option['id'] . $counter . '">' . $answer_option['text'] . '</label></div>';
             } else { // else
-                $html .= '<div class="register_horizontal_choice"><option class="register_quiz_select" name="' . $answer['id'] . '" id="' . $answer_option['id'] . '" value="' . $answer_option['short_text'] . '" ><label for="' . $answer_option['id'] . $counter . '">' . $answer_option['text'] . '</label></div>';
+                $html .= '<div class="register_horizontal_choice"><option class="register_quiz_select" name="' . $answer['id'] . '" id="' . $answer_option['id'] . '" value="' . $answer_option['id'] . '" ><label for="' . $answer_option['id'] . $counter . '">' . $answer_option['text'] . '</label></div>';
             }
             $counter += 1;
         }
@@ -99,8 +99,8 @@ class TraDatetimeQuestion extends TraState {
             }
             else if ($answer['type'] == 'select') { // need to search in the answer array for the response id in the answers
                 foreach ($answer['answers'] as $radio_answer) {
-                    if ($this->response[$answer['id']] == $radio_answer['short_text']) {
-                        $value = $radio_answer['id'];
+                    if ($this->response[$answer['id']] == $radio_answer['id']) {
+                        $value = $radio_answer['short_text'];
                     }
                 }
             }

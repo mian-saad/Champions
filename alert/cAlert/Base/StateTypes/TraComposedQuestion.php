@@ -23,7 +23,10 @@ class TraComposedQuestion extends TraState {
 
     public function generate_html() {
         $html="";
-        $html = $this->NoUser();
+        if (strpos($this->state['id'], 'flp') !== false) {
+            $html .= "<input id='check-platform' hidden value='arena' /> ";
+        }
+        $html .= $this->NoUser();
         if($this->state['show_header']=="true"){
             $html .= "<h3 class='alert_question'>" . $this->state['state_text'] . "</h3>";
         }
@@ -103,12 +106,14 @@ class TraComposedQuestion extends TraState {
             for ($counter = 0; $counter<count($arenaData); $counter++) {
                 if ($arenaData[$counter]->flp_email === $resp['flp_email']) {
                     if ($arenaData[$counter]->flp_password === $resp['flp_password']) {
-//                        $report_controller = new ReportController();
                         $this->response = null;
-//                        $report_controller->flp_id = $arenaData[$counter]->flp_id;
                         $this->response['flp_id'] = $arenaData[$counter]->flp_id;
                         $_SESSION['validate'] = true;
-                        $this->alert_id = $arenaData[$counter]->alert_id .",". $this->alert_id;
+
+                        if ($arenaData[$counter]->alert_id) {
+                            $this->alert_id = $arenaData[$counter]->alert_id .",". $this->alert_id;
+                        }
+
                         $wpdb->update("wp_arena", array('alert_id' => $this->alert_id), array('flp_email' => $arenaData[$counter]->flp_email));
                         $wpdb->update("wp_arena", array('flp_associatedAlert' => $this->alert_id), array('flp_email' => $arenaData[$counter]->flp_email));
                         return true;
@@ -157,22 +162,23 @@ class TraComposedQuestion extends TraState {
             $this->response[$name_string] = str_split($this->response[$name_string], strlen($this->response[$name_string]));
         }
 
+        $i = 0;
         foreach ($answer_array['answers'] as $answer_option) {
             if (!empty($this->response) and in_array($answer_option['id'], $this->response[$name_string])) {
                 // this is a checked answer
                 if ($answer_option['id'] == 'Other') {
-                    $html .= '<div class="register_horizontal_choice"><input type="checkbox" class="register_checkbox" name="' . $answer_array['id'] . '" id="' . $answer_option['id'] . '" value="' . $answer_option['id'] . '" checked required><label for="' . $answer_option['id'] . '">' . $answer_option['text'] . '</label> ' . $this->generate_other_text_input($this->response['other_text_input']) . '</div>';
+                    $html .= '<div class="register_horizontal_choice"><input type="checkbox" class="register_checkbox" name="' . $answer_array['id'] . '" id="' . $answer_option['id'] . $i .'" value="' . $answer_option['id'] . '" checked required><label >' . $answer_option['text'] . '</label> ' . $this->generate_other_text_input($this->response['other_text_input']) . '</div>';
                 } else {
-                    $html .= '<div class="register_horizontal_choice"><input type="checkbox" class="register_checkbox" name="' . $answer_array['id'] . '" id="' . $answer_option['id'] . '" value="' . $answer_option['id'] . '" checked required><label for="' . $answer_option['id'] . '">' . $answer_option['text'] . '</label></div>';
+                    $html .= '<div class="register_horizontal_choice"><input type="checkbox" class="register_checkbox" name="' . $answer_array['id'] . '" id="' . $answer_option['id'] . '" value="' . $answer_option['id'] . '" checked required><label >' . $answer_option['text'] . '</label></div>';
                 }
             } else {
                 if ($answer_option['id'] == 'Other') {
-                    $html .= '<div class="register_horizontal_choice"><input type="checkbox" class="register_checkbox" name="' . $answer_array['id'] . '" id="' . $answer_option['id'] . '" value="' . $answer_option['id'] . '" required><label for="' . $answer_option['id'] . '">' . $answer_option['text'] . '</label> ' . $this->generate_other_text_input("") . '</div>';
+                    $html .= '<div class="register_horizontal_choice"><input type="checkbox" class="register_checkbox" name="' . $answer_array['id'] . '" id="' . $answer_option['id'] . $i .'" value="' . $answer_option['id'] . '" required><label >' . $answer_option['text'] . '</label> ' . $this->generate_other_text_input("") . '</div>';
                 } else {
-                    $html .= '<div class="register_horizontal_choice"><input type="checkbox" class="register_checkbox" name="' . $answer_array['id'] . '" id="' . $answer_option['id'] . '" value="' . $answer_option['id'] . '" required><label for="' . $answer_option['id'] . '">' . $answer_option['text'] . '</label></div>';
+                    $html .= '<div class="register_horizontal_choice"><input type="checkbox" class="register_checkbox" name="' . $answer_array['id'] . '" id="' . $answer_option['id'] . '" value="' . $answer_option['id'] . '" required><label >' . $answer_option['text'] . '</label></div>';
                 }
             }
-
+            $i++;
         }
         $html .= '</div>';
         return $html;
@@ -180,7 +186,7 @@ class TraComposedQuestion extends TraState {
 
     public function generate_other_text_input($value)
     {
-        return "<input class='col-8 input-margin' type='text' value='" . $value . "'>";
+        return "<input class='col-8 input-margin' name='other_text_input' type='text' value='" . $value . "'>";
     }
 
     public function generate_select_question($answer) {

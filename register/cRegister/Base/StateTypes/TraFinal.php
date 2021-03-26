@@ -28,13 +28,10 @@ class TraFinal extends TraState
     {
         $html = "<div class='col-12'>";
         $html .= $this->generate_hidden_fields($this->report_id);
-        $html .= "<h3>".$this->string_file['review_data']."</h3>";
+        $html .= "<h3>".$this->string_file['summary']."</h3>";
 
         foreach ($this->answers as $short_text => $value) {
-            if ($short_text == 'Password') {
-                $value = "********";
-            }
-            $html .= "<p>" . $short_text . " : " . $value . "</p>";
+            $html .= "<p><b>" . $short_text . " : </b>" . $value . "</p>";
         }
         $html .= "</div>";
         $html .= $this->generate_buttons();

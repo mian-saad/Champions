@@ -61,7 +61,7 @@ class AlertDecidePage {
                 $html .= " <p>" . $Data[$counter] -> alert_time . "</p> ";
                 $html .= " </td> ";
                 $html .= " <td> ";
-                $html .= " <p>" . $Data[$counter] -> alert_category . "</p> ";
+                $html .= " <p>" . str_replace('~~~', ', ',$Data[$counter] -> alert_category) . "</p> ";
                 $html .= " </td> ";
                 $html .= " <td> ";
                 $html .= " <p>" . $Data[$counter] -> alert_country . "</p> ";
@@ -122,9 +122,9 @@ class AlertDecidePage {
                             <p><b>Country: </b>". $alert_country ."</p>
                             <p><b>City: </b>". $alert_city ."</p>
                             <p><b>Time: </b>". $alert_time ."</p>
-                            <p><b>Category: </b>". $alert_category ."</p>
-                            <p><b>Location: </b>". $alert_location ."</p>
-                            <p><b>Target: </b>". $alert_target ."</p>
+                            <p><b>Category: </b>". str_replace('~~~', ', ',$alert_category) ."</p>
+                            <p><b>Location: </b>". str_replace('~~~', ', ',$alert_location) ."</p>
+                            <p><b>Target: </b>". str_replace('~~~', ', ',$alert_target) ."</p>
                             <p><b>Subject: </b>". $alert_subject ."</p>
                             <p><b>Description: </b>". $alert_description ."</p>
                             <p><b>Deadline: </b>". $alert_deadline ."</p>
@@ -226,11 +226,18 @@ class AlertDecidePage {
 
     public function SendMail($UserID, $State) {
         global $wpdb;
-        $flp_id = $wpdb->get_results( "SELECT flp_id FROM {$wpdb->prefix}alert WHERE alert_id='$UserID'", OBJECT );
+        $flp_id = $wpdb->get_results( "SELECT flp_id, alert_subject FROM {$wpdb->prefix}alert WHERE alert_id='$UserID'", OBJECT );
         $id = $flp_id[0]->flp_id;
+        $subject = $flp_id[0]->alert_subject;
         $Email = $wpdb->get_results( "SELECT flp_email FROM {$wpdb->prefix}arena WHERE flp_id = '$id'", OBJECT );
         $Email = $Email[0]->flp_email;
-        wp_mail( "$Email", $this->language['arena_case_module'], $this->language['your_case']." ".$State.".", array('Content-Type: text/html; charset=UTF-8'));
+
+        if ($State == 'Closed') {
+            wp_mail( "$Email", $this->language['arena_case_module'], $this->language['your_case']." ".$State.".", array('Content-Type: text/html; charset=UTF-8'));
+        }
+        elseif ($State = 'Approved') {
+            wp_mail( "$Email", $this->language['arena_case_module'], $this->language['the_alert'] . $subject . $this->language['your_case_approved'], array('Content-Type: text/html; charset=UTF-8'));
+        }
     }
 
 

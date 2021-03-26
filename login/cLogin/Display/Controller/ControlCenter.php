@@ -131,7 +131,7 @@ class ControlCenter {
 
             case 'ForgotPassword':
                 $loggedState = new View\PasswordSent();
-                $loggedState->Render(sanitize_text_field( $_GET['data'] ));
+                $loggedState->Render(sanitize_text_field( $_GET['data'] ), $_SESSION['strings']);
                 break;
 
             case 'Edit':

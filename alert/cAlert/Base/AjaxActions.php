@@ -19,13 +19,13 @@ class AjaxActions
         add_action('wp_ajax_nopriv_get_report', array($this, 'get_report'));
         add_action('wp_ajax_get_report', array($this, 'get_report'));
 
-        add_action('wp_ajax_nopriv_thanks', array($this, 'thanks'));
-        add_action('wp_ajax_thanks', array($this, 'thanks'));
+        add_action('wp_ajax_nopriv_done', array($this, 'done'));
+        add_action('wp_ajax_done', array($this, 'done'));
     }
 
     public function get_question() {
         $html = "";
-        if (!empty($_GET['alert_id'])) {
+        if (!empty($_GET['alert_id']) ) {
 
             // if in alert scope
             $alert_id = $_GET['alert_id'];
@@ -98,17 +98,16 @@ class AjaxActions
             // un-serialize report_controller, generate content
             $alert_id = $_GET['alert_id'];
             $report_controller = unserialize(base64_decode(get_transient($alert_id)));
-            $report_controller->db_store();
+            $report_controller->alert_db_store();
+            $report_controller->alert_confirmation();
+
         }
         wp_die();
     }
 
-    public function thanks() {
-
-        if ($_GET['alert_id'] === 'thankyou') {
-            $thankyou = new StateTypes\ThankYou($_SESSION['language']);
-            $thankyou->show_message();
-        }
+    public function done() {
+        $done = new StateTypes\Done($_SESSION['language']);
+        $done->done();
         wp_die();
     }
 

@@ -198,16 +198,6 @@ class ReportController extends BaseController {
         return $this->plugin_url . 'pdf/' . $this->alert_id . '.pdf';
     }
 
-    public function alert_parser($state) {
-        $answer = [];
-        foreach ($state->response as $key => $response) {
-            if (is_array($response)) {
-                $answer = $answer + array($key => implode(', ', $response));
-            }
-        }
-        return $answer;
-    }
-
     public function delete_entry($wpdb, $alert_db) {
 
         $entries = $wpdb->get_results("SELECT alert_id FROM ".$alert_db." WHERE alert_id=\"".$this->alert_id."\"");
@@ -216,127 +206,63 @@ class ReportController extends BaseController {
         }
     }
 
-    public function db_store() {
+    public function alert_db_store() {
+
         global $wpdb;
         $alert_db = $wpdb->prefix . 'alert';
 
-        // delete entry if it already exists in the db
-        $this->delete_entry($wpdb, $alert_db);
+        $answers = $this->sort_alert();
+        $wpdb->insert($alert_db, $answers);
 
-        if ($this->oldstate == "M1.9") {
-            $answers = [
-                'alert_id' => $this->alert_id,
-                'alert_report_time' => date("Y/m/d H:i"),
-                'alert_report_locale' => $this->language,
-                'alert_report_ip' => $_SERVER['REMOTE_ADDR'],
-                'flp_id' => $this->flp_id
-            ];
-        }
-        else {
-            $answers = [
-                'alert_id' => $this->alert_id,
-                'alert_report_time' => date("Y/m/d H:i"),
-                'alert_report_locale' => $this->language,
-                'alert_report_ip' => $_SERVER['REMOTE_ADDR']
-            ];
-        }
+        $this->alert_mail($wpdb, $answers);
+    }
+
+    public function sort_alert() {
+
+        $answers = [
+            'alert_id' => $this->alert_id,
+            'alert_report_time' => date("Y/m/d H:i"),
+            'alert_report_locale' => $this->language,
+            'alert_report_ip' => $_SERVER['REMOTE_ADDR']
+        ];
 
         foreach ($this->state_list as $code => $state) {
-            if ($code != "M1.4" ) {
-
-                if ($this->oldstate == "M1.9") {
-                    if ($code == "M1.5" || $code == "M1.6" || $code == "M1.7" || $code == "M1.8" || $code == "M1.9") {
-                        echo "Not to be Included !";
+            if ($code == "M1.1" || $code == "M1.2" || $code == "M1.3" || $code == "M1.5" && $this->oldstate !== "M1.9") {
+                foreach ($state->response as $entry => $value) {
+                    if (is_array($value)){
+                        $answers[$entry] = implode('~~~', $value);
                     }
                     else {
-
-                        if (is_array($state->response)) {
-                            if (!isset($state->response[$state->state['id']])) {  // only the case for composed questions
-                                if ($code == "M1.2") {
-                                    $answers = $answers + $this->alert_parser($state);
-                                }
-                                else {
-                                    $response = $state->response;
-                                }
-                            }
-                            else if (is_array($state->response[$state->state['id']])) {      // is only the case for checkbox question
-                                if (in_array('Other', $state->response[$state->state['id']]) AND isset($state->response['other_text_input'])) {
-                                    foreach ($state->response[$state->state['id']] as &$str) {
-                                        $str = str_replace('Other', $state->response['other_text_input'], $str);
-                                    }
-                                    unset($state->response['other_text_input']);
-                                }
-                                $response = array($state->state['id'] => implode(",", $state->response[$state->state['id']]));
-                            }
-                            else {  // main response is set and is not an array
-                                if ($state->response[$state->state['id']] == 'Other') {
-                                    $state->response[$state->state['id']] = $state->response['other_text_input'];
-                                }
-                                unset($state->response['other_text_input']);
-                                $response = $state->response;
-                            }
-                            $answers = $answers + $response;
-                        }
-                        else {  // if response is some text, lets create an array with its state id and add it to answers array
-                            $answers = $answers + array($state->state['id'] => $state->response);
-                        }
-                    }
-                }
-                else {
-                    if (is_array($state->response)) {
-                        if (!isset($state->response[$state->state['id']])) {  // only the case for composed questions
-
-                            foreach ($state->state['state_answers'] as $type) {
-                                if (is_array($state->response[$type['id']])) {
-                                    $state->response[$type['id']] = implode(", ", $state->response[$type['id']]);
-                                }
-                            }
-
-                            $response = $state->response;
-                        }
-                        $answers = $answers + $response;
-                    }
-                    else {  // if response is some text, lets create an array with its state id and add it to answers array
-                        $answers = $answers + array($state->state['id'] => $state->response);
+                        $answers[$entry] = $value;
                     }
                 }
             }
         }
-
-        $answers = $this->parse_other_inputs($answers);
-        $wpdb->insert($alert_db, $answers);
-        wp_mail( $_SESSION['flp'], $this->string_file['alert_submitted'], $this->string_file['your_alert_submitted']);
-    }
-
-    public function parse_other_inputs($answers) {
-
-        if (array_key_exists('other_alert_category', $answers)) {
-            $answers['alert_category'] = $answers['alert_category'] .', '. $answers['other_alert_category'];
-            unset($answers['other_alert_category']);
-        }
-        if (array_key_exists('other_alert_location', $answers)) {
-            $answers['alert_location'] = $answers['alert_location'] .', '. $answers['other_alert_location'];
-            unset($answers['other_alert_location']);
-        }
-        if (array_key_exists('other_alert_target', $answers)) {
-            $answers['alert_target'] = $answers['alert_target'] .', '. $answers['other_alert_target'];
-            unset($answers['other_alert_target']);
+        if ($this->flp_id) {
+//            $answers = $answers + $this->flp_id;
+            $answers = $answers + array('flp_id' => $this->flp_id);
         }
         return $answers;
     }
 
+    public function alert_mail($wpdb, $answers) {
+        $flp = $answers['flp_id'];
+        $current_email = $wpdb->get_results("SELECT flp_email FROM wp_arena WHERE flp_id='{$flp}'");
+        wp_mail( $current_email[0]->flp_email, $this->string_file['alert_submitted'], $this->string_file['your_alert_submitted']);
+    }
+
     public function flp_db_store($flp_id) {
+
         global $wpdb;
         $arena_db = $wpdb->prefix . 'arena';
 
-        // lets delete entry if it already exists in the db
-        // ToDo: Change this as well
-        $entries = $wpdb->get_results("SELECT flp_id FROM ".$arena_db." WHERE flp_id=\"".$flp_id."\"");
-        if(sizeof($entries)!= 0){
-            $wpdb->get_results("DELETE FROM ".$arena_db." WHERE flp_id=\"".$flp_id."\"");
-        }
+        $answers = $this->sort_flp($flp_id);
+        $wpdb->insert($arena_db, $answers);
 
-        // toDo: change according to database arena
+        $this->flp_mail($answers);
+    }
+
+    public function sort_flp($flp_id) {
         $answers = [
             'flp_id' => $flp_id,
             'flp_registration_time' => date("Y/m/d H:i"),
@@ -348,82 +274,27 @@ class ReportController extends BaseController {
 
         foreach ($this->state_list as $code => $state) {
             if ($code == "M1.6" || $code == "M1.7" || $code == "M1.8") {
-
-                // --- make flp_title better
-                if (count($state->response['flp_title']) > 1) {
-                    $state->response['flp_title'] = implode(',', $state->response['flp_title']);
+                foreach ($state->response as $key => $value) {
+                    if (is_array($value)) {
+                        $answers[$key] = implode('~~~', $value);
+                    }
+                    else {
+                        $answers[$key] = $value;
+                    }
                 }
-                if (!empty($state->response['other_text_input'])) {
-                    $state->response['flp_title'] = $state->response['flp_title'] .','. $state->response['other_text_input'];
-                }
-                unset($state->response['other_text_input']);
-                // ---
-
-//                if ($this->oldstate == "M1.9") {
-//                    if ($code == "M1.5" || $code == "M1.6" || $code == "M1.7" || $code == "M1.8" || $code == "M1.9") {
-//                        echo "Not to be Included !";
-//                    }
-//                    else {
-                        if (is_array($state->response)) {
-                            if (!isset($state->response[$state->state['id']])) {  // only the case for composed questions
-                                $response = $state->response;
-                            }
-                            else if (is_array($state->response[$state->state['id']])) {      // is only the case for checkbox question
-                                if (in_array('Other', $state->response[$state->state['id']]) AND isset($state->response['other_text_input'])) {
-                                    foreach ($state->response[$state->state['id']] as &$str) {
-                                        $str = str_replace('Other', $state->response['other_text_input'], $str);
-                                    }
-                                    unset($state->response['other_text_input']);
-                                }
-                                $response = array($state->state['id'] => implode(",", $state->response[$state->state['id']]));
-                            }
-                            else {  // main response is set and is not an array
-                                if ($state->response[$state->state['id']] == 'Other') {
-                                    $state->response[$state->state['id']] = $state->response['other_text_input'];
-                                }
-                                unset($state->response['other_text_input']);
-                                $response = $state->response;
-                            }
-                            $answers = $answers + $response;
-                        }
-                        else {  // if response is some text, lets create an array with its state id and add it to answers array
-                            $answers = $answers + array($state->state['id'] => $state->response);
-                        }
-//                    }
-//                }
-//                else {
-//                    if (is_array($state->response)) {
-//                        if (!isset($state->response[$state->state['id']])) {  // only the case for composed questions
-//                            $response = $state->response;
-//                        }
-//                        else if (is_array($state->response[$state->state['id']])) {      // is only the case for checkbox question
-//                            if (in_array('Other', $state->response[$state->state['id']]) AND isset($state->response['other_text_input'])) {
-//                                foreach ($state->response[$state->state['id']] as &$str) {
-//                                    $str = str_replace('Other', $state->response['other_text_input'], $str);
-//                                }
-//                                unset($state->response['other_text_input']);
-//                            }
-//                            $response = array($state->state['id'] => implode(",", $state->response[$state->state['id']]));
-//                        }
-//                        else {  // main response is set and is not an array
-//                            if ($state->response[$state->state['id']] == 'Other') {
-//                                $state->response[$state->state['id']] = $state->response['other_text_input'];
-//                            }
-//                            unset($state->response['other_text_input']);
-//                            $response = $state->response;
-//                        }
-//                        $answers = $answers + $response;
-//                    }
-//                    else {  // if response is some text, lets create an array with its state id and add it to answers array
-//                        $answers = $answers + array($state->state['id'] => $state->response);
-//                    }
-//                }
-
             }
         }
-        $wpdb->insert($arena_db, $answers);
-        $_SESSION['flp'] = $answers['flp_email'];
+        return $answers;
+    }
+
+    public function flp_mail($answers) {
         wp_mail( $answers['flp_email'], $this->string_file['registration_confirmed'], $this->string_file['your_registration_confirmed']);
     }
 
+    public function alert_confirmation() {
+        $confirmation = new StateTypes\Done($_SESSION['language']);
+        $confirmation->show_message();
+    }
+
+    /* END OF CLASS */
 }

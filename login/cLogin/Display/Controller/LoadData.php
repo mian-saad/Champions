@@ -100,7 +100,7 @@ class LoadData {
             $ExperienceRadicalisation[$counter] = $arenaData[$counter] -> flp_experience_with_radicalisation;
             $WorkingWith[$counter] = $arenaData[$counter] -> flp_working_with;
             $AreaExpertise[$counter] = $arenaData[$counter] -> flp_area_of_expertise;
-            $Skill[$counter] = $arenaData[$counter] -> flp_skills;
+//            $Skill[$counter] = $arenaData[$counter] -> flp_skills;
             $Description[$counter] = $arenaData[$counter] -> flp_description;
             $ExpertStatus[$counter] = $arenaData[$counter] -> flp_status;
             $ALERT[$counter] = $arenaData[$counter] -> alert_id;
@@ -142,9 +142,9 @@ class LoadData {
         if ($Data === 'flp_experience_with_radicalisation') {
             return $ExperienceRadicalisation;
         }
-        if ($Data === 'skill') {
-            return $Skill;
-        }
+//        if ($Data === 'skill') {
+//            return $Skill;
+//        }
         if ($Data === 'description') {
             return $Description;
         }

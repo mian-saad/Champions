@@ -189,6 +189,7 @@ class ReportController extends BaseController
         } else if ($this->current_state_code == "M1.3") {
             return "M1.4";
         } else if ($this->current_state_code == "M1.4") {
+            unset($this->state_list["M1.4"]);
             return "M1.5";
         }
         return "ERROR";
@@ -196,7 +197,7 @@ class ReportController extends BaseController
 
     public function db_store() {
         global $wpdb;
-        $register_reports_db_name = $wpdb->prefix . 'arena';
+        $arena_db = $wpdb->prefix . 'arena';
         $answers = [
             'flp_id' => $this->report_id,
             'flp_locale' => $this->language,
@@ -204,59 +205,18 @@ class ReportController extends BaseController
             'flp_reporting_ip' => $_SERVER['REMOTE_ADDR']
         ];
 
-        foreach ($this->state_list as $code => $state) {
-                if (($code == "M1.1") || ($code == "M1.2") || ($code == "M1.3")) { // M1.8 doesnt have a response
+//        $data = $answers . $this->final_data();
+        $data = array_merge($answers, $this->final_data());
 
-                    // --- make flp_title format better
-                    if (count($state->response['flp_title']) > 1) {
-                        $state->response['flp_title'] = implode(',', $state->response['flp_title']);
-                    }
-                    if (!empty($state->response['other_text_input'])) {
-                        $state->response['flp_title'] = $state->response['flp_title'] .','. $state->response['other_text_input'];
-                    }
-                    unset($state->response['other_text_input']);
-                    // ---
 
-                    if (is_array($state->response)) {
-                        if (!isset($state->response[$state->state['id']])){          // only the case for composed questions
-                            $response = $state->response;
-                        }
-                        else if (is_array($state->response[$state->state['id']])) {      // is only the case for checkbox question
-                            if(in_array('Other',$state->response[$state->state['id']]) AND isset($state->response['other_text_input'])){
-                                foreach($state->response[$state->state['id']] as &$str) {
-                                    $str = str_replace('Other', $state->response['other_text_input'], $str);
-                                }
-                                unset($state->response['other_text_input']);
-                            }
-                            $response = array($state->state['id'] => implode(",", $state->response[$state->state['id']]));
-                        }
-                        else {
-                            // main response is set and is not an array
-                            if($state->response[$state->state['id']]=='Other'){
-                                $state->response[$state->state['id']] = $state->response['other_text_input'];
-                            }
-                            unset($state->response['other_text_input']);
-                            $response = $state->response;
-                        }
-                        $answers = $answers + $response;
-                    } else {
-                        // if response is some text, create an array with its state id and add it to answers array
-                        $answers = $answers + array($state->state['id'] => $state->response);
-                    }
-                }
-                else {
-                    break;
-                }
-            }
-
-        $entries = $wpdb->get_results("SELECT flp_email, flp_associatedAlert FROM ".$register_reports_db_name." WHERE flp_email=\"".$answers['flp_email']."\"");
+        $entries = $wpdb->get_results("SELECT flp_email, flp_associatedAlert FROM ".$arena_db." WHERE flp_email=\"".$data['flp_email']."\"");
         if(sizeof($entries[0]->flp_email)!= 0 && sizeof($entries[0]->flp_associatedAlert)){
-            $wpdb->update("wp_arena", $answers, array('flp_email' => $answers['flp_email']));
+            $wpdb->update("wp_arena", $data, array('flp_email' => $data['flp_email']));
         }
         else {
-            $wpdb->insert($register_reports_db_name, $answers);
+            $wpdb->insert($arena_db, $data);
         }
-        wp_mail( $answers['flp_email'], $this->string_file['arena_register_module'], $this->string_file['flp_registered']);
+        wp_mail( $data['flp_email'], $this->string_file['arena_register_module'], $this->string_file['flp_registered']);
 
     }
 
@@ -275,6 +235,21 @@ class ReportController extends BaseController
         else {
             return false;
         }
+    }
+
+    public function final_data() {
+        $data = [];
+        foreach ($this->state_list as $code => $state) {
+            foreach ($state->response as $key => $value) {
+                if (is_array($value)) {
+                    $data[$key] = implode('~~~', $value);
+                }
+                else {
+                    $data[$key] = $value;
+                }
+            }
+        }
+        return $data;
     }
 
 }

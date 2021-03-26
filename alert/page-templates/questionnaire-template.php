@@ -41,9 +41,6 @@
         <div id='en' class='lan' style='display: inline; text-align: justify;'>
             <h1> Welcome to ALERT Module</h1>
             <p>".$english_intro."</p>
-            <li>".$english_bullet1."</li>
-            <li>".$english_bullet2."</li>
-            <li>".$english_bullet3."</li>
             <br>
             
             <div id='alert_button_pane'><a class='button' type='submit' id='alert_new_report' href='#' onclick='return false;'>New Alert</a></div>

@@ -39,15 +39,15 @@ class TraFinal extends TraState {
         $html = $this->generate_hidden_fields($this->alert_id);
         $html .= "<h3 class='alert_question'> $this->summary </h3>";
         foreach ($this->answers as $short_text => $value) {
-            $html .= "<p class='summary_tags'>" . $short_text . " : " . $value . "</p>";
+            $html .= "<p class='summary_tags'><b>" . $short_text . " : </b>" . $value . "</p>";
         }
         $html .= $this->generate_buttons();
-//        $html .= $this->GetRecommendations($categories);
-        $html .= $this->AIRecommendations();
+        $html .= $this->GetRecommendations($categories);
+//        $html .= $this->AIRecommendations();
 
-        if ($_SESSION['state_code'] == '1.4') {
-            $this->AIExpert();
-        }
+//        if ($_SESSION['state_code'] == '1.4') {
+//            $this->AIExpert();
+//        }
         return $html;
     }
 
@@ -113,7 +113,7 @@ class TraFinal extends TraState {
                 $html .= "</br>";
             }
         }
-        $html .= "<div id='alert_button_pane'> <a class='button' id='thankyou'>".$this->string_file['done']."</a>  </div>";
+        $html .= "<div id='alert_button_pane'> <a class='button' id='done'>".$this->string_file['done']."</a>  </div>";
         $html .= "<p><h6>".$this->string_file['satisfied_recommendation']."</h6></p>";
 
         return $html;

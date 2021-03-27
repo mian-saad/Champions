@@ -133,6 +133,9 @@ class TraComposedCheckboxQuestion extends TraState
         $t_response = [];
         $value = null;
         foreach ($this->state['state_answers'] as $state) {
+            if (!is_array($this->response[$state['id']])) {
+                $this->response[$state['id']] = str_split($this->response[$state['id']], strlen($this->response[$state['id']]));
+            }
             foreach ($state['answers'] as $answer) {
                 if (in_array($answer['id'], $this->response[$state['id']])) {
                     if ($value != null) {

@@ -215,7 +215,51 @@ class LandingPage {
     }
 
     // Matches the skills of Arena with event category of Alert
+    public function static_matching($Email) {
+        $static_skills = [];
+        global $wpdb;
+        $alerts = $wpdb->get_results( "SELECT alert_category, alert_location, alert_target FROM {$wpdb->prefix}alert WHERE alert_case_status='Accepted'", OBJECT );
+
+        foreach ($alerts as $alert) {
+            array_push($static_skills, $alert->alert_category, $alert->alert_location, $alert->alert_target);
+
+        }
+
+        $LoadAlertData = new LoadData();
+        $LoadArenaData = new LoadData();
+        $AlertSkills = $LoadAlertData->loadAlertData('event_category');
+        $AlertReportId = $LoadAlertData->loadAlertData('report_id');
+        $ArenaSkills = $LoadArenaData->loadArenaData('flp_experience_with_radicalisation', $Email);
+        $Arena_AlertID = $LoadArenaData->loadArenaData('alert_id', $Email);
+
+        $ArenaSkills = explode('~~~', $ArenaSkills[0]);
+        for ($ArenaSkillsCounter = 0; $ArenaSkillsCounter<count($ArenaSkills); $ArenaSkillsCounter++) {
+            for ($AlertSkillsCounter = 0; $AlertSkillsCounter<count($AlertSkills); $AlertSkillsCounter++) {
+
+
+                similar_text($AlertSkills[$AlertSkillsCounter], $ArenaSkills[$ArenaSkillsCounter], $per);
+                similar_text($ArenaSkills[$ArenaSkillsCounter], $AlertSkills[$AlertSkillsCounter], $per_op);
+                if ($per>10 || $per_op>10) {
+                    array_push($MatchedSkillsId, $AlertReportId[$AlertSkillsCounter]);
+                }
+
+                // if its an FLP add the alert_id to $MatchedSkillsId
+                if (strpos($Arena_AlertID[0], $AlertReportId[$AlertSkillsCounter]) !== false) {
+                    if (!in_array($AlertReportId[$AlertSkillsCounter], $MatchedSkillsId)) {
+                        array_push($MatchedSkillsId, $AlertReportId[$AlertSkillsCounter]);
+                    }
+                }
+            }
+        }
+
+        // takes the skills of arena expert and breaks it down into an array then matches those against all the alert event categories
+//        return $MatchedSkillsId;
+        // NOTE: this array is from ALERT
+    }
+
+    // Matches the skills of Arena with event category of Alert
     public function MatchSkills($Email) {
+//        $this->static_matching($Email);
         $MatchedSkillsId = [];
         $LoadAlertData = new LoadData();
         $LoadArenaData = new LoadData();

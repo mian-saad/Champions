@@ -45,7 +45,7 @@ class ReportController extends BaseController {
             $state = $this->initialize_state($this->current_state_code);
         }
 
-        $_SESSION['state_code'] = $this->oldstate;
+//        $_SESSION['state_code'] = $this->oldstate;
         // IMPORTANT: GENERATES THE HTML
         $html = $state->generate_html();
         return $html;
@@ -72,9 +72,11 @@ class ReportController extends BaseController {
             $answers = [];
             $eng_answers = [];
             foreach ($this->state_list as $code => $state) {
-                $answers += $state->generate_readable_response_array();
                 if ($code == "M1.2") {
-                    $eng_answers += $state->generate_readable_response_array_eng();
+                    $answers += $state->generate_readable_response_array_eng();
+                }
+                else {
+                    $answers += $state->generate_readable_response_array();
                 }
             }
             $pdfurl = $this->generate_pdf($answers);
@@ -239,7 +241,6 @@ class ReportController extends BaseController {
             }
         }
         if ($this->flp_id) {
-//            $answers = $answers + $this->flp_id;
             $answers = $answers + array('flp_id' => $this->flp_id);
         }
         return $answers;

@@ -82,22 +82,26 @@
                {
                   "text":"Extremist propaganda, conspiracy theories and/or recruitment",
                   "short_text":"Extremist propaganda, conspiracy theories and/or recruitment",
-                  "id":"Extremist propaganda, conspiracy theories and/or recruitment"
+                  "id":"Extremist propaganda, conspiracy theories and/or recruitment",
+                  "identifier": "1"
                },
                {
                   "text":"Physical violence (e.g. assaults, threats, insults, intimidation)",
                   "short_text":"Physical violence (e.g. assaults, threats, insults, intimidation)",
-                  "id":"Physical violence (e.g. assaults, threats, insults, intimidation)"
+                  "id":"Physical violence (e.g. assaults, threats, insults, intimidation)",
+                  "identifier": "2"
                },
                {
                   "text":"Hate speech and/or incitement to violence",
                   "short_text":"Hate speech and/or incitement to violence",
-                  "id":"Hate speech and/or incitement to violence"
+                  "id":"Hate speech and/or incitement to violence",
+                  "identifier": "3"
                },
                {
                   "text":"Property damage (e.g. break-in, looting, vandalism, graffiti etc)",
                   "short_text":"Property damage (e.g. break-in, looting, vandalism, graffiti etc)",
-                  "id":"Property damage (e.g. break-in, looting, vandalism, graffiti etc)"
+                  "id":"Property damage (e.g. break-in, looting, vandalism, graffiti etc)",
+                  "identifier": "4"
                },
                {
                   "text":"I don't know",
@@ -120,47 +124,56 @@
                {
                   "text":"Residential (e.g.  hotels, houses, flats)",
                   "short_text":"Residential (e.g.  hotels, houses, flats)",
-                  "id":"Residential (e.g.  hotels, houses, flats)"
+                  "id":"Residential (e.g.  hotels, houses, flats)",
+                  "identifier": "5"
                },
                {
                   "text":"Recreational (e.g.   bars, restaurants, cinemas, playgrounds, parks)",
                   "short_text":"Recreational (e.g.   bars, restaurants, cinemas, playgrounds, parks)",
-                  "id":"Recreational (e.g.   bars, restaurants, cinemas, playgrounds, parks)"
+                  "id":"Recreational (e.g.   bars, restaurants, cinemas, playgrounds, parks)",
+                  "identifier": "6"
                },
                {
                   "text":"Religious (e.g. mosques, churches, synagogues, pray halls)",
                   "short_text":"Religious (e.g. mosques, churches, synagogues, pray halls)",
-                  "id":"Religious (e.g. mosques, churches, synagogues, pray halls)"
+                  "id":"Religious (e.g. mosques, churches, synagogues, pray halls)",
+                  "identifier": "7"
                },
                {
                   "text":"Offices (e.g. work locations, business facilities, factories, warehouses)",
                   "short_text":"Offices (e.g. work locations, business facilities, factories, warehouses)",
-                  "id":"Offices (e.g. work locations, business facilities, factories, warehouses)"
+                  "id":"Offices (e.g. work locations, business facilities, factories, warehouses)",
+                  "identifier": "8"
                },
                {
                   "text":"Education (e.g day care centres, schools, universities, libraries) ",
                   "short_text":"Education (e.g day care centres, schools, universities, libraries) ",
-                  "id":"Education (e.g day care centres, schools, universities, libraries) "
+                  "id":"Education (e.g day care centres, schools, universities, libraries) ",
+                  "identifier": "9"
                },
                {
                   "text":"Human service (e.g. courts, jails, prisons, police stations, hospitals)",
                   "short_text":"Human service (e.g. courts, jails, prisons, police stations, hospitals)",
-                  "id":"Human service (e.g. courts, jails, prisons, police stations, hospitals)"
+                  "id":"Human service (e.g. courts, jails, prisons, police stations, hospitals)",
+                  "identifier": "10"
                },
                {
                   "text":"Critical Infrastructures and public ways (e.g buses, bus stations and bus stops, airplanes and airports, trains and train stations, highways)",
                   "short_text":"Critical Infrastructures and public ways (e.g buses, bus stations and bus stops, airplanes and airports, trains and train stations, highways)",
-                  "id":"Critical Infrastructures and public ways (e.g buses, bus stations and bus stops, airplanes and airports, trains and train stations, highways)"
+                  "id":"Critical Infrastructures and public ways (e.g buses, bus stations and bus stops, airplanes and airports, trains and train stations, highways)",
+                  "identifier": "11"
                },
                {
                   "text":"Transitional areas (e.g. immigration centres, abandoned properties and construction sites)",
                   "short_text":"Transitional areas (e.g. immigration centres, abandoned properties and construction sites)",
-                  "id":"Transitional areas (e.g. immigration centres, abandoned properties and construction sites)"
+                  "id":"Transitional areas (e.g. immigration centres, abandoned properties and construction sites)",
+                  "identifier": "12"
                },
                {
                   "text":"Virtual spaces (eg.  internet, social media, cyberspace)",
                   "short_text":"Virtual spaces (eg.  internet, social media, cyberspace)",
-                  "id":"Virtual spaces (eg.  internet, social media, cyberspace)"
+                  "id":"Virtual spaces (eg.  internet, social media, cyberspace)",
+                  "identifier": "13"
                },
                {
                   "text":"I don't know",
@@ -183,37 +196,44 @@
                {
                   "text":"Religious community (e.g. Jews, Muslims)",
                   "short_text":"Religious community (e.g. Jews, Muslims)",
-                  "id":"Religious community (e.g. Jews, Muslims)"
+                  "id":"Religious community (e.g. Jews, Muslims)",
+                  "identifier": "14"
                },
                {
                   "text":"Women",
                   "short_text":"Women",
-                  "id":"Women"
+                  "id":"Women",
+                  "identifier": "15"
                },
                {
                   "text":"LGBTQ+",
                   "short_text":"LGBTQ+",
-                  "id":"LGBTQ+"
+                  "id":"LGBTQ+",
+                  "identifier": "16"
                },
                {
                   "text":"Different cultural and ethnic background (e.g.immigrants, refugees)",
                   "short_text":"Different cultural and ethnic background (e.g.immigrants, refugees)",
-                  "id":"Different cultural and ethnic background (e.g.immigrants, refugees)"
+                  "id":"Different cultural and ethnic background (e.g.immigrants, refugees)",
+                  "identifier": "17"
                },
                {
                   "text":"Different ethnic community within one country (e.g.second generation individuals)",
                   "short_text":"Different ethnic community within one country (e.g.second generation individuals)",
-                  "id":"Different ethnic community within one country (e.g.second generation individuals)"
+                  "id":"Different ethnic community within one country (e.g.second generation individuals)",
+                  "identifier": "18"
                },
                {
                   "text":"People presenting opposite political and/or ideological views (e.g. left activists)",
                   "short_text":"People presenting opposite political and/or ideological views (e.g. left activists)",
-                  "id":"People presenting opposite political and/or ideological views (e.g. left activists)"
+                  "id":"People presenting opposite political and/or ideological views (e.g. left activists)",
+                  "identifier": "19"
                },
                {
                   "text":"Law Enforcement or Public Official / Politician",
                   "short_text":"Law Enforcement or Public Official / Politician",
-                  "id":"Law Enforcement or Public Official / Politician"
+                  "id":"Law Enforcement or Public Official / Politician",
+                  "identifier": "20"
                },
                {
                   "text":"I don't know",

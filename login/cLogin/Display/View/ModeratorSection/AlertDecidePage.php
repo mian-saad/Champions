@@ -161,6 +161,9 @@ class AlertDecidePage {
             }
         }
         else {
+            // run algorithm here and send mails to everyone
+            $this->static_matching($decision_entry);
+
             $this->update_entry($decision_result, $decision_entry);
             $this->SendMail($decision_entry, 'Approved');
             echo $this->transition($decision_result, $decision_entry);
@@ -229,16 +232,145 @@ class AlertDecidePage {
         $flp_id = $wpdb->get_results( "SELECT flp_id, alert_subject FROM {$wpdb->prefix}alert WHERE alert_id='$UserID'", OBJECT );
         $id = $flp_id[0]->flp_id;
         $subject = $flp_id[0]->alert_subject;
-        $Email = $wpdb->get_results( "SELECT flp_email FROM {$wpdb->prefix}arena WHERE flp_id = '$id'", OBJECT );
+        $Email = $wpdb->get_results( "SELECT flp_email, flp_locale FROM {$wpdb->prefix}arena WHERE flp_id = '$id'", OBJECT );
+        $language = $Email[0]->flp_locale;
         $Email = $Email[0]->flp_email;
+        $plugin_path = plugin_dir_path( dirname(__FILE__, 4));
+        $string_file = json_decode(file_get_contents($plugin_path . "assets/base/" . $language . "/alert_strings.json"), true);
 
         if ($State == 'Closed') {
-            wp_mail( "$Email", $this->language['arena_case_module'], $this->language['your_case']." ".$State.".", array('Content-Type: text/html; charset=UTF-8'));
+            wp_mail( "$Email", $string_file['arena_case_module'], $string_file['your_case']." ".$State.".", array('Content-Type: text/html; charset=UTF-8'));
         }
         elseif ($State = 'Approved') {
-            wp_mail( "$Email", $this->language['arena_case_module'], $this->language['the_alert'] . $subject . $this->language['your_case_approved'], array('Content-Type: text/html; charset=UTF-8'));
+            wp_mail( "$Email", $string_file['arena_case_module'], $string_file['the_alert'] . $subject . $string_file['your_case_approved'], array('Content-Type: text/html; charset=UTF-8'));
         }
     }
 
+
+    // this algorithm will run upon case approval from Moderator
+    // algorithm will return all alert ids which map to flp - this is done statically from json mapping
+    public function static_matching($alert) {
+        global $wpdb;
+        $final_list = [];
+
+        $alert = $wpdb->get_results( "SELECT alert_id, alert_category, alert_location, alert_target, alert_country, alert_city, flp_id FROM {$wpdb->prefix}alert WHERE alert_id='$alert'", OBJECT );
+        $country = $alert[0]->alert_country;
+        $city = $alert[0]->alert_city;
+        $flp_of_alert = $alert[0]->flp_id;
+        foreach ($alert as $data) {
+            $alert = $this->alert_mapping($data);
+        }
+
+        $flps = $wpdb->get_results( "SELECT flp_id, flp_experience_with_radicalisation, flp_working_with, flp_area_of_expertise, flp_visibility_level, flp_city, flp_country FROM {$wpdb->prefix}arena WHERE flp_status='Accepted' AND flp_id!='$flp_of_alert' AND flp_country='$country'", OBJECT );
+        foreach ($flps as $flp) {
+            if (empty($flp->flp_visibility_level)) {
+                $final_list = $final_list + $this->flp_mapping($flp, $alert);
+            }
+            elseif (!empty($flp->flp_visibility_level)) {
+                if ($city === $flp->flp_city) {
+                    $final_list = $final_list + $this->flp_mapping($flp, $alert);
+                }
+            }
+        }
+
+        // remove elements with 0 value -- no match in this case
+        foreach ($final_list as $item => $value) {
+            if ($value == 0) {
+                unset($final_list[$item]);
+            }
+        }
+
+        // sort array in descending order
+        arsort($final_list);
+
+//        return array_keys($final_list);
+
+        $this->mail_to_matching_flps(array_keys($final_list), $data->alert_id);
+    }
+
+    public function flp_mapping($data, $alert) {
+        $ident_list = [];
+        $plugin_path = plugin_dir_path( dirname(__FILE__, 4));
+        $json_data = json_decode(file_get_contents($plugin_path . "assets/base/flp_map.json"), true);
+
+        $ident_radicalisation = explode("~~~", $data->flp_experience_with_radicalisation);
+        $ident_working = explode("~~~", $data->flp_working_with);
+        $ident_expertise = explode("~~~", $data->flp_area_of_expertise);
+
+
+        $metadata = array_merge($ident_radicalisation, $ident_working, $ident_expertise);
+
+        foreach ($metadata as $iteration) {
+            $iteration = trim($iteration);
+            foreach ($json_data as $item => $value) {
+                if ($item === $iteration) {
+                    array_push($ident_list, $value);
+                }
+            }
+        }
+
+        // Remove duplicates from flp list
+        $imploding_in_string = implode(',', $ident_list);
+        $explodng_in_array = explode(',', $imploding_in_string);
+        $flps = array_unique($explodng_in_array);
+        $match_count = $this->alert_flp($alert, $flps);
+        $ascending_match_list[$data->flp_id] = $match_count;
+
+        return $ascending_match_list;
+    }
+
+    public function alert_mapping($data) {
+        $ident_list = [];
+        $plugin_path = plugin_dir_path( dirname(__FILE__, 4));
+        $json_data = json_decode(file_get_contents($plugin_path . "assets/base/alert_map.json"), true);
+
+        $ident_category = explode("~~~", $data->alert_category);
+        $ident_location = explode("~~~", $data->alert_location);
+        $ident_target = explode("~~~", $data->alert_target);
+
+        $metadata = array_merge($ident_category, $ident_location, $ident_target);
+
+        foreach ($metadata as $iteration) {
+            $iteration = trim($iteration);
+            foreach ($json_data as $item => $value) {
+                if ($item === $iteration) {
+                    array_push($ident_list, $value);
+                }
+            }
+        }
+        return $ident_list;
+    }
+
+    public function alert_flp($alert_list, $flp_list) {
+        $a = $alert_list;
+        $b = $flp_list;
+        $count = 0;
+
+        foreach ($flp_list as $flp) {
+            $flp = explode(',', $flp);
+            foreach ($alert_list as $alert) {
+                if (in_array($alert, $flp)) {
+                    $count++;
+                    break;
+                }
+            }
+        }
+        return $count;
+    }
+
+    public function mail_to_matching_flps($flp_list, $alert) {
+        // $alert is passed here just in case they want information regarding the alert in the email.
+        global $wpdb;
+        foreach ($flp_list as $flps) {
+            $flp = $wpdb->get_results( "SELECT flp_email, flp_locale FROM {$wpdb->prefix}arena WHERE flp_id='$flps'", OBJECT );
+            $language = $flp[0]->flp_locale;
+            $email = $flp[0]->flp_email;
+
+            $plugin_path = plugin_dir_path( dirname(__FILE__, 4));
+            $string_file = json_decode(file_get_contents($plugin_path . "assets/base/" . $language . "/alert_strings.json"), true);
+
+            wp_mail( "$email", $string_file['alert_invitation'], $string_file['matching_invitation'], array('Content-Type: text/html; charset=UTF-8'));
+        }
+    }
 
 }

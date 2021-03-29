@@ -1,7 +1,6 @@
 <?php
 
 namespace Cover\Base\StateTypes;
-
 use Cover\Base\ReportController;
 use http\Url;
 
@@ -34,6 +33,7 @@ class TraFinal extends TraState {
     public function generate_html() {
 
         $recommendation = $this->Recommendation();
+        $matching_ids = $this->old_alerts($recommendation);
         $categories = $this->GetCategories($recommendation);
 
         $html = $this->generate_hidden_fields($this->alert_id);
@@ -42,12 +42,13 @@ class TraFinal extends TraState {
             $html .= "<p class='summary_tags'><b>" . $short_text . " : </b>" . $value . "</p>";
         }
         $html .= $this->generate_buttons();
-        $html .= $this->GetRecommendations($categories);
-//        $html .= $this->AIRecommendations();
-
-//        if ($_SESSION['state_code'] == '1.4') {
-//            $this->AIExpert();
-//        }
+        $html .= "<hr><p>".$this->string_file['final_info']."</p>";
+        $html .= $this->GetRecommendations($matching_ids);
+        /* ML Algorithm called here
+        $html .= $this->AIRecommendations();
+        if ($_SESSION['state_code'] == '1.4') {
+            $this->AIExpert();
+        }*/
         return $html;
     }
 
@@ -70,11 +71,67 @@ class TraFinal extends TraState {
     }
 
     public function Recommendation() {
+        $list[$this->alert_id] = [];
         foreach ($this->eng_answers as $short_text => $value) {
-            if ($short_text === $this->string_file['alert_category']) {
-                return $value;
+            if ($short_text === 'alert_category' ||
+                $short_text === 'alert_location' ||
+                $short_text === 'alert_target') {
+                $vals = explode('~~~', $value);
+                foreach ($vals as $val) {
+                    if ($val !== "Other" || $val !== "I don't know") {
+                        array_push($list[$this->alert_id], $val);
+                    }
+                }
             }
         }
+        return $list;
+    }
+
+    public function old_alerts($new) {
+        global $wpdb;
+        $list = [];
+        $matching_alert_ids = [];
+        $alerts = $wpdb->get_results( "SELECT alert_id, alert_category, alert_location, alert_target FROM wp_alert", OBJECT );
+        foreach ($alerts as $alert) {
+            $metadata[$alert->alert_id] = [];
+            $alert_category = explode('~~~', $alert->alert_category);
+            $alert_location = explode('~~~', $alert->alert_location);
+            $alert_target = explode('~~~', $alert->alert_target);
+
+            foreach ($alert_category as $value) {
+                array_push($metadata[$alert->alert_id], $value);
+            }
+            foreach ($alert_location as $value) {
+                array_push($metadata[$alert->alert_id], $value);
+            }
+            foreach ($alert_target as $value) {
+                array_push($metadata[$alert->alert_id], $value);
+            }
+            array_push($list, $this->match_old_new($metadata, $new));
+            $metadata = [];
+        }
+        // sort array in descending order
+        foreach ($list as $item => $value) {
+            if ($value !== 0) {
+                $matching_alert_ids = $matching_alert_ids + $value;
+            }
+        }
+        arsort($matching_alert_ids);
+
+        foreach ($matching_alert_ids as $id => $value) {
+            if ($value == 0) {
+                unset($matching_alert_ids[$id]);
+            }
+        }
+        return array_keys($matching_alert_ids);
+    }
+
+    public function match_old_new($old, $new) {
+
+        $result = array_intersect(reset($old), reset($new));
+        $entries_count[array_key_first($old)] = count($result);
+
+        return $entries_count;
     }
 
     public function GetCategories($CurrentCategory) {

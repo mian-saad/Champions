@@ -221,6 +221,10 @@
       "text":"Interreligiöser Dialog und Friedensförderung "
     },
     {
+      "id":"Nothing",
+      "text":"Nichts"
+    },
+    {
       "id":"Other",
       "text":"Andere"
     }
@@ -280,6 +284,10 @@
       "text":"Medienvertreter:innen und Journalist:innen"
     },
     {
+      "id":"Nothing",
+      "text":"Nichts"
+    },
+    {
       "id":"Other",
       "text":"Andere"
     }
@@ -326,6 +334,10 @@
     {
       "id":"Crisis Management Prevention",
       "text":"Krisenmanagement & Prävention"
+    },
+    {
+      "id":"Nothing",
+      "text":"Nichts"
     },
     {
       "id":"Other",

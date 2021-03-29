@@ -133,10 +133,10 @@ class EditProfile {
 
         foreach ($this->profile['country'] as $country) {
             if ($db_country->flp_country === $country['id']) {
-                $html .= "<option selected class='register_quiz_select' name='flp_country' id='$db_country->flp_country' value='".$country['text']."'>".$country['text']."</option>";
+                $html .= "<option selected class='register_quiz_select' name='flp_country' id='".$country['id']."' value='".$country['id']."'>".$country['text']."</option>";
             }
             else {
-                $html .= "<option class='register_quiz_select' name='flp_country' id='$db_country->flp_country' value='".$country['text']."'>".$country['text']."</option>";
+                $html .= "<option class='register_quiz_select' name='flp_country' id='".$country['id']."' value='".$country['id']."'>".$country['text']."</option>";
             }
         }
         return $html;
@@ -210,13 +210,13 @@ class EditProfile {
                 $html .= "<input checked type='checkbox' class='register_quiz_select' name='flp_area_of_expertise' id='' value='".$skill['text']."'>".$skill['text']."</input>";
                 if ($skill['text']===$this->lang['other']) {
                     $other = end($db_skills);
-                    $html .= "<br><input type='text' name='other_skills' value='$other' />";
+                    $html .= "<br><input type='text' name='other_text_input' value='$other' />";
                 }
             }
             else {
                 $html .= "<input type='checkbox' class='register_quiz_select' name='flp_area_of_expertise' id='' value='".$skill['text']."'>".$skill['text']."</input>";
                 if ($skill['text']===$this->lang['other']) {
-                    $html .= "<input type='text' name='other_skills' />";
+                    $html .= "<input type='text' name='other_text_input' />";
                 }
             }
             $html .= "<br>";
@@ -235,13 +235,13 @@ class EditProfile {
                 $html .= "<input checked type='checkbox' class='register_quiz_select' name='flp_experience_with_radicalisation' id='' value='".$skill['text']."'>".$skill['text']."</input>";
                 if ($skill['text']===$this->lang['other']) {
                     $other = end($db_skills);
-                    $html .= "<br><input type='text' name='other_skills' value='$other' />";
+                    $html .= "<br><input type='text' name='other_text_input' value='$other' />";
                 }
             }
             else {
                 $html .= "<input type='checkbox' class='register_quiz_select' name='flp_experience_with_radicalisation' id='' value='".$skill['text']."'>".$skill['text']."</input>";
                 if ($skill['text']===$this->lang['other']) {
-                    $html .= "<input type='text' name='other_skills' />";
+                    $html .= "<input type='text' name='other_text_input' />";
                 }
             }
             $html .= "<br>";
@@ -260,13 +260,13 @@ class EditProfile {
                 $html .= "<input checked type='checkbox' class='register_quiz_select' name='flp_working_with' id='' value='".$skill['text']."'>".$skill['text']."</input>";
                 if ($skill['text']===$this->lang['other']) {
                     $other = end($db_skills);
-                    $html .= "<br><input type='text' name='other_skills' value='$other' />";
+                    $html .= "<br><input type='text' name='other_text_input' value='$other' />";
                 }
             }
             else {
                 $html .= "<input type='checkbox' class='register_quiz_select' name='flp_working_with' id='' value='".$skill['text']."'>".$skill['text']."</input>";
                 if ($skill['text']===$this->lang['other']) {
-                    $html .= "<input type='text' name='other_skills' />";
+                    $html .= "<input type='text' name='other_text_input' />";
                 }
             }
             $html .= "<br>";

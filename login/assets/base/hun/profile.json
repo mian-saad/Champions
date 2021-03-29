@@ -225,6 +225,10 @@
       "text":"Vallások közötti párbeszéd"
     },
     {
+      "id":"Nothing",
+      "text":"Semmi"
+    },
+    {
       "id":"Other",
       "text":"Egyéb"
     }
@@ -284,6 +288,10 @@
       "text":"Médiában "
     },
     {
+      "id":"Nothing",
+      "text":"Semmi"
+    },
+    {
       "id":"Other",
       "text":"Egyéb"
     }
@@ -330,6 +338,10 @@
     {
       "id":"Crisis Management Prevention",
       "text":"Krízis managment"
+    },
+    {
+      "id":"Nothing",
+      "text":"Semmi"
     },
     {
       "id":"Other",

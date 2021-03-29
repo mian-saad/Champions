@@ -13,9 +13,11 @@
     "request": "Kérés",
     "closed": "Zárva",
 
+    "alert_invitation":"Riasztási meghívó",
+    "matching_invitation": "Meghívtak, hogy csatlakozzon egy „Alert” ügyhöz. További információkért, valamint a kérés elfogadásáért vagy elutasításáért kérjük, jelentkezzen be a rendszerbe. https://www.firstlinepractitioners.com/arena-2/",
+
     "the_alert": "Riasztási azonosítója: ",
     "your_case_approved": " megerősítette a Moderátor. Most láthatja a rendszerben. https://www.firstlinepractitioners.com/arena-2",
-
     "join": "Belépek",
     "joined": "Csatlakozott",
     "reject": "Elvetés",
@@ -48,12 +50,10 @@
     "new_notification": "Az ügy, amelynek része vagy, új ",
     "champions_notification": "Champions - Arena Notification Module",
     "invited": "Meghívtak az Arénába. Kérjük, regisztráljon itt: https://www.firstlinepractitioners.com/arena/ mielőtt bejelentkezhet.",
-
     "select_expertise": "Szakterülete (Több opció is kiválaszthat)",
     "experience": "Radikalizációs tapasztalat (Több opció is kiválaszthat)",
     "visible": "Láthatóság szintje",
     "working_with": "Kikkel dolgozik (Több opció is kiválaszthat)",
-
     "flp_info": "Információk a szakértőkről",
     "alert_info": "ALERT információk",
     "accept_reject_flp": "Szakértő kezelése",
@@ -75,7 +75,6 @@
     "moderator_panel": "Moderátor panel",
     "login": "Belépés",
     "flp_accepted": "Ön mostantól szakértőként tagja lett az ARENA rendszernek (https://www.firstlinepractitioners.com/arena-2/). Értesítést fog kapni minden olyan ALERT-ről, amely az ön környezetéből jelentettek, és amelynek szempontjából az ön szakmai tapasztalati relevánsak lehetnek. Kérjük, az adarvédelmi beálljtásaira legyen különösen figyelmes a folyamat egésze alatt. ",
-
     "your_new_password": "Új jelszavát elküldtük a megadott e-mail címre, ha van ilyen az adatbázisban.",
     "forgot_password": "Elfelejtette a jelszavát",
     "forgot_password_q": "Elfelejtette a jelszavát?",

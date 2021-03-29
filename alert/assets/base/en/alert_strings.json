@@ -29,6 +29,7 @@
     "alert_report": "ALERT REPORT",
     "other": "Other",
     "ok": "Ok",
+    "final_info": "Dear user, below you might find a set of recommendations that might help you to deal with your case. Such recommendations have been automatically retrieved from the system on the basis of previous \"cases\" that, according to the input data provided by you, show some similarities.   If no recommendations were automatically found (or they are not particularly suitable to fully deal with your case) and you wish to get in touch and direct interact with other FLPs, please proceed by submitting your above \"Alert request/case\" by clicking on the submit button above in order to complete the submission process, which requires you to login the system.",
     "alert_confirmation": "Your “Alert” Request has been submitted. You will be able to see Alert case in the ARENA panel, once it has been accepted by the Moderator. Please check your email.",
     "your_verification_code": "Your Verification Code is: ",
     "verification": "Verification Code",

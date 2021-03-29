@@ -73,7 +73,8 @@ class ReportController extends BaseController {
             $eng_answers = [];
             foreach ($this->state_list as $code => $state) {
                 if ($code == "M1.2") {
-                    $answers += $state->generate_readable_response_array_eng();
+                    $answers += $state->generate_readable_response_array();
+                    $eng_answers += $state->generate_readable_response_array_eng();
                 }
                 else {
                     $answers += $state->generate_readable_response_array();
@@ -270,7 +271,7 @@ class ReportController extends BaseController {
             'flp_locale' => $this->language,
             'flp_reporting_ip' => $_SERVER['REMOTE_ADDR'],
             'alert_id' => $this->alert_id,
-
+            'flp_associatedAlert' => $this->alert_id
         ];
 
         foreach ($this->state_list as $code => $state) {

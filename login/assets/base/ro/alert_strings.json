@@ -70,6 +70,9 @@
     "moderator_panel": "Panel moderator",
     "login": "Logare",
 
+    "alert_invitation":"Invitație de alertă",
+    "matching_invitation": "Ați fost invitat să vă alăturați unui caz „Alertă”. Pentru mai multe informații, precum și pentru a accepta sau respinge această solicitare, vă rugăm să vă conectați la sistem. https://www.firstlinepractitioners.com/arena-2/",
+
     "the_alert": "Alertă: ",
     "your_case_approved": " a fost confirmat de la Moderator. Acum îl puteți vedea în sistem. https://www.firstlinepractitioners.com/arena-2",
 

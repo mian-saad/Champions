@@ -1,5 +1,6 @@
 <?php
 namespace Contain\Display\View\FlpSection;
+
 use Contain\Display\Controller\LoadData;
 use Contain\Display\Model\LoggedComponents;
 use function WPMailSMTP\Vendor\GuzzleHttp\Psr7\str;
@@ -43,15 +44,15 @@ class LandingPage {
     public function InstanceOfCase ($Email) {
 
         $CountryMatchId = $this->CountryMatch($Email);
-        $MatchedSkillsId = $this->MatchSkills($Email);
-
-        $FinalIds = array_intersect($CountryMatchId, $MatchedSkillsId);
         $CityMatchId = $this->CityMatch($Email);
-        $FinalIds = array_intersect($FinalIds, $CityMatchId);
+        $location_match_ids = array_intersect($CountryMatchId, $CityMatchId);
 
-        $FinalIds = $this->CaseStatus($FinalIds);
+        $status_check_ids = $this->CaseStatus($location_match_ids);
+        $final_ids = array_intersect($status_check_ids, $location_match_ids);
 
-        $FinalIds = $FinalIds + $this->AlertFLP($Email);
+        $static_matching_ids = $this->static_matching($Email, $final_ids);
+
+        $FinalIds = $static_matching_ids + $this->AlertFLP($Email);
 
         $html = "<div class='row'>".$this->lang['landingpage_hint']."</div>";
         $html .= "<div class='row'>";
@@ -215,49 +216,6 @@ class LandingPage {
     }
 
     // Matches the skills of Arena with event category of Alert
-    public function static_matching($Email) {
-        $static_skills = [];
-        global $wpdb;
-        $alerts = $wpdb->get_results( "SELECT alert_category, alert_location, alert_target FROM {$wpdb->prefix}alert WHERE alert_case_status='Accepted'", OBJECT );
-
-        foreach ($alerts as $alert) {
-            array_push($static_skills, $alert->alert_category, $alert->alert_location, $alert->alert_target);
-
-        }
-
-        $LoadAlertData = new LoadData();
-        $LoadArenaData = new LoadData();
-        $AlertSkills = $LoadAlertData->loadAlertData('event_category');
-        $AlertReportId = $LoadAlertData->loadAlertData('report_id');
-        $ArenaSkills = $LoadArenaData->loadArenaData('flp_experience_with_radicalisation', $Email);
-        $Arena_AlertID = $LoadArenaData->loadArenaData('alert_id', $Email);
-
-        $ArenaSkills = explode('~~~', $ArenaSkills[0]);
-        for ($ArenaSkillsCounter = 0; $ArenaSkillsCounter<count($ArenaSkills); $ArenaSkillsCounter++) {
-            for ($AlertSkillsCounter = 0; $AlertSkillsCounter<count($AlertSkills); $AlertSkillsCounter++) {
-
-
-                similar_text($AlertSkills[$AlertSkillsCounter], $ArenaSkills[$ArenaSkillsCounter], $per);
-                similar_text($ArenaSkills[$ArenaSkillsCounter], $AlertSkills[$AlertSkillsCounter], $per_op);
-                if ($per>10 || $per_op>10) {
-                    array_push($MatchedSkillsId, $AlertReportId[$AlertSkillsCounter]);
-                }
-
-                // if its an FLP add the alert_id to $MatchedSkillsId
-                if (strpos($Arena_AlertID[0], $AlertReportId[$AlertSkillsCounter]) !== false) {
-                    if (!in_array($AlertReportId[$AlertSkillsCounter], $MatchedSkillsId)) {
-                        array_push($MatchedSkillsId, $AlertReportId[$AlertSkillsCounter]);
-                    }
-                }
-            }
-        }
-
-        // takes the skills of arena expert and breaks it down into an array then matches those against all the alert event categories
-//        return $MatchedSkillsId;
-        // NOTE: this array is from ALERT
-    }
-
-    // Matches the skills of Arena with event category of Alert
     public function MatchSkills($Email) {
 //        $this->static_matching($Email);
         $MatchedSkillsId = [];
@@ -380,7 +338,7 @@ class LandingPage {
         }
         return $MatchedId;
     }
-
+    // Generates those alert ids which have been reported by the logged in flp
     public function AlertFLP($email) {
         $MatchedId = [];
         global $wpdb;
@@ -392,6 +350,102 @@ class LandingPage {
             }
         }
         return $MatchedId;
+    }
+
+    public function static_matching($Email, $Ids) {
+        global $wpdb;
+        $final_list = [];
+
+        $flp = $wpdb->get_results( "SELECT flp_id, flp_experience_with_radicalisation, flp_working_with, flp_area_of_expertise FROM {$wpdb->prefix}arena WHERE flp_email='$Email'", OBJECT );
+        foreach ($flp as $data) {
+            $flp = $this->flp_mapping($data);
+        }
+
+        foreach ($Ids as $id) {
+            $alert = $wpdb->get_results( "SELECT alert_id, alert_category, alert_location, alert_target FROM {$wpdb->prefix}alert WHERE alert_id='$id'", OBJECT );
+            $final_list = $final_list + $this->alert_mapping($alert[0], $flp);
+        }
+
+
+        // remove elements with 0 value -- no match in this case
+        foreach ($final_list as $item => $value) {
+            if ($value == 0) {
+                unset($final_list[$item]);
+            }
+        }
+
+        // sort array in descending order w.r.t values
+        arsort($final_list);
+
+        return array_keys($final_list);
+    }
+
+    public function alert_mapping($data, $flp) {
+        $ident_list = [];
+        $plugin_path = plugin_dir_path( dirname(__FILE__, 4));
+        $json_data = json_decode(file_get_contents($plugin_path . "assets/base/alert_map.json"), true);
+
+        $ident_category = explode("~~~", $data->alert_category);
+        $ident_location = explode("~~~", $data->alert_location);
+        $ident_target = explode("~~~", $data->alert_target);
+
+        $metadata = array_merge($ident_category, $ident_location, $ident_target);
+
+        foreach ($metadata as $iteration) {
+            $iteration = trim($iteration);
+            foreach ($json_data as $item => $value) {
+                if ($item === $iteration) {
+                    array_push($ident_list, $value);
+                }
+            }
+        }
+
+        // Remove duplicates from flp list
+        $imploding_in_string = implode(',', $flp);
+        $explodng_in_array = explode(',', $imploding_in_string);
+        $flps = array_unique($explodng_in_array);
+        $match_count = $this->alert_flp($ident_list, $flps);
+        $ascending_match_list[$data->alert_id] = $match_count;
+
+        return $ascending_match_list;
+    }
+
+    public function flp_mapping($data) {
+        $ident_list = [];
+        $plugin_path = plugin_dir_path( dirname(__FILE__, 4));
+        $json_data = json_decode(file_get_contents($plugin_path . "assets/base/flp_map.json"), true);
+
+        $ident_radicalisation = explode("~~~", $data->flp_experience_with_radicalisation);
+        $ident_working = explode("~~~", $data->flp_working_with);
+        $ident_expertise = explode("~~~", $data->flp_area_of_expertise);
+
+        $metadata = array_merge($ident_radicalisation, $ident_working, $ident_expertise);
+
+        foreach ($metadata as $iteration) {
+            $iteration = trim($iteration);
+            foreach ($json_data as $item => $value) {
+                if ($item === $iteration) {
+                    array_push($ident_list, $value);
+                }
+            }
+        }
+        return $ident_list;
+    }
+
+    public function alert_flp($alert_list, $flp_list) {
+        $a = $alert_list;
+        $b = $flp_list;
+        $count = 0;
+
+        foreach ($alert_list as $alert) {
+            $alert = explode(',', $alert);
+            foreach ($flp_list as $flp) {
+                if (in_array($flp, $alert)) {
+                    $count++;
+                }
+            }
+        }
+        return $count;
     }
 }
 ?>

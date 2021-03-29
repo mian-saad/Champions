@@ -20,10 +20,10 @@ class ProfileUpdated {
         if (count($data['flp_experience_with_radicalisation']) > 1) {
             $data['flp_experience_with_radicalisation'] = implode('~~~', $data['flp_experience_with_radicalisation']);
         }
-        if (!empty($data['other_skills'])) {
-            $data['flp_experience_with_radicalisation'] = $data['flp_experience_with_radicalisation'] .'~~~'. $data['other_skills'];
-        }
-        unset($data['other_skills']);
+//        if (!empty($data['other_skills'])) {
+//            $data['flp_experience_with_radicalisation'] = $data['flp_experience_with_radicalisation'] .'~~~'. $data['other_skills'];
+//        }
+//        unset($data['other_skills']);
 
         // If flp_area_of_expertise more than one implode in one array and if other skills exists concatenate in the same array
         if (count($data['flp_area_of_expertise']) > 1) {

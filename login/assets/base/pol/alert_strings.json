@@ -62,6 +62,9 @@
     "expert_status": "Status eksperta",
     "accept": "Zaakceptuj",
 
+    "alert_invitation":"Zaproszenie do alertu",
+    "matching_invitation": "Zostałeś zaproszony do dołączenia do sprawy „Alert”. Aby uzyskać więcej informacji, a także zaakceptować lub odrzucić tę prośbę, zaloguj się do systemu. https://www.firstlinepractitioners.com/arena-2/",
+
     "the_alert": "Alert: ",
     "your_case_approved": " został potwierdzony przez moderatora. Teraz możesz to zobaczyć w systemie. https://www.firstlinepractitioners.com/arena-2",
 

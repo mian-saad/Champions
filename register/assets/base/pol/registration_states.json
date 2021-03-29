@@ -1,7 +1,7 @@
 {
    "M0.0":{
       "state_text":"Witaj na platformie ARENA. Przeprowadzimy Cię przez proces wysyłania zgłoszenia. <br><br>Więcej informacji w <a target='_blank' href='https://ec.europa.eu/info/law/law-topic/data-protection_pl'>Regulaminie</a>",
-      "short_text":"GDPR agreement",
+      "short_text":"Zgoda RODO",
       "id":"gdpr_agreement",
       "state_type":"gdpr",
       "state_answers":[
@@ -153,19 +153,19 @@
          {
             "id":"flp_first_name",
             "text":"Podaj swoje imię",
-            "short_text":"First Name",
+            "short_text":"Imię",
             "type":"text"
          },
          {
             "id":"flp_last_name",
             "text":"Podaj swoje nazwisko",
-            "short_text":"Last Name",
+            "short_text":"Nazwisko",
             "type":"text"
          },
          {
             "id":"flp_email",
             "text":"Podaj swój adres e-mailowy",
-            "short_text":"Email",
+            "short_text":"E-mail",
             "type":"text"
          },
          {
@@ -177,19 +177,19 @@
          {
             "id":"flp_organisation",
             "text":"Podaj nazwę organizacji/instytucji, w której pracujesz",
-            "short_text":"Organisation",
+            "short_text":"Organizacja",
             "type":"text"
          },
          {
             "id":"flp_years_of_experience",
             "text":"Ile masz lat doświadczenia zawodowego?",
-            "short_text":"experience",
+            "short_text":"doświadczenie",
             "type":"text"
          },
          {
             "id":"flp_city",
             "text":"W jakiej miejscowości mieszkasz?",
-            "short_text":"Town",
+            "short_text":"Miasto",
             "type":"text"
          }
       ]
@@ -204,7 +204,7 @@
             "id":"flp_experience_with_radicalisation",
             "type":"checkbox",
             "text":"DOŚWIADCZENIE W ZAKRESIE PREWENCJI RADYKALIZACJI (Możesz wybrać więcej niż jedną opcję.)",
-            "short_text":"Experience with Radicalisation",
+            "short_text":"Doświadczenie z radykalizacją",
             "answers":[
                {
                   "id":"Addressing Extremist Propaganda and Recruitment Online",
@@ -276,7 +276,7 @@
             "id":"flp_working_with",
             "type":"checkbox",
             "text":"Pracuję z: (Możesz wybrać więcej niż jedną opcję.)",
-            "short_text":"Working With",
+            "short_text":"Praca z",
             "answers":[
                {
                   "id":"Young people in schools",
@@ -345,7 +345,7 @@
             "id":"flp_area_of_expertise",
             "type":"checkbox",
             "text":"Specjalizacja (Możesz wybrać więcej niż jedną opcję.)",
-            "short_text":"Area of Expertise",
+            "short_text":"Obszar zainteresowań",
             "answers":[
                {
                   "id":"Education",
@@ -403,7 +403,7 @@
             "type":"checkbox",
             "optional": "true",
             "text":"Zakres działania",
-            "short_text":"Visibility Level",
+            "short_text":"Poziom widoczności",
             "text_description":"Jeśli chcesz otrzymywać powiadomienia o wszystkich zdarzeniach zgłoszonych na platformie ALERT, które miały miejsce w Twoim mieście, zaznacz opcję \"Poziom miasta\". Opcja ta ułatwia współpracę międzysektorową. Nie zaznaczywszy jej będziesz powiadamiany(-a) tylko o zgłoszeniach dobranych pod kątem Twoich kompetencji.",
             "answers":[
                {
@@ -415,7 +415,7 @@
       ]
    },
    "M1.3":{
-      "short_text":"FLP Description",
+      "short_text":"Opis FLP",
       "state_text":"Napisz krótko o swoim doświadczeniu zawodowym w zakresie zapobiegania polaryzacji społecznej, radykalizacji i ekstremizmowi - z jakimi społecznościami/grupami pracujesz/pracowałeś(-aś), dla jakich instytucji/organizacji, kiedy? ",
       "id":"flp_description",
       "show_header": "true",
@@ -431,7 +431,7 @@
       "state_type":"result"
    },
    "ERROR":{
-      "state_text":"An error has occured! Please restart the process.",
+      "state_text":"An error has occured!",
       "state_type":"error"
    }
 }

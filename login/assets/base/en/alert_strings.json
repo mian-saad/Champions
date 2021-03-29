@@ -59,6 +59,11 @@
     "country": "Country",
     "skills": "Skills",
     "expert_status": "Expert Status",
+
+    "alert_invitation":"Alert Invitation",
+    "matching_invitation": "You have been invited to join a “Alert” case. For more information, as well as to accept or reject this request, please login the system. https://www.firs tlinepractitioner s.com/arena-2",
+
+
     "accept": "Accept",
     "accepted": "Accepted",
     "event_time": "Event Time",

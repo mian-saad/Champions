@@ -225,6 +225,10 @@
       "text":"Dialog międzykulturowy i budowanie pokoju"
     },
     {
+      "id":"Nothing",
+      "text":"Nic"
+    },
+    {
       "id":"Other",
       "text":"Inna"
     }
@@ -284,6 +288,10 @@
       "text":"mediami"
     },
     {
+      "id":"Nothing",
+      "text":"Nic"
+    },
+    {
       "id":"Other",
       "text":"Inna"
     }
@@ -330,6 +338,10 @@
     {
       "id":"Crisis Management Prevention",
       "text":"Zarządzanie kryzysem "
+    },
+    {
+      "id":"Nothing",
+      "text":"Nic"
     },
     {
       "id":"Other",

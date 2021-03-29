@@ -1,7 +1,7 @@
 {  
    "M0.0":{
       "state_text":"Köszöntünk az ALERT modulban! Ez az eszköz segédletként szolgál az Alert folyamatában. <br><br>További információ az <a target='_blank' href='https://ec.europa.eu/info/law/law-topic/data-protection_hu'>Általános szerződési feltételek menüpontban</a>",
-      "short_text":"GDPR agreement",
+      "short_text":"GDPR megállapodás",
       "id":"gdpr_agreement",
       "state_type":"gdpr",
       "state_answers":[  
@@ -67,7 +67,7 @@
       ]
    },
    "M1.2":{
-      "state_text":"Incident Category",
+      "state_text":"Incidens kategória",
       "show_header": "true",
       "short_text":"Alert",
       "state_type":"composed_checkbox",
@@ -77,7 +77,7 @@
             "id":"alert_category",
             "type":"checkbox",
             "text":"<b>Hogyan írna le az incidenst? (Több opció is kiválaszthat)</b>",
-            "short_text":"Alert Category",
+            "short_text":"Riasztási kategória",
             "answers":[
                {
                   "text":"Szélsőséges propaganda, összeesküvés elmélet terjesztése és/vagy toborzás",
@@ -114,7 +114,7 @@
          {
             "id":"alert_location",
             "type":"checkbox",
-            "short_text":"Alert Location",
+            "short_text":"Riasztás helye",
             "text":"<b>Hol történt? (Több opció is kiválaszthat)</b>",
             "answers":[
                {
@@ -178,7 +178,7 @@
             "id":"alert_target",
             "type":"checkbox",
             "text":"<b>Ki ellen irányult az eset? (Több opció is kiválaszthat)</b>",
-            "short_text":"Alert Target",
+            "short_text":"Riasztási cél",
             "answers":[
                {
                   "text":"Vallási kisebbség (pl. zsidó, muszlim)",
@@ -471,7 +471,7 @@
             "id":"flp_experience_with_radicalisation",
             "type":"checkbox",
             "text":"Radikalizációs tapasztalat (Több opció is kiválaszthat)",
-            "short_text":"Experience with Radicalisation",
+            "short_text":"Tapasztalat a radikalizációról",
             "answers":[
                {
                   "id":"Addressing Extremist Propaganda and Recruitment Online",
@@ -494,7 +494,7 @@
                   "text":"Erőszakprevenció"
                },
                {
-                  "id":"Child / Youth Safety & Wellbeing ",
+                  "id":"Child / Youth Safety & Wellbeing",
                   "text":"Gyermekbiztonság"
                },
                {
@@ -543,7 +543,7 @@
             "id":"flp_working_with",
             "type":"checkbox",
             "text":"Kikkel dolgozik (Több opció is kiválaszthat)",
-            "short_text":"Working With",
+            "short_text":"Dolgozni vele",
             "answers":[
                {
                   "id":"Young people in schools",
@@ -612,7 +612,7 @@
             "id":"flp_area_of_expertise",
             "type":"checkbox",
             "text":"Szakterülete (Több opció is kiválaszthat)",
-            "short_text":"Area of Expertise",
+            "short_text":"Szakterület",
             "answers":[
                {
                   "id":"Education",
@@ -670,7 +670,7 @@
             "type":"checkbox",
             "optional": "true",
             "text":"Láthatóság szintje",
-            "short_text":"Visibility Level",
+            "short_text":"Láthatósági szint",
             "text_description":"Ha szeretné, hogy értesítést kapjon minden, a városában történt esetről, amely beérkezik az ALERT rendszerbe, kérem, X-elje be a \"Város\" dobozt. ",
             "answers":[
                {
@@ -682,7 +682,7 @@
       ]
    },
    "M1.8":{
-      "short_text":"FLP Description",
+      "short_text":"FLP Leírás",
       "state_text":"Kérjük, röviden írja le, hogy milyen szakmai tapasztalatokkal rendelkezik a szelsőségesség és a polarizáció kérdéseivel? Milyen közösségekben dolgozott? Milyen szervezetek képviseletében ? Mikor? ",
       "id":"flp_description",
       "show_header": "false",
@@ -695,7 +695,7 @@
       "state_type":"verification"
    },
    "ERROR":{
-      "state_text":"An error has occurred! Please restart the report process.",
+      "state_text":"An error has occurred!",
       "state_type":"error"
    }
 }

@@ -1,0 +1,22 @@
+{
+  "Extremist propaganda, conspiracy theories and/or recruitment": "1",
+  "Physical violence (e.g. assaults, threats, insults, intimidation)": "2",
+  "Hate speech and/or incitement to violence": "3",
+  "Property damage (e.g. break-in, looting, vandalism, graffiti etc)": "4",
+  "Residential (e.g.  hotels, houses, flats)": "5",
+  "Recreational (e.g.   bars, restaurants, cinemas, playgrounds, parks)": "6",
+  "Religious (e.g. mosques, churches, synagogues, pray halls)": "7",
+  "Offices (e.g. work locations, business facilities, factories, warehouses)": "8",
+  "Education (e.g day care centres, schools, universities, libraries)": "9",
+  "Human service (e.g. courts, jails, prisons, police stations, hospitals)": "10",
+  "Critical Infrastructures and public ways (e.g buses, bus stations and bus stops, airplanes and airports, trains and train stations, highways)": "11",
+  "Transitional areas (e.g. immigration centres, abandoned properties and construction sites)": "12",
+  "Virtual spaces (eg.  internet, social media, cyberspace)": "13",
+  "Religious community (e.g. Jews, Muslims)": "14",
+  "Women": "15",
+  "LGBTQ+": "16",
+  "Different cultural and ethnic background (e.g.immigrants, refugees)": "17",
+  "Different ethnic community within one country (e.g.second generation individuals)": "18",
+  "People presenting opposite political and/or ideological views (e.g. left activists)": "19",
+  "Law Enforcement or Public Official / Politician": "20"
+}

@@ -107,9 +107,17 @@ class TraComposedCheckboxQuestion extends TraState
         
         $t_response = [];
         $value = null;
+        $temp = [];
         foreach ($this->state['state_answers'] as $state) {
             if ( !is_array($this->response[$state['id']])) {
+                $this->response[$state['id']] = stripslashes($this->response[$state['id']]);
                 $this->response[$state['id']] = str_split($this->response[$state['id']], 100);
+            }
+            else {
+                foreach ($this->response[$state['id']] as $val) {
+                    array_push($temp, stripslashes($val));
+                }
+                $this->response[$state['id']] = $temp;
             }
             foreach ($state['answers'] as $answer) {
 
@@ -139,14 +147,14 @@ class TraComposedCheckboxQuestion extends TraState
             foreach ($state['answers'] as $answer) {
                 if (in_array($answer['id'], $this->response[$state['id']])) {
                     if ($value != null) {
-                        $value = $value .', '. $answer['id'];
+                        $value = $value .'~~~'. $answer['id'];
                     }
                     else {
                         $value = $answer['id'];
                     }
                 }
             }
-            $t_response = array_merge($t_response, array($state['short_text'] => $value));
+            $t_response = array_merge($t_response, array($state['id'] => $value));
             $value = null;
         }
         return $t_response;

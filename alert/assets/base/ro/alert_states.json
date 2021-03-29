@@ -1,7 +1,7 @@
 {
     "M0.0":{
       "state_text":"Bine ați venit la „Modulul de ALERTĂ”. Acest instrument vă va ghida prin procesul de ALERTĂ. <br><br>Pentru mai multe informații verifică <a target='_blank' href='https://ec.europa.eu/info/law/law-topic/data-protection_ro'>„Termenii și Condițiile”</a>",
-      "short_text":"GDPR agreement",
+      "short_text":"Acordul GDPR",
       "id":"gdpr_agreement",
       "state_type":"gdpr",
       "state_answers":[
@@ -472,7 +472,7 @@
           "id":"flp_experience_with_radicalisation",
           "type":"checkbox",
           "text":"Experiență de lucru despre radicalizare (puteți alege mai multe opțiuni)",
-          "short_text":"Experience with Radicalisation",
+          "short_text":"Experiență cu radicalizarea",
           "answers":[
             {
               "id":"Addressing Extremist Propaganda and Recruitment Online",
@@ -495,7 +495,7 @@
               "text":"Siguranța publică și prevenirea violenței (în public și în privat)"
             },
             {
-              "id":"Child / Youth Safety & Wellbeing ",
+              "id":"Child / Youth Safety & Wellbeing",
               "text":"Siguranța și bunăstarea copiilor și tinerilor"
             },
             {
@@ -544,7 +544,7 @@
           "id":"flp_working_with",
           "type":"checkbox",
           "text":"Lucrați cu (puteți alege mai multe opțiuni)",
-          "short_text":"Working With",
+          "short_text":"Lucrând cu",
           "answers":[
             {
               "id":"Young people in schools",
@@ -613,7 +613,7 @@
           "id":"flp_area_of_expertise",
           "type":"checkbox",
           "text":"Arie de expertiză (puteți alege mai multe opțiuni)",
-          "short_text":"Area of Expertise",
+          "short_text":"Zona de expertiză",
           "answers":[
             {
               "id":"Education",
@@ -671,7 +671,7 @@
           "type":"checkbox",
           "optional": "true",
           "text":"Vizibilitate",
-          "short_text":"Visibility Level",
+          "short_text":"Nivel de vizibilitate",
           "text_description":"Dacă doriți să fiți implicați doar în activități din orașul dvs., vă rugăm bifați căsuța \"La nivelul orașului\". În caz contrat, veți fi implicat în toate activitățile la nivel național. ",
           "answers":[
             {
@@ -683,7 +683,7 @@
       ]
     },
     "M1.8":{
-      "short_text":"FLP Description",
+      "short_text":"FLP Descriere",
       "state_text":"Vă rugăm să descrieți pe scurt experiența dvs. profesională și munca pe subiecte de extremism, discurs instigator la ură și polarizare (cu ce comunitate ați lucrat? pentru ce organizație ați lucrat? Când?",
       "id":"flp_description",
       "show_header": "false",

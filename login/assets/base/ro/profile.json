@@ -225,6 +225,10 @@
       "text":"Muncă interconfensională și de consolidare a păcii"
     },
     {
+      "id":"Nothing",
+      "text":"Nimic"
+    },
+    {
       "id":"Other",
       "text":"Altele"
     }
@@ -284,6 +288,10 @@
       "text":"Media și presă"
     },
     {
+      "id":"Nothing",
+      "text":"Nimic"
+    },
+    {
       "id":"Other",
       "text":"Altele"
     }
@@ -330,6 +338,10 @@
     {
       "id":"Crisis Management Prevention",
       "text":"Managementul crizei și prevenție"
+    },
+    {
+      "id":"Nothing",
+      "text":"Nimic"
     },
     {
       "id":"Other",

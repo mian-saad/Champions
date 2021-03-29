@@ -300,14 +300,11 @@ jQuery(document).ready(function ($) {
 
             let Ident = $('#Recommend');
             let ButtonText = $(Ident).text();
-            if (ButtonText.indexOf('Add') > -1) {
+            if (ButtonText.indexOf('ADD') > -1) {
                 $('#Recommend').text('Update Recommendation');
                 $('#Recommend').attr("id", "Update")
             }
         }
-        // else {
-        //     alert('haan bhyee?');
-        // }
 
 
     });
@@ -486,13 +483,22 @@ jQuery(document).ready(function ($) {
             var fieldname = formData[i]['name'];
             var fieldvalue = formData[i]['value'];
 
-            if (!(fieldname in result)) {                // if key doesnt exist, add it to array
+            if (!(fieldname in result) && !(fieldname === "other_text_input")) {                // if key doesnt exist, add it to array
                 result[fieldname] = fieldvalue
-            } else {                                  // else key already exists
+            }
+            else if (fieldname === "other_text_input" && fieldvalue !== '') {
+                var v_fieldname = formData[i-1]['name'];
+                result[v_fieldname].push(fieldvalue);
+            }
+            else if (fieldname === "other_text_input" && fieldvalue === '') {
+                continue;
+            }
+            else {                                  // else key already exists
 
                 if (Array.isArray(result[fieldname])) {    // if field already contains an array, lets push new element there
                     result[fieldname].push(fieldvalue);
-                } else {
+                }
+                else {
                     var newvalue = [result[fieldname], fieldvalue]    // else lets create new array with two elements in it
                     result[fieldname] = newvalue;
                 }

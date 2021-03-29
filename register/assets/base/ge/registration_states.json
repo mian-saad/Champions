@@ -1,7 +1,7 @@
 {
    "M0.0":{
       "state_text":"Willkommen bei ARENA. Dieses Tool wird Sie durch den Prozess führen. <br><br>Weitere Informationen finden Sie in den <a target='_blank' href='https://ec.europa.eu/info/law/law-topic/data-protection_de'>allgemeinen Geschäftsbedingungen</a>",
-      "short_text":"GDPR agreement",
+      "short_text":"GDPR-Vereinbarung",
       "id":"gdpr_agreement",
       "state_type":"gdpr",
       "state_answers":[
@@ -411,7 +411,7 @@
       ]
    },
    "M1.3":{
-      "short_text":"FLP Description",
+      "short_text":"FLP Beschreibung",
       "state_text":"Bitte beschreiben Sie kurz Ihre beruflichen Erfahrungen mit den Themen Extremismus, Hass, Polarisierung (mit welcher Gemeinschaft/Gruppe haben Sie gearbeitet? für welche Organisation? Wann?)",
       "id":"flp_description",
       "show_header": "true",
@@ -427,7 +427,7 @@
       "state_type":"result"
    },
    "ERROR":{
-      "state_text":"An error has occured! Please restart the process.",
+      "state_text":"An error has occured!",
       "state_type":"error"
    }
 }

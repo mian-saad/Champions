@@ -1,7 +1,7 @@
 {  
    "M0.0":{
       "state_text":"Willkommen bei ALERT. Dieses Tool wird Sie durch den Prozess führen. <br><br>Weitere Informationen finden Sie in den <a target='_blank' href='https://ec.europa.eu/info/law/law-topic/data-protection_de'>allgemeinen Geschäftsbedingungen</a>",
-      "short_text":"GDPR agreement",
+      "short_text":"GDPR-Vereinbarung",
       "id":"gdpr_agreement",
       "state_type":"gdpr",
       "state_answers":[  
@@ -67,7 +67,7 @@
       ]
    },
    "M1.2":{
-      "state_text":"Incident Category",
+      "state_text":"Vorfallkategorie",
       "show_header": "true",
       "short_text":"Alert",
       "state_type":"composed_checkbox",
@@ -77,7 +77,7 @@
             "id":"alert_category",
             "type":"checkbox",
             "text":"<b>Wie würden Sie den Vorfall kategorisieren? (Sie können mehr als eine Option auswählen)</b>",
-            "short_text":"Alert Category",
+            "short_text":"Alarmkategorie",
             "answers":[
                {
                   "text":"Extremistische Propaganda, Rekrutierung oder Verschwörungstheorien",
@@ -115,7 +115,7 @@
             "id":"alert_location",
             "type":"checkbox",
             "text":"<b>Wo ist der Vorfall passiert? (Sie können mehr als eine Option auswählen)</b>",
-            "short_text":"Alert Location",
+            "short_text":"Alarmort",
             "answers":[
                {
                   "text":"Wohngebäude (z. B. Hotels, Häuser, Wohnungen)",
@@ -178,7 +178,7 @@
             "id":"alert_target",
             "type":"checkbox",
             "text":"<b>Wer war das Ziel des Angriffs? (Sie können mehr als eine Option auswählen)</b>",
-            "short_text":"Alert Target",
+            "short_text":"Alarmziel",
             "answers":[
                {
                   "text":"Religiöse Gemeinschaften (z.B. Jüd:innen, Muslim:innen)",
@@ -198,22 +198,22 @@
                {
                   "text":"Menschen mit anderer kultureller oder ethnischer Herkunft (z.B. Menschen mit Migrationsgeschichte, Geflüchtete etc.)",
                   "short_text":"Menschen mit anderer kultureller oder ethnischer Herkunft (z.B. Menschen mit Migrationsgeschichte, Geflüchtete etc.)",
-                  "id":"Menschen mit anderer kultureller oder ethnischer Herkunft (z.B. Menschen mit Migrationsgeschichte, Geflüchtete etc.)"
+                  "id":"Different cultural and ethnic background (e.g.immigrants, refugees)"
                },
                {
                   "text":"Ethnische Community in einem Land",
                   "short_text":"Ethnische Community in einem Land",
-                  "id":"Ethnische Community in einem Land"
+                  "id":"Different ethnic community within one country (e.g.second generation individuals)"
                },
                {
                   "text":"Menschen mit anderer politischer Meinung",
                   "short_text":"Menschen mit anderer politischer Meinung",
-                  "id":"Menschen mit anderer politischer Meinung"
+                  "id":"People presenting opposite political and/or ideological views (e.g. left activists)"
                },
                {
                   "text":"Polizei oder Politiker:in",
                   "short_text":"Polizei oder Politiker:in",
-                  "id":"Polizei oder Politiker:in"
+                  "id":"Law Enforcement or Public Official / Politician"
                },
                {
                   "text":"Weiß ich nicht",
@@ -490,7 +490,7 @@
                   "text":"Öffentliche Sicherheit "
                },
                {
-                  "id":"Child / Youth Safety & Wellbeing ",
+                  "id":"Child / Youth Safety & Wellbeing",
                   "text":"Sicherheit & Wohlbefinden von Kindern / Jugendlichen "
                },
                {
@@ -678,7 +678,7 @@
       ]
    },
    "M1.8":{
-      "short_text":"FLP Description",
+      "short_text":"FLP Beschreibung",
       "state_text":"Bitte beschreiben Sie kurz Ihre beruflichen Erfahrungen mit den Themen Extremismus, Hass, Polarisierung (mit welcher Gemeinschaft/Gruppe haben Sie gearbeitet? für welche Organisation? Wann?)",
       "id":"flp_description",
       "show_header": "false",
@@ -691,7 +691,7 @@
       "state_type":"verification"
    },
    "ERROR":{
-      "state_text":"An error has occurred! Please restart the process.",
+      "state_text":"An error has occurred!",
       "state_type":"error"
    }
 }

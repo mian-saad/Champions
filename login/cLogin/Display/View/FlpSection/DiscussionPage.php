@@ -15,6 +15,9 @@ class DiscussionPage {
 
     public function Render($Email, $ID) {
 
+        global $wpdb;
+        $alert_status = $wpdb->get_results( "SELECT alert_case_status FROM {$wpdb->prefix}alert WHERE alert_id='$ID'", OBJECT );
+
         $loggedState = new View\FlpSection\LandingPage($this->lang);
         $html = $loggedState ->header($Email);
         $html .= "<div class='row'>";
@@ -30,7 +33,10 @@ class DiscussionPage {
             $html .= $this->CloseButton($ID, $Email);
         }
         $html .= "</div>";
-        $html .= $this->Participants($ID);
+
+        if ($alert_status[0]->alert_case_status === 'Accepted') {
+            $html .= $this->Participants($ID);
+        }
         $html .= "</div>";
         $html .= "<br><hr><br>";
         $html .= $this->RenderRecommendation($Email, $ID);

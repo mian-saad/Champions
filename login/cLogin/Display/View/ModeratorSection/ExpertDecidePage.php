@@ -156,9 +156,12 @@ class ExpertDecidePage {
 
     public function SendMail($UserID) {
         global $wpdb;
-        $Email = $wpdb->get_results( "SELECT flp_email FROM {$wpdb->prefix}arena WHERE flp_id='$UserID'", OBJECT );
+        $Email = $wpdb->get_results( "SELECT flp_email, flp_locale FROM {$wpdb->prefix}arena WHERE flp_id='$UserID'", OBJECT );
+        $language = $Email[0]->flp_locale;
         $Email = $Email[0]->flp_email;
-        wp_mail( "$Email", $this->language['arena_login_module'], $this->language['flp_accepted'], array('Content-Type: text/html; charset=UTF-8'));
+        $plugin_path = plugin_dir_path( dirname(__FILE__, 4));
+        $string_file = json_decode(file_get_contents($plugin_path . "assets/base/" . $language . "/alert_strings.json"), true);
+        wp_mail( "$Email", $string_file['arena_login_module'], $string_file['flp_accepted'], array('Content-Type: text/html; charset=UTF-8'));
     }
 
 }
